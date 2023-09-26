@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/project-smart-coders-frontend/static/css/main.7acaea2f.css",
+    "main.js": "/project-smart-coders-frontend/static/js/main.07d3183d.js",
+    "index.html": "/project-smart-coders-frontend/index.html",
+    "main.7acaea2f.css.map": "/project-smart-coders-frontend/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/project-smart-coders-frontend/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
