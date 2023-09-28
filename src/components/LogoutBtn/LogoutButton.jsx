@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ReactComponent as IconLogout } from '../../icons/icons.svg';
-import styles from './LogoutButton.module.css';
 import { useDispatch } from 'react-redux';
+import * as s from './LogoutButton.styled';
 
 export const LogoutButton = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,16 +15,17 @@ export const LogoutButton = () => {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={onClick}
-        className={styles.logButton}
-        disabled={isLoading}
-        aria-label='Log out'
-      >
+       <s.LogButton
+      type="button"
+      onClick={onClick}
+      disabled={isLoading}
+      aria-label="Log out"
+    >
         Log out
-        <IconLogout className={styles.logButton_icon} /> 
-      </button>
+      <s.LogButtonIcon>
+        <IconLogout />
+      </s.LogButtonIcon>
+    </s.LogButton>
     </>
   );
 };
