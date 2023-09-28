@@ -23,7 +23,8 @@ code {
   font-style: normal;
   font-weight: 400;
 
-  src: url('./components/fonts/inter-v12-latin-regular.woff2') format('woff2');
+  /* src: url('./components/fonts/inter-v12-latin-regular.woff2') format('woff2'); */
+  src: url('./assets/fonts/inter-v12-latin-regular.woff2') format('woff2');
 }
 
 /* inter-500 - latin */
@@ -32,7 +33,7 @@ code {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  src: url('./components/fonts/inter-v12-latin-500.woff2') format('woff2');
+  src: url('./assets/fonts/inter-v12-latin-500.woff2') format('woff2');
 }
 
 /* inter-600 - latin */
@@ -41,7 +42,7 @@ code {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  src: url('./components/fonts/inter-v12-latin-600.woff2') format('woff2');
+  src: url('./assets/fonts/inter-v12-latin-600.woff2') format('woff2');
 }
 
 /* inter-700 - latin */
@@ -50,7 +51,7 @@ code {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  src: url('./components/fonts/inter-v12-latin-700.woff2') format('woff2');
+  src: url('./assets/fonts/inter-v12-latin-700.woff2') format('woff2');
 }
 
 /* Coolvetica-regular */
@@ -59,7 +60,7 @@ code {
   font-family: 'Coolvetica';
   font-style: normal;
   font-weight: 400;
-  src: url('./components/fonts/CoolveticaRg-Regular.woff2') format('woff2');
+  src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2');
 }
 
 /* Coolvetica-regular-italic */
@@ -68,5 +69,5 @@ code {
   font-family: 'Coolvetica';
   font-style: italic;
   font-weight: 400;
-  src: url('./components/fonts/CoolveticaRg-Italic.woff2') format('woff2');
+  src: url('./assets/fonts/CoolveticaRg-Italic.woff2') format('woff2');
 }
