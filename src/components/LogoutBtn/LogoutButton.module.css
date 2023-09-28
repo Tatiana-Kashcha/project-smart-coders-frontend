@@ -1,0 +1,45 @@
+.logButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+    position: absolute;
+    bottom: 24px;
+  
+    width: 134px;
+    padding: 14px;
+  
+    border: none;
+    background: #3e85f3;
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+    border-radius: 16px;
+  
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+  
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .logButton:disabled {
+    background: #dcebf7;
+  
+  }
+  
+  .logButton:hover {
+    background-color: #2B78EF;
+  }
+  
+  .logButton_icon {
+    margin-left: 10px;
+  }
+  
+  .modalBtn:hover {
+    background-color: #61a0ffa6;
+    box-shadow: 0px 0px 12px -2px rgb(0 0 0 / 50%);
+  }
+  
