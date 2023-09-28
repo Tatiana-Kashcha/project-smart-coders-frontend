@@ -1,6 +1,4 @@
-
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
 
 // import { Layout } from 'Layout';
 
@@ -13,6 +11,7 @@ import Statistics from 'pages/StatisticsPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { Layout } from 'Layout';
 import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
+import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
 
 import { RestrictedRoute } from 'components/RestrictedRoute';
 
@@ -32,7 +31,7 @@ export const App = () => {
             element={<PrivateRoute element={Calendar} redirecrTo="/" />}
           >
             <Route path="month/:currrentDate" element={<ChoosedMonth />} />
-            <Route path="day/:currrentDay" element={<ChoosedMonth />} />
+            <Route path="day/:currrentDay" element={<ChoosedDay />} />
           </Route>
           <Route
             path="statistics"
