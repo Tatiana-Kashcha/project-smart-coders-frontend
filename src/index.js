@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/theme';
 import './index.css';
 import 'normalize.css';
-import '../src/components/stylesheet/global.css';
+import '../src/stylesheet/global.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

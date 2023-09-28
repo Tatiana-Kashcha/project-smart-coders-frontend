@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as s from './AuthSection.styled';
-import { Container } from 'components/stylesheet/Container.styled';
+import { Container } from 'stylesheet/Container.styled';
 
 export const AuthSection = () => {
   return (
