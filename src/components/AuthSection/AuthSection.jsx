@@ -7,7 +7,6 @@ export const AuthSection = () => {
     <s.Section>
       <Container>
         <s.ContentWrapper>
-          {' '}
           {/* Logo */}
           <nav>
             <Link to="/login">Log in</Link>
