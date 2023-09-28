@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ReactComponent as IconLogout } from '../../icons/icons.svg';
 // import { useDispatch } from 'react-redux';
 import * as s from './LogoutBtn.styled';
-// називати відповідно до назви папки!
+
 export const LogoutBtn = () => {
   const [isLoading, setIsLoading] = useState(false);
   // const dispatch = useDispatch();
