@@ -9,7 +9,7 @@ export const LogoutButton = () => {
 
   const onClick = async (values, actions) => {
     setIsLoading(true);
-    await dispatch(logOut());
+    await dispatch(); // тут буде редакс логаут 
     setIsLoading(false);
   };
 
