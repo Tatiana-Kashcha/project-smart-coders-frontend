@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/project-smart-coders-frontend/static/css/main.d187ac48.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.df5e4bd7.js",
+    "main.css": "/project-smart-coders-frontend/static/css/main.9d79cc7c.css",
+    "main.js": "/project-smart-coders-frontend/static/js/main.5ca6b51a.js",
+    "static/js/954.28777163.chunk.js": "/project-smart-coders-frontend/static/js/954.28777163.chunk.js",
     "static/media/CoolveticaRg-Italic.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Italic.354b20eb1b8d25af62a1.woff2",
     "static/media/CoolveticaRg-Regular.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Regular.3829e81cd606bef6e1e9.woff2",
     "static/media/inter-v12-latin-700.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-700.54321e26b8bf4739a16d.woff2",
@@ -9,11 +10,12 @@
     "static/media/inter-v12-latin-500.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-500.c72c72b70c82b1f4bacf.woff2",
     "static/media/inter-v12-latin-regular.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-regular.be7cb18dc7caf47cf7e9.woff2",
     "index.html": "/project-smart-coders-frontend/index.html",
-    "main.d187ac48.css.map": "/project-smart-coders-frontend/static/css/main.d187ac48.css.map",
-    "main.df5e4bd7.js.map": "/project-smart-coders-frontend/static/js/main.df5e4bd7.js.map"
+    "main.9d79cc7c.css.map": "/project-smart-coders-frontend/static/css/main.9d79cc7c.css.map",
+    "main.5ca6b51a.js.map": "/project-smart-coders-frontend/static/js/main.5ca6b51a.js.map",
+    "954.28777163.chunk.js.map": "/project-smart-coders-frontend/static/js/954.28777163.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d187ac48.css",
-    "static/js/main.df5e4bd7.js"
+    "static/css/main.9d79cc7c.css",
+    "static/js/main.5ca6b51a.js"
   ]
 }
