@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-
+import { lazy } from 'react';
 // import { Layout } from 'Layout';
 
 import MainPage from 'pages/MainPage';
@@ -12,8 +12,9 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import { Layout } from 'Layout';
 import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
-
 import { RestrictedRoute } from 'components/RestrictedRoute';
+
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   return (
@@ -48,6 +49,7 @@ export const App = () => {
             element={<RestrictedRoute element={Login} redirecrTo="/account" />}
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
   );
