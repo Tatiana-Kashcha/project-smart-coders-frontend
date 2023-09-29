@@ -49,7 +49,7 @@ export const App = () => {
             element={<RestrictedRoute element={Login} redirecrTo="/account" />}
           />
         </Route>
-        <Route path="/" element={<NotFoundPage />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
   );
