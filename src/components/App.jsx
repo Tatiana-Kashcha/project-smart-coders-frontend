@@ -1,21 +1,54 @@
-import { lazy } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-// const MainPage = lazy(() => import('../pages/MainPage'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
+// import { Layout } from 'Layout';
+
+import MainPage from 'pages/MainPage';
+import Register from 'pages/RegisterPage';
+import Login from 'pages/LoginPage';
+import Account from 'pages/AccountPage';
+import Calendar from 'pages/CalendarPage';
+import Statistics from 'pages/StatisticsPage';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { Layout } from 'Layout';
+import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
+import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
+
+import { RestrictedRoute } from 'components/RestrictedRoute';
 
 export const App = () => {
   return (
-    <Routes>
-      {/*  роути: старт main, регистер, логын, паспорт */}
-      {/* <Route path="/" element={<MainPage />}>
-        <Route path="/login" element={<h1>Log in</h1>} />
-        <Route path="/register" element={<h1>Sign up</h1>} />
-      </Route> */}
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
 
-      {/*  приват роути (аккаунт, текущий календар, день, месяц, год ) */}
-      <Route path="*" element={<Navigate to="/" />}></Route>
-      <Route path="/" element={<NotFoundPage />} />
-    </Routes>
+          <Route
+            path="account"
+            element={<PrivateRoute element={Account} redirecrTo="/" />}
+          />
+          <Route
+            path="calendar"
+            element={<PrivateRoute element={Calendar} redirecrTo="/" />}
+          >
+            <Route path="month/:currrentDate" element={<ChoosedMonth />} />
+            <Route path="day/:currrentDay" element={<ChoosedDay />} />
+          </Route>
+          <Route
+            path="statistics"
+            element={<PrivateRoute element={Statistics} redirecrTo="/" />}
+          />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute element={Register} redirecrTo="/account" />
+            }
+          />
+          <Route
+            path="login"
+            element={<RestrictedRoute element={Login} redirecrTo="/account" />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 };
