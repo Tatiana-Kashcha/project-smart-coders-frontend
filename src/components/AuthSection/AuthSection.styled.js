@@ -1,21 +1,29 @@
 import styled from 'styled-components';
 
-export const Section = styled.section`
-  display: flex;
-  text-align: center;
-  justify-content: center;
+import { Container } from 'stylesheet/Container.styled';
 
+export const Section = styled.section`
   height: 100vh;
 
   background-color: ${props => props.theme.colors.primary};
 `;
 
-export const ContentWrapper = styled.div`
+export const ContainerModific = styled(Container)`
   display: flex;
   justify-content: center;
   align-items: center;
 
   height: 100%;
+`;
+
+export const ContentWrapper = styled.div`
+  text-align: center;
+`;
+
+export const ImgWrapper = styled.div`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 `;
 
 export const Button = styled.button`

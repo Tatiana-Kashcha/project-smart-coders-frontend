@@ -4,9 +4,7 @@ export const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 
-  width: 100%;
-
-  /* background-color: teal; */
+  background-color: teal;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.mobile}) {
     width: ${props => props.theme.breakpoints.mobile};
