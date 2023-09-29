@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { ReactComponent as Rocket } from 'images/svg/rocket.svg';
+import { ReactComponent as Rocket } from '../../icons/rocket.svg';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.secondaryBackgroundColor};
+  background-color: ${({ theme }) => theme.colors.background_mode};
 `;
 
 export const ContentWrap = styled.div`
@@ -16,85 +16,112 @@ export const ContentWrap = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 281px;
-  background-color: ${({ theme }) => theme.secondaryBackgroundColor};
+  width: 503px;
+  height: 250px;
 
-  @media screen and (min-width: 768px) {
-    max-width: 503px;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 387px;
   }
+  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+    width: 387px;
+  } */
 `;
-
+// NumberWrap
 export const NumberWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: -28px;
+  font-weight: bold;
 
-  @media screen and (min-width: 768px) {
-    margin-bottom: -80px;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+    margin-bottom: -30px;
   }
 `;
-
+// number
 export const Number = styled.p`
-  font-family: 'Inter', sans-serif;
-  font-size: 100px;
-  line-height: 1.5;
-  font-weight: bold;
-  color: ${({ theme }) => theme.accentColor};
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${({ theme }) => theme.colors.primary};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
     font-size: 200px;
     line-height: 1.25;
   }
-`;
-
-// export const RocketStyled = styled(Rocket)`
-//   width: 166px;
-//   height: 202px;
-
-//   @media screen and (min-width: 768px) {
-//     width: 367px;
-//     height: 445px;
-//   }
-export const Text = styled.p`
-  font-family: 'Inter', sans-serif;
-  line-height: 1.29;
-  text-align: center;
-  font-weight: 500;
-  color: ${({ theme }) => theme.mainTextColor};
-  opacity: 0.7;
-  margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media screen and (min-width: 768px) {
-    max-width: 387px;
-    margin-bottom: 32px;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 200px;
+    line-height: 1.5;
   }
 `;
+// svg
+export const RocketStyled = styled(Rocket)`
+  width: 178px;
+  height: 414px;
+  margin-left: -30px;
+  margin-right: -30px;
+  margin-bottom: -30px;
 
+  @media screen and (min-width: 768px) {
+    max-width: 367px;
+    height: 445px;
+
+    /* margin-left: -50px;
+    margin-right: -50px; */
+  }
+`;
+// text below the number
+export const Text = styled.div`
+  font-family: ${({ theme }) => theme.fonts.text};
+  line-height: 1.1;
+  text-align: center;
+
+  /* font-weight: 500; */
+  font-family: ${({ theme }) => theme.fonts.text};
+  /* line-height: ${({ theme }) => theme.fontSizes.s}; */
+
+  text-align: center;
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.black};
+  /* opacity: 0.7; */
+  margin-bottom: 24px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin-top: -80px;
+  width: 281px;
+  height: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+    width: 387px;
+    margin-bottom: 32px;
+    margin-top: -100px;
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+`;
+// Link
 export const StyledLink = styled(Link)`
   display: block;
   width: max-content;
-  font-family: 'Inter', sans-serif;
+  font-family: ${({ theme }) => theme.fonts.text};
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -2%;
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.fontSizes.medium};
   margin: 0 auto;
-  padding: 14px 32px;
+  padding: 16px 48px;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.accentColor};
-  /* color: ${({ theme }) => theme.buttontextColor}; */
-
-  transition: ${({ theme }) => theme.defaultTransition};
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  /* transition: ${({ theme }) => theme.colors.defaultTransition}; */
 
   &:hover {
-    background-color: ${({ theme }) => theme.buttonBackgroundColorHover};
-    box-shadow: ${({ theme }) => theme.buttonShadow};
+    background-color: ${({ theme }) => theme.colors.secondary};
+    box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
     padding: 16px 48px;
     font-size: 18px;
     line-height: 1.33;
