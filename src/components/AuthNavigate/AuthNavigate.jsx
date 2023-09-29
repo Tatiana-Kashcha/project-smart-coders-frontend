@@ -9,5 +9,3 @@ export const AuthNavigate = ({ route, text }) => {
     </s.Text>
   );
 };
-
-//Ghbdsn
