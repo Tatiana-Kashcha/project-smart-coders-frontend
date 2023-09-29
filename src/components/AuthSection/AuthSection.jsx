@@ -9,8 +9,13 @@ export const AuthSection = () => {
         <s.ContentWrapper>
           {/* Logo */}
           <nav>
-            <Link to="/login">Log in</Link>
-            <Link to="/register">Sign up</Link>
+            <Link to="/login">
+              <s.Button>Log in</s.Button>
+            </Link>
+            <br />
+            <Link to="/register">
+              <s.Span>Sign up</s.Span>
+            </Link>
           </nav>
         </s.ContentWrapper>
       </Container>
