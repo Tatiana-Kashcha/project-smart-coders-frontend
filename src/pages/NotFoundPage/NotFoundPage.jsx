@@ -10,7 +10,7 @@ const NotFoundPage = () => {
           <s.Number>4</s.Number>
         </s.NumberWrap>
         <s.Text>
-          We’re sorry, the page you requested could not be found. Please go back
+          We`re sorry, the page you requested could not be found. Please go back
           to the homepage.
         </s.Text>
         <s.StyledLink to="/">Back to home</s.StyledLink>
