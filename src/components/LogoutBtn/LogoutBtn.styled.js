@@ -28,6 +28,16 @@ export const LogButton = styled.button`
   color: ${props => props.theme.colors.white};
   cursor: pointer;
 
+  @media screen and (min-width: 768px) {
+    gap: 11px;
+    width: 141px;
+    padding: 16px 0;
+
+    font-size: 18px;
+    line-height: calc(24 / 18);
+    letter-spacing: -0.36px;
+  }
+
   &:disabled {
     background: ${props => props.theme.colors.bgBlue};
   }
@@ -51,5 +61,3 @@ export const IconLogout = styled(ReactComponent)`
     height: 20px;
   }
 `;
-
-// viewBox = '0 0 18 18';
