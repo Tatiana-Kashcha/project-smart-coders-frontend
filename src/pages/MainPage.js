@@ -1,3 +1,5 @@
+import { RegisterForm } from "components/RegisterForm/RegisterForm";
+
 export default function MainPage() {
   return (
     <>
@@ -9,6 +11,7 @@ export default function MainPage() {
       </h1>
       <button>Login</button>
       <button>logup</button>
+      <RegisterForm/>
     </>
   );
 }
