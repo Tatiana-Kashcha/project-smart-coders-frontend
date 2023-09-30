@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-smart-coders-frontend/static/css/main.9d8c8cbb.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.c082639f.js",
+    "main.js": "/project-smart-coders-frontend/static/js/main.aa3f274e.js",
     "static/js/697.9beb00b8.chunk.js": "/project-smart-coders-frontend/static/js/697.9beb00b8.chunk.js",
     "static/media/CoolveticaRg-Italic.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Italic.354b20eb1b8d25af62a1.woff2",
     "static/media/CoolveticaRg-Regular.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Regular.3829e81cd606bef6e1e9.woff2",
@@ -23,11 +23,11 @@
     "static/media/start-goose-mobile-1x.webp": "/project-smart-coders-frontend/static/media/start-goose-mobile-1x.a16407af0ae0e00b9269.webp",
     "index.html": "/project-smart-coders-frontend/index.html",
     "main.9d8c8cbb.css.map": "/project-smart-coders-frontend/static/css/main.9d8c8cbb.css.map",
-    "main.c082639f.js.map": "/project-smart-coders-frontend/static/js/main.c082639f.js.map",
+    "main.aa3f274e.js.map": "/project-smart-coders-frontend/static/js/main.aa3f274e.js.map",
     "697.9beb00b8.chunk.js.map": "/project-smart-coders-frontend/static/js/697.9beb00b8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9d8c8cbb.css",
-    "static/js/main.c082639f.js"
+    "static/js/main.aa3f274e.js"
   ]
 }
