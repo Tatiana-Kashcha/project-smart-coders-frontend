@@ -21,12 +21,13 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  @media (max-width: (${({ theme }) => theme.breakpoints.tablet}-0.5px)) {
+  @media screen and (max-width: (${({ theme }) =>
+      theme.breakpoints.tablet}-0.5px)) {
     width: 142px;
     height: 142px;
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 150px;
     height: 149px;
   }
