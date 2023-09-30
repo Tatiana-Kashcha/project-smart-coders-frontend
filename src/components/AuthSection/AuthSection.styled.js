@@ -21,9 +21,15 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  @media (max-width: 767.5px) {
+    width: 142px;
+    height: 142px;
+  }
+
+  @media (min-width: 768px) {
+    width: 150px;
+    height: 149px;
+  }
 `;
 
 export const Button = styled.button`
@@ -32,7 +38,7 @@ export const Button = styled.button`
   width: 131px;
   height: 46px;
 
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSizes.s};
   line-height: ${props => props.theme.lineHeights.body};
   font-weight: ${props => props.theme.fontWeights.medium};
 
@@ -48,7 +54,7 @@ export const Button = styled.button`
 `;
 
 export const Span = styled.span`
-  font-size: 12px;
+  font-size: ${props => props.theme.fontSizes.xs};
   line-height: ${props => props.theme.lineHeights.heading};
   font-weight: ${props => props.theme.fontWeights.medium};
 
