@@ -20,12 +20,17 @@ export const ReviewInput = styled.textarea`
   width: 100%;
   min-height: 130px;
   padding: 12px 14px;
-  color: #343434;
-  font-weight: 700;
-  background: #f6f6f6;
+
+  // font-family: ${({ theme }) => theme.fonts.text};
+  font-weight: 600;
+// line-height: ${({ theme }) => theme.lineHeights.body};
+
+  color: ${({ theme }) => theme.second_text_mode});
+  background: rgba(246, 246, 246, 1);
+
   border-radius: 8px;
-  border: 1px solid;
-  overflow: hidden;
+  border: 1.5px solid;
+  // overflow: hidden;
   resize: none;
 
   border-color: ${props => (props.error ? 'red' : 'transparent')};
@@ -35,7 +40,6 @@ export const ErrorContainer = styled(ErrorMessage)`
   color: #da1414;
   font-family: Inter;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 14px;
 
@@ -59,34 +63,44 @@ export const UpContainerButton = styled.div`
 `;
 
 export const EditButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50px;
   width: 30px;
   height: 30px;
-
   padding: 12px center;
-  background-color: #3e85f3;
-  color: #ffffff;
+
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.background_button};
   border: none;
   cursor: pointer;
 
   &:hover {
-    background: #2b78ef;
+    color: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.primary};
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
 
 export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50px;
   width: 30px;
   height: 30px;
 
   padding: 12px center;
   background-color: rgba(234, 61, 101, 0.2);
-  color: #ea3d65;
+  color: ${({ theme }) => theme.colors.mainRed};
   border: none;
   cursor: pointer;
 
   &:hover {
+    color: ${({ theme }) => theme.colors.white};
     background: rgba(234, 61, 101, 0.5);
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }

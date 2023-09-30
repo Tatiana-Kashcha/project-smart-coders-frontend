@@ -4,6 +4,8 @@ import ReactStars from 'react-rating-stars-component';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 
+import { ReactComponent as Pencil } from '../../icons/pencil.svg';
+import { ReactComponent as TrashBox } from '../../icons/trash-box.svg';
 import * as s from './FeedbackForm.styled';
 
 const schema = yup.object({
@@ -65,8 +67,12 @@ const FeedbackForm = ({ onClose }) => {
               <s.Label htmlFor="review">Review</s.Label>
 
               <s.UpContainerButton>
-                <s.EditButton type="button">E</s.EditButton>
-                <s.DeleteButton type="button">D</s.DeleteButton>
+                <s.EditButton type="button">
+                  <Pencil />
+                </s.EditButton>
+                <s.DeleteButton type="button">
+                  <TrashBox />
+                </s.DeleteButton>
               </s.UpContainerButton>
             </s.ContainerLabelAndBtn>
             <s.ReviewInput
