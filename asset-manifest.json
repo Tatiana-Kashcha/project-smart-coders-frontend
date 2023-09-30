@@ -1,22 +1,33 @@
 {
   "files": {
     "main.css": "/project-smart-coders-frontend/static/css/main.9d8c8cbb.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.a3516f7d.js",
-    "static/js/674.00e3e090.chunk.js": "/project-smart-coders-frontend/static/js/674.00e3e090.chunk.js",
+    "main.js": "/project-smart-coders-frontend/static/js/main.42612abe.js",
+    "static/js/333.b1914d21.chunk.js": "/project-smart-coders-frontend/static/js/333.b1914d21.chunk.js",
     "static/media/CoolveticaRg-Italic.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Italic.354b20eb1b8d25af62a1.woff2",
     "static/media/CoolveticaRg-Regular.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Regular.3829e81cd606bef6e1e9.woff2",
+    "static/media/start-goose-desktop-2x.png": "/project-smart-coders-frontend/static/media/start-goose-desktop-2x.a7796f690b3ba79983bd.png",
+    "static/media/start-goose-tablet-2x.png": "/project-smart-coders-frontend/static/media/start-goose-tablet-2x.a7796f690b3ba79983bd.png",
+    "static/media/start-goose-mobile-2x.png": "/project-smart-coders-frontend/static/media/start-goose-mobile-2x.8cd1cc30d0ad0c956e86.png",
     "static/media/rocket.svg": "/project-smart-coders-frontend/static/media/rocket.ce85c773c8bc50878fb3a249106a9e1b.svg",
     "static/media/inter-v12-latin-700.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-700.54321e26b8bf4739a16d.woff2",
     "static/media/inter-v12-latin-600.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-600.8f1e0300e8d26fa8919d.woff2",
     "static/media/inter-v12-latin-500.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-500.c72c72b70c82b1f4bacf.woff2",
     "static/media/inter-v12-latin-regular.woff2": "/project-smart-coders-frontend/static/media/inter-v12-latin-regular.be7cb18dc7caf47cf7e9.woff2",
+    "static/media/start-goose-desktop-1x.png": "/project-smart-coders-frontend/static/media/start-goose-desktop-1x.136512524c6ce06f26b4.png",
+    "static/media/start-goose-tablet-1x.png": "/project-smart-coders-frontend/static/media/start-goose-tablet-1x.136512524c6ce06f26b4.png",
+    "static/media/start-goose-desktop-2x.webp": "/project-smart-coders-frontend/static/media/start-goose-desktop-2x.53183457909358a28400.webp",
+    "static/media/start-goose-tablet-2x.webp": "/project-smart-coders-frontend/static/media/start-goose-tablet-2x.53183457909358a28400.webp",
+    "static/media/start-goose-mobile-2x.webp": "/project-smart-coders-frontend/static/media/start-goose-mobile-2x.2f4523dc9695b3e69579.webp",
+    "static/media/start-goose-desktop-1x.webp": "/project-smart-coders-frontend/static/media/start-goose-desktop-1x.e0c636d2068bfb61c3c9.webp",
+    "static/media/start-goose-tablet-1x.webp": "/project-smart-coders-frontend/static/media/start-goose-tablet-1x.e0c636d2068bfb61c3c9.webp",
+    "static/media/start-goose-mobile-1x.webp": "/project-smart-coders-frontend/static/media/start-goose-mobile-1x.a16407af0ae0e00b9269.webp",
     "index.html": "/project-smart-coders-frontend/index.html",
     "main.9d8c8cbb.css.map": "/project-smart-coders-frontend/static/css/main.9d8c8cbb.css.map",
-    "main.a3516f7d.js.map": "/project-smart-coders-frontend/static/js/main.a3516f7d.js.map",
-    "674.00e3e090.chunk.js.map": "/project-smart-coders-frontend/static/js/674.00e3e090.chunk.js.map"
+    "main.42612abe.js.map": "/project-smart-coders-frontend/static/js/main.42612abe.js.map",
+    "333.b1914d21.chunk.js.map": "/project-smart-coders-frontend/static/js/333.b1914d21.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9d8c8cbb.css",
-    "static/js/main.a3516f7d.js"
+    "static/js/main.42612abe.js"
   ]
 }
