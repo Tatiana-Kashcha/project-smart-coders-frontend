@@ -18,10 +18,6 @@ export const ContentWrap = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 803px;
-
-  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    max-width: 252px;
-  } */
 `;
 
 // NumberWrap
@@ -94,9 +90,6 @@ export const Text = styled.p`
     width: 387px;
     margin-bottom: 32px;
   }
-  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 281px;
-  } */
 `;
 
 // Link
