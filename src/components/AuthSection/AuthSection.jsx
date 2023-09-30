@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as StartGoose } from '../../icons/start-goose.svg';
+import { ReactComponent as LogIn } from '../../icons/log-in.svg';
 
 import * as s from './AuthSection.styled';
 
@@ -13,17 +14,22 @@ export const AuthSection = () => {
             <StartGoose />
           </s.ImgWrapper>
 
-          <h1>GooseTrack</h1>
+          <s.TextH1>GooseTrack</s.TextH1>
 
-          <nav>
+          <s.navStyled>
             <Link to="/login">
-              <s.Button>Log in</s.Button>
+              <s.Button>
+                <s.SpanLogIn>Log in</s.SpanLogIn>
+                <s.LogInWrapper>
+                  <LogIn />
+                </s.LogInWrapper>
+              </s.Button>
             </Link>
-            <br />
+
             <Link to="/register">
-              <s.Span>Sign up</s.Span>
+              <s.SpanSignUp>Sign up</s.SpanSignUp>
             </Link>
-          </nav>
+          </s.navStyled>
         </s.ContentWrapper>
       </s.ContainerModific>
     </s.Section>
