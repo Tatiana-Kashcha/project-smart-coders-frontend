@@ -4,12 +4,13 @@ import { ReactComponent as Rocket } from '../../icons/rocket.svg';
 
 export const Wrapper = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50;
+  left: 50;
   padding: 47px;
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.background_mode};
+  width: 50%;
+  height: 50%;
+
+  background-color: ${props => props.theme.colors.thirdBackground};
 `;
 
 export const ContentWrap = styled.div`
@@ -27,30 +28,11 @@ export const NumberWrap = styled.div`
   align-items: center;
   margin-bottom: -28px;
   font-weight: bold;
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin-bottom: -30px;
-  }
 `;
 
 // number
 export const Number = styled.p`
-  font-style: ${({ theme }) => theme.fonts.heading};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-  color: ${({ theme }) => theme.colors.primary};
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: 200px;
-    line-height: 1.25;
-  }
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 100px;
-    line-height: 1.25;
-  }
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 100px;
-    line-height: 1.25;
-  }
+  color: var(--primary);
 `;
 
 // svg
@@ -77,49 +59,31 @@ export const Text = styled.p`
 
   height: 100%;
 
-  color: ${({ theme }) => theme.colors.black};
+  color: ${props => props.theme.colors.primaryText};
 
   margin-bottom: 24px;
   margin-top: -100px;
   margin-left: auto;
   margin-right: auto;
   width: 281px;
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 387px;
-    margin-bottom: 32px;
-  }
 `;
 
 // Link
 export const StyledLink = styled(Link)`
   display: block;
   width: max-content;
-  font-family: ${({ theme }) => theme.fonts.text};
+
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -2%;
-  font-weight: ${({ theme }) => theme.fontSizes.medium};
+
   margin: 0 auto;
   padding: 16px 48px;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.white};
+
+  background-color: var(--primary);
+
+  color: var(--white);
+
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
-    box-shadow: ${({ theme }) => theme.shadows.boxShadow};
-  }
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 16px 48px;
-    font-size: 18px;
-    line-height: 1.33;
-  }
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 14px 32px;
-    font-size: 18px;
-    line-height: 1.33;
-  }
 `;

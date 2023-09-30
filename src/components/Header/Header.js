@@ -4,7 +4,8 @@ import * as s from './Header.styled';
 import { ReactComponent as BurgerMenuIcon } from '../../icons/burger-menu.svg';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
+// import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import ThemeToggle from 'components/ThemeToggler/ThemeToggle';
 import UserInfo from '../UserInfo/UserInfo';
 
 const Header = () => {
