@@ -21,8 +21,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  @media screen and (max-width: (${({ theme }) =>
-      theme.breakpoints.tablet}-0.5px)) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 142px;
     height: 142px;
   }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { theme } from 'theme';
 
 import startGooseMobile1xWebp from 'images/mobile/start-goose-mobile-1x.webp';
 import startGooseMobile2xWebp from 'images/mobile/start-goose-mobile-2x.webp';
@@ -26,36 +27,36 @@ export const AuthSection = () => {
             <picture>
               {/* For mobile devices */}
               <source
-                media="(max-width: 767.5px)"
+                media={`(max-width: calc(${theme.breakpoints.tablet} - 0.5px))`}
                 srcSet={`${startGooseMobile1xWebp} 1x, ${startGooseMobile2xWebp} 2x`}
                 type="image/webp"
               />
               <source
-                media="(max-width: 767.5px)"
+                media={`(max-width: calc(${theme.breakpoints.tablet} - 0.5px))`}
                 srcSet={`${startGooseMobile1xPng} 1x, ${startGooseMobile2xPng} 2x`}
                 type="image/png"
               />
 
               {/* For tablets */}
               <source
-                media="(min-width: 768px) and (max-width: 1439.5px)"
+                media={`(min-width: ${theme.breakpoints.tablet}) and (max-width: calc(${theme.breakpoints.desktop} - 0.5px))`}
                 srcSet={`${startGooseTablet1xWebp} 1x, ${startGooseTablet2xWebp} 2x`}
                 type="image/webp"
               />
               <source
-                media="(min-width: 768px) and (max-width: 1439.5px)"
+                media={`(min-width: ${theme.breakpoints.tablet}) and (max-width: calc(${theme.breakpoints.desktop} - 0.5px))`}
                 srcSet={`${startGooseTablet1xPng} 1x, ${startGooseTablet2xPng} 2x`}
                 type="image/png"
               />
 
               {/* For desktops */}
               <source
-                media="(min-width: 1440px)"
+                media={`(min-width: ${theme.breakpoints.desktop})`}
                 srcSet={`${startGooseDesktop1xWebp} 1x, ${startGooseDesktop2xWebp} 2x`}
                 type="image/webp"
               />
               <source
-                media="(min-width: 1440px)"
+                media={`(min-width: ${theme.breakpoints.desktop})`}
                 srcSet={`${startGooseDesktop1xPng} 1x, ${startGooseDesktop2xPng} 2x`}
                 type="image/png"
               />
