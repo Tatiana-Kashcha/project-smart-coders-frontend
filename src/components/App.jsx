@@ -9,7 +9,7 @@ import Account from 'pages/AccountPage';
 import Calendar from 'pages/CalendarPage';
 import Statistics from 'pages/StatisticsPage';
 import { PrivateRoute } from 'components/PrivateRoute';
-import { Layout } from 'Layout';
+import { Layout } from 'components/Layout/Layout';
 import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
 import { RestrictedRoute } from 'components/RestrictedRoute';
