@@ -32,7 +32,7 @@ export const NumberWrap = styled.div`
   margin-bottom: -28px;
   font-weight: bold;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-bottom: -30px;
   }
 `;
@@ -43,7 +43,7 @@ export const Number = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primary};
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 200px;
     line-height: 1.25;
   }
@@ -88,7 +88,7 @@ export const Text = styled.p`
   margin-left: auto;
   margin-right: auto;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 387px;
     margin-bottom: 32px;
   }
@@ -118,7 +118,7 @@ export const StyledLink = styled(Link)`
     box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 16px 48px;
     font-size: 18px;
     line-height: 1.33;
