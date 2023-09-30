@@ -5,13 +5,13 @@ import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
-import { ReactComponent as TrashBox } from '../../icons/trash-box.svg';
+import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
 
 const schema = yup.object({
   review: yup
     .string()
-    .min(10, 'Must be at least 10 characters')
+    .min(1, 'Must be at least 1 characters')
     .max(300, 'Must be at most 300 characters')
     .required('This review field is required'),
 });

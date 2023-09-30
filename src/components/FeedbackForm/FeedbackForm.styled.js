@@ -25,7 +25,7 @@ export const ReviewInput = styled.textarea`
   font-weight: 600;
 // line-height: ${({ theme }) => theme.lineHeights.body};
 
-  color: ${({ theme }) => theme.second_text_mode});
+  // color: ${({ theme }) => theme.second_text_mode});
   background: rgba(246, 246, 246, 1);
 
   border-radius: 8px;

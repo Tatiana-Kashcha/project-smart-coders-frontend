@@ -5,7 +5,7 @@ import { Container } from 'stylesheet/Container.styled';
 export const Section = styled.section`
   height: 100vh;
 
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const ContainerModific = styled(Container)`
@@ -21,12 +21,12 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  @media (max-width: 767.5px) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 142px;
     height: 142px;
   }
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 150px;
     height: 149px;
   }
@@ -38,27 +38,27 @@ export const Button = styled.button`
   width: 131px;
   height: 46px;
 
-  font-size: ${props => props.theme.fontSizes.s};
-  line-height: ${props => props.theme.lineHeights.body};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  line-height: ${({ theme }) => theme.lineHeights.body};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
 
-  border-radius: ${props => props.theme.radii.big};
-  border: ${props => props.theme.borders.none};
+  border-radius: ${({ theme }) => theme.radii.big};
+  border: ${({ theme }) => theme.borders.none};
 
-  color: ${props => props.theme.colors.primary};
-  background-color: ${props => props.theme.colors.background};
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.background};
 
-  box-shadow: ${props => props.theme.shadows.boxShadow};
+  box-shadow: ${({ theme }) => theme.shadows.boxShadow};
 
   cursor: pointer;
 `;
 
 export const Span = styled.span`
-  font-size: ${props => props.theme.fontSizes.xs};
-  line-height: ${props => props.theme.lineHeights.heading};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  line-height: ${({ theme }) => theme.lineHeights.heading};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
 
-  color: ${props => props.theme.colors.background};
+  color: ${({ theme }) => theme.colors.background};
 
   text-decoration: underline;
 `;

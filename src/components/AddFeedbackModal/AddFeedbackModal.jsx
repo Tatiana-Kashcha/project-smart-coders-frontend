@@ -1,5 +1,5 @@
-import Modal from '../Modal/Modal.js';
-import FeedbackForm from '../FeedbackForm/FeedbackForm.js';
+import Modal from '../Modal/Modal.jsx';
+import FeedbackForm from '../FeedbackForm/FeedbackForm.jsx';
 
 const AddFeedbackModal = ({ onClose }) => {
   return (
