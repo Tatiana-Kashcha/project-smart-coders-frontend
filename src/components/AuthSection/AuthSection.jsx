@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { ReusePicture } from 'reuse';
+
 import startGooseMobile1xWebp from 'images/mobile/start-goose-mobile-1x.webp';
 import startGooseMobile2xWebp from 'images/mobile/start-goose-mobile-2x.webp';
 import startGooseMobile1xPng from 'images/mobile/start-goose-mobile-1x.png';
@@ -23,46 +25,22 @@ export const AuthSection = () => {
       <s.ContainerModific>
         <s.ContentWrapper>
           <s.ImgWrapper>
-            <picture>
-              {/* For mobile devices */}
-              <source
-                media="(max-width: 767.5px)"
-                srcSet={`${startGooseMobile1xWebp} 1x, ${startGooseMobile2xWebp} 2x`}
-                type="image/webp"
-              />
-              <source
-                media="(max-width: 767.5px)"
-                srcSet={`${startGooseMobile1xPng} 1x, ${startGooseMobile2xPng} 2x`}
-                type="image/png"
-              />
-
-              {/* For tablets */}
-              <source
-                media="(min-width: 768px) and (max-width: 1439.5px)"
-                srcSet={`${startGooseTablet1xWebp} 1x, ${startGooseTablet2xWebp} 2x`}
-                type="image/webp"
-              />
-              <source
-                media="(min-width: 768px) and (max-width: 1439.5px)"
-                srcSet={`${startGooseTablet1xPng} 1x, ${startGooseTablet2xPng} 2x`}
-                type="image/png"
-              />
-
-              {/* For desktops */}
-              <source
-                media="(min-width: 1440px)"
-                srcSet={`${startGooseDesktop1xWebp} 1x, ${startGooseDesktop2xWebp} 2x`}
-                type="image/webp"
-              />
-              <source
-                media="(min-width: 1440px)"
-                srcSet={`${startGooseDesktop1xPng} 1x, ${startGooseDesktop2xPng} 2x`}
-                type="image/png"
-              />
-
-              {/* Default */}
-              <img src={startGooseMobile1xPng} alt="Goose logo" />
-            </picture>
+            <ReusePicture
+              pictures={{
+                startGooseMobile1xWebp,
+                startGooseMobile2xWebp,
+                startGooseMobile1xPng,
+                startGooseMobile2xPng,
+                startGooseTablet1xWebp,
+                startGooseTablet2xWebp,
+                startGooseTablet1xPng,
+                startGooseTablet2xPng,
+                startGooseDesktop1xWebp,
+                startGooseDesktop2xWebp,
+                startGooseDesktop1xPng,
+                startGooseDesktop2xPng,
+              }}
+            />
           </s.ImgWrapper>
 
           <h1>GooseTrack</h1>
