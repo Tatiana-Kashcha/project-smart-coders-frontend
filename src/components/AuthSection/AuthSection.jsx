@@ -19,28 +19,29 @@ import startGooseDesktop2xPng from 'images/desktop/start-goose-desktop-2x.png';
 
 import * as s from './AuthSection.styled';
 
+const pictures = {
+  mobile1xWebp: startGooseMobile1xWebp,
+  mobile2xWebp: startGooseMobile2xWebp,
+  mobile1xPng: startGooseMobile1xPng,
+  mobile2xPng: startGooseMobile2xPng,
+  tablet1xWebp: startGooseTablet1xWebp,
+  tablet2xWebp: startGooseTablet2xWebp,
+  tablet1xPng: startGooseTablet1xPng,
+  tablet2xPng: startGooseTablet2xPng,
+  desktop1xWebp: startGooseDesktop1xWebp,
+  desktop2xWebp: startGooseDesktop2xWebp,
+  desktop1xPng: startGooseDesktop1xPng,
+  desktop2xPng: startGooseDesktop2xPng,
+};
+
+console.log(pictures);
 export const AuthSection = () => {
   return (
     <s.Section>
       <s.ContainerModific>
         <s.ContentWrapper>
           <s.ImgWrapper>
-            <ReusePicture
-              pictures={{
-                startGooseMobile1xWebp,
-                startGooseMobile2xWebp,
-                startGooseMobile1xPng,
-                startGooseMobile2xPng,
-                startGooseTablet1xWebp,
-                startGooseTablet2xWebp,
-                startGooseTablet1xPng,
-                startGooseTablet2xPng,
-                startGooseDesktop1xWebp,
-                startGooseDesktop2xWebp,
-                startGooseDesktop1xPng,
-                startGooseDesktop2xPng,
-              }}
-            />
+            <ReusePicture pictures={pictures} imgAlt="Goose logo" />
           </s.ImgWrapper>
 
           <h1>GooseTrack</h1>

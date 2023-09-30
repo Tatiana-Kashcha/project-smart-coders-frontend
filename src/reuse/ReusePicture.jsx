@@ -1,58 +1,57 @@
-import { theme } from 'theme';
-
 const ReusePicture = ({
   pictures: {
-    startGooseMobile1xWebp,
-    startGooseMobile2xWebp,
-    startGooseMobile1xPng,
-    startGooseMobile2xPng,
-    startGooseTablet1xWebp,
-    startGooseTablet2xWebp,
-    startGooseTablet1xPng,
-    startGooseTablet2xPng,
-    startGooseDesktop1xWebp,
-    startGooseDesktop2xWebp,
-    startGooseDesktop1xPng,
-    startGooseDesktop2xPng,
+    mobile1xWebp,
+    mobile2xWebp,
+    mobile1xPng,
+    mobile2xPng,
+    tablet1xWebp,
+    tablet2xWebp,
+    tablet1xPng,
+    tablet2xPng,
+    desktop1xWebp,
+    desktop2xWebp,
+    desktop1xPng,
+    desktop2xPng,
   },
+  imgAlt,
 }) => {
   return (
     <picture>
       {/* For mobile devices */}
       <source
-        media={`(max-width: calc(${theme.breakpoints.tablet} - 0.5px))`}
-        srcSet={`${startGooseMobile1xWebp} 1x, ${startGooseMobile2xWebp} 2x`}
+        media={`(max-width: calc(768px - 0.5px))`}
+        srcSet={`${mobile1xWebp} 1x, ${mobile2xWebp} 2x`}
         type="image/webp"
       />
       <source
-        media={`(max-width: calc(${theme.breakpoints.tablet} - 0.5px))`}
-        srcSet={`${startGooseMobile1xPng} 1x, ${startGooseMobile2xPng} 2x`}
+        media={`(max-width: calc(768px - 0.5px))`}
+        srcSet={`${mobile1xPng} 1x, ${mobile2xPng} 2x`}
         type="image/png"
       />
       {/* For tablets */}
       <source
-        media={`(min-width: ${theme.breakpoints.tablet}) and (max-width: calc(${theme.breakpoints.desktop} - 0.5px))`}
-        srcSet={`${startGooseTablet1xWebp} 1x, ${startGooseTablet2xWebp} 2x`}
+        media={`(min-width: 768px) and (max-width: calc(1440px - 0.5px))`}
+        srcSet={`${tablet1xWebp} 1x, ${tablet2xWebp} 2x`}
         type="image/webp"
       />
       <source
-        media={`(min-width: ${theme.breakpoints.tablet}) and (max-width: calc(${theme.breakpoints.desktop} - 0.5px))`}
-        srcSet={`${startGooseTablet1xPng} 1x, ${startGooseTablet2xPng} 2x`}
+        media={`(min-width: 768px) and (max-width: calc(1440px - 0.5px))`}
+        srcSet={`${tablet1xPng} 1x, ${tablet2xPng} 2x`}
         type="image/png"
       />
       {/* For desktops */}
       <source
-        media={`(min-width: ${theme.breakpoints.desktop})`}
-        srcSet={`${startGooseDesktop1xWebp} 1x, ${startGooseDesktop2xWebp} 2x`}
+        media={`(min-width: 1440px)`}
+        srcSet={`${desktop1xWebp} 1x, ${desktop2xWebp} 2x`}
         type="image/webp"
       />
       <source
-        media={`(min-width: ${theme.breakpoints.desktop})`}
-        srcSet={`${startGooseDesktop1xPng} 1x, ${startGooseDesktop2xPng} 2x`}
+        media={`(min-width: 1440px)`}
+        srcSet={`${desktop1xPng} 1x, ${desktop2xPng} 2x`}
         type="image/png"
       />
       {/* Default */}
-      <img src={startGooseMobile1xPng} alt="Goose logo" />
+      <img src={mobile1xPng} alt={imgAlt} />
     </picture>
   );
 };
