@@ -25,28 +25,28 @@ export const App = () => {
 
           <Route
             path="account"
-            element={<PrivateRoute element={Account} redirecrTo="/" />}
+            element={<PrivateRoute element={Account} redirectTo="/" />}
           />
           <Route
             path="calendar"
-            element={<PrivateRoute element={Calendar} redirecrTo="/" />}
+            element={<PrivateRoute element={Calendar} redirectTo="/" />}
           >
             <Route path="month/:currrentDate" element={<ChoosedMonth />} />
             <Route path="day/:currrentDay" element={<ChoosedDay />} />
           </Route>
           <Route
             path="statistics"
-            element={<PrivateRoute element={Statistics} redirecrTo="/" />}
+            element={<PrivateRoute element={Statistics} redirectTo="/" />}
           />
           <Route
             path="register"
             element={
-              <RestrictedRoute element={Register} redirecrTo="/account" />
+              <RestrictedRoute element={Register} redirectTo="/account" />
             }
           />
           <Route
             path="login"
-            element={<RestrictedRoute element={Login} redirecrTo="/account" />}
+            element={<RestrictedRoute element={Login} redirectTo="/account" />}
           />
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>

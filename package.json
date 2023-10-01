@@ -4,6 +4,10 @@
   "private": true,
   "homepage": "https://Tatiana-Kashcha.github.io/project-smart-coders-frontend/",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@emotion/styled.macro": "^0.10.6",
+    "@mui/material": "^5.14.11",
     "@mui/styled-engine": "^5.14.11",
     "@mui/x-date-pickers": "^6.16.0",
     "@redux-devtools/extension": "^3.2.5",
