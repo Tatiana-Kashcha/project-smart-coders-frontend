@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as PlusBlue } from '../../icons/plusBlue.svg';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { globalTheme } from 'theme';
 
 export const DatePickerStyled = styled(DatePicker)`
   input {
@@ -85,7 +86,7 @@ export const FormContainer = styled.form`
     padding-bottom: 60px;
   }
   .InvalidInput {
-    border: 1px solid var(--red-error);
+    border: 1px solid #da1414;
   }
   .ErrorMsg {
     color: green;
@@ -233,7 +234,7 @@ export const Input = styled.input`
   color: ${props => props.theme.colors.primaryText};
   background-color: transparent;
   &::placeholder {
-    font-family: var(--fonts-text);
+    font-family: 'Inter';
     font-size: 14px;
     color: ${props => props.theme.colors.userPlaceholder};
   }
@@ -247,7 +248,7 @@ export const Input = styled.input`
 `;
 
 export const ErrorMessage = styled.div`
-  color: var(--red-error);
+  color: #da1414;
   font-size: 12px;
   margin-top: 3px;
   margin-left: 8px;
@@ -267,21 +268,20 @@ export const Button = styled.button`
   padding-right: 50px;
   width: 195px;
   height: 46px;
-  font-family: var(--fonts-text);
+  font-family: 'Inter';
   font-weight: 600;
   line-height: 1.25;
   font-size: 12px;
   text-align: center;
-  color: var(--white);
-  background-color: ${props =>
-    props.disabled ? 'var(--background)' : 'var(--primary)'};
+  color: #ffffff;
+  background-color: ${props => (props.disabled ? '#FFFFFF' : '#3E85F3')};
   border-radius: 16px;
 
   border: 0;
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   &:hover(:not disabled),
   &:focus(:not disabled) {
-    background-color: ${props => 'var(--secondary)'};
+    background-color: #2b78ef;
   }
 
   @media (min-width: 768px) {

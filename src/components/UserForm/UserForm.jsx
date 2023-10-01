@@ -25,7 +25,7 @@ import {
 } from './UserForm.styled';
 // import DatePickerStyled from './DatePicker.styled';
 
-const UserForm = () => {
+export default function UserForm() {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
@@ -243,5 +243,4 @@ const UserForm = () => {
       </FormContainer>
     </Container>
   );
-};
-export default UserForm;
+}
