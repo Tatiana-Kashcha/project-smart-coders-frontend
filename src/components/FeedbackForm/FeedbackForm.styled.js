@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, ErrorMessage } from 'formik';
+import { globalTheme } from 'theme';
 
 export const FormWrapper = styled(Form)`
   display: flex;
@@ -21,7 +22,7 @@ export const ReviewInput = styled.textarea`
   min-height: 130px;
   padding: 12px 14px;
 
-  font-family: var(--fonts-text);
+  font-family: ${globalTheme.fonts.fontsText};
   font-weight: 600;
   line-height: 1.25;
 
@@ -73,13 +74,13 @@ export const EditButton = styled.button`
   padding: 12px center;
 
   color: ${props => props.theme.colors.primaryText};
-  background-color: var(--secondary);
+  background-color: ${globalTheme.colors.secondary};
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--white);
-    background-color: var(--primary);
+    color: ${globalTheme.colors.white};
+    background-color: ${globalTheme.colors.primary};
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
@@ -94,15 +95,15 @@ export const DeleteButton = styled.button`
   height: 30px;
 
   padding: 12px center;
-  background-color: rgba(234, 61, 101, 0.2);
-  color: var(--main-red);
+  background-color: ${globalTheme.colors.bgDelBtn};
+  color: ${globalTheme.colors.mainRed};
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--white);
-    background: rgba(234, 61, 101, 0.5);
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    color: ${globalTheme.colors.white};
+    background: ${globalTheme.colors.bgDelHover};
+    box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
 `;
 
@@ -128,8 +129,8 @@ export const ConfirmButton = styled.button`
   line-height: 18px;
 
   &:hover {
-    background-color: var(--secondary);
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    background-color: ${globalTheme.colors.secondary};
+    box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
 `;
 
@@ -149,7 +150,7 @@ export const CancelButton = styled.button`
   line-height: 18px;
 
   &:hover {
-    background-color: var(--secondary);
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    background-color: ${globalTheme.colors.secondary};
+    box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
 `;

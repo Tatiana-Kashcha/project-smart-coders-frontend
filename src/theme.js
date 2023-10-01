@@ -96,15 +96,19 @@ export const globalTheme = {
     greenValid: '#3cbc81',
     muted: '#f7f6f9',
     closeButton: '#111111',
+    backdrop: 'rgba(0, 0, 0, 0.8)',
+    bgDelBtn: 'rgba(234, 61, 101, 0.2)',
+    bgDelHover: 'rgba(234, 61, 101, 0.5)',
   },
 
   shadow: {
     boxShadow: '4px 2px 16px rgba(136, 165, 191, 0.48)',
     modalShadow: '0px 4px 57px rgba(17, 17, 17, 0.05)',
+    modalHoverShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48)',
   },
 
   cubic: {
-    cubicBezier: cubic - bezier(0.4, 0, 0.2, 1),
+    cubicBezier: 'cubic - bezier(0.4, 0, 0.2, 1)',
   },
 
   fonts: {
