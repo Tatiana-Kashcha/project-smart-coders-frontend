@@ -8,11 +8,11 @@ import NotFoundPage from './NotFoundPage/NotFoundPage';
 const MainPage = () => {
   return (
     <>
-      {/* <AuthSection />
+      <AuthSection />
       <Description />
-      <ReviewsSlider /> */}
-      <Header />
-      <NotFoundPage />
+      <ReviewsSlider />
+      {/* <Header />
+      <NotFoundPage /> */}
     </>
   );
 };

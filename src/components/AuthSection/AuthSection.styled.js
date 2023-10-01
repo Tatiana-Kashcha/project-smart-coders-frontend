@@ -5,7 +5,7 @@ import { Container } from 'stylesheet/Container.styled';
 export const Section = styled.section`
   height: 100vh;
 
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: var(--primary);
 `;
 
 export const ContainerModific = styled(Container)`
@@ -21,12 +21,12 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media screen and (max-width: 768px) {
     width: 142px;
     height: 142px;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media screen and (min-width: 768px) {
     width: 150px;
     height: 149px;
   }
@@ -38,27 +38,27 @@ export const Button = styled.button`
   width: 131px;
   height: 46px;
 
-  font-size: ${({ theme }) => theme.fontSizes.s};
-  line-height: ${({ theme }) => theme.lineHeights.body};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 600;
 
-  border-radius: ${({ theme }) => theme.radii.big};
-  border: ${({ theme }) => theme.borders.none};
+  border-radius: 16px;
+  border: 'none';
 
-  color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.background};
+  color: var(--primary);
+  background-color: var(--background);
 
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow};
+  box-shadow: var(--boxShadow);
 
   cursor: pointer;
 `;
 
 export const Span = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  line-height: ${({ theme }) => theme.lineHeights.heading};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  font-size: 12px;
+  line-height: 1.1;
+  font-weight: 600;
 
-  color: ${({ theme }) => theme.colors.background};
+  color: var(--background);
 
   text-decoration: underline;
 `;
