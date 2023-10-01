@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const FeedbackBtn = styled.button`
   display: inline-block;
@@ -7,7 +8,7 @@ export const FeedbackBtn = styled.button`
   border-radius: 10px;
   border: none;
 
-  background-color: var(--green-valid);
+  background-color: ${globalTheme.colors.primary};
 
   font-family: 'Inter';
   font-size: 12px;

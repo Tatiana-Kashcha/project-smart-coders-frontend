@@ -8,17 +8,21 @@ const UserInfo = () => {
   // const bigFirstLeter = firstLeter.toUpperCase();
   // console.log(bigFirstLeter);
 
-  // const name = Nadiia;
-  // const firstLeter = name.slice(0, 1);
-  // const bigFirstLeter = firstLeter.toUpperCase();
-  // console.log(bigFirstLeter);
+  // const userName = user.name;
+  // const avatar = user.url;
 
   return (
     <>
       <s.Name>Nadiia</s.Name>
-      {/* <s.Name>{user.name}</s.Name> */}
+      {/* <s.Name>{userName}</s.Name> */}
 
       <s.Elipse>N</s.Elipse>
+
+      {/* {avatar === ' ' ? (
+        <s.Elipse>{bigFirstLeter}</s.Title>
+      ) : (
+        <s.Elipse>{avatar}</s.Elipse>
+      )} */}
     </>
   );
 };
