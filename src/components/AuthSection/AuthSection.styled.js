@@ -51,7 +51,7 @@ export const TextH1 = styled.h1`
   line-height: 1.09;
   font-weight: 700;
 
-  color: #ffffff;
+  color: ${globalTheme.colors.white};
 
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
@@ -114,10 +114,10 @@ export const LoginLink = styled(Link)`
 
   border-radius: 16px;
 
-  color: #3e85f3;
-  background-color: #fff;
+  color: ${globalTheme.colors.primary};
+  background-color: ${globalTheme.colors.background};
 
-  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+  box-shadow: ${globalTheme.shadow.boxShadow};
 
   @media screen and (min-width: 768px) {
     margin: 0 0 0 24px;
@@ -143,7 +143,7 @@ export const SignUpLink = styled(Link)`
   line-height: 1.16;
   font-weight: 600;
 
-  color: #fff;
+  color: ${globalTheme.colors.background};
 
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
