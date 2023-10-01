@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 import { ReactComponent as User } from '../../icons/user.svg';
-import { ReactComponent as PlusBluu } from '../../icons/plusBluu.svg';
+import { ReactComponent as PlusBlue } from '../../icons/plusBlue.svg';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { DatePicker } from '@mui/x-date-pickers';
-
-export const StyledDataPicker = styled(DatePicker)`
+export const DatePickerStyled = styled(DatePicker)`
   input {
     padding-left: 0px;
-    color: ${p => p.theme.colors.primary_text_mode};
+    color: ${props => props.theme.colors.primaryText};
   }
   input::placeholder {
-    font-family: ${p => p.theme.fonts.text};
-    font-size: ${p => p.theme.fontSizes.s};
-    color: ${p => p.theme.colors.user_placeholder};
+    font-family: 'Inter';
+    font-size: 14px;
+    color: ${props => props.theme.colors.userPlaceholder};
     font-weight: 600;
     opacity: 1;
   }
@@ -25,7 +24,7 @@ export const StyledDataPicker = styled(DatePicker)`
     font-weight: 600;
   }
   .MuiButtonBase-root {
-    color: ${p => p.theme.colors.button_calendar};
+    color: ${props => props.theme.colors.buttonCalendar};
   }
   .MuiOutlinedInput-notchedOutline {
     border: 1px solid #11111126;
@@ -38,10 +37,10 @@ export const StyledDataPicker = styled(DatePicker)`
     padding-right: 14px;
     outline: none;
     border: none;
-    border-radius: ${p => p.theme.radii.small};
+    border-radius: 8px;
 
     .MuiOutlinedInput-notchedOutline {
-      border: ${p => p.theme.colors.user_input_border};
+      border: ${props => props.theme.colors.userInputBorder};
     }
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
       border: 1px solid #111111;
@@ -53,7 +52,7 @@ export const Container = styled.div`
   max-width: 375px;
   padding-bottom: 40px;
 
-  background-color: ${p => p.theme.colors.background_mode};
+  background-color: ${props => props.theme.colors.background};
 
   @media (min-width: 768px) {
     max-width: 100%;
@@ -74,8 +73,8 @@ export const FormContainer = styled.form`
   padding-bottom: 40px;
   padding-left: 18px;
   padding-right: 18px;
-  background-color: ${p => p.theme.colors.second_backgrond_mode};
-  border-radius: ${p => p.theme.radii.big};
+  background-color: ${props => props.theme.colors.secondBackground};
+  border-radius: ${props => props.theme.radii.big};
 
   @media (min-width: 768px) {
     align-items: center;
@@ -86,7 +85,7 @@ export const FormContainer = styled.form`
     padding-bottom: 60px;
   }
   .InvalidInput {
-    border: 1px solid ${p => p.theme.colors.redError};
+    border: 1px solid var(--red-error);
   }
   .ErrorMsg {
     color: green;
@@ -102,7 +101,7 @@ export const StyledAvatar = styled.div`
   fill: rgba(62, 133, 243, 0.18);
   background-color: white;
   border: 2px solid #3e85f3;
-  border-radius: ${p => p.theme.radii.round};
+  border-radius: 50%;
   @media (min-width: 768px) {
     position: static;
     width: 124px;
@@ -116,7 +115,7 @@ export const StyledAvatar = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: ${p => p.theme.radii.round};
+    border-radius: 50%;
   }
 `;
 
@@ -140,7 +139,7 @@ export const AvatarDefault = styled(User)`
   }
 `;
 
-export const Plus = styled(PlusBluu)`
+export const Plus = styled(PlusBlue)`
   position: absolute;
   left: 53%;
   top: 28px;
@@ -162,19 +161,19 @@ export const Plus = styled(PlusBluu)`
 `;
 
 export const Heading = styled.div`
-  font-family: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.s};
-  color: ${p => p.theme.colors.primary_text_mode};
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 14px;
+  color: ${props => props.theme.colors.primaryText};
   text-align: center;
 `;
 
 export const Title = styled.div`
   margin-top: 4px;
-  font-family: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.normal};
-  font-size: ${p => p.theme.fontSizes.xs};
-  color: ${p => p.theme.colors.user_label_color};
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: '12px';
+  color: userLabelColor;
   text-align: center;
 `;
 
@@ -205,12 +204,12 @@ export const WrapperInput = styled.div`
 `;
 
 export const Label = styled.label`
-  font-family: ${p => p.theme.fonts.text};
-  font-size: ${p => p.theme.fontSizes.xs};
+  font-family: 'Inter';
+  font-size: 12px;
   font-weight: 400;
   margin-bottom: 8px;
-  line-height: ${p => p.theme.lineHeights.heading};
-  color: ${p => p.theme.colors.user_label_color};
+  line-height: 1.1;
+  color: ${props => props.theme.colors.userLabelColor};
 `;
 
 export const Input = styled.input`
@@ -220,8 +219,8 @@ export const Input = styled.input`
   padding-right: 14px;
   outline: none;
 
-  border: ${p => p.theme.colors.user_input_border};
-  border-radius: ${p => p.theme.radii.small};
+  border: ${props => props.theme.colors.userInputBorder};
+  border-radius: 8px;
 
   ${props =>
     props.value &&
@@ -230,14 +229,13 @@ export const Input = styled.input`
     font-size: 14px;
     font-weight:600;
     color: black;
-  
   `}
-  color: ${p => p.theme.colors.primary_text_mode};
+  color: ${props => props.theme.colors.primaryText};
   background-color: transparent;
   &::placeholder {
-    font-family: ${p => p.theme.fonts.text};
-    font-size: ${p => p.theme.fontSizes.s};
-    color: ${p => p.theme.colors.user_placeholder};
+    font-family: var(--fonts-text);
+    font-size: 14px;
+    color: ${props => props.theme.colors.userPlaceholder};
   }
   &:hover,
   &:focus {
@@ -249,7 +247,7 @@ export const Input = styled.input`
 `;
 
 export const ErrorMessage = styled.div`
-  color: ${p => p.theme.colors.redError};
+  color: var(--red-error);
   font-size: 12px;
   margin-top: 3px;
   margin-left: 8px;
@@ -269,21 +267,21 @@ export const Button = styled.button`
   padding-right: 50px;
   width: 195px;
   height: 46px;
-  font-family: ${p => p.theme.fonts.text};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  line-height: ${p => p.theme.lineHeights.body};
-  font-size: ${p => p.theme.fontSizes.s};
+  font-family: var(--fonts-text);
+  font-weight: 600;
+  line-height: 1.25;
+  font-size: 12px;
   text-align: center;
-  color: ${p => p.theme.colors.white};
-  background-color: ${p =>
-    p.disabled ? p.theme.colors.background_mode : p.theme.colors.primary};
-  border-radius: ${p => p.theme.radii.big};
+  color: var(--white);
+  background-color: ${props =>
+    props.disabled ? 'var(--background)' : 'var(--primary)'};
+  border-radius: 16px;
 
-  border: ${p => p.theme.borders.none};
-  cursor: ${p => (p.disabled ? 'default' : 'pointer')};
+  border: 0;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   &:hover(:not disabled),
   &:focus(:not disabled) {
-    background-color: ${p => p.theme.colors.secondary};
+    background-color: ${props => 'var(--secondary)'};
   }
 
   @media (min-width: 768px) {

@@ -1,6 +1,7 @@
 export const lightTheme = {
   colors: {
     background: '#eaeaea',
+    backgroundBtnForm: '#eaeaea',
     secondBackground: '#ffffff',
     thirdBackground: '#ffffff',
     primaryText: '#111111',
@@ -39,6 +40,7 @@ export const lightTheme = {
 export const darkTheme = {
   colors: {
     background: '#171820',
+    backgroundBtnForm: '#3e85f3',
     secondBackground: '#21222c',
     thirdBackground: '#13151A',
     primaryText: '#FFFFFF',

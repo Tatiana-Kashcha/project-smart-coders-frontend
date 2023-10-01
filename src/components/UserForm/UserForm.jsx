@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import { updateUser } from '../../redux/user/operations';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 import dayjs from 'dayjs';
 import { UserValidSchema } from './UserValidSchema';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { useAuth } from 'hooks';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { useAuth } from '../../hooks/useAuth';
 import {
   Container,
   FormContainer,
@@ -21,8 +21,10 @@ import {
   StyledAvatar,
   AvatarDefault,
   ErrorMessage,
-  StyledDataPicker,
+  DatePickerStyled,
 } from './UserForm.styled';
+// import DatePickerStyled from './DatePicker.styled';
+
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
@@ -48,9 +50,9 @@ const UserForm = () => {
     setFieldValue('birthday', formattedDate);
     setIsFormDirty(true);
   };
-
+  // формат номера телефона
   const formatPhoneNumber = value => {
-    const phoneNumber = value.replace(/[^\d]/g, ''); // Видаляємо всі нецифрові символи
+    const phoneNumber = value.replace(/[^\d]/g, '');
     const countryCode = phoneNumber.slice(0, 2);
     const areaCode = phoneNumber.slice(2, 5);
     const firstPart = phoneNumber.slice(5, 8);
@@ -69,8 +71,9 @@ const UserForm = () => {
     if (thirdPart) {
       formattedPhoneNumber += ` ${thirdPart}`;
     }
-    return formattedPhoneNumber.trim(); // Видаляємо зайві пробіли з початку та кінця рядка
+    return formattedPhoneNumber.trim();
   };
+
   //  зміна номера телефону
   const handlePhoneNumberChange = event => {
     const formattedPhoneNumber = formatPhoneNumber(event.target.value);
@@ -106,7 +109,7 @@ const UserForm = () => {
     UserValidSchema: UserValidSchema,
     onSubmit: async values => {
       try {
-        await dispatch(updateUser(values));
+        await dispatch(selectIsRefreshing(values));
         setIsFormDirty(false);
       } catch (error) {
         console.log(error.message);
@@ -168,7 +171,7 @@ const UserForm = () => {
           <WrapperInput>
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <StyledDataPicker
+              <DatePickerStyled
                 closeOnSelect={true}
                 slotProps={{
                   textField: {

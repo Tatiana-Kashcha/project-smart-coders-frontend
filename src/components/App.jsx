@@ -13,7 +13,7 @@ import { Layout } from 'components/Layout/Layout';
 import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
 import { RestrictedRoute } from 'components/RestrictedRoute';
-
+// import UserForm from './UserForm/UserForm';
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
