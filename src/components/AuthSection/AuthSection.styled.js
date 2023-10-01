@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { globalTheme } from 'theme';
+import { ReactComponent as StartGoose } from '../../icons/start-goose.svg';
 
+import { ReactComponent as LogIn } from '../../icons/log-in.svg';
+
+import { globalTheme } from 'theme';
 import { Container } from 'stylesheet/Container.styled';
 
 export const Section = styled.section`
@@ -27,7 +30,9 @@ export const ContentWrapper = styled.div`
   text-align: center;
 `;
 
-export const ImgWrapper = styled.div`
+export const StartGooseIcon = styled(StartGoose)`
+  flex-shrink: 0;
+
   @media screen and (max-width: 768px) {
     width: 142px;
     height: 142px;
@@ -45,11 +50,15 @@ export const TextH1 = styled.h1`
   font-size: 44px;
   line-height: 1.09;
   font-weight: 700;
-  font-style: italic;
 
   color: #ffffff;
 
+  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
+    0px 47px 355px rgba(0, 0, 0, 0.07);
+
   @media screen and (min-width: 768px) {
+    margin: 0 0 40px 0;
+
     font-size: 100px;
     line-height: 1.3;
   }
@@ -57,6 +66,22 @@ export const TextH1 = styled.h1`
   @media screen and (min-width: 1440px) {
     font-size: 120px;
     line-height: 1.25;
+  }
+`;
+
+export const SecondLetterO = styled.span`
+  margin: 0 6px 0 0;
+  font-style: italic;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 10px 0 0;
+  }
+`;
+
+export const FirstLetterO = styled.span`
+  @media screen and (min-width: 768px) {
+    margin: 0 6px 0 0;
+    font-style: italic;
   }
 `;
 
@@ -73,25 +98,31 @@ export const LoginLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 
   margin: 0 0 16px 0;
+
+  padding: 14px 33.5px;
 
   width: 131px;
   height: 46px;
 
   font-size: 14px;
-  line-height: 1.29;
+  line-height: 1.28;
   font-weight: 600;
+  letter-spacing: -0.28px;
 
   border-radius: 16px;
 
-  color: var(--primary);
-  background-color: var(--background);
+  color: #3e85f3;
+  background-color: #fff;
 
-  box-shadow: var(--boxShadow);
+  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
   @media screen and (min-width: 768px) {
-    margin: 0 0 0 30px;
+    margin: 0 0 0 24px;
+
+    padding: 15.5px 28.5px;
 
     width: 121px;
     height: 49px;
@@ -99,29 +130,29 @@ export const LoginLink = styled(Link)`
 `;
 
 export const LogInText = styled.span`
-  margin: 0 10px 0 0;
+  margin: 0 6px 0 0;
 `;
 
-export const LogInIconWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 13.5px;
-  height: 13.5px;
+export const LogInIcon = styled(LogIn)`
+  width: 18px;
+  height: 18px;
 `;
 
 export const SignUpLink = styled(Link)`
   font-size: 12px;
-  line-height: 1.17;
+  line-height: 1.16;
   font-weight: 600;
 
-  color: var(--background);
+  color: #fff;
+
+  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
+    0px 47px 355px rgba(0, 0, 0, 0.07);
 
   text-decoration: underline;
 
   @media screen and (min-width: 768px) {
+    flex-shrink: 0;
     font-size: 14px;
-    line-height: 1.29;
+    line-height: 1.28;
   }
 `;
