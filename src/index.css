@@ -71,3 +71,40 @@ code {
   font-weight: 400;
   src: url('./assets/fonts/CoolveticaRg-Italic.woff2') format('woff2');
 }
+
+
+:root {
+  --primary: #3E85F3;
+  --secondary: #2B78EF;
+  --light-blue: #E3F3FF;
+  --dark-blue: #CAE8FF;
+  --bg-blue: #DCEBF7;
+  --background: #FFFFFF;
+  --white: #FFFFFF;
+  --black-title: #171820;
+  --black: #111111;
+  --text: #343434;
+  --main-yellow: #F3B249;
+  --light-yellow: #FCF0D4;
+  --red-error: #DA1414;
+  --red-error-light: #E74A3B;
+  --main-red: #EA3D65;
+  --light-red: #FFD2DD;
+  --green-valid: #3CBC81;
+  --muted: #F7F6F9;
+  --close-button: #111111;
+
+  --mobile: '375px';
+  --tablet: '768px';
+  --desktop: '1440px';
+
+  --boxShadow: '4px 2px 16px rgba(136, 165, 191, 0.48)';
+  --modalShadow: '0px 4px 57px rgba(17, 17, 17, 0.05)';
+
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --fonts-body: 'Coolvetica';
+  --fonts-heading: 'Inter';
+  --fonts-text: 'Inter';
+}
+;

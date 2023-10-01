@@ -21,12 +21,12 @@ export const ReviewInput = styled.textarea`
   min-height: 130px;
   padding: 12px 14px;
 
-  // font-family: ${({ theme }) => theme.fonts.text};
+  font-family: var(--fonts-text);
   font-weight: 600;
-// line-height: ${({ theme }) => theme.lineHeights.body};
+  line-height: 1.25;
 
-  // color: ${({ theme }) => theme.second_text_mode});
-  background: rgba(246, 246, 246, 1);
+  color: ${props => props.theme.colors.primaryText};
+  background-color: ${props => props.theme.colors.thirdBackground};
 
   border-radius: 8px;
   border: 1.5px solid;
@@ -37,7 +37,7 @@ export const ReviewInput = styled.textarea`
 `;
 
 export const ErrorContainer = styled(ErrorMessage)`
-  color: #da1414;
+  color: var(--red-error);
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -72,14 +72,14 @@ export const EditButton = styled.button`
   height: 30px;
   padding: 12px center;
 
-  color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.background_button};
+  color: ${props => props.theme.colors.primaryText};
+  background-color: var(--secondary);
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.white};
-    background: ${({ theme }) => theme.colors.primary};
+    color: var(--white);
+    background-color: var(--primary);
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
@@ -95,12 +95,12 @@ export const DeleteButton = styled.button`
 
   padding: 12px center;
   background-color: rgba(234, 61, 101, 0.2);
-  color: ${({ theme }) => theme.colors.mainRed};
+  color: var(--main-red);
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.white};
+    color: var(--white);
     background: rgba(234, 61, 101, 0.5);
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
@@ -115,8 +115,8 @@ export const DownContainerButton = styled.div`
 export const ConfirmButton = styled.button`
   width: 100%;
   padding: 12px;
-  background-color: #3e85f3;
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.backgroundButton};
+  color: ${props => props.theme.colors.primaryText};
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -128,7 +128,7 @@ export const ConfirmButton = styled.button`
   line-height: 18px;
 
   &:hover {
-    background: #2b78ef;
+    background-color: var(--secondary);
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
@@ -136,8 +136,8 @@ export const ConfirmButton = styled.button`
 export const CancelButton = styled.button`
   width: 100%;
   padding: 12px auto;
-  background-color: #e5edfa;
-  color: #343434;
+  background-color: ${props => props.theme.colors.buttonNotActive};
+  color: ${props => props.theme.colors.secondText};
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -149,7 +149,7 @@ export const CancelButton = styled.button`
   line-height: 18px;
 
   &:hover {
-    background: #2b78ef;
+    background-color: var(--secondary);
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
