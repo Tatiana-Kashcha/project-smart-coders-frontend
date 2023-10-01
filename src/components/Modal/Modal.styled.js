@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as CloseIconBtn } from '../../icons/x-close.svg';
+import { globalTheme } from 'theme';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -10,7 +11,7 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8); // змінна //
+  background-color: ${globalTheme.colors.backdrop};
   z-index: 1200;
 `;
 

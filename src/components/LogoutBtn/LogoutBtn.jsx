@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ReactComponent as IconLogout } from '../../icons/icons.svg';
+import { ReactComponent as IconLogout } from '../../icons/log-out.svg';
 // import { useDispatch } from 'react-redux';
 import * as s from './LogoutBtn.styled';
 
