@@ -1,63 +1,39 @@
 import styled from 'styled-components';
-import { ReactComponent } from '../../icons/log-out.svg';
+import { globalTheme } from 'theme';
 
 export const LogButton = styled.button`
   display: flex;
-  gap: 6px;
-  /* flex-direction: row; */
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 
   position: absolute;
   bottom: 24px;
-  width: 131px;
-  padding: 14px 0;
+  width: 134px;
+  padding: 14px;
 
   border: none;
-  background: ${props => props.theme.colors.primary};
-  box-shadow: ${props => props.theme.shadows.boxShadow};
+  background: ${globalTheme.colors.primary};
+  box-shadow: ${globalTheme.shadow.boxShadow};
   border-radius: 16px;
 
   font-family: 'Inter';
-  /* font-style: normal; */
+  font-style: normal;
   font-weight: 600;
   font-size: 14px;
-  line-height: calc(18 / 14);
-  letter-spacing: -0.28px;
+  line-height: 18px;
 
-  color: ${props => props.theme.colors.white};
+  color: ${globalTheme.colors.white};
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
-    gap: 11px;
-    width: 141px;
-    padding: 16px 0;
-
-    font-size: 18px;
-    line-height: calc(24 / 18);
-    letter-spacing: -0.36px;
-  }
-
   &:disabled {
-    background: ${props => props.theme.colors.bgBlue};
+    background: ${globalTheme.colors.bgBlue};
   }
 
   &:hover {
-    background-color: ${props => props.theme.colors.secondary};
+    background-color: ${globalTheme.colors.secondary};
   }
 `;
 export const LogButtonIcon = styled.span`
-  /* margin-left: 6px; */
-  display: flex;
-  justify-content: center;
-`;
-
-export const IconLogout = styled(ReactComponent)`
-  width: 18px;
-  height: 18px;
-
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
-  }
+  margin-left: 10px;
 `;
