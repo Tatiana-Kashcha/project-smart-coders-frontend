@@ -1,18 +1,18 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const TaskBtn = styled.button`
-  color: ${props => props.theme.colors.primary_text_mode};
-  /* background-color: period_type_btn_not_active; */
-  background-color: ${props => props.theme.colors.period_type_btn_not_active};
-  border: 1px dashed ${props => props.theme.colors.primary};
-  border-radius: 2px;
-  padding: 10px 103.5px;
+  color: ${globalTheme.colors.closeButton};
+  background-color: ${globalTheme.colors.lightBlue};
+  border: 1px dashed ${globalTheme.colors.primary};
+  border-radius: 8px;
+  padding: 14px 103.5px;
   font-weight: bold;
   font-size: 14px;
 `;
 export const PlusIcon = styled.svg`
-  fill: ${props => props.theme.colors.black};
+  fill: ${globalTheme.colors.closeButton};
   width: 24px;
   height: 24px;
+  margin-right: 8px;
 `;
-// ще не все тут
