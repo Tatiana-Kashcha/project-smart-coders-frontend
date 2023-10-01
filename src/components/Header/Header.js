@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 // import { Title, BurgerBtn, Division, SubDivision } from './Header.styled';
 import * as s from './Header.styled';
 import { ReactComponent as BurgerMenuIcon } from '../../icons/burger-menu.svg';
@@ -9,11 +9,11 @@ import ThemeToggle from 'components/ThemeToggler/ThemeToggle';
 import UserInfo from '../UserInfo/UserInfo';
 
 const Header = () => {
-  const [shownModal, setShowModal] = useState(false);
+  // const [shownModal, setShowModal] = useState(false);
 
-  const onModal = () => {
-    setShowModal(prevShownModal => !prevShownModal);
-  };
+  // const onModal = () => {
+  //   setShowModal(prevShownModal => !prevShownModal);
+  // };
 
   // const location = useLocation();
   // console.log(location.pathname);
@@ -34,7 +34,9 @@ const Header = () => {
         <s.Title>{title}</s.Title>
       )} */}
 
-        <s.BurgerBtn type="button" onClick={onModal}>
+        {/* <s.BurgerBtn type="button" onClick={onModal}> */}
+
+        <s.BurgerBtn type="button">
           <BurgerMenuIcon />
         </s.BurgerBtn>
         {/* {shownModal && <AddFeedbackModal onClose={onModal} />} */}
