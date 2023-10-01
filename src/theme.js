@@ -72,3 +72,8 @@ export const darkTheme = {
     bgScrollColor: '#2d3037',
   },
 };
+
+export const globalTheme = {
+  breakpoints: { mobile: '375px', tablet: '768px', desktop: '1440px' },
+  colors: { primary: '#3e85f3', secondary: '#2b78ef', lightBlue: '#e3f3ff' },
+};

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { globalTheme } from 'theme';
 
 import { Container } from 'stylesheet/Container.styled';
 
 export const Section = styled.section`
   height: 100vh;
 
-  background-color: var(--primary);
+  background-color: ${globalTheme.colors.primary};
 `;
 
 export const ContainerModific = styled(Container)`
