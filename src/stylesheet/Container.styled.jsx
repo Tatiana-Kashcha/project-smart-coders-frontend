@@ -4,19 +4,15 @@ export const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 
-  width: 100%;
-
-  background-color: teal;
-
-  @media screen and (min-width: ${props => props.theme.breakpoints.mobile}) {
-    width: ${props => props.theme.breakpoints.mobile};
+  @media screen and (min-width: 375px) {
+    width: 375px;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    width: ${props => props.theme.breakpoints.table};
+  @media screen and (min-width: 768px) {
+    width: 768px;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    width: ${props => props.theme.breakpoints.desktop};
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
   }
 `;
