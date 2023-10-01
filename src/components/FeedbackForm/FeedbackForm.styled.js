@@ -73,7 +73,7 @@ export const EditButton = styled.button`
   padding: 12px center;
 
   color: ${props => props.theme.colors.primaryText};
-  background-color: ${props => props.theme.colors.backgroundButton};
+  background-color: var(--secondary);
   border: none;
   cursor: pointer;
 

@@ -4,7 +4,7 @@ import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
 
 import Header from 'components/Header/Header';
 // import NotFoundPage from './NotFoundPage/NotFoundPage';
-import AddFeedbackModal from 'components/AddFeedbackModal/AddFeedbackModal';
+// import AddFeedbackModal from 'components/AddFeedbackModal/AddFeedbackModal';
 
 const MainPage = () => {
   return (
@@ -14,8 +14,7 @@ const MainPage = () => {
       <ReviewsSlider /> */}
 
       <Header />
-      <AddFeedbackModal />
-
+      {/* <AddFeedbackModal /> */}
       {/* <NotFoundPage /> */}
     </>
   );
