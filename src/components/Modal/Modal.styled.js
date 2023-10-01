@@ -20,10 +20,10 @@ export const ModalField = styled.div`
   min-height: 155px;
   padding: 20px;
 
-  background-color: #ffffff; //${({ theme }) => theme.modal_window})
+  background-color: ${props => props.theme.colors.thirdBackground};
   border-radius: 8px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media screen and (min-width: 768px) {
     width: 468px;
     padding: 32px;
   }
@@ -42,7 +42,7 @@ export const CloseButton = styled.button`
   background-color: transparent;
   border: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media screen and (min-width: 768px) {
     top: 18px;
     right: 18px;
   }
@@ -51,5 +51,5 @@ export const CloseButton = styled.button`
 export const IconBtn = styled(CloseIconBtn)`
   width: 100%;
   height: 100%;
-  color: ${({ theme }) => theme.primary_text_mode})
+  color: ${props => props.theme.colors.primaryText};
 `;
