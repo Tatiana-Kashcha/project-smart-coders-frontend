@@ -72,7 +72,7 @@ code {
   src: url('./assets/fonts/CoolveticaRg-Italic.woff2') format('woff2');
 }
 
-:root {
+/* :root {
   --primary: #3e85f3;
   --secondary: #2b78ef;
   --light-blue: #e3f3ff;
@@ -101,4 +101,4 @@ code {
   --fonts-body: 'Coolvetica';
   --fonts-heading: 'Inter';
   --fonts-text: 'Inter';
-}
+} */

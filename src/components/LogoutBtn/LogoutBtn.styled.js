@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const LogButton = styled.button`
   display: flex;
@@ -12,8 +13,8 @@ export const LogButton = styled.button`
   padding: 14px;
 
   border: none;
-  background: var(--primary);
-  box-shadow: var(--boxShadow);
+  background: ${globalTheme.colors.primary};
+  box-shadow: ${globalTheme.shadow.boxShadow};
   border-radius: 16px;
 
   font-family: 'Inter';
@@ -22,15 +23,15 @@ export const LogButton = styled.button`
   font-size: 14px;
   line-height: 18px;
 
-  color: var(--white);
+  color: ${globalTheme.colors.white};
   cursor: pointer;
 
   &:disabled {
-    background: var(--bg-blue);
+    background: ${globalTheme.colors.bgBlue};
   }
 
   &:hover {
-    background-color: var(--secondary);
+    background-color: ${globalTheme.colors.secondary};
   }
 `;
 export const LogButtonIcon = styled.span`

@@ -47,7 +47,7 @@ export const TextH1 = styled.h1`
   font-weight: 700;
   font-style: italic;
 
-  color: #ffffff;
+  color: ${globalTheme.colors.white};
 
   @media screen and (min-width: 768px) {
     font-size: 100px;
@@ -85,10 +85,10 @@ export const LoginLink = styled(Link)`
 
   border-radius: 16px;
 
-  color: var(--primary);
-  background-color: var(--background);
+  color: ${globalTheme.colors.primary};
+  background-color: ${globalTheme.colors.background};
 
-  box-shadow: var(--boxShadow);
+  box-shadow: ${globalTheme.shadow.boxShadow};
 
   @media screen and (min-width: 768px) {
     margin: 0 0 0 30px;
@@ -116,7 +116,7 @@ export const SignUpLink = styled(Link)`
   line-height: 1.17;
   font-weight: 600;
 
-  color: var(--background);
+  color: ${globalTheme.colors.background};
 
   text-decoration: underline;
 

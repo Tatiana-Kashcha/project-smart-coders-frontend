@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Rocket } from '../../icons/rocket.svg';
+import { globalTheme } from 'theme';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -42,7 +43,7 @@ export const Number = styled.p`
   font-size: 100px;
   font-weight: 700;
   line-height: 1.25;
-  color: var(--primary);
+  color: ${globalTheme.colors.primary};
 
   @media screen and (min-width: 768px) {
     font-size: 200px;
@@ -91,7 +92,7 @@ export const Text = styled.p`
 export const StyledLink = styled(Link)`
   display: block;
   width: max-content;
-  font-family: var(--fonts-text);
+  font-family: ${globalTheme.fonts.fontsText};
   letter-spacing: -2%;
   font-weight: 600;
 
@@ -102,13 +103,13 @@ export const StyledLink = styled(Link)`
   margin: 0 auto;
 
   border-radius: 16px;
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: ${globalTheme.colors.primary};
+  color: ${globalTheme.colors.white};
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
 
   &:hover {
-    background-color: var(--secondary);
-    box-shadow: var(--boxShadow);
+    background-color: ${globalTheme.colors.secondary};
+    box-shadow: ${globalTheme.shadow.boxShadow};
 
     @media screen and (min-width: 768px) {
       padding: 16px 48px;
