@@ -12,8 +12,8 @@ export const LogButton = styled.button`
   padding: 14px;
 
   border: none;
-  background: ${props => props.theme.colors.primary};
-  box-shadow: ${props => props.theme.shadows.boxShadow};
+  background: var(--primary);
+  box-shadow: var(--boxShadow);
   border-radius: 16px;
 
   font-family: 'Inter';
@@ -22,19 +22,17 @@ export const LogButton = styled.button`
   font-size: 14px;
   line-height: 18px;
 
-  color: ${props => props.theme.colors.white};
+  color: var(--white);
   cursor: pointer;
 
   &:disabled {
-    background: ${props => props.theme.colors.bgBlue};
-    
+    background: var(--bg-blue);
   }
 
   &:hover {
-    background-color: ${props => props.theme.colors.secondary};
+    background-color: var(--secondary);
   }
 `;
 export const LogButtonIcon = styled.span`
   margin-left: 10px;
 `;
-

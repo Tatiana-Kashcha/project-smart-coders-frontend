@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { Container } from 'stylesheet/Container.styled';
 
 export const Section = styled.section`
   height: 100vh;
 
-  background-color: #3e85f3;
+  background-color: var(--primary);
 `;
 
 export const ContainerModific = styled(Container)`
@@ -67,7 +68,7 @@ export const NavStyled = styled.nav`
   }
 `;
 
-export const Button = styled.button`
+export const LoginLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,14 +83,11 @@ export const Button = styled.button`
   font-weight: 600;
 
   border-radius: 16px;
-  border: none;
 
-  color: #3e85f3;
-  background-color: #ffffff;
+  color: var(--primary);
+  background-color: var(--background);
 
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-
-  cursor: pointer;
+  box-shadow: var(--boxShadow);
 
   @media screen and (min-width: 768px) {
     margin: 0 0 0 30px;
@@ -99,21 +97,25 @@ export const Button = styled.button`
   }
 `;
 
-export const SpanLogIn = styled.span`
+export const LogInText = styled.span`
   margin: 0 10px 0 0;
 `;
 
-export const LogInWrapper = styled.div`
+export const LogInIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 13.5px;
   height: 13.5px;
 `;
 
-export const SpanSignUp = styled.span`
+export const SignUpLink = styled(Link)`
   font-size: 12px;
   line-height: 1.17;
   font-weight: 600;
 
-  color: #ffffff;
+  color: var(--background);
 
   text-decoration: underline;
 

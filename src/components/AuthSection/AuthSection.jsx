@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { ReactComponent as StartGoose } from '../../icons/start-goose.svg';
 import { ReactComponent as LogIn } from '../../icons/log-in.svg';
 
@@ -17,18 +15,16 @@ export const AuthSection = () => {
           <s.TextH1>GooseTrack</s.TextH1>
 
           <s.NavStyled>
-            <Link to="/login">
-              <s.Button>
-                <s.SpanLogIn>Log in</s.SpanLogIn>
-                <s.LogInWrapper>
-                  <LogIn />
-                </s.LogInWrapper>
-              </s.Button>
-            </Link>
+            <s.LoginLink to="/login">
+              <s.LogInText>Log in</s.LogInText>
+              <s.LogInIconWrapper>
+                <LogIn />
+              </s.LogInIconWrapper>
+            </s.LoginLink>
 
-            <Link to="/register">
-              <s.SpanSignUp>Sign up</s.SpanSignUp>
-            </Link>
+            <s.SignUpLink to="/register">
+              <span>Sign up</span>
+            </s.SignUpLink>
           </s.NavStyled>
         </s.ContentWrapper>
       </s.ContainerModific>
