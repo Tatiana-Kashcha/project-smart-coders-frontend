@@ -16,7 +16,7 @@ export const AuthSection = () => {
 
           <s.TextH1>GooseTrack</s.TextH1>
 
-          <s.navStyled>
+          <s.NavStyled>
             <Link to="/login">
               <s.Button>
                 <s.SpanLogIn>Log in</s.SpanLogIn>
@@ -29,7 +29,7 @@ export const AuthSection = () => {
             <Link to="/register">
               <s.SpanSignUp>Sign up</s.SpanSignUp>
             </Link>
-          </s.navStyled>
+          </s.NavStyled>
         </s.ContentWrapper>
       </s.ContainerModific>
     </s.Section>

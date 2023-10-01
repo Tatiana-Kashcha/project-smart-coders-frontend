@@ -58,7 +58,7 @@ export const TextH1 = styled.h1`
   }
 `;
 
-export const navStyled = styled.nav`
+export const NavStyled = styled.nav`
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;

@@ -6,12 +6,11 @@ import {
 } from './createImgObj';
 
 import { Container } from 'stylesheet/Container.styled';
-
-// console.log(createAllInOneImgObj);
+import * as s from './Description.styled';
 
 const arrayOfSection = [
   {
-    number: '1',
+    number: '1.',
     firstText: 'calendar',
     secondText: 'view',
     description: `GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.`,
@@ -19,7 +18,7 @@ const arrayOfSection = [
     imgAlt: 'calendar view in the application',
   },
   {
-    number: '2',
+    number: '2.',
     firstText: '',
     secondText: 'sidebar',
     description:
@@ -28,7 +27,7 @@ const arrayOfSection = [
     imgAlt: 'sidebar view in the application',
   },
   {
-    number: '3',
+    number: '3.',
     firstText: 'all in',
     secondText: 'one',
     description:
@@ -40,9 +39,9 @@ const arrayOfSection = [
 
 export const Description = () => {
   return (
-    <section>
+    <s.SectionStyled>
       <Container>
-        <ul>
+        <s.List>
           {arrayOfSection.map(item => {
             const {
               number,
@@ -53,17 +52,19 @@ export const Description = () => {
               imgAlt,
             } = item;
             return (
-              <li key={number}>
-                <span>{number}</span>
-                <h2>{firstText}</h2>
-                <h2>{secondText}</h2>
-                <h3>{description}</h3>
+              <s.Item key={number}>
+                <s.ContentWrapper>
+                  <s.SpanNumber>{number}</s.SpanNumber>
+                  {firstText && <s.FirstText>{firstText}</s.FirstText>}
+                  <s.SecondText>{secondText}</s.SecondText>
+                  <s.Description>{description}</s.Description>
+                </s.ContentWrapper>
                 <ReusePicture pictures={pictures} imgAlt={imgAlt} />
-              </li>
+              </s.Item>
             );
           })}
-        </ul>
+        </s.List>
       </Container>
-    </section>
+    </s.SectionStyled>
   );
 };
