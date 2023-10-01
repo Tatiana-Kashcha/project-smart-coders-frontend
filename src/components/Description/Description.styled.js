@@ -13,7 +13,7 @@ export const List = styled.ul`
     margin: 0 0 40px 0;
   }
 
-  li:nth-child(2) {
+  li:nth-child(2n) {
     div {
       @media screen and ((min-width: 768px) and (max-width: calc(1440px - 0.5px))) {
         margin-left: auto;
