@@ -1,19 +1,13 @@
-// import { AuthSection } from 'components/AuthSection/AuthSection';
-// import { Description } from 'components/Description/Description';
-// import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
-
-import UserForm from '../components/UserForm/UserForm';
-
-// import Header from 'components/Header/Header';
-// import NotFoundPage from './NotFoundPage/NotFoundPage';
+import { AuthSection } from 'components/AuthSection/AuthSection';
+import { Description } from 'components/Description/Description';
+import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
 
 const MainPage = () => {
   return (
     <>
-      {/* <AuthSection />
+      <AuthSection />
       <Description />
-      <ReviewsSlider /> */}
-      <UserForm />
+      <ReviewsSlider />
     </>
   );
 };

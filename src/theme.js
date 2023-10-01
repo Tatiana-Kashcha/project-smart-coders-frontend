@@ -74,3 +74,48 @@ export const darkTheme = {
     bgScrollColor: '#2d3037',
   },
 };
+
+export const globalTheme = {
+  breakpoints: { mobile: '375px', tablet: '768px', desktop: '1440px' },
+
+  colors: {
+    primary: '#3e85f3',
+    secondary: '#2b78ef',
+    lightBlue: '#e3f3ff',
+    darkBlue: '#cae8ff',
+    bgBlue: '#dcebf7',
+    background: '#ffffff',
+    white: '#ffffff',
+    blackTitle: '#171820',
+    black: '#111111',
+    text: '#343434',
+    mainYellow: '#f3b249',
+    lightYellow: '#fcf0d4',
+    redError: '#da1414',
+    redErrorLight: '#e74a3b',
+    mainRed: '#ea3d65',
+    lightRed: '#ffd2dd',
+    greenValid: '#3cbc81',
+    muted: '#f7f6f9',
+    closeButton: '#111111',
+    backdrop: 'rgba(0, 0, 0, 0.8)',
+    bgDelBtn: 'rgba(234, 61, 101, 0.2)',
+    bgDelHover: 'rgba(234, 61, 101, 0.5)',
+  },
+
+  shadow: {
+    boxShadow: '4px 2px 16px rgba(136, 165, 191, 0.48)',
+    modalShadow: '0px 4px 57px rgba(17, 17, 17, 0.05)',
+    modalHoverShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48)',
+  },
+
+  cubic: {
+    cubicBezier: 'cubic - bezier(0.4, 0, 0.2, 1)',
+  },
+
+  fonts: {
+    fontsBody: 'Coolvetica',
+    fontsHeading: 'Inter',
+    fontsText: 'Inter',
+  },
+};

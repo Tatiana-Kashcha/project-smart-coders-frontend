@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
-// import { Layout } from 'Layout';
 
 import MainPage from 'pages/MainPage';
 import Register from 'pages/RegisterPage';
