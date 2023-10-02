@@ -127,7 +127,7 @@ export const RegisterForm = () => {
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
         Sign Up
         <LoginIcon
-          style={{ width: '20px', height: '20px', marginLeft: '13px' }}
+          style={{ width: '20px', height: '20px', marginLeft: '11px' }}
         />
       </Button>
     </Form>

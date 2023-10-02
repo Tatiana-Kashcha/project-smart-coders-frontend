@@ -28,9 +28,12 @@ export const Title = styled.h1`
   font-size: 18px;
   line-height: 1.3;
   color: ${globalTheme.colors.primary};
+  margin-bottom: 32px;
 
   @media (min-width: 768px) {
     font-size: 24px;
+    line-height: 1;
+    margin-bottom: 40px;
   }
 `;
 
@@ -65,6 +68,17 @@ export const Input = styled.input`
   &:focus {
     border-color: ${globalTheme.colors.primary};
   }
+
+  ::placeholder {
+    font-size: 16px;
+    font-style: normal;
+    line-height: 18px;
+    color: rgba(17, 17, 17, 0.15);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 18px;
+  }
 `;
 
 export const Error = styled.div`
@@ -90,7 +104,7 @@ export const Button = styled.button`
 
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.3;
   background: ${globalTheme.colors.primary};
   box-shadow: ${globalTheme.shadow.boxShadow};
@@ -107,6 +121,8 @@ export const Button = styled.button`
 
   @media (min-width: 768px) {
     margin-top: 48px;
+    font-size: 18px;
+    padding: 16px;
   }
 `;
 
