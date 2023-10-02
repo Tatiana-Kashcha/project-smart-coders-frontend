@@ -17,11 +17,7 @@ export const ContentWrap = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 503px;
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    max-width: 252px;
-  }
+  width: 803px;
 `;
 
 // NumberWrap
@@ -32,7 +28,7 @@ export const NumberWrap = styled.div`
   margin-bottom: -28px;
   font-weight: bold;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-bottom: -30px;
   }
 `;
@@ -43,7 +39,7 @@ export const Number = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primary};
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 200px;
     line-height: 1.25;
   }
@@ -73,8 +69,8 @@ export const RocketStyled = styled(Rocket)`
 
 // text below the number
 export const Text = styled.p`
-  font-style: ${({ theme }) => theme.fonts.text};
-  /* font-weight: 400; */
+  font-weight: 500;
+  font-size: 14px;
   line-height: 1.1;
   text-align: center;
   font-weight: normal;
@@ -87,13 +83,11 @@ export const Text = styled.p`
   margin-top: -100px;
   margin-left: auto;
   margin-right: auto;
+  width: 281px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 387px;
     margin-bottom: 32px;
-  }
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 281px;
   }
 `;
 
@@ -118,7 +112,7 @@ export const StyledLink = styled(Link)`
     box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.table}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 16px 48px;
     font-size: 18px;
     line-height: 1.33;

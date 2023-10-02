@@ -103,7 +103,7 @@ export const theme = {
     //  #111111; >>>> #D0D0D0
     button_calendar: 'var(--button-calendar)',
 
-    scroll_сolor: 'var(--scroll-color)',
+    scroll_color: 'var(--scroll-color)',
     bg_scroll_color: 'var(--bg-scroll-color)',
   },
 
@@ -142,7 +142,7 @@ export const theme = {
 
   breakpoints: {
     mobile: '375px',
-    table: '768px',
+    tablet: '768px',
     desktop: '1440px',
   },
   fontSizes: {
