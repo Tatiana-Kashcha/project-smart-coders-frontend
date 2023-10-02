@@ -2,6 +2,7 @@
 // import { Description } from 'components/Description/Description';
 // import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import Header from 'components/Header/Header';
 
 const MainPage = () => {
   return (
@@ -10,6 +11,7 @@ const MainPage = () => {
       <Description />
       <ReviewsSlider /> */}
       <RegisterForm />
+      <Header />
     </>
   );
 };
