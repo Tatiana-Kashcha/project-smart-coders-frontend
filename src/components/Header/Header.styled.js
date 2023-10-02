@@ -20,13 +20,19 @@ export const Title = styled.h2`
 export const BurgerBtn = styled.button`
   background-color: transparent;
   border: none;
+  padding: 0;
 
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 
   color: ${props => props.theme.colors.primaryText};
 
   cursor: pointer;
+
+  @media screen and (min-width: 375px) {
+    width: 32px;
+    height: 32px;
+  }
 
   @media screen and (min-width: 768px) {
     display: none;
@@ -45,21 +51,4 @@ export const SubDivision = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
-
-export const ThemeToggleBtn = styled.button`
-  margin-right: 14px;
-  background-color: transparent;
-  border: none;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  svg {
-    fill: #3e85f3;
-  }
-
-  @media screen and (min-width: 678px) {
-    width: 32px;
-    height: 32px;
-  }
 `;

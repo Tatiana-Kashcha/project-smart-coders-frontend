@@ -1,33 +1,34 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const SectionStyled = styled.section`
-  padding: 40px 0;
-
-  @media screen and (min-width: 768px) {
-    padding: 30px 0;
-  }
+  padding: 64px 0;
 `;
 
 export const List = styled.ul`
   li:not(:last-child) {
-    margin: 0 0 40px 0;
+    margin: 0 0 64px 0;
   }
 
   li:nth-child(2n) {
     div {
-      @media screen and ((min-width: 768px) and (max-width: calc(1440px - 0.5px))) {
+      @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
         margin-left: auto;
+      }
+
+      @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+        margin-left: 0;
       }
     }
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
       flex-direction: row-reverse;
     }
   }
 `;
 
 export const Item = styled.li`
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -35,13 +36,17 @@ export const Item = styled.li`
 `;
 
 export const ContentWrapper = styled.div`
-  margin: 0 0 30px 0;
+  margin: 0 0 40px 0;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    margin: 0 0 48px 0;
+
     width: 33.33%;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    margin: 0;
+
     width: 20%;
   }
 `;
@@ -49,14 +54,14 @@ export const ContentWrapper = styled.div`
 export const SpanNumber = styled.span`
   display: block;
 
-  margin: 0 0 10px 0;
+  margin: 0 0 14px 0;
 
   font-size: 80px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -4px;
 
-  color: #3e85f3;
+  color: ${globalTheme.colors.primary};
 `;
 
 export const FirstText = styled.h2`
@@ -73,19 +78,23 @@ export const FirstText = styled.h2`
 
   border-radius: 44px;
 
-  color: #3e85f3;
-  background-color: #dcebf7;
+  color: ${globalTheme.colors.primary};
+  background-color: ${globalTheme.colors.bgBlue};
 `;
 
 export const SecondText = styled.h2`
-  margin: 0 0 8px 0;
+  margin: 0 0 14px 0;
 
   font-size: 32px;
   font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
 
-  color: #171820;
+  color: ${globalTheme.colors.blackTitle};
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    margin: 0 0 24px 0;
+  }
 `;
 
 export const Description = styled.h3`

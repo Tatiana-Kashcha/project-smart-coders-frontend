@@ -33,12 +33,12 @@ export const ContentWrapper = styled.div`
 export const StartGooseIcon = styled(StartGoose)`
   flex-shrink: 0;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${globalTheme.breakpoints.tablet}) {
     width: 142px;
     height: 142px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 150px;
     height: 149px;
   }
@@ -56,14 +56,14 @@ export const TextH1 = styled.h1`
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin: 0 0 40px 0;
 
     font-size: 100px;
     line-height: 1.3;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     font-size: 120px;
     line-height: 1.25;
   }
@@ -73,20 +73,20 @@ export const SecondLetterO = styled.span`
   margin: 0 6px 0 0;
   font-style: italic;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin: 0 10px 0 0;
   }
 `;
 
 export const FirstLetterO = styled.span`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin: 0 6px 0 0;
     font-style: italic;
   }
 `;
 
 export const NavStyled = styled.nav`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,7 +119,7 @@ export const LoginLink = styled(Link)`
 
   box-shadow: ${globalTheme.shadow.boxShadow};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin: 0 0 0 24px;
 
     padding: 15.5px 28.5px;
@@ -150,7 +150,7 @@ export const SignUpLink = styled(Link)`
 
   text-decoration: underline;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     flex-shrink: 0;
     font-size: 14px;
     line-height: 1.28;
