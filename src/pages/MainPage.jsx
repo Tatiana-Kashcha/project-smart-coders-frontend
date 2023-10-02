@@ -1,13 +1,15 @@
-import { AuthSection } from 'components/AuthSection/AuthSection';
-import { Description } from 'components/Description/Description';
-import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
+// import { AuthSection } from 'components/AuthSection/AuthSection';
+// import { Description } from 'components/Description/Description';
+// import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
+import LoginPage from './LoginPage/LoginPage';
 
 const MainPage = () => {
   return (
     <>
-      <AuthSection />
+      <LoginPage />
+      {/* <AuthSection />
       <Description />
-      <ReviewsSlider />
+      <ReviewsSlider /> */}
     </>
   );
 };

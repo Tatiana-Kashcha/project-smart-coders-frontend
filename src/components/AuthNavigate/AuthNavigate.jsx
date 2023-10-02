@@ -1,11 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import * as s from './AuthNavigate.styled';
+import { AuthRedirect } from './AuthNavigate.styled';
 
-export const AuthNavigate = ({ route, text }) => {
+export const AuthNavigate = ({ redirect, titleLink }) => {
   return (
-    <s.Text>
-      <NavLink to={route}>{text}</NavLink>
-    </s.Text>
+    <>
+      <AuthRedirect to={redirect}>{titleLink}</AuthRedirect>
+    </>
   );
 };
