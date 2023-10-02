@@ -77,6 +77,7 @@ const FeedbackForm = ({ onClose }) => {
             </s.ContainerLabelAndBtn>
             <s.ReviewInput
               name="review"
+              placeholder="Enter text"
               as={Field}
               component="textarea"
               error={!!errors.review ? 'true' : undefined}
