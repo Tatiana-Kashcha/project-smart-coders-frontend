@@ -8,7 +8,7 @@ import {
 import { Container } from 'stylesheet/Container.styled';
 import * as s from './Description.styled';
 
-const arrayOfSection = [
+const arrayOfBlocksInSection = [
   {
     number: '1.',
     firstText: 'calendar',
@@ -42,7 +42,7 @@ export const Description = () => {
     <s.SectionStyled>
       <Container>
         <s.List>
-          {arrayOfSection.map(item => {
+          {arrayOfBlocksInSection.map(item => {
             const {
               number,
               firstText,
