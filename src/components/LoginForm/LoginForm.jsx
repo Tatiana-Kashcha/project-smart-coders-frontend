@@ -82,7 +82,7 @@ export const LoginForm = () => {
           id="password"
           name="password"
           type={showPassword ? 'text' : 'password'}
-          placeholder="**********"
+          placeholder="・・・・・・・"
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.password}
@@ -103,7 +103,7 @@ export const LoginForm = () => {
       <Button type="submit">
         Log in
         <LoginIcon
-          style={{ width: '20px', height: '20px', marginLeft: '13px' }}
+          style={{ width: '20px', height: '20px', marginLeft: '11px' }}
         />
       </Button>
     </Form>
