@@ -1,10 +1,13 @@
-// import { NavLink } from 'react-router-dom'; //!
+import { createPortal } from 'react-dom';
+import { useState, useEffect } from 'react';
+
 import UserNav from 'components/UserNav/UserNav';
 import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
-import { useState, useEffect } from 'react';
 
 import { globalTheme } from 'theme';
 import * as s from './SideBar.styled';
+
+const sideBarRoot = document.querySelector('#sideBar-root');
 
 const SideBar = () => {
   const mediaQuery = window.matchMedia(
@@ -12,6 +15,7 @@ const SideBar = () => {
   );
 
   const [isSmallScreen, setIsSmallScreen] = useState(mediaQuery.matches);
+  const [showSideBar, setShowSideBar] = useState(true);
 
   useEffect(() => {
     const handleResize = evt => {
@@ -25,22 +29,45 @@ const SideBar = () => {
     };
   }, [mediaQuery]);
 
-  return (
-    <s.SideBar>
-      <s.LogoWrap>
-        <s.IconWrap>
-          <s.IconLogo />
-        </s.IconWrap>
-        {isSmallScreen && (
-          <s.IconWrap>
-            <s.IconClose />
-          </s.IconWrap>
-        )}
-      </s.LogoWrap>
-      <s.SideBarLabel>User Panel</s.SideBarLabel>
-      <UserNav />
-      <LogoutBtn />
-    </s.SideBar>
+  const toggleSideBar = () => {
+    setShowSideBar(prevState => !prevState);
+  };
+
+  const handleOverlayClick = evt => {
+    if (evt.currentTarget === evt.target) {
+      toggleSideBar();
+    }
+  };
+
+  return createPortal(
+    <>
+      {showSideBar && (
+        <div onClick={handleOverlayClick}>
+          <s.SideBar>
+            <s.LogoWrap>
+              <s.IconWrap>
+                <s.IconLogo />
+              </s.IconWrap>
+              {isSmallScreen && (
+                <s.CloseBtn
+                  type="button"
+                  aria-label="Close"
+                  onClick={toggleSideBar}
+                >
+                  <s.IconWrap>
+                    <s.IconClose />
+                  </s.IconWrap>
+                </s.CloseBtn>
+              )}
+            </s.LogoWrap>
+            <s.SideBarLabel>User Panel</s.SideBarLabel>
+            <UserNav />
+            <LogoutBtn />
+          </s.SideBar>
+        </div>
+      )}
+    </>,
+    sideBarRoot
   );
 };
 

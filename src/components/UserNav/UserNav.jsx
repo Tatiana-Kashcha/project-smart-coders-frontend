@@ -1,4 +1,3 @@
-// import { NavLink } from 'react-router-dom'; //!
 import * as s from './UserNav.styled';
 
 const UserNav = () => {
@@ -6,13 +5,28 @@ const UserNav = () => {
     <nav>
       <s.List>
         <li>
-          <s.StyledNavLink to="/account">My account</s.StyledNavLink>
+          <s.StyledNavLink to="/account">
+            <s.IconWrap>
+              <s.IconUserCheck />
+            </s.IconWrap>
+            My account
+          </s.StyledNavLink>
         </li>
         <li>
-          <s.StyledNavLink to="/calendar">Calendar</s.StyledNavLink>
+          <s.StyledNavLink to="/calendar">
+            <s.IconWrap>
+              <s.IconCalendarCheck />
+            </s.IconWrap>
+            Calendar
+          </s.StyledNavLink>
         </li>
         <li>
-          <s.StyledNavLink to="/statistics">Statistics</s.StyledNavLink>
+          <s.StyledNavLink to="/statistics">
+            <s.IconWrap>
+              <s.IconStat />
+            </s.IconWrap>
+            Statistics
+          </s.StyledNavLink>
         </li>
       </s.List>
     </nav>

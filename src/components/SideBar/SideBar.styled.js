@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
-import { ReactComponent as LogoIcon } from '../../icons/logo.svg';
-import { ReactComponent as CloseIcon } from '../../icons/x-close.svg';
+import { ReactComponent as Logo } from '../../icons/logo.svg';
+import { ReactComponent as Close } from '../../icons/x-close.svg';
 
 export const SideBar = styled.aside`
-  max-width: 225px;
+  width: 225px;
+  max-width: 100%;
   height: 100vh;
   padding: 24px 20px;
 
@@ -33,22 +34,41 @@ export const IconWrap = styled.span`
   color: ${props => props.theme.colors.secondText};
 `;
 
-export const IconLogo = styled(LogoIcon)`
+export const IconLogo = styled(Logo)`
   width: 136px;
   height: 35px;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 160px;
     height: 58px;
+  }
 
-    @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-      width: 222px;
-      height: 68px;
-    }
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    width: 222px;
+    height: 68px;
   }
 `;
 
-export const IconClose = styled(CloseIcon)`
+export const CloseBtn = styled.button`
+  /* position: absolute; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* top: 14px;
+  right: 14px; */
+  padding: 0;
+
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  /* @media screen and (min-width: 768px) {
+    top: 18px;
+    right: 18px;
+  } */
+`;
+
+export const IconClose = styled(Close)`
   width: 24px;
   height: 24px;
 
@@ -58,8 +78,9 @@ export const IconClose = styled(CloseIcon)`
   }
 `;
 
-export const SideBarLabel = styled.p`
+export const SideBarLabel = styled.h2`
   margin-top: 64px;
+  margin-bottom: 24px;
 
   font-size: 12px;
   font-weight: 600;
@@ -68,6 +89,7 @@ export const SideBarLabel = styled.p`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin-top: 50px;
+    margin-bottom: 32px;
 
     font-size: 14px;
   }

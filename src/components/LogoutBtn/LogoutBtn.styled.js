@@ -30,7 +30,15 @@ export const LogoutButton = styled.button`
   color: ${globalTheme.colors.white};
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  &:disabled {
+    background: ${globalTheme.colors.bgBlue};
+  }
+
+  &:hover {
+    background-color: ${globalTheme.colors.secondary};
+  }
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     gap: 11px;
     width: 141px;
     padding: 16px 0;
@@ -38,14 +46,6 @@ export const LogoutButton = styled.button`
     font-size: 18px;
     line-height: calc(24 / 18);
     letter-spacing: -0.36px;
-  }
-
-  &:disabled {
-    background: ${globalTheme.colors.bgBlue};
-  }
-
-  &:hover {
-    background-color: ${globalTheme.colors.secondary};
   }
 `;
 

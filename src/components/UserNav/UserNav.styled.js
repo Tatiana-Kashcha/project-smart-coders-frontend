@@ -1,58 +1,84 @@
 import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
-const List = styled.ul`
-  /* display: flex; */
-  /* gap: 40px; */
+import { ReactComponent as UserCheck } from '../../icons/user-check.svg';
+import { ReactComponent as CalendarCheck } from '../../icons/calendar-check.svg';
+import { ReactComponent as Stat } from '../../icons/stat.svg';
 
-  @media screen and (max-width: 768px) {
-    gap: 12px;
-  }
+export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
-  @media screen and (max-width: 599px) {
-    gap: 12px;
-    flex-direction: column;
+  color: ${props => props.theme.colors.sideBarContent};
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    gap: 16px;
   }
 `;
 
-const StyledNavLink = styled(NavLink)`
-  display: block;
-  width: 35vw;
-  max-width: 150px;
-  padding: 4px 0;
-  border: 2px solid #e5eaf1;
-  border-radius: 18px;
+export const StyledNavLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-  background-color: #f3f6f9;
+  padding: 10px 12px;
+  border-radius: 8px;
 
-  color: #112236;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
 
-  text-align: center;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: calc(24 / 20);
-  letter-spacing: 0.02em;
-
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-
-  transition: all var(--animation-duration) var(--timing-function);
+  transition: all 250ms ${globalTheme.cubic.cubicBezier};
 
   &:hover,
   &:focus,
   &.active {
-    color: #0967c2;
-    background-color: #e1eefd;
-    border-color: #0967c2;
-    box-shadow: 4px 1px 4px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.06),
-      1px 4px 6px rgba(0, 0, 0, 0.16);
+    color: ${props => props.theme.colors.colorButtonContentHover};
+    background-color: ${props => props.theme.colors.backgroundButton};
   }
 
-  &:hover,
-  &:focus {
-    transform: scale(1.03);
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    gap: 10px;
+    padding: 16px 20px;
+
+    font-size: 16px;
   }
 `;
 
-export { List, StyledNavLink };
+export const IconWrap = styled.span`
+  display: flex;
+  justify-content: center;
+`;
+
+export const IconUserCheck = styled(UserCheck)`
+  width: 20px;
+  height: 20px;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const IconCalendarCheck = styled(CalendarCheck)`
+  width: 20px;
+  height: 20px;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const IconStat = styled(Stat)`
+  width: 20px;
+  height: 20px;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 24px;
+    height: 24px;
+  }
+`;

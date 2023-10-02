@@ -114,7 +114,7 @@ export const globalTheme = {
   },
 
   cubic: {
-    cubicBezier: 'cubic - bezier(0.4, 0, 0.2, 1)',
+    cubicBezier: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   fonts: {
