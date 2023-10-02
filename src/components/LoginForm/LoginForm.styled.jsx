@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const Form = styled.form`
   width: 335px;
   height: 100%;
   z-index: 2;
 
-  background-color: ${p => p.theme.background};
+  background-color: ${globalTheme.colors.background};
   border-radius: 8px;
   padding: 40px 24px;
   margin-bottom: 8px;
@@ -23,11 +24,10 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.h1`
-  font-family: 'InterSemiBolt';
   font-weight: 600;
   font-size: 18px;
   line-height: 1.3;
-  color: ${p => p.theme.primary};
+  color: ${globalTheme.colors.primary};
 
   @media (min-width: 768px) {
     font-size: 24px;
@@ -36,13 +36,12 @@ export const Title = styled.h1`
 
 export const Label = styled.label`
   display: block;
-  font-family: 'InterSemiBolt';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 1.25;
 
-  color: ${p => p.theme.black};
+  color: ${globalTheme.colors.black};
   margin-top: 24px;
   margin-bottom: 8px;
 
@@ -53,8 +52,6 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  font-family: 'InterRegular';
-
   font-weight: 400;
   width: 100%;
   display: block;
@@ -64,9 +61,9 @@ export const Input = styled.input`
   border-radius: 8px;
   position: relative;
 
-  :hover,
-  :focus {
-    border-color: ${p => p.theme.border};
+  &:hover,
+  &:focus {
+    border-color: ${globalTheme.colors.primary};
   }
 `;
 
@@ -75,7 +72,7 @@ export const Error = styled.div`
   top: 10;
   width: 250px;
   font-size: 10px;
-  color: ${p => p.theme.redError};
+  color: ${globalTheme.colors.redError};
 
   @media (min-width: 768px) {
     width: 300px;
@@ -91,15 +88,14 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  font-family: 'InterSemiBolt';
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.3;
-  background: ${p => p.theme.primary};
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  background: ${globalTheme.colors.primary};
+  box-shadow: ${globalTheme.shadow.boxShadow};
   border-radius: 16px;
-  color: ${p => p.theme.white};
+  color: ${globalTheme.colors.white};
 
   padding: 14px;
   margin-top: 32px;
@@ -120,7 +116,8 @@ export const Password = styled.div`
 
 export const ToggleShowHide = styled.span`
   position: absolute;
+  width: 30px;
   right: 12px;
-  top: 10px;
+  top: 12px;
   cursor: pointer;
 `;

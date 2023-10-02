@@ -113,9 +113,9 @@ export const RegisterForm = () => {
         />
         <ToggleShowHide type="button" onClick={handleShowPassword}>
           {showPassword ? (
-            <ShowIcon style={{ marginLeft: '10px' }} />
+            <ShowIcon style={{ marginLeft: '8px' }} />
           ) : (
-            <HideIcon style={{ marginLeft: '10px' }} />
+            <HideIcon style={{ marginLeft: '8px' }} />
           )}
         </ToggleShowHide>
       </Password>
@@ -127,7 +127,7 @@ export const RegisterForm = () => {
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
         Sign Up
         <LoginIcon
-          style={{ width: '13px', height: '13px', marginLeft: '13px' }}
+          style={{ width: '20px', height: '20px', marginLeft: '13px' }}
         />
       </Button>
     </Form>

@@ -2,7 +2,8 @@
 // import { Description } from 'components/Description/Description';
 // import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
-import Header from 'components/Header/Header';
+// import Header from 'components/Header/Header';
+import { LoginForm } from 'components/LoginForm/LoginForm';
 
 const MainPage = () => {
   return (
@@ -10,8 +11,10 @@ const MainPage = () => {
       {/* <AuthSection />
       <Description />
       <ReviewsSlider /> */}
+      {/* <RegisterForm />
+      <Header /> */}
+      <LoginForm />
       <RegisterForm />
-      <Header />
     </>
   );
 };

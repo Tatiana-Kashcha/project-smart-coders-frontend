@@ -6,9 +6,9 @@ import { toast } from 'react-toastify';
 import { login } from '../../redux/auth/authOperations';
 import { LoginSchema } from './LoginSchema';
 
-import { ReactComponent as ShowIcon } from 'images/svg/show.svg';
-import { ReactComponent as HideIcon } from 'images/svg/hide.svg';
-import { ReactComponent as LoginIcon } from 'images/svg/buttonLogReg.svg';
+import { ReactComponent as ShowIcon } from 'icons/eye.svg';
+import { ReactComponent as HideIcon } from 'icons/eye-slash.svg';
+import { ReactComponent as LoginIcon } from 'icons/log-in.svg';
 
 import {
   Form,
@@ -89,9 +89,9 @@ export const LoginForm = () => {
         />
         <ToggleShowHide type="button" onClick={handleShowPassword}>
           {showPassword ? (
-            <ShowIcon style={{ marginLeft: '10px' }} />
+            <ShowIcon style={{ marginLeft: '8px' }} />
           ) : (
-            <HideIcon style={{ marginLeft: '10px' }} />
+            <HideIcon style={{ marginLeft: '8px' }} />
           )}
         </ToggleShowHide>
       </Password>
@@ -103,7 +103,7 @@ export const LoginForm = () => {
       <Button type="submit">
         Log in
         <LoginIcon
-          style={{ width: '13px', height: '13px', marginLeft: '13px' }}
+          style={{ width: '20px', height: '20px', marginLeft: '13px' }}
         />
       </Button>
     </Form>

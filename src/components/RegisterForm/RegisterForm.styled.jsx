@@ -6,7 +6,7 @@ export const Form = styled.form`
   height: 100%;
   z-index: 2;
 
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${globalTheme.colors.background};
   border-radius: 8px;
   padding: 40px 24px;
   margin-bottom: 18px;
@@ -24,11 +24,10 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.h1`
-  font-family: 'InterSemiBolt';
   font-weight: 600;
   font-size: 18px;
   line-height: 1.3;
-  color: ${props => props.theme.colors.primaryText};
+  color: ${globalTheme.colors.primary};
 
   @media (min-width: 768px) {
     font-size: 24px;
@@ -37,13 +36,12 @@ export const Title = styled.h1`
 
 export const Label = styled.label`
   display: block;
-  font-family: 'InterSemiBolt';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 1.25;
 
-  color: ${props => props.theme.colors.primaryText};
+  color: ${globalTheme.colors.black};
   margin-top: 24px;
   margin-bottom: 8px;
 
@@ -54,7 +52,6 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  font-family: 'InterRegular';
   font-weight: 400;
   width: 100%;
   display: block;
@@ -64,9 +61,9 @@ export const Input = styled.input`
   border-radius: 8px;
   position: relative;
 
-  :hover,
-  :focus {
-    border-color: ${props => props.theme.colors.colorButtonContentHover};
+  &:hover,
+  &:focus {
+    border-color: ${globalTheme.colors.primary};
   }
 `;
 
@@ -91,15 +88,14 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  font-family: 'InterSemiBolt';
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.3;
-  background: ${props => props.theme.colors.primaryText};
+  background: ${globalTheme.colors.primary};
   box-shadow: ${globalTheme.shadow.boxShadow};
   border-radius: 16px;
-  color: ${props => props.theme.colors.secondBackground};
+  color: ${globalTheme.colors.white};
 
   padding: 14px;
   margin-top: 32px;
@@ -120,7 +116,8 @@ export const Password = styled.div`
 
 export const ToggleShowHide = styled.span`
   position: absolute;
+  width: 30px;
   right: 12px;
-  top: 10px;
+  top: 12px;
   cursor: pointer;
 `;
