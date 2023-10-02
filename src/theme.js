@@ -52,6 +52,7 @@ export const darkTheme = {
     backgroundButton: '#21222C',
     secondBackgroundButton: '#353647',
     colorButtonContentHover: '#ffffff',
+    userFormBorderInput: 'rgba(17, 17, 17, 0.10)',
     userLabelColor: 'rgba(250, 250, 250, 0.3)',
     userInputBorder: '1px solid rgba(255, 255, 255, 0.15)',
     calendarOutBorder: '1px solid rgba(255, 255, 255, 0.15)',

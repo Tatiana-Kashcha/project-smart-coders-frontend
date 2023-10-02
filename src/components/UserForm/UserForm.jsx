@@ -148,7 +148,7 @@ export default function UserForm() {
           />
           <Plus />
         </Label>
-        <Heading>{user.name}</Heading>
+        <Heading>{user.name || '****'}</Heading>
         <Title>User</Title>
         <Wrapper>
           <WrapperInput>

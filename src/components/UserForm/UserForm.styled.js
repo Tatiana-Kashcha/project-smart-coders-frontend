@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as PlusBlue } from '../../icons/plusBlue.svg';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { globalTheme } from 'theme';
+import { globalTheme } from 'theme';
 
 export const DatePickerStyled = styled(DatePicker)`
   input {
     padding-left: 0px;
-    color: ${props => props.theme.colors.primaryText};
+    color: ${globalTheme.colors.primaryText};
   }
   input::placeholder {
     font-family: 'Inter';
     font-size: 14px;
-    color: ${props => props.theme.colors.userPlaceholder};
+    color: ${globalTheme.colors.userPlaceholder};
     font-weight: 600;
     opacity: 1;
   }
@@ -25,10 +25,10 @@ export const DatePickerStyled = styled(DatePicker)`
     font-weight: 600;
   }
   .MuiButtonBase-root {
-    color: ${props => props.theme.colors.buttonCalendar};
+    color: ${globalTheme.colors.buttonCalendar};
   }
   .MuiOutlinedInput-notchedOutline {
-    border: 1px solid #11111126;
+    border: 1px solid rgba(17, 17, 17, 0.1);
   }
 
   .MuiOutlinedInput-root {
@@ -41,10 +41,10 @@ export const DatePickerStyled = styled(DatePicker)`
     border-radius: 8px;
 
     .MuiOutlinedInput-notchedOutline {
-      border: ${props => props.theme.colors.userInputBorder};
+      border: ${globalTheme.colors.userInputBorder};
     }
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid #111111;
+      border: 1px solid rgba(17, 17, 17, 0.1);
     }
   }
 `;
@@ -53,7 +53,7 @@ export const Container = styled.div`
   max-width: 375px;
   padding-bottom: 40px;
 
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${globalTheme.colors.background};
 
   @media (min-width: 768px) {
     max-width: 100%;
@@ -74,8 +74,8 @@ export const FormContainer = styled.form`
   padding-bottom: 40px;
   padding-left: 18px;
   padding-right: 18px;
-  background-color: ${props => props.theme.colors.secondBackground};
-  border-radius: ${props => props.theme.radii.big};
+  background-color: ${globalTheme.colors.secondBackground};
+  border-radius: 16px;
 
   @media (min-width: 768px) {
     align-items: center;
@@ -162,10 +162,12 @@ export const Plus = styled(PlusBlue)`
 `;
 
 export const Heading = styled.div`
+  margin-top: 14px;
   font-family: 'Inter';
   font-weight: 700;
+  line-height: 18px;
   font-size: 14px;
-  color: ${props => props.theme.colors.primaryText};
+  color: ${globalTheme.colors.primaryText};
   text-align: center;
 `;
 
@@ -210,7 +212,7 @@ export const Label = styled.label`
   font-weight: 400;
   margin-bottom: 8px;
   line-height: 1.1;
-  color: ${props => props.theme.colors.userLabelColor};
+  color: ${globalTheme.colors.userLabelColor};
 `;
 
 export const Input = styled.input`
@@ -219,28 +221,28 @@ export const Input = styled.input`
   padding-left: 14px;
   padding-right: 14px;
   outline: none;
-
-  border: ${props => props.theme.colors.userInputBorder};
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  /* border: ${globalTheme.colors.userInputBorder}; */
   border-radius: 8px;
 
-  ${props =>
-    props.value &&
-    `
+  ${globalTheme.value &&
+  `
     font-family: 'Inter';
     font-size: 14px;
     font-weight:600;
     color: black;
   `}
-  color: ${props => props.theme.colors.primaryText};
+  color: ${globalTheme.colors.primaryText};
   background-color: transparent;
+  border: ${globalTheme.colors.userFormBorderInput};
   &::placeholder {
     font-family: 'Inter';
     font-size: 14px;
-    color: ${props => props.theme.colors.userPlaceholder};
+    color: ${globalTheme.colors.userPlaceholder};
   }
   &:hover,
   &:focus {
-    border: 1px solid #111111;
+    border: 1px solid rgba(17, 17, 17, 0.1);
   }
   @media (min-width: 768px) {
     height: 46px;
@@ -274,13 +276,13 @@ export const Button = styled.button`
   font-size: 12px;
   text-align: center;
   color: #ffffff;
-  background-color: ${props => (props.disabled ? '#FFFFFF' : '#3E85F3')};
+  background-color: ${globalTheme.disabled ? '#FFFFFF' : '#3E85F3'};
   border-radius: 16px;
 
   border: 0;
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
-  &:hover(:not disabled),
-  &:focus(:not disabled) {
+  cursor: ${globalTheme.disabled ? 'default' : 'pointer'};
+  &:hover,
+  &:focus {
     background-color: #2b78ef;
   }
 
