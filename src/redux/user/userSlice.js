@@ -1,41 +1,38 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import { updateUser } from './operations';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { initUser } from './initUser';
+import { currentUser, updateUser } from './operations';
 
-// const updateUserState = (state, action) => {
-//   for (let key in state) {
-//     if (state.hasOwnProperty(key) && action.hasOwnProperty(key)) {
-//       state[key] = action[key];
-//     }
-//   }
-// };
+const handlePending = state => {
+  state.loading = true;
+  state.error = false;
+};
 
-// const initialState = {
-//   name: '',
-//   email: '',
-//   birthday: '',
-//   phone: '',
-//   skype: '',
-//   avatarURL: '',
-// };
+const handleRejected = state => {
+  state.loading = false;
+  state.error = true;
+};
 
-// const userSlice = createSlice({
-//   name: 'user',
-//   initialState,
-//   reducers: {
-//     addUserData(state, action) {
-//       updateUserState(state, action.payload);
-//     },
-//     cleanUserData(state) {
-//       state = initialState;
-//       return state;
-//     },
-//   },
-//   extraReducers: builder => {
-//     builder.addCase(updateUser.fulfilled, (state, action) => {
-//       updateUserState(state, action.payload);
-//     });
-//   },
-// });
+const handleFulfilled = (state, action) => {
+  state.loading = false;
+  state.error = false;
+  state.info = action.payload;
+};
 
-// export const addUserData = userSlice.actions;
-// export const userReducer = userSlice.reducer;
+export const userSlice = createSlice({
+  name: 'user',
+  initialState: initUser,
+  extraReducers: builder =>
+    builder
+      .addMatcher(
+        isAnyOf(currentUser.pending, updateUser.pending),
+        handlePending
+      )
+      .addMatcher(
+        isAnyOf(currentUser.rejected, updateUser.rejected),
+        handleRejected
+      )
+      .addMatcher(
+        isAnyOf(currentUser.fulfilled, updateUser.fulfilled),
+        handleFulfilled
+      ),
+});
