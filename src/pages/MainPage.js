@@ -14,13 +14,12 @@
 // }
 
 // import SideBar from 'components/SideBar/SideBar';
-import Header from 'components/Header/Header';
+// import Header from 'components/Header/Header';
 
-export default function MainPage() {
-  return (
-    <>
-      <Header />
-      {/* <SideBar /> */}
-    </>
-  );
-}
+// export default function MainPage() {
+//   return (
+//     <>
+//       <Header />
+//     </>
+//   );
+// }

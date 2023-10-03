@@ -70,7 +70,7 @@ const Header = () => {
           <UserInfo />
         </s.SubDivision>
       </s.Division>
-      {showSideBar && <SideBar toggleSideBar={toggleSideBar} />}
+      {/* {showSideBar && <SideBar toggleSideBar={toggleSideBar} />} */}
     </>
   );
 };
