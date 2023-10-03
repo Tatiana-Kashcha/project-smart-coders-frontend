@@ -26,33 +26,33 @@ export const App = () => {
 
           <Route
             path="account"
-            element={<PrivateRoute element={MainLayout} redirecrTo="/" />}
+            element={<PrivateRoute element={MainLayout} redirecrtTo="/" />}
           >
             <Route index element={<Account />} />
           </Route>
           <Route
             path="calendar"
-            element={<PrivateRoute element={Calendar} redirecrTo="/" />}
+            element={<PrivateRoute element={Calendar} redirecrtTo="/" />}
           >
             <Route path="month/:currrentDate" element={<ChoosedMonth />} />
             <Route path="day/:currrentDay" element={<ChoosedDay />} />
           </Route>
           <Route
             path="statistics"
-            element={<PrivateRoute element={Statistics} redirecrTo="/" />}
+            element={<PrivateRoute element={Statistics} redirecrtTo="/" />}
           >
             <Route index element={<Statistics />} />
           </Route>
           <Route
             path="register"
             element={
-              <RestrictedRoute element={RegisterPage} redirecrTo="/account" />
+              <RestrictedRoute element={RegisterPage} redirecrtTo="/account" />
             }
           />
           <Route
             path="login"
             element={
-              <RestrictedRoute element={LoginPage} redirecrTo="/account" />
+              <RestrictedRoute element={LoginPage} redirecrtTo="/account" />
             }
           />
         </Route>
