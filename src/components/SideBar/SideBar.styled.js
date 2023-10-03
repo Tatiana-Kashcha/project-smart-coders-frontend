@@ -4,12 +4,31 @@ import { ReactComponent as Logo } from '../../icons/logo.svg';
 import { ReactComponent as Close } from '../../icons/x-close.svg';
 
 export const SideBar = styled.aside`
+  position: absolute;
+  z-index: 1200;
+
   width: 225px;
   max-width: 100%;
   height: 100vh;
   padding: 24px 20px;
-  border: solid red;
+
+  border: 1px solid red;
+
   background-color: ${props => props.theme.colors.thirdBackground};
+
+  @media screen and (max-width: calc(${globalTheme.breakpoints
+      .desktop} - 0.5px)) {
+    @keyframes slidein {
+      from {
+        left: -100%;
+      }
+      to {
+        left: 0;
+      }
+    }
+
+    animation: slidein 250ms ${globalTheme.cubic.cubicBezier};
+  }
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 289px;
@@ -50,7 +69,6 @@ export const IconLogo = styled(Logo)`
 `;
 
 export const CloseBtn = styled.button`
-  /* position: absolute; */
   display: flex;
   align-items: center;
   justify-content: center;

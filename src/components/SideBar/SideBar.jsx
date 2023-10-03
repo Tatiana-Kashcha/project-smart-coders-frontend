@@ -9,13 +9,13 @@ import * as s from './SideBar.styled';
 
 // const sideBarRoot = document.querySelector('#sideBar-root'); //!
 
-const SideBar = () => {
+const SideBar = ({ toggleSideBar }) => {
   const mediaQuery = window.matchMedia(
     `(max-width: calc(${globalTheme.breakpoints.desktop} - 0.5px))`
   );
 
   const [isSmallScreen, setIsSmallScreen] = useState(mediaQuery.matches);
-  const [showSideBar, setShowSideBar] = useState(true);
+  // const [showSideBar, setShowSideBar] = useState(true); //?
 
   useEffect(() => {
     const handleResize = evt => {
@@ -29,9 +29,9 @@ const SideBar = () => {
     };
   }, [mediaQuery]);
 
-  const toggleSideBar = () => {
-    setShowSideBar(prevState => !prevState);
-  };
+  // const toggleSideBar = () => {
+  //   setShowSideBar(prevState => !prevState);
+  // }; //?
 
   // const handleOverlayClick = evt => {
   //   if (evt.currentTarget === evt.target) {
@@ -39,31 +39,31 @@ const SideBar = () => {
   //   }
   // }; //!
 
+  /* {showSideBar && */ //?
+
   return (
     <>
-      {showSideBar && (
-        <s.SideBar>
-          <s.LogoWrap>
-            <s.IconWrap>
-              <s.IconLogo />
-            </s.IconWrap>
-            {isSmallScreen && (
-              <s.CloseBtn
-                type="button"
-                aria-label="Close"
-                onClick={toggleSideBar}
-              >
-                <s.IconWrap>
-                  <s.IconClose />
-                </s.IconWrap>
-              </s.CloseBtn>
-            )}
-          </s.LogoWrap>
-          <s.SideBarLabel>User Panel</s.SideBarLabel>
-          <UserNav />
-          <LogoutBtn />
-        </s.SideBar>
-      )}
+      <s.SideBar>
+        <s.LogoWrap>
+          <s.IconWrap>
+            <s.IconLogo />
+          </s.IconWrap>
+          {isSmallScreen && (
+            <s.CloseBtn
+              type="button"
+              aria-label="Close"
+              onClick={() => toggleSideBar()}
+            >
+              <s.IconWrap>
+                <s.IconClose />
+              </s.IconWrap>
+            </s.CloseBtn>
+          )}
+        </s.LogoWrap>
+        <s.SideBarLabel>User Panel</s.SideBarLabel>
+        <UserNav />
+        <LogoutBtn />
+      </s.SideBar>
     </>
   );
 };
