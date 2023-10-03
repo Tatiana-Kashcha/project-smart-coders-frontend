@@ -30,6 +30,7 @@ const ReusePicture = ({
         srcSet={`${mobile1xPng} 1x, ${mobile2xPng} 2x`}
         type="image/png"
       />
+
       {/* For tablets */}
       <source
         media={`(min-width: ${globalTheme.breakpoints.tablet}) and (max-width: calc(${globalTheme.breakpoints.desktop} - 0.5px))`}
@@ -41,6 +42,7 @@ const ReusePicture = ({
         srcSet={`${tablet1xPng} 1x, ${tablet2xPng} 2x`}
         type="image/png"
       />
+
       {/* For desktops */}
       <source
         media={`(min-width: ${globalTheme.breakpoints.desktop})`}
@@ -52,6 +54,7 @@ const ReusePicture = ({
         srcSet={`${desktop1xPng} 1x, ${desktop2xPng} 2x`}
         type="image/png"
       />
+
       {/* Default */}
       <img src={mobile1xPng} alt={imgAlt} />
     </picture>
