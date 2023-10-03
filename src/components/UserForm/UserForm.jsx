@@ -1,7 +1,8 @@
-import { useAuth } from '../../hooks/useAuth';
+// import { useAuth } from '../../hooks/useAuth';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { selectUserInfo } from '../../redux/user/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -36,7 +37,7 @@ const currentDate = dayjs(new Date()).format('DD/MM/YYYY');
 
 const UserForm = () => {
   const dispatch = useDispatch();
-  const userInfo = useAuth();
+  const userInfo = useSelector(selectUser);
 
   const [avatarURL, setAvatarURL] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);

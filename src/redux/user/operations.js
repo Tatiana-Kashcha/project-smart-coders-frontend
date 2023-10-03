@@ -7,7 +7,7 @@ export const currentUser = createAsyncThunk(
     try {
       const {
         data: { data },
-      } = await axios.get('/user/current');
+      } = await axios.get('/users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -21,7 +21,7 @@ export const updateUser = createAsyncThunk(
     try {
       const {
         data: { data },
-      } = await axios.patch('/user/info', credentials);
+      } = await axios.patch('/users/edit', credentials);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
