@@ -1,82 +1,49 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as PlusBlue } from '../../icons/plusBlue.svg';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { globalTheme } from 'theme';
+import { ReactComponent as IconCorrect } from '../../icons/done.svg';
+import { ReactComponent as IconError } from '../../icons/ic_baseline-error-outline.svg';
 
-export const DatePickerStyled = styled(DatePicker)`
-  input {
-    padding-left: 0px;
-    color: ${globalTheme.colors.primaryText};
-  }
-  input::placeholder {
-    font-family: 'Inter';
-    font-size: 14px;
-    color: ${globalTheme.colors.userPlaceholder};
-    font-weight: 600;
-    opacity: 1;
-  }
+import styled from 'styled-components';
+import {
+  Form as FormikForm,
+  Field as FormikFieldAdd,
+  Field as Input,
+} from 'formik';
 
-  /* Input value */
-  .MuiInputBase-root {
-    position: relative;
-    font-family: 'Inter';
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .MuiButtonBase-root {
-    color: ${globalTheme.colors.buttonCalendar};
-  }
-  .MuiOutlinedInput-notchedOutline {
-    border: 1px solid rgba(17, 17, 17, 0.1);
-  }
-
-  .MuiOutlinedInput-root {
-    min-width: 250px;
-    height: 44px;
-    padding-left: 14px;
-    padding-right: 14px;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-
-    .MuiOutlinedInput-notchedOutline {
-      border: ${globalTheme.colors.userInputBorder};
-    }
-    &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid rgba(17, 17, 17, 0.1);
-    }
-  }
-`;
-
-export const Container = styled.div`
-  max-width: 375px;
+import { ReactComponent as plus } from '../../icons/plusBlue.svg';
+export const WrapperForm = styled.div`
+  margin: 0 auto;
+  max-width: 100%;
   padding-bottom: 40px;
-
-  background-color: ${globalTheme.colors.background};
-
-  @media (min-width: 768px) {
-    max-width: 100%;
-    min-width: 768px;
+  position: relative;
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    max-width: 335px;
+  }
+  @media (min-width: 768px) and (max-width: 1439px) {
+    max-width: 704px;
     padding-bottom: 38px;
   }
   @media (min-width: 1440px) {
-    max-width: 100%;
+    min-width: 100%;
     padding-bottom: 32px;
   }
 `;
 
-export const FormContainer = styled.form`
+export const Form = styled(FormikForm)`
+  min-width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: relative;
   padding-top: 59px;
   padding-bottom: 40px;
   padding-left: 18px;
   padding-right: 18px;
-  background-color: ${globalTheme.colors.secondBackground};
+  background-color: ${props => props.theme.colors.secondBackground};
   border-radius: 16px;
-
   @media (min-width: 768px) {
     align-items: center;
     padding-top: 40px;
@@ -85,39 +52,10 @@ export const FormContainer = styled.form`
     padding-top: 60px;
     padding-bottom: 60px;
   }
-  .InvalidInput {
-    border: 1px solid #da1414;
-  }
-  .ErrorMsg {
-    color: green;
-  }
 `;
 
-export const StyledAvatar = styled.div`
-  width: 72px;
-  height: 72px;
-  position: absolute;
-  left: calc(50% - 36px);
-  top: -36px;
-  fill: rgba(62, 133, 243, 0.18);
-  background-color: white;
-  border: 2px solid #3e85f3;
-  border-radius: 50%;
-  @media (min-width: 768px) {
-    position: static;
-    width: 124px;
-    height: 124px;
-  }
-  @media (min-width: 1440px) {
-    margin-bottom: 20px;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+export const FieldAdd = styled(FormikFieldAdd)`
+  display: none;
 `;
 
 export const AvatarDefault = styled(User)`
@@ -126,11 +64,12 @@ export const AvatarDefault = styled(User)`
   top: 5px;
   width: 50px;
   height: 50px;
+  //   /* fill: '#3E85F3'; */
   @media (min-width: 768px) {
-    left: calc(50% - 47px);
-    top: 45px;
-    width: 95px;
-    height: 95px;
+    left: calc(50% - 25px);
+    top: 74px;
+    width: 48px;
+    height: 48px;
   }
   @media (min-width: 1440px) {
     left: calc(50% - 47px);
@@ -139,14 +78,171 @@ export const AvatarDefault = styled(User)`
     height: 95px;
   }
 `;
+// огортка user
+export const UserWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    gap: 50px;
+  }
+`;
+// огортка label
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
 
-export const Plus = styled(PlusBlue)`
+  row-gap: 8px;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  color: ${props => props.theme.colors.userLabelColor};
+  color: #fff;
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    min-width: 299px;
+  }
+
+  @media (min-width: 768px) {
+    width: 354px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+`;
+//Input
+export const InputInfo = styled(Input)`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  height: 42px;
+  width: 100%;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: ${props => props.theme.colors.inputBorder};
+  background-color: transparent;
+  padding: 12px 14px;
+  color: ${props => props.theme.colors.primaryText};
+  transition: ${props => props.theme.colors.defaultTransition};
+  display: flex;
+
+  &::placeholder {
+    color: ${props => props.theme.colors.userLabelColor};
+  }
+  :hover,
+  :focus {
+    border: 1px solid ${props => props.theme.colors.primaryText};
+  }
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.13;
+    padding: 14px 18px;
+    height: 46px;
+  }
+`;
+//іконки  input
+export const IconStatusBox = styled.div`
+  position: relative;
+  height: 46px;
+  display: flex;
+  @media (min-width: 768px) {
+    height: 46px;
+  }
+`;
+// огортка аватара
+export const AvatarWrapper = styled.div`
+  margin-bottom: 14px;
+  width: 72px;
+  height: 72px;
+  position: absolute;
+  left: calc(50% - 36px);
+  top: -36px;
+  fill: rgba(62, 133, 243, 0.18);
+  background-color: ${props => props.theme.colors.bgrAvatar};
+  border: 2px solid #3e85f3;
+  border-radius: 50%;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    position: static;
+    width: 124px;
+    height: 124px;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 20px;
+  }
+`;
+
+export const ImgAvatar = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+
+  @media (min-width: 1440px) {
+    margin-top: 88px;
+  }
+`;
+
+export const ControlBtn = styled.button`
+  align-items: center;
+  min-width: 195px;
+  height: 46px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  background-color: ${globalTheme.colors.primary};
+  color: ${globalTheme.colors.white};
+  transition: ${globalTheme.colors.defaultTransition};
+  border: none;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: ${globalTheme.colors.secondary};
+  }
+  &:disabled {
+    opacity: 0.45;
+  }
+  @media screen and (max-width: 240px) {
+    min-width: 100px;
+    font-size: 10px;
+  }
+  @media (min-width: 768px) {
+    min-width: 262px;
+    height: 48px;
+  }
+`;
+
+export const AddIcon = styled(plus)`
   position: absolute;
   left: 53%;
-  top: 28px;
+  top: 25px;
   width: 14px;
   height: 14px;
-  font-size: 12px;
   cursor: pointer;
 
   @media (min-width: 768px) {
@@ -160,137 +256,46 @@ export const Plus = styled(PlusBlue)`
     left: 51%;
   }
 `;
+export const ErrorIcon = styled(IconError)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
 
-export const Heading = styled.div`
-  margin-top: 14px;
-  font-family: 'Inter';
-  font-weight: 700;
-  line-height: 18px;
+export const CorrectIcon = styled(IconCorrect)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+export const UserTitle = styled.h2`
+  color: ${props => props.theme.colors.userLabelColor};
   font-size: 14px;
-  color: ${globalTheme.colors.primaryText};
-  text-align: center;
-`;
-
-export const Title = styled.div`
-  margin-top: 4px;
-  font-family: 'Inter';
-  font-weight: 500;
-  font-size: '12px';
-  color: userLabelColor;
-  text-align: center;
-`;
-
-// Обгортка Inputs without avatar
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  @media (min-width: 1440px) {
-    width: 758px;
-    flex-direction: initial;
-    flex-wrap: wrap;
-    column-gap: 50px;
-    row-gap: 24px;
-  }
-`;
-
-// Обгортка Label та Input
-export const WrapperInput = styled.div`
-  display: flex;
-  flex-direction: column;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 4px;
   @media (min-width: 768px) {
-    width: 354px;
-  }
-  @media (min-width: 1440px) {
-    width: 354px;
+    font-size: 18px;
+    margin-bottom: 8px;
   }
 `;
 
-export const Label = styled.label`
-  font-family: 'Inter';
+export const Title = styled.p`
+  color: ${props => props.theme.colors.userLabelColor};
   font-size: 12px;
-  font-weight: 400;
-  margin-bottom: 8px;
-  line-height: 1.1;
-  color: ${globalTheme.colors.userLabelColor};
-`;
-
-export const Input = styled.input`
-  min-width: 250px;
-  height: 42px;
-  padding-left: 14px;
-  padding-right: 14px;
-  outline: none;
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  /* border: ${globalTheme.colors.userInputBorder}; */
-  border-radius: 8px;
-
-  ${globalTheme.value &&
-  `
-    font-family: 'Inter';
-    font-size: 14px;
-    font-weight:600;
-    color: black;
-  `}
-  color: ${globalTheme.colors.primaryText};
-  background-color: transparent;
-  border: ${globalTheme.colors.userFormBorderInput};
-  &::placeholder {
-    font-family: 'Inter';
-    font-size: 14px;
-    color: ${globalTheme.colors.userPlaceholder};
-  }
-  &:hover,
-  &:focus {
-    border: 1px solid rgba(17, 17, 17, 0.1);
-  }
-  @media (min-width: 768px) {
-    height: 46px;
-  }
-`;
-
-export const ErrorMessage = styled.div`
-  color: #da1414;
-  font-size: 12px;
-  margin-top: 3px;
-  margin-left: 8px;
-  @media (min-width: 768px) {
-    margin-top: 4px;
-    font-size: 14px;
-  }
-`;
-
-export const Button = styled.button`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 50px;
-  padding-right: 50px;
-  width: 195px;
-  height: 46px;
-  font-family: 'Inter';
   font-weight: 600;
-  line-height: 1.25;
-  font-size: 12px;
-  text-align: center;
-  color: #ffffff;
-  background-color: ${globalTheme.disabled ? '#FFFFFF' : '#3E85F3'};
-  border-radius: 16px;
-
-  border: 0;
-  cursor: ${globalTheme.disabled ? 'default' : 'pointer'};
-  &:hover,
-  &:focus {
-    background-color: #2b78ef;
-  }
-
+  line-height: 1.17;
+  margin-bottom: 40px;
   @media (min-width: 768px) {
-    width: 262px;
-    height: 48px;
+    font-size: 14px;
+    line-height: 1.3;
   }
   @media (min-width: 1440px) {
-    margin-top: 88px;
+    margin-bottom: 44px;
   }
 `;

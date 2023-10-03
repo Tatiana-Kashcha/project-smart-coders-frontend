@@ -9,7 +9,7 @@ export const lightTheme = {
     secondText: '#343434',
     thirdText: '#343434',
     backgroundButton: '#E5EDFA',
-    secondBackgroundButton: 'e3f3ff',
+    secondBackgroundButton: '#e3f3ff',
     colorButtonContentHover: '#3e85f3',
     userLabelColor: '#111111',
     userInputBorder: '1px solid rgba(17, 17, 17, 0.1)',
@@ -36,6 +36,7 @@ export const lightTheme = {
     buttonCalendar: '#606470',
     scrollColor: '#e7e5e5',
     bgScrollColor: '#f2f2f2',
+    bgrAvatar: '#F8F8F8',
   },
 };
 
@@ -77,6 +78,7 @@ export const darkTheme = {
     buttonCalendar: '#d0d0d0',
     scrollColor: '#171820',
     bgScrollColor: '#2d3037',
+    bgrAvatar: '#171820',
   },
 };
 
@@ -90,6 +92,7 @@ export const globalTheme = {
     darkBlue: '#cae8ff',
     bgBlue: '#dcebf7',
     background: '#ffffff',
+    backAvatar: '#f8f8f8',
     white: '#ffffff',
     blackTitle: '#171820',
     black: '#111111',
@@ -106,6 +109,9 @@ export const globalTheme = {
     backdrop: 'rgba(0, 0, 0, 0.8)',
     bgDelBtn: 'rgba(234, 61, 101, 0.2)',
     bgDelHover: 'rgba(234, 61, 101, 0.5)',
+    defaultTransition: 'all 250ms',
+    placeholderColor: 'rgba(17, 17, 17, 0.15)',
+    borderUserFormInput: '#111',
   },
 
   shadow: {
