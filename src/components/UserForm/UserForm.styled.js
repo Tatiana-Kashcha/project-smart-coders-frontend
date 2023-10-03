@@ -6,6 +6,7 @@ import { globalTheme } from 'theme';
 import { ReactComponent as IconCorrect } from '../../icons/done.svg';
 import { ReactComponent as IconError } from '../../icons/ic_baseline-error-outline.svg';
 
+// коментар
 import styled from 'styled-components';
 import {
   Form as FormikForm,
