@@ -4,11 +4,11 @@ export const PeriodTypeSelect = ({ switchMonthOrDay }) => {
 
     switch (name) {
       case 'month':
-        switchMonthOrDay(true);
+        switchMonthOrDay('month');
         break;
 
       case 'day':
-        switchMonthOrDay(false);
+        switchMonthOrDay('day');
         break;
 
       default:

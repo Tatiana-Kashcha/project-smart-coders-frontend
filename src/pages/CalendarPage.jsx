@@ -1,23 +1,44 @@
-import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { Outlet, useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 
 export default function Calendar() {
-  // useState(true); - потрібно буде брати або з сесії або з локалки чи це перший вхід?
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [monthOrDay, setMonthOrDay] = useState('');
   const navigate = useNavigate();
 
-  // true = month, false = day
-  const switchMonthOrDay = trueOrFalse => {
-    setIsFirstVisit(trueOrFalse);
-  };
+  const isFirstVisit = useMemo(() => {
+    return sessionStorage.getItem('isFirstVisit');
+  }, []);
 
   useEffect(() => {
-    if (isFirstVisit) {
-      return navigate('/calendar/month/:currentDate');
+    if (!isFirstVisit) {
+      sessionStorage.setItem('isFirstVisit', 'true');
+      navigate('/calendar/month/:currentDate');
+    } else {
+      navigate('/calendar/day/:currentDay');
     }
-    return navigate('/calendar/day/:currrentDay');
   }, [isFirstVisit, navigate]);
+
+  useEffect(() => {
+    switch (monthOrDay) {
+      case 'month':
+        navigate('/calendar/month/:currentDate');
+        break;
+
+      case 'day':
+        navigate('/calendar/day/:currrentDay');
+        break;
+
+      default:
+        break;
+    }
+  }, [monthOrDay, navigate]);
+
+  // true = month, false = day
+  const switchMonthOrDay = monthOrDay => {
+    setMonthOrDay(monthOrDay);
+  };
 
   return (
     <>
