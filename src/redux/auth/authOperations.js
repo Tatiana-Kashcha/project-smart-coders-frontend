@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { Report } from 'notiflix';
 
 axios.defaults.baseURL = 'http://localhost:8000/';
@@ -8,6 +9,7 @@ axios.defaults.baseURL = 'http://localhost:8000/';
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
+
 const clearToken = () => {
   axios.defaults.headers.common.Authorization = null;
 };
@@ -28,11 +30,11 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/login', credentials);
+      const result = await axios.post('/auth/login', credentials);
 
-      setToken(data.data.token);
+      setToken(result.data.token);
 
-      return data;
+      return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -59,7 +61,7 @@ export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   setToken(token);
 
   try {
-    const { data } = await axios.get('/user/current');
+    const { data } = await axios.get('/users/current');
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
