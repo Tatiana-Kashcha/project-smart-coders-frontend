@@ -10,35 +10,17 @@ import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
-import {
-  AddIcon,
-  AvatarWrapper,
-  ButtonWrapper,
-  ControlBtn,
-  FieldAdd,
-  Form,
-  IconStatusBox,
-  ImgAvatar,
-  InputInfo,
-  Label,
-  Title,
-  UserInfo,
-  UserTitle,
-  UserWrapper,
-  WrapperForm,
-  ErrorIcon,
-  CorrectIcon,
-  AvatarDefault,
-} from './UserForm.styled';
+import * as S from './UserForm.styled';
 
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
+// console.info(selectUser());
 const currentDate = dayjs(new Date()).format('DD/MM/YYYY');
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUser);
-
+  console.log(userInfo);
   const [avatarURL, setAvatarURL] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
@@ -67,7 +49,7 @@ const UserForm = () => {
 
   return (
     <>
-      <WrapperForm>
+      <S.WrapperForm>
         <Formik
           validationSchema={UserValidSchema}
           initialValues={{
@@ -87,25 +69,25 @@ const UserForm = () => {
             touched,
             errors,
           }) => (
-            <Form>
+            <S.Form>
               <div>
-                <AvatarWrapper>
+                <S.AvatarWrapper>
                   {avatarURL ? (
                     <label htmlFor="avatar">
-                      <ImgAvatar
+                      <S.ImgAvatar
                         src={URL.createObjectURL(avatarURL)}
                         alt="Avatar"
                       />
                     </label>
                   ) : userInfo?.avatarURL ? (
                     <label htmlFor="avatar">
-                      <ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
+                      <S.ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
-                    <AvatarDefault />
+                    <S.AvatarDefault />
                   )}
-                </AvatarWrapper>
-                <FieldAdd
+                </S.AvatarWrapper>
+                <S.FieldAdd
                   id="add-avatar"
                   name="avatar"
                   type="file"
@@ -116,42 +98,48 @@ const UserForm = () => {
                   }}
                 />
                 <label htmlFor="add-avatar">
-                  <AddIcon />
+                  <S.AddIcon />
                 </label>
               </div>
-              <UserTitle>{UserInfo.name || '****'}</UserTitle>
-              <Title>User</Title>
-              <UserWrapper>
-                <UserInfo>
-                  <Label
+              <S.UserTitle>{userInfo.name || '****'}</S.UserTitle>
+              <S.Title>User</S.Title>
+              <S.UserWrapper>
+                <S.UserInfo>
+                  <S.Labels
                     style={{
                       color:
-                        (touched.name && errors.name && '#E74A3B') ||
-                        (touched.name && !errors.name && '#3CBC81'),
+                        (touched.avatar && errors.avatar && '#E74A3B') ||
+                        (touched.avatar && !errors.avatar && '#3CBC81'),
                     }}
                   >
                     <p>User Name</p>
-                    <IconStatusBox>
-                      <InputInfo
+                    <S.IconStatusBox>
+                      <S.InputInfo
                         name="name"
+                        placeholder="Your name"
                         style={{
                           borderColor:
                             (touched.name && errors.name && '#E74A3B') ||
                             (touched.name && !errors.name && '#3CBC81'),
                         }}
                       />
-                      {touched.name && errors.name && <ErrorIcon />}
-                      {touched.name && !errors.name && <CorrectIcon />}
-                    </IconStatusBox>
+                      {touched.name && errors.name && <S.ErrorIcon />}
+                      {touched.name && !errors.name && <S.CorrectIcon />}
+                    </S.IconStatusBox>
                     <ErrorMessage name="name" component="span" />
-                  </Label>
+                  </S.Labels>
 
-                  <Label>
+                  <S.Labels>
                     Birthday
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePickerStyled
                         name="birthday"
                         type="date"
+                        style={{
+                          borderColor:
+                            (touched.name && errors.name && '#E74A3B') ||
+                            (touched.name && !errors.name && '#3CBC81'),
+                        }}
                         slotProps={{
                           popper: {
                             sx: PopperDateStyles,
@@ -170,43 +158,53 @@ const UserForm = () => {
                         }}
                       />
                     </LocalizationProvider>
-                  </Label>
+                  </S.Labels>
                   <div>
-                    <Label>
+                    <S.Labels>
                       Email
-                      <InputInfo name="email" type="email" />
+                      <S.InputInfo
+                        name="email"
+                        type="email"
+                        placeholder="Your email"
+                        // style={{
+                        //   borderColor:
+                        //     (touched.email && errors.email && '#E74A3B') ||
+                        //     (touched.email && !errors.email && '#3CBC81'),
+                        // }}
+                      />
+                      {/* {touched.email && errors.email && <ErrorIcon />}
+                      {touched.email && !errors.email && <CorrectIcon />} */}
                       <ErrorMessage name="email" component="span" />
-                    </Label>
+                    </S.Labels>
                   </div>
-                </UserInfo>
+                </S.UserInfo>
 
-                <UserInfo>
-                  <Label
+                <S.UserInfo>
+                  <S.Labels
                     style={{
-                      color:
-                        (touched.phone && errors.phone && '#E74A3B') ||
-                        (touched.phone && !errors.phone && '#3CBC81'),
+                      borderColor:
+                        (touched.email && errors.email && '#E74A3B') ||
+                        (touched.email && !errors.email && '#3CBC81'),
                     }}
                   >
                     Phone
-                    <IconStatusBox>
-                      <InputInfo
+                    <S.IconStatusBox>
+                      <S.InputInfo
                         name="phone"
                         type="tel"
-                        placeholder="+380XXXXXXXXX"
                         style={{
                           borderColor:
                             (touched.phone && errors.phone && '#E74A3B') ||
                             (touched.phone && !errors.phone && '#3CBC81'),
                         }}
                       />
-                      {touched.name && errors.name && <ErrorIcon />}
-                      {touched.name && !errors.name && <CorrectIcon />}
-                    </IconStatusBox>
+                      {touched.phone && errors.phone && <S.ErrorIcon />}
+                      {touched.phone && !errors.phone && <S.CorrectIcon />}
+                    </S.IconStatusBox>
                     <ErrorMessage name="phone" component="span" />
-                  </Label>
+                  </S.Labels>
 
-                  <Label
+                  <S.Labels
                     style={{
                       color:
                         (touched.skype && errors.skype && '#E74A3B') ||
@@ -214,8 +212,8 @@ const UserForm = () => {
                     }}
                   >
                     Skype
-                    <IconStatusBox>
-                      <InputInfo
+                    <S.IconStatusBox>
+                      <S.InputInfo
                         name="skype"
                         type="text"
                         placeholder="Add a skype number"
@@ -225,23 +223,23 @@ const UserForm = () => {
                             (touched.skype && !errors.skype && '#3CBC81'),
                         }}
                       />
-                      {touched.name && errors.name && <ErrorIcon />}
-                      {touched.name && !errors.name && <CorrectIcon />}
-                    </IconStatusBox>
+                      {touched.skype && errors.skype && <S.ErrorIcon />}
+                      {touched.skype && !errors.skype && <S.CorrectIcon />}
+                    </S.IconStatusBox>
                     <ErrorMessage name="skype" component="span" />
-                  </Label>
-                </UserInfo>
-              </UserWrapper>
+                  </S.Labels>
+                </S.UserInfo>
+              </S.UserWrapper>
 
-              <ButtonWrapper>
-                <ControlBtn type="submit" disabled={!dirty && !isFormChanged}>
+              <S.ButtonWrapper>
+                <S.ControlBtn type="submit" disabled={!dirty && !isFormChanged}>
                   Save changes
-                </ControlBtn>
-              </ButtonWrapper>
-            </Form>
+                </S.ControlBtn>
+              </S.ButtonWrapper>
+            </S.Form>
           )}
         </Formik>
-      </WrapperForm>
+      </S.WrapperForm>
     </>
   );
 };

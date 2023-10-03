@@ -1,6 +1,6 @@
 // import styled from 'styled-components';
 import { ReactComponent as User } from '../../icons/user.svg';
-import { ReactComponent as PlusBlue } from '../../icons/plusBlue.svg';
+// import { ReactComponent as PlusBlue } from '../../icons/plusBlue.svg';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { globalTheme } from 'theme';
 import { ReactComponent as IconCorrect } from '../../icons/done.svg';
@@ -90,7 +90,7 @@ export const UserWrapper = styled.div`
   }
 `;
 // огортка label
-export const Label = styled.label`
+export const Labels = styled.label`
   display: flex;
   flex-direction: column;
   font-family: Inter;
@@ -105,7 +105,7 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 1.17;
   color: ${props => props.theme.colors.userLabelColor};
-  color: #fff;
+  /* color: #111111; */
   @media screen and (min-width: 375px) and (max-width: 768px) {
     min-width: 299px;
   }
@@ -118,6 +118,7 @@ export const Label = styled.label`
 `;
 //Input
 export const InputInfo = styled(Input)`
+  position: relative;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
@@ -261,7 +262,7 @@ export const ErrorIcon = styled(IconError)`
   width: 24px;
   height: 24px;
   position: absolute;
-  right: 10px;
+  right: 18px;
   top: 50%;
   transform: translateY(-50%);
 `;
@@ -270,7 +271,7 @@ export const CorrectIcon = styled(IconCorrect)`
   width: 24px;
   height: 24px;
   position: absolute;
-  right: 10px;
+  right: 18px;
   top: 50%;
   transform: translateY(-50%);
 `;
