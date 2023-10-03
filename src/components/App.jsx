@@ -2,8 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
 import MainPage from 'pages/MainPage';
-import Register from 'pages/RegisterPage';
-import Login from 'pages/LoginPage';
+import Register from 'pages/RegisterPage'; //поміняти шлях!!!!!!
+import LoginPage from 'pages/LoginPage/LoginPage';
 import Account from 'pages/AccountPage';
 import Calendar from 'pages/CalendarPage';
 import Statistics from 'pages/StatisticsPage';
@@ -49,7 +49,9 @@ export const App = () => {
           />
           <Route
             path="login"
-            element={<RestrictedRoute element={Login} redirecrTo="/account" />}
+            element={
+              <RestrictedRoute element={LoginPage} redirecrTo="/account" />
+            }
           />
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
