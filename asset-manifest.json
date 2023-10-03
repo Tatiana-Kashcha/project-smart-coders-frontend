@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-smart-coders-frontend/static/css/main.1d4f0a88.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.4bb98cc9.js",
+    "main.js": "/project-smart-coders-frontend/static/js/main.295b186d.js",
     "static/js/697.68c1d6e7.chunk.js": "/project-smart-coders-frontend/static/js/697.68c1d6e7.chunk.js",
     "static/media/start-calendar-view-tablet-2x.png": "/project-smart-coders-frontend/static/media/start-calendar-view-tablet-2x.2d5fb16ba0772f742462.png",
     "static/media/start-calendar-view-desktop-2x.png": "/project-smart-coders-frontend/static/media/start-calendar-view-desktop-2x.0b3c9c82055a49088137.png",
@@ -25,6 +25,7 @@
     "static/media/start-calendar-view-desktop-2x.webp": "/project-smart-coders-frontend/static/media/start-calendar-view-desktop-2x.bdada23c4d5b1a04ecfe.webp",
     "static/media/start-all-in-one-tablet-2x.webp": "/project-smart-coders-frontend/static/media/start-all-in-one-tablet-2x.f00224440d825158fce0.webp",
     "static/media/start-all-in-one-desktop-2x.webp": "/project-smart-coders-frontend/static/media/start-all-in-one-desktop-2x.9043c25d2a5a1224b034.webp",
+    "static/media/login-goose.svg": "/project-smart-coders-frontend/static/media/login-goose.59ae56048d94514c6b7078bda5438c68.svg",
     "static/media/CoolveticaRg-Italic.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Italic.354b20eb1b8d25af62a1.woff2",
     "static/media/start-sidebar-tablet-2x.webp": "/project-smart-coders-frontend/static/media/start-sidebar-tablet-2x.86c013be055e984fa3a4.webp",
     "static/media/CoolveticaRg-Regular.woff2": "/project-smart-coders-frontend/static/media/CoolveticaRg-Regular.3829e81cd606bef6e1e9.woff2",
@@ -58,11 +59,11 @@
     "static/media/burger-menu.svg": "/project-smart-coders-frontend/static/media/burger-menu.cd8139fdb902f54f6c943bb1141b4141.svg",
     "static/media/x-close.svg": "/project-smart-coders-frontend/static/media/x-close.35afc42d83c641d7796f8c48fa0420ff.svg",
     "main.1d4f0a88.css.map": "/project-smart-coders-frontend/static/css/main.1d4f0a88.css.map",
-    "main.4bb98cc9.js.map": "/project-smart-coders-frontend/static/js/main.4bb98cc9.js.map",
+    "main.295b186d.js.map": "/project-smart-coders-frontend/static/js/main.295b186d.js.map",
     "697.68c1d6e7.chunk.js.map": "/project-smart-coders-frontend/static/js/697.68c1d6e7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1d4f0a88.css",
-    "static/js/main.4bb98cc9.js"
+    "static/js/main.295b186d.js"
   ]
 }
