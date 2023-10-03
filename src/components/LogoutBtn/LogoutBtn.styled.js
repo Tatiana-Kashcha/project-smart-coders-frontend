@@ -5,7 +5,7 @@ import { ReactComponent } from '../../icons/log-out.svg';
 export const LogoutButton = styled.button`
   display: flex;
   gap: 6px;
-  /* flex-direction: row; */
+
   align-items: center;
   justify-content: center;
 
@@ -22,8 +22,6 @@ export const LogoutButton = styled.button`
   box-shadow: ${globalTheme.shadow.boxShadow};
   border-radius: 16px;
 
-  /* font-family: 'Inter'; */
-  /* font-style: normal; */
   font-weight: 600;
   font-size: 14px;
   line-height: calc(18 / 14);

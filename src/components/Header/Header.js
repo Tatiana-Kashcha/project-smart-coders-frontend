@@ -1,37 +1,14 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-import { globalTheme } from 'theme'; //?
 import * as s from './Header.styled';
 import { ReactComponent as BurgerMenuIcon } from '../../icons/burger-menu.svg';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggle from 'components/ThemeToggler/ThemeToggle';
-import SideBar from 'components/SideBar/SideBar';
+
 import UserInfo from '../UserInfo/UserInfo';
 
-const Header = () => {
-  const mediaQuery = window.matchMedia(
-    `(min-width: ${globalTheme.breakpoints.desktop} )`
-  ); //?
-
-  const [showSideBar, setShowSideBar] = useState(mediaQuery.matches); //?
-
-  useEffect(() => {
-    const handleResize = evt => {
-      setShowSideBar(evt.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleResize);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleResize);
-    };
-  }, [mediaQuery]); //?
-
-  const toggleSideBar = () => {
-    setShowSideBar(prevState => !prevState);
-  }; //?
-
+const Header = ({ onSideBar }) => {
   // const [shownModal, setShowModal] = useState(false);
 
   // const onModal = () => {
@@ -59,7 +36,7 @@ const Header = () => {
 
         {/* <s.BurgerBtn type="button" onClick={onModal}> */}
 
-        <s.BurgerBtn type="button" onClick={toggleSideBar}>
+        <s.BurgerBtn type="button" onClick={onSideBar}>
           <BurgerMenuIcon />
         </s.BurgerBtn>
         {/* {shownModal && <AddFeedbackModal onClose={onModal} />} */}
@@ -70,7 +47,6 @@ const Header = () => {
           <UserInfo />
         </s.SubDivision>
       </s.Division>
-      {showSideBar && <SideBar toggleSideBar={toggleSideBar} />}
     </>
   );
 };

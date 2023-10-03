@@ -1,5 +1,7 @@
 // import { createPortal } from 'react-dom'; //!
+
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import UserNav from 'components/UserNav/UserNav';
 import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
@@ -9,7 +11,7 @@ import * as s from './SideBar.styled';
 
 // const sideBarRoot = document.querySelector('#sideBar-root'); //!
 
-const SideBar = ({ toggleSideBar }) => {
+const SideBar = ({ onSideBar, onRedirect }) => {
   const mediaQuery = window.matchMedia(
     `(max-width: calc(${globalTheme.breakpoints.desktop} - 0.5px))`
   );
@@ -29,13 +31,13 @@ const SideBar = ({ toggleSideBar }) => {
     };
   }, [mediaQuery]);
 
-  // const toggleSideBar = () => {
+  // const onSideBar = () => {
   //   setShowSideBar(prevState => !prevState);
   // }; //?
 
   // const handleOverlayClick = evt => {
   //   if (evt.currentTarget === evt.target) {
-  //     toggleSideBar();
+  //     onSideBar();
   //   }
   // }; //!
 
@@ -52,7 +54,7 @@ const SideBar = ({ toggleSideBar }) => {
             <s.CloseBtn
               type="button"
               aria-label="Close"
-              onClick={() => toggleSideBar()}
+              onClick={() => onSideBar()}
             >
               <s.IconWrap>
                 <s.IconClose />
@@ -61,11 +63,16 @@ const SideBar = ({ toggleSideBar }) => {
           )}
         </s.LogoWrap>
         <s.SideBarLabel>User Panel</s.SideBarLabel>
-        <UserNav />
+        <UserNav onRedirect={onRedirect} />
         <LogoutBtn />
       </s.SideBar>
     </>
   );
+};
+
+SideBar.propTypes = {
+  onSideBar: PropTypes.func.isRequired,
+  onRedirect: PropTypes.func.isRequired,
 };
 
 export default SideBar;
@@ -83,7 +90,7 @@ export default SideBar;
 //               <s.CloseBtn
 //                 type="button"
 //                 aria-label="Close"
-//                 onClick={toggleSideBar}
+//                 onClick={onSideBar}
 //               >
 //                 <s.IconWrap>
 //                   <s.IconClose />

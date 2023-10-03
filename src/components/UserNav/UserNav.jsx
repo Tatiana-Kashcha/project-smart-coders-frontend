@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types';
+
 import * as s from './UserNav.styled';
 
-const UserNav = () => {
+const UserNav = ({ onRedirect }) => {
   return (
     <nav>
       <s.List>
         <li>
-          <s.StyledNavLink to="/account">
+          <s.StyledNavLink to="/account" onClick={onRedirect}>
             <s.IconWrap>
               <s.IconUserCheck />
             </s.IconWrap>
@@ -13,7 +15,7 @@ const UserNav = () => {
           </s.StyledNavLink>
         </li>
         <li>
-          <s.StyledNavLink to="/calendar">
+          <s.StyledNavLink to="/calendar" onClick={onRedirect}>
             <s.IconWrap>
               <s.IconCalendarCheck />
             </s.IconWrap>
@@ -21,7 +23,7 @@ const UserNav = () => {
           </s.StyledNavLink>
         </li>
         <li>
-          <s.StyledNavLink to="/statistics">
+          <s.StyledNavLink to="/statistics" onClick={onRedirect}>
             <s.IconWrap>
               <s.IconStat />
             </s.IconWrap>
@@ -31,6 +33,10 @@ const UserNav = () => {
       </s.List>
     </nav>
   );
+};
+
+UserNav.propTypes = {
+  onRedirect: PropTypes.func.isRequired,
 };
 
 export default UserNav;

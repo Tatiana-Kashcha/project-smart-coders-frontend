@@ -14,17 +14,17 @@
 // }
 
 // import SideBar from 'components/SideBar/SideBar';
-import { LoginForm } from 'components/LoginForm/LoginForm';
-import { MainLayout } from './MainLayout/MainLayout';
+// import { LoginForm } from 'components/LoginForm/LoginForm';
+// import { MainLayout } from './MainLayout/MainLayout';
 
-export default function MainPage() {
-  return (
-    <>
-      <MainLayout />
-      <LoginForm />
-    </>
-  );
-}
+// export default function MainPage() {
+//   return (
+//     <>
+//       <MainLayout />
+//       <LoginForm />
+//     </>
+//   );
+// }
 
 // pedro15@gmail.com
 // pedro12345678

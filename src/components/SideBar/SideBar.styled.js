@@ -72,18 +72,12 @@ export const CloseBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* top: 14px;
-  right: 14px; */
+
   padding: 0;
 
   cursor: pointer;
   background-color: transparent;
   border: none;
-
-  /* @media screen and (min-width: 768px) {
-    top: 18px;
-    right: 18px;
-  } */
 `;
 
 export const IconClose = styled(Close)`
