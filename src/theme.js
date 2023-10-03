@@ -103,6 +103,7 @@ export const globalTheme = {
     backdrop: 'rgba(0, 0, 0, 0.8)',
     bgDelBtn: 'rgba(234, 61, 101, 0.2)',
     bgDelHover: 'rgba(234, 61, 101, 0.5)',
+    borderColor: '1px solid rgba(220, 227, 229, 0.6)',
   },
 
   shadow: {
@@ -112,7 +113,7 @@ export const globalTheme = {
   },
 
   cubic: {
-    cubicBezier: 'cubic - bezier(0.4, 0, 0.2, 1)',
+    cubicBezier: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   fonts: {
