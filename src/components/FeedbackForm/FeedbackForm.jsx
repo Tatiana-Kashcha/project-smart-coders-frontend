@@ -17,6 +17,7 @@ const schema = yup.object({
 });
 
 const FeedbackForm = ({ onClose }) => {
+  // const dispatch = useDispatch()
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState('');
 
