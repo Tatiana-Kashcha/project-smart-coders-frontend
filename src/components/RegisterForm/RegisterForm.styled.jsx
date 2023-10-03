@@ -60,7 +60,7 @@ export const Input = styled.input`
   display: block;
   outline: none;
   padding: 14px;
-  border: 1px solid rgba(220, 227, 229, 0.6);
+  border: ${globalTheme.colors.borderColor};
   border-radius: 8px;
   position: relative;
 

@@ -112,6 +112,7 @@ export const globalTheme = {
     defaultTransition: 'all 250ms',
     placeholderColor: 'rgba(17, 17, 17, 0.15)',
     borderUserFormInput: '#111',
+    borderColor: '1px solid rgba(220, 227, 229, 0.6)',
   },
 
   shadow: {
@@ -121,7 +122,7 @@ export const globalTheme = {
   },
 
   cubic: {
-    cubicBezier: 'cubic - bezier(0.4, 0, 0.2, 1)',
+    cubicBezier: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   fonts: {

@@ -7,6 +7,7 @@ export const FeedbackBtn = styled.button`
   padding: 8px 20px;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
 
   background-color: ${globalTheme.colors.primary};
 
