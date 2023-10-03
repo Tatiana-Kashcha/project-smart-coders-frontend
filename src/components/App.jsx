@@ -9,9 +9,11 @@ import Calendar from 'pages/CalendarPage';
 import Statistics from 'pages/StatisticsPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { Layout } from 'components/Layout/Layout';
-import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
-import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
+// import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
+// import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
 import { RestrictedRoute } from 'components/RestrictedRoute';
+
+import { MainLayout } from 'pages/MainLayout/MainLayout';
 
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
@@ -24,19 +26,23 @@ export const App = () => {
 
           <Route
             path="account"
-            element={<PrivateRoute element={Account} redirecrTo="/" />}
-          />
+            element={<PrivateRoute element={MainLayout} redirecrTo="/" />}
+          >
+            <Route index element={<Account />} />
+          </Route>
           <Route
             path="calendar"
-            element={<PrivateRoute element={Calendar} redirecrTo="/" />}
+            element={<PrivateRoute element={MainLayout} redirecrTo="/" />}
           >
-            <Route path="month/:currrentDate" element={<ChoosedMonth />} />
-            <Route path="day/:currrentDay" element={<ChoosedDay />} />
+            <Route path="month/:currrentDate" element={<Calendar />} />
+            <Route path="day/:currrentDay" element={<Calendar />} />
           </Route>
           <Route
             path="statistics"
-            element={<PrivateRoute element={Statistics} redirecrTo="/" />}
-          />
+            element={<PrivateRoute element={MainLayout} redirecrTo="/" />}
+          >
+            <Route index element={<Statistics />} />
+          </Route>
           <Route
             path="register"
             element={

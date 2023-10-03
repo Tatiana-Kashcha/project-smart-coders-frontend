@@ -1,10 +1,5 @@
-// import { LoginForm } from "components/LoginForm/LoginForm";
-import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { LoginForm } from 'components/LoginForm/LoginForm';
 
 export default function Login() {
-  return (
-    <RegisterForm />
-    // <LoginForm />
-    // <h1>Login page</h1>;
-  );
+  return <LoginForm />;
 }
