@@ -8,19 +8,16 @@ import { DivStyled } from 'pages/MainLayout/MainLayoutStyled.styled';
 
 export function MainLayout() {
   return (
-    <DivStyled>
-      <SideBar />
-      <Suspense fallback={<div>Loading...</div>}>
-        <div>
-          <div>
-            <Header />
-          </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <DivStyled>
+        <SideBar />
 
-          <div>
-            <Outlet />
-          </div>
+        <div>
+          <Header />
+
+          <Outlet />
         </div>
-      </Suspense>
-    </DivStyled>
+      </DivStyled>
+    </Suspense>
   );
 }
