@@ -14,7 +14,7 @@ export const ContainerModific = styled(Container)`
   height: 100%;
 `;
 
-export const AuthСontainer = styled.div`
+export const AuthContainer = styled.div`
   position: relative;
   min-height: 100vh;
 

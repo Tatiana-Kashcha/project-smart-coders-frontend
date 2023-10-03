@@ -2,15 +2,15 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
 import MainPage from 'pages/MainPage';
-import Register from 'pages/RegisterPage';
-import Login from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 import Account from 'pages/AccountPage';
 import Calendar from 'pages/CalendarPage';
 import Statistics from 'pages/StatisticsPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { Layout } from 'components/Layout/Layout';
-// import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
-// import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
+import ChoosedMonth from 'components/ChoosedMonth/ChoosedMonth';
+import ChoosedDay from 'components/ChoosedDay/ChoosedDay';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 
 import { MainLayout } from 'pages/MainLayout/MainLayout';
@@ -32,26 +32,28 @@ export const App = () => {
           </Route>
           <Route
             path="calendar"
-            element={<PrivateRoute element={MainLayout} redirecrTo="/" />}
+            element={<PrivateRoute element={Calendar} redirecrTo="/" />}
           >
-            <Route path="month/:currrentDate" element={<Calendar />} />
-            <Route path="day/:currrentDay" element={<Calendar />} />
+            <Route path="month/:currrentDate" element={<ChoosedMonth />} />
+            <Route path="day/:currrentDay" element={<ChoosedDay />} />
           </Route>
           <Route
             path="statistics"
-            element={<PrivateRoute element={MainLayout} redirecrTo="/" />}
+            element={<PrivateRoute element={Statistics} redirecrTo="/" />}
           >
             <Route index element={<Statistics />} />
           </Route>
           <Route
             path="register"
             element={
-              <RestrictedRoute element={Register} redirecrTo="/account" />
+              <RestrictedRoute element={RegisterPage} redirecrTo="/account" />
             }
           />
           <Route
             path="login"
-            element={<RestrictedRoute element={Login} redirecrTo="/account" />}
+            element={
+              <RestrictedRoute element={LoginPage} redirecrTo="/account" />
+            }
           />
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
