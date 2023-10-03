@@ -14,7 +14,9 @@ export const StarContainer = styled.div`
 export const Label = styled.label`
   font-size: 14px;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1;
+
+  color: ${props => props.theme.colors.modalFormLabel};
 `;
 
 export const ReviewInput = styled.textarea`
@@ -26,25 +28,27 @@ export const ReviewInput = styled.textarea`
   font-weight: 600;
   line-height: 1.25;
 
-  color: ${props => props.theme.colors.primaryText};
-  background-color: ${props => props.theme.colors.thirdBackground};
-
   border-radius: 8px;
   border: 1.5px solid;
-  // overflow: hidden;
   resize: none;
 
-  border-color: ${props => (props.error ? 'red' : 'transparent')};
+  color: ${props => props.theme.colors.secondText};
+  background-color: ${props => props.theme.colors.forthBackground};
+  border-color: ${props =>
+    props.error
+      ? `${globalTheme.colors.redError}`
+      : props.theme.colors.textareaBorder};
 `;
 
 export const ErrorContainer = styled(ErrorMessage)`
-  color: var(--red-error);
-  font-family: Inter;
+  margin-top: 8px;
+
+  font-family: ${globalTheme.fonts.fontsText};
   font-size: 12px;
   font-weight: 400;
-  line-height: 14px;
+  line-height: 1.16;
 
-  margin-top: 8px;
+  color: ${globalTheme.colors.redError};
 `;
 
 export const ReviewContainer = styled.div`
@@ -68,15 +72,16 @@ export const EditButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  border-radius: 50px;
   width: 30px;
   height: 30px;
   padding: 12px center;
 
-  color: ${props => props.theme.colors.primaryText};
-  background-color: ${globalTheme.colors.secondary};
+  border-radius: 50px;
   border: none;
   cursor: pointer;
+
+  color: ${globalTheme.colors.primary};
+  background-color: ${props => props.theme.colors.secondBackgroundButton};
 
   &:hover {
     color: ${globalTheme.colors.white};
@@ -90,19 +95,20 @@ export const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  border-radius: 50px;
   width: 30px;
   height: 30px;
-
   padding: 12px center;
-  background-color: ${globalTheme.colors.bgDelBtn};
-  color: ${globalTheme.colors.mainRed};
+
+  border-radius: 50px;
   border: none;
   cursor: pointer;
 
+  background-color: ${globalTheme.colors.bgDelBtn};
+  color: ${globalTheme.colors.mainRed};
+
   &:hover {
     color: ${globalTheme.colors.white};
-    background: ${globalTheme.colors.bgDelHover};
+    background: ${globalTheme.colors.mainRed};
     box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
 `;
@@ -116,19 +122,21 @@ export const DownContainerButton = styled.div`
 export const ConfirmButton = styled.button`
   width: 100%;
   padding: 12px;
-  background-color: ${props => props.theme.colors.backgroundButton};
-  color: ${props => props.theme.colors.primaryText};
+
+  font-family: ${globalTheme.fonts.fontsText};
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28;
+
   border: none;
   border-radius: 8px;
   cursor: pointer;
 
-  /* font-family: Inter; */
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px;
+  color: ${props => props.theme.colors.secondText};
+  background-color: ${props => props.theme.colors.backgroundButton};
 
   &:hover {
+    color: ${globalTheme.colors.white};
     background-color: ${globalTheme.colors.secondary};
     box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
@@ -137,19 +145,21 @@ export const ConfirmButton = styled.button`
 export const CancelButton = styled.button`
   width: 100%;
   padding: 12px auto;
-  background-color: ${props => props.theme.colors.buttonNotActive};
-  color: ${props => props.theme.colors.secondText};
+
+  font-family: ${globalTheme.fonts.fontsText};
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28;
+
   border: none;
   border-radius: 8px;
   cursor: pointer;
 
-  /* font-family: Inter; */
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px;
+  color: ${props => props.theme.colors.secondText};
+  background-color: ${props => props.theme.colors.backgroundButton};
 
   &:hover {
+    color: ${globalTheme.colors.white};
     background-color: ${globalTheme.colors.secondary};
     box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }

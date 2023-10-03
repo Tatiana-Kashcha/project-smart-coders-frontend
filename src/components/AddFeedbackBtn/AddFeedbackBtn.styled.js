@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const FeedbackBtn = styled.button`
   display: inline-block;
-  margin-right: 24px;
-  padding: 12px 32px;
-  border-radius: 14px;
+  margin-right: 18px;
+  padding: 8px 20px;
+  border-radius: 10px;
   border: none;
+  cursor: pointer;
 
-  background-color: var(--green-valid);
+  background-color: ${globalTheme.colors.primary};
 
   font-family: 'Inter';
   font-size: 12px;
@@ -15,6 +17,10 @@ export const FeedbackBtn = styled.button`
   color: #ffffff;
 
   @media screen and (min-width: 678px) {
+    padding: 12px 32px;
+    margin-right: 24px;
+    border-radius: 14px;
     font-size: 14px;
+    line-height: 1.28;
   }
 `;
