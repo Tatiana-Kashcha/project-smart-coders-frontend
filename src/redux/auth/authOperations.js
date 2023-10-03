@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Report } from 'notiflix';
 
 axios.defaults.baseURL = 'http://localhost:8000/';
 
@@ -12,47 +13,44 @@ const clearToken = () => {
 };
 
 export const register = createAsyncThunk(
-    'auth/register',
-    async (credentials, thunkAPI) => {
-        try {
-            const { data } = await axios.post('/auth/register', credentials);
-            return data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/auth/register', credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
+  }
 );
 
 export const login = createAsyncThunk(
-    'auth/login',
-    async (credentials, thunkAPI) => {
-        try {
-            const { data } = await axios.post('/auth/login', credentials);
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/auth/login', credentials);
 
-            setToken(data.data.token);
+      setToken(data.data.token);
 
-            return data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
+  }
 );
 
-export const logout = createAsyncThunk(
-    'auth/logout',
-    async (_, thunkAPI) => {
-        try {
-            await axios.get('/user/logout');
-            clearToken();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-);
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/user/logout');
+    clearToken();
+    console.log('logout', 'logout succesful');
+  } catch (error) {
+    Report.failure('ERROR', `${error.message} Please Try Later`, 'Close');
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
-export const refresh = createAsyncThunk(
-    'auth/refresh',
-    async (_, thunkAPI) => {
+export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   const { token } = thunkAPI.getState().auth;
   if (!token) {
     return thunkAPI.rejectWithValue('Not Valid Token');
@@ -67,4 +65,3 @@ export const refresh = createAsyncThunk(
     return thunkAPI.rejectWithValue(error);
   }
 });
-
