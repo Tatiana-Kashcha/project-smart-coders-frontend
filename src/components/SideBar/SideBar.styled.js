@@ -8,7 +8,7 @@ export const SideBar = styled.aside`
   max-width: 100%;
   height: 100vh;
   padding: 24px 20px;
-
+  border: solid red;
   background-color: ${props => props.theme.colors.thirdBackground};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
