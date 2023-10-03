@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
+import { Container } from 'stylesheet/Container.styled';
+
+export const Section = styled.section`
+  height: 100vh;
+`;
+
+export const ContainerModific = styled(Container)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+`;
 
 export const AuthContainer = styled.div`
   position: relative;
