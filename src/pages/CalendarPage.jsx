@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 
-export default function Calendar() {
+export default function CalendarPage() {
   const [monthOrDay, setMonthOrDay] = useState('');
   const navigate = useNavigate();
 
