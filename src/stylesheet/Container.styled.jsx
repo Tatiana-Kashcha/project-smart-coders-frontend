@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { globalTheme } from 'theme';
 
 export const Container = styled.div`

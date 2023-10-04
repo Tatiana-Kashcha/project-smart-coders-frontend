@@ -16,8 +16,8 @@ export const RegisterSchema = yup.object().shape({
   password: yup
     .string()
     .required('Required')
-    .min(6, 'Password must contain 6 characters or more')
-    .max(20, 'Password must contain 20 characters or less')
+    .min(8, 'Password must contain 8 characters or more')
+    .max(30, 'Password must contain 30 characters or less')
     .matches(
       passwordRegex,
       'Password should contain  at least eight characters and at least one number and one letter'
