@@ -8,7 +8,7 @@ const LogoutBtn = () => {
   const dispatch = useDispatch();
   const userLogout = useSelector(selectUser);
   const handleClick = () => {
-    dispatch(logout(userLogout.user.id));
+    dispatch(logout(userLogout.id));
   };
 
   return (

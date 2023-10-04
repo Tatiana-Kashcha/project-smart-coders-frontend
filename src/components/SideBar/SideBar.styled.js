@@ -5,6 +5,7 @@ import { ReactComponent as Close } from '../../icons/x-close.svg';
 
 export const SideBar = styled.aside`
   position: absolute;
+  left: 0;
   z-index: 1200;
 
   width: 225px;
@@ -12,7 +13,7 @@ export const SideBar = styled.aside`
   height: 100vh;
   padding: 24px 20px;
 
-  border: 1px solid red;
+  /* border: 1px solid red; */ //!
 
   background-color: ${props => props.theme.colors.thirdBackground};
 

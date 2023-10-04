@@ -7,8 +7,9 @@ import Header from 'components/Header/Header';
 
 import { globalTheme } from 'theme'; //?
 import { DivStyled } from 'pages/MainLayout/MainLayoutStyled.styled';
+import { Container } from '../../stylesheet/Container.styled';
 
-export function MainLayout() {
+export default function MainLayout() {
   const mediaQuery = window.matchMedia(
     `(min-width: ${globalTheme.breakpoints.desktop})`
   ); //?
@@ -21,6 +22,7 @@ export function MainLayout() {
     };
 
     mediaQuery.addEventListener('change', handleResize);
+    // console.log('useEffect', showSideBar); //!
 
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
@@ -30,26 +32,30 @@ export function MainLayout() {
   const onSideBar = () => {
     setShowSideBar(prevState => !prevState);
     console.log('onSideBar'); //!
+    console.log('onSideBar', showSideBar); //!
   }; //?
 
   const onRedirect = () => {
     setShowSideBar(false);
     console.log('onRedirect'); //!
+    console.log(showSideBar); //!
   }; //?
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <DivStyled>
-        {(mediaQuery.matches || showSideBar) && (
-          <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
-        )}
+      <Container>
+        <DivStyled>
+          {(mediaQuery.matches || showSideBar) && (
+            <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
+          )}
 
-        <div>
-          <Header onSideBar={onSideBar} />
+          <div>
+            <Header onSideBar={onSideBar} />
 
-          <Outlet />
-        </div>
-      </DivStyled>
+            <Outlet />
+          </div>
+        </DivStyled>
+      </Container>
     </Suspense>
   );
 }

@@ -6,12 +6,15 @@ export const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 
+  background-color: ${props => props.theme.colors.background}; //!add bgc
+
   @media screen and (min-width: ${globalTheme.breakpoints.mobile}) {
     width: ${globalTheme.breakpoints.mobile};
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: ${globalTheme.breakpoints.tablet};
+    padding: 0 32px; //!add padding
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {

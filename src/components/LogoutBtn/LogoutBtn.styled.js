@@ -11,7 +11,6 @@ export const LogoutButton = styled.button`
 
   position: absolute;
   bottom: 24px;
-  left: calc(50% - 65.5px);
 
   width: 131px;
   padding: 14px 0;
@@ -30,9 +29,9 @@ export const LogoutButton = styled.button`
   color: ${globalTheme.colors.white};
   cursor: pointer;
 
-  &:disabled {
+  /* &:disabled {
     background: ${globalTheme.colors.bgBlue};
-  }
+  } */ //??
 
   &:hover {
     background-color: ${globalTheme.colors.secondary};
@@ -40,7 +39,7 @@ export const LogoutButton = styled.button`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     gap: 11px;
-    left: calc(50% - 70.5px);
+
     width: 141px;
     padding: 16px 0;
 
