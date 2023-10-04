@@ -31,10 +31,10 @@ export const AuthImageContainer = styled.div`
 
   @media (min-width: 1280px) {
     display: block;
+    width: 400px;
+    height: 416px;
     position: absolute;
-    width: 368px;
-    height: 521px;
-    bottom: 19px;
-    right: 60px;
+    bottom: 0;
+    left: 49px;
   }
 `;

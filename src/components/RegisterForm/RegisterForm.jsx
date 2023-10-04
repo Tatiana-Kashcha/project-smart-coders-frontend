@@ -78,6 +78,10 @@ export const RegisterForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.name}
+        style={{
+          borderColor:
+            formik.touched.name && formik.errors.name ? '#E74A3B' : '#3CBC81',
+        }}
       />
 
       {formik.touched.name && formik.errors.name ? (
@@ -93,6 +97,10 @@ export const RegisterForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.email}
+        style={{
+          borderColor:
+            formik.touched.email && formik.errors.email ? '#E74A3B' : '#3CBC81',
+        }}
       />
 
       {formik.touched.email && formik.errors.email ? (
@@ -110,6 +118,12 @@ export const RegisterForm = () => {
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.password}
+          style={{
+            borderColor:
+              formik.touched.password && formik.errors.password
+                ? '#E74A3B'
+                : '#3CBC81',
+          }}
         />
         <ToggleShowHide type="button" onClick={handleShowPassword}>
           {showPassword ? (
