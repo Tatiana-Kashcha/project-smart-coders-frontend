@@ -225,6 +225,7 @@ const UserForm = () => {
                       <S.InputInfo
                         name="phone"
                         type="tel"
+                        placeholder="Add a phone number"
                         style={{
                           borderColor:
                             (touched.phone && errors.phone && '#E74A3B') ||

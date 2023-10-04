@@ -135,7 +135,7 @@ export const InputInfo = styled(Input)`
   display: flex;
 
   &::placeholder {
-    color: ${props => props.theme.colors.reviewsContent};
+    color: ${props => props.theme.colors.userPlaceholder};
   }
   :hover,
   :focus {
