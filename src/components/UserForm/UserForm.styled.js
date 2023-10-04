@@ -45,6 +45,7 @@ export const Form = styled(FormikForm)`
   padding-right: 18px;
   background-color: ${props => props.theme.colors.secondBackground};
   border-radius: 16px;
+  /* border-color: rgba(17, 17, 17, 0.15); */
   @media (min-width: 768px) {
     align-items: center;
     padding-top: 40px;
@@ -98,14 +99,14 @@ export const Labels = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
-
+  border-color: rgba(17, 17, 17, 0.15);
   row-gap: 8px;
   max-width: 100%;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.17;
-  color: ${props => props.theme.colors.userLabelColor};
-  /* color: #111111; */
+  color: ${props => props.theme.colors.userLabelColor}; //колір назв інпутів
+
   @media screen and (min-width: 375px) and (max-width: 768px) {
     min-width: 299px;
   }
@@ -126,7 +127,7 @@ export const InputInfo = styled(Input)`
   width: 100%;
   border-radius: 8px;
   border-width: 1px;
-  border-color: ${props => props.theme.colors.inputBorder};
+  border-color: ${props => props.theme.colors.userInputBorder};
   background-color: transparent;
   padding: 12px 14px;
   color: ${props => props.theme.colors.primaryText};
@@ -134,7 +135,7 @@ export const InputInfo = styled(Input)`
   display: flex;
 
   &::placeholder {
-    color: ${props => props.theme.colors.userLabelColor};
+    color: ${props => props.theme.colors.reviewsContent};
   }
   :hover,
   :focus {
@@ -193,6 +194,7 @@ export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  border-color: rgba(17, 17, 17, 0.15);
   @media (min-width: 768px) {
     gap: 24px;
   }

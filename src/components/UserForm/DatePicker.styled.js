@@ -18,6 +18,12 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   }
 
   & .MuiInputBase-input {
+    position: relative;
+    height: 46px;
+    display: flex;
+    @media (min-width: 768px) {
+      height: 46px;
+    }
     padding: 0px 0px 0px 14px;
     font-size: 14px;
     line-height: 1.29;

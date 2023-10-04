@@ -104,6 +104,7 @@ const UserForm = () => {
               </div>
               <S.UserTitle>{userInfo.name || '****'}</S.UserTitle>
               <S.Title>User</S.Title>
+              {/* user name */}
               <S.UserWrapper>
                 <S.UserInfo>
                   <S.Labels
@@ -137,11 +138,11 @@ const UserForm = () => {
                         (touched.birthday && !errors.birthday && '#3CBC81'),
                     }}
                   >
-                    Birthday
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePickerStyled
-                        name="birthday"
-                        type="date"
+                    <p>Birthday</p>
+                    {/* <S.IconStatusBox>
+                      <S.InputInfo
+                        name="name"
+                        // placeholder="Your name"
                         style={{
                           borderColor:
                             (touched.birthday &&
@@ -149,37 +150,57 @@ const UserForm = () => {
                               '#E74A3B') ||
                             (touched.birthday && !errors.birthday && '#3CBC81'),
                         }}
-                        slotProps={{
-                          popper: {
-                            sx: PopperDateStyles,
-                          },
-                          textField: {
-                            placeholder: userInfo.birthday || `${currentDate}`,
-                          },
-                        }}
-                        views={['year', 'month', 'day']}
-                        format="DD.MM.YYYY"
-                        closeOnSelect={true}
-                        disableFuture={true}
-                        onChange={date => {
-                          if (!date) setFieldValue('birthday', '');
-                          setFieldValue('birthday', date);
-                        }}
                       />
+                      {touched.name && errors.name && <S.ErrorIcon />}
+                      {touched.name && !errors.name && <S.CorrectIcon />}
+                    </S.IconStatusBox> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <S.IconStatusBox>
+                        <DatePickerStyled
+                          name="birthday"
+                          type="date"
+                          style={{
+                            borderColor:
+                              (touched.birthday &&
+                                errors.birthday &&
+                                '#E74A3B') ||
+                              (touched.birthday &&
+                                !errors.birthday &&
+                                '#3CBC81'),
+                          }}
+                          slotProps={{
+                            popper: {
+                              sx: PopperDateStyles,
+                            },
+                            textField: {
+                              placeholder:
+                                userInfo.birthday || `${currentDate}`,
+                            },
+                          }}
+                          views={['year', 'month', 'day']}
+                          format="DD.MM.YYYY"
+                          closeOnSelect={true}
+                          disableFuture={true}
+                          onChange={date => {
+                            if (!date) setFieldValue('birthday', '');
+                            setFieldValue('birthday', date);
+                          }}
+                        />
+                      </S.IconStatusBox>
                     </LocalizationProvider>
                   </S.Labels>
-                  <div>
-                    <S.Labels
-                      style={{
-                        color:
-                          (touched.skype && errors.skype && '#E74A3B') ||
-                          (touched.skype && !errors.skype && '#3CBC81'),
-                      }}
-                    >
-                      Email
+
+                  <S.Labels
+                    style={{
+                      color:
+                        (touched.email && errors.email && '#E74A3B') ||
+                        (touched.email && !errors.email && '#3CBC81'),
+                    }}
+                  >
+                    <p>Email</p>
+                    <S.IconStatusBox>
                       <S.InputInfo
                         name="email"
-                        type="email"
                         placeholder="Your email"
                         style={{
                           borderColor:
@@ -187,22 +208,19 @@ const UserForm = () => {
                             (touched.email && !errors.email && '#3CBC81'),
                         }}
                       />
-                      {/* {touched.email && errors.email && <ErrorIcon />}
-                      {touched.email && !errors.email && <CorrectIcon />} */}
-                      <ErrorMessage name="email" component="span" />
-                    </S.Labels>
-                  </div>
-                </S.UserInfo>
-
-                <S.UserInfo>
+                      {touched.email && errors.email && <S.ErrorIcon />}
+                      {touched.email && !errors.email && <S.CorrectIcon />}
+                    </S.IconStatusBox>
+                    <ErrorMessage name="email" component="span" />
+                  </S.Labels>
                   <S.Labels
                     style={{
-                      borderColor:
-                        (touched.email && errors.email && '#E74A3B') ||
-                        (touched.email && !errors.email && '#3CBC81'),
+                      color:
+                        (touched.phone && errors.phone && '#E74A3B') ||
+                        (touched.phone && !errors.phone && '#3CBC81'),
                     }}
                   >
-                    Phone
+                    <p>Phone</p>
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="phone"
@@ -226,7 +244,7 @@ const UserForm = () => {
                         (touched.skype && !errors.skype && '#3CBC81'),
                     }}
                   >
-                    Skype
+                    <p>Skype</p>
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="skype"
