@@ -65,6 +65,7 @@ const FeedbackForm = ({ onClose }) => {
   // {isLoading && currenUserInfo === null && !error ? (
   //       <Loader />
   //     ) : (
+
   return (
     <Formik
       initialValues={initialValues}
