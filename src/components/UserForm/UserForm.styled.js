@@ -15,6 +15,7 @@ import {
 } from 'formik';
 
 import { ReactComponent as plus } from '../../icons/plusBlue.svg';
+
 export const WrapperForm = styled.div`
   margin: 0 auto;
   max-width: 100%;
@@ -45,6 +46,7 @@ export const Form = styled(FormikForm)`
   padding-right: 18px;
   background-color: ${props => props.theme.colors.secondBackground};
   border-radius: 16px;
+  /* border-color: rgba(17, 17, 17, 0.15); */
   @media (min-width: 768px) {
     align-items: center;
     padding-top: 40px;
@@ -98,14 +100,14 @@ export const Labels = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
-
+  border-color: rgba(17, 17, 17, 0.15);
   row-gap: 8px;
   max-width: 100%;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.17;
-  color: ${props => props.theme.colors.userLabelColor};
-  /* color: #111111; */
+  color: ${props => props.theme.colors.userLabelColor}; //колір назв інпутів
+
   @media screen and (min-width: 375px) and (max-width: 768px) {
     min-width: 299px;
   }
@@ -125,21 +127,23 @@ export const InputInfo = styled(Input)`
   height: 42px;
   width: 100%;
   border-radius: 8px;
-  border-width: 1px;
-  border-color: ${props => props.theme.colors.inputBorder};
+  border: 1px solid ${props => props.theme.colors.textareaBorder};
+  border-color: ${props => props.theme.colors.userLabelColor};
   background-color: transparent;
   padding: 12px 14px;
   color: ${props => props.theme.colors.primaryText};
-  transition: ${props => props.theme.colors.defaultTransition};
+  /* transition: ${props => props.theme.colors.defaultTransition}; */
   display: flex;
 
   &::placeholder {
-    color: ${props => props.theme.colors.userLabelColor};
+    color: ${props => props.theme.colors};
   }
   :hover,
   :focus {
-    border: 1px solid ${props => props.theme.colors.primaryText};
+    border-color: ${props => props.theme.colors.userInputBorder};
+    border: 1px solid;
   }
+  /* border: 1px solid ${props => props.theme.colors.textareaBorder}; */
 
   @media (min-width: 768px) {
     font-size: 16px;
@@ -193,6 +197,7 @@ export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  border-color: rgba(17, 17, 17, 0.15);
   @media (min-width: 768px) {
     gap: 24px;
   }
@@ -276,7 +281,7 @@ export const CorrectIcon = styled(IconCorrect)`
   transform: translateY(-50%);
 `;
 export const UserTitle = styled.h2`
-  color: ${props => props.theme.colors.userLabelColor};
+  color: ${props => props.theme.colors.thirdText};
   font-size: 14px;
   font-weight: 700;
   line-height: 1.3;
