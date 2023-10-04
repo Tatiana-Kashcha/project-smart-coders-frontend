@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import { Formik, Field } from 'formik';
@@ -9,7 +9,7 @@ import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
 
-import Loader from 'components/Loader/Loader';
+// import Loader from 'components/Loader/Loader';
 
 const schema = yup.object({
   review: yup
