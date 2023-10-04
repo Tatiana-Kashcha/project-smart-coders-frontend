@@ -1,9 +1,13 @@
 import * as yup from 'yup';
 
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$/;
+const emailRegex = /^[a-z0-9.]+@[a-z]+\.[a-z]{2,3}$/;
 
 export const LoginSchema = yup.object().shape({
-  email: yup.string().required('Required').email('Invalid email'),
+  email: yup
+    .string()
+    .required('Required')
+    .matches(emailRegex, 'Invalid email format'),
   password: yup
     .string()
     .required('Required')

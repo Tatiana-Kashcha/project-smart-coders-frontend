@@ -10,7 +10,7 @@ const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
 const AccountPage = lazy(() => import('pages/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
