@@ -54,7 +54,7 @@ export const RegisterForm = () => {
             })
           );
 
-          navigate('/calendar/month');
+          navigate('/');
         }
 
         if (outcomeAction.type === 'auth/register/rejected') {
