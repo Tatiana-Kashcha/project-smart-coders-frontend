@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/project-smart-coders-frontend/static/css/main.1d4f0a88.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.295b186d.js",
+    "main.js": "/project-smart-coders-frontend/static/js/main.12b4271a.js",
     "static/js/697.68c1d6e7.chunk.js": "/project-smart-coders-frontend/static/js/697.68c1d6e7.chunk.js",
     "static/media/start-calendar-view-tablet-2x.png": "/project-smart-coders-frontend/static/media/start-calendar-view-tablet-2x.2d5fb16ba0772f742462.png",
     "static/media/start-calendar-view-desktop-2x.png": "/project-smart-coders-frontend/static/media/start-calendar-view-desktop-2x.0b3c9c82055a49088137.png",
+    "static/media/signup-goose.svg": "/project-smart-coders-frontend/static/media/signup-goose.4076114dcfcc2090fcad49e6d2207231.svg",
     "static/media/start-sidebar-tablet-2x.png": "/project-smart-coders-frontend/static/media/start-sidebar-tablet-2x.2195c3f2b41c0a98bf83.png",
     "static/media/start-calendar-view-mobile-2x.png": "/project-smart-coders-frontend/static/media/start-calendar-view-mobile-2x.a7b7f307255963357bc4.png",
     "static/media/start-sidebar-desktop-2x.png": "/project-smart-coders-frontend/static/media/start-sidebar-desktop-2x.2f008f5d08c9c88377c2.png",
@@ -59,11 +60,11 @@
     "static/media/burger-menu.svg": "/project-smart-coders-frontend/static/media/burger-menu.cd8139fdb902f54f6c943bb1141b4141.svg",
     "static/media/x-close.svg": "/project-smart-coders-frontend/static/media/x-close.35afc42d83c641d7796f8c48fa0420ff.svg",
     "main.1d4f0a88.css.map": "/project-smart-coders-frontend/static/css/main.1d4f0a88.css.map",
-    "main.295b186d.js.map": "/project-smart-coders-frontend/static/js/main.295b186d.js.map",
+    "main.12b4271a.js.map": "/project-smart-coders-frontend/static/js/main.12b4271a.js.map",
     "697.68c1d6e7.chunk.js.map": "/project-smart-coders-frontend/static/js/697.68c1d6e7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1d4f0a88.css",
-    "static/js/main.295b186d.js"
+    "static/js/main.12b4271a.js"
   ]
 }
