@@ -8,7 +8,6 @@ export default function LoginPage() {
 
   return (
     <s.Section>
-      {/* <s.ContainerModific> */}
       <s.AuthContainer>
         <LoginForm />
         <AuthNavigate redirect={toRegister} titleLink="Sign up" />
@@ -18,7 +17,6 @@ export default function LoginPage() {
           />
         </s.AuthImageContainer>
       </s.AuthContainer>
-      {/* </s.ContainerModific> */}
     </s.Section>
   );
 }
