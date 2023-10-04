@@ -32,7 +32,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     line-height: 1.29;
     height: 18px;
     font-weight: 600;
-    color: ${props => props.theme.colors.userLabelColor}; // global styled color
+    color: ${props => props.theme.colors.primaryText}; // global styled color
 
     @media (min-width: 768px) {
       height: 46px;
