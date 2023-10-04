@@ -29,10 +29,6 @@ export const LogoutButton = styled.button`
   color: ${globalTheme.colors.white};
   cursor: pointer;
 
-  /* &:disabled {
-    background: ${globalTheme.colors.bgBlue};
-  } */ //??
-
   &:hover {
     background-color: ${globalTheme.colors.secondary};
   }

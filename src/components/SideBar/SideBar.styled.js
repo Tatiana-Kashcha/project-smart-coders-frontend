@@ -14,8 +14,6 @@ export const SideBar = styled.aside`
   max-height: 844px;
   padding: 24px 20px;
 
-  /* border: 1px solid red; */ //!
-
   background-color: ${props => props.theme.colors.thirdBackground};
 
   @media screen and (max-width: calc(${globalTheme.breakpoints

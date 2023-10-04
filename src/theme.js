@@ -41,7 +41,7 @@ export const lightTheme = {
     sideBarActive: '#e3f3ff',
 
     bgrAvatar: '#F8F8F8',
-    bgrSection: '#f7f6f9',
+    bgrSection: '#f7f6f9', //! add background for lightTheme
   },
 };
 
@@ -88,7 +88,7 @@ export const darkTheme = {
     sideBarActive: '#3e85f3',
 
     bgrAvatar: '#171820',
-    bgrSection: '#171820',
+    bgrSection: '#171820', //! add background for darkTheme
   },
 };
 

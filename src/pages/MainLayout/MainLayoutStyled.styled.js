@@ -2,10 +2,7 @@ import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
 export const DivStyled = styled.div`
-  /* padding-top: 24px; //! */
-
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-    /* padding-top: 40px; //! */
     padding-left: 289px;
   }
 `;
@@ -19,7 +16,6 @@ export const SectionHeader = styled.section`
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     padding-top: 40px;
     padding-bottom: 32px;
-    /* padding-left: 289px; */ //!
   }
 `;
 
@@ -30,13 +26,13 @@ export const Section = styled.section`
       .tablet} - 0.5px)) {
     padding-top: 31px;
     padding-bottom: 40px;
-  } //! add padding
+  }
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding-bottom: 38px;
-  } //! add padding
+  }
 
-  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     padding-bottom: 32px;
-  } //! add padding
+  }
 `;

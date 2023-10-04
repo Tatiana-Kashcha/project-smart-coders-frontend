@@ -2,23 +2,10 @@ import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
 export const Division = styled.div`
-  /* margin-bottom: 64px; */ //!
-  /* padding-top: 24px; */ //!
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background-color: ${props => props.theme.colors.background}; */ //!
-
-  /* @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
-    margin-bottom: 64px;
-  } */ //!
-
-  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-    /* margin-bottom: 32px; */ //!
-    /* padding: 40px 0; */ //!
-  }
 `;
 
 export const Title = styled.h2`
