@@ -37,7 +37,7 @@ export const StyledNavLink = styled(NavLink)`
   &:focus,
   &.active {
     color: ${props => props.theme.colors.colorButtonContentHover};
-    background-color: ${props => props.theme.colors.backgroundButton};
+    background-color: ${props => props.theme.colors.sideBarActive};
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {

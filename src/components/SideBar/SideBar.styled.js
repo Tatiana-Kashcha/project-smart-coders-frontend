@@ -11,6 +11,7 @@ export const SideBar = styled.aside`
   width: 225px;
   max-width: 100%;
   height: 100vh;
+  max-height: 900px;
   padding: 24px 20px;
 
   /* border: 1px solid red; */ //!

@@ -6,8 +6,8 @@ import SideBar from 'components/SideBar/SideBar';
 import Header from 'components/Header/Header';
 
 import { globalTheme } from 'theme'; //?
-import { DivStyled } from 'pages/MainLayout/MainLayoutStyled.styled';
-import { Container } from '../../stylesheet/Container.styled';
+
+import * as s from './MainLayoutStyled.styled';
 
 export default function MainLayout() {
   const mediaQuery = window.matchMedia(
@@ -22,7 +22,7 @@ export default function MainLayout() {
     };
 
     mediaQuery.addEventListener('change', handleResize);
-    // console.log('useEffect', showSideBar); //!
+    console.log('useEffect', showSideBar); //!
 
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
@@ -43,15 +43,15 @@ export default function MainLayout() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Container>
+      <s.ContainerMode>
         {(mediaQuery.matches || showSideBar) && (
           <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
         )}
-        <DivStyled>
+        <s.DivStyled>
           <Header onSideBar={onSideBar} />
           <Outlet />
-        </DivStyled>
-      </Container>
+        </s.DivStyled>
+      </s.ContainerMode>
     </Suspense>
   );
 }
