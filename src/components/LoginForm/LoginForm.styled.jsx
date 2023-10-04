@@ -66,14 +66,14 @@ export const Input = styled.input`
 
   &:hover,
   &:focus {
-    border-color: ${globalTheme.colors.primary};
+    border-color: ${globalTheme.colors.black};
   }
 
   ::placeholder {
     font-size: 16px;
     font-style: normal;
     line-height: 18px;
-    color: rgba(17, 17, 17, 0.15);
+    color: ${globalTheme.colors.placeholderColor};
   }
 
   @media screen and (min-width: 768px) {

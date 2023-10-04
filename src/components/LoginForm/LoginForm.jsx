@@ -47,7 +47,7 @@ export const LoginForm = () => {
         );
         if (actionOutcome) {
           toast.success('Success');
-          navigate('/');
+          navigate('/calendar/month/123123');
           setSubmitting(false);
           resetForm();
         }
@@ -70,6 +70,10 @@ export const LoginForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.email}
+        style={{
+          borderColor:
+            formik.touched.email && formik.errors.email ? '#E74A3B' : '#3CBC81',
+        }}
       />
       {formik.touched.email && formik.errors.email ? (
         <Error>{formik.errors.email}</Error>
@@ -86,6 +90,12 @@ export const LoginForm = () => {
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.password}
+          style={{
+            borderColor:
+              formik.touched.password && formik.errors.password
+                ? '#E74A3B'
+                : '#3CBC81',
+          }}
         />
         <ToggleShowHide type="button" onClick={handleShowPassword}>
           {showPassword ? (
