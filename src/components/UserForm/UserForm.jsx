@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
+// import {с
 import * as S from './UserForm.styled';
 
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
@@ -20,7 +21,7 @@ const currentDate = dayjs(new Date()).format('DD/MM/YYYY');
 const UserForm = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUser);
-  console.log(userInfo);
+  // console.log(userInfo.user.name);
   const [avatarURL, setAvatarURL] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
@@ -52,13 +53,15 @@ const UserForm = () => {
       <S.WrapperForm>
         <Formik
           validationSchema={UserValidSchema}
-          initialValues={{
-            name: userInfo.name || '',
-            birthday: userInfo.birthday || `${currentDate}`,
-            email: userInfo.email || '',
-            phone: userInfo.phone || '',
-            skype: userInfo.skype || '',
-          }}
+          initialValues={
+            {
+              // name: userInfo.user.name || '',
+              // birthday: userInfo.user.birthday || `${currentDate}`,
+              // email: userInfo.user.email || '',
+              // phone: userInfo.user.phone || '',
+              // skype: userInfo.user.skype || '',
+            }
+          }
           onSubmit={handleSubmit}
         >
           {({
@@ -79,9 +82,9 @@ const UserForm = () => {
                         alt="Avatar"
                       />
                     </label>
-                  ) : userInfo?.avatarURL ? (
+                  ) : userInfo.avatarURL ? (
                     <label htmlFor="avatar">
-                      <S.ImgAvatar src={userInfo?.avatarURL} alt="Avatar" />
+                      <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
                     <S.AvatarDefault />
