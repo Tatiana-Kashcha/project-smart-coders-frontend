@@ -15,6 +15,7 @@ import {
 } from 'formik';
 
 import { ReactComponent as plus } from '../../icons/plusBlue.svg';
+
 export const WrapperForm = styled.div`
   margin: 0 auto;
   max-width: 100%;
