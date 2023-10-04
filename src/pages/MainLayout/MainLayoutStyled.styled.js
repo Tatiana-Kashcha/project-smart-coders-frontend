@@ -11,6 +11,14 @@ export const DivStyled = styled.div`
   }
 `;
 
-export const ContainerMode = styled(Container)`
+export const SectionHeader = styled(Container)`
   background-color: ${props => props.theme.colors.bgrSection};
+`;
+
+export const Section = styled(Container)`
+  background-color: ${props => props.theme.colors.bgrSection};
+`;
+
+export const ContainerMode = styled(Container)`
+  /* background-color: ${props => props.theme.colors.bgrSection}; */
 `;

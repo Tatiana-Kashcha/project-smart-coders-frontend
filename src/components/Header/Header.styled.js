@@ -13,11 +13,11 @@ export const Division = styled.div`
 
   /* @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin-bottom: 64px;
-  } */
+  } */ //!
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     margin-bottom: 32px;
-    /* padding: 40px 0; */
+    /* padding: 40px 0; */ //!
   }
 `;
 

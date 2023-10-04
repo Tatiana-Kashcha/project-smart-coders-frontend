@@ -48,8 +48,12 @@ export default function MainLayout() {
           <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
         )}
         <s.DivStyled>
+          {/* <s.SectionHeader> */}
           <Header onSideBar={onSideBar} />
+          {/* </s.SectionHeader> */}
+          {/* <s.Section> */}
           <Outlet />
+          {/* </s.Section> */}
         </s.DivStyled>
       </s.ContainerMode>
     </Suspense>

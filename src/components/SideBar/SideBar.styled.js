@@ -11,7 +11,7 @@ export const SideBar = styled.aside`
   width: 225px;
   max-width: 100%;
   height: 100vh;
-  max-height: 900px;
+  max-height: 844px;
   padding: 24px 20px;
 
   /* border: 1px solid red; */ //!
@@ -33,11 +33,13 @@ export const SideBar = styled.aside`
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    max-height: 1024px;
     width: 289px;
     padding: 24px 32px;
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    max-height: 900px;
     padding: 32px 24px 24px;
     transform: translateX(calc(100vw / 2 - 720px));
   }
