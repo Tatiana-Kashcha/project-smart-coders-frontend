@@ -8,7 +8,7 @@ export const Name = styled.p`
   font-weight: 700;
   line-height: 1.28;
 
-  @media screen and (min-width: 678px) {
+  @media screen and (min-width: 768px) {
     margin-right: 14px;
     font-size: 18px;
     line-height: 1;

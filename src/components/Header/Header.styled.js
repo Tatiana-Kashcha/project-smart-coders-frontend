@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
+
+export const Division = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const Title = styled.h2`
   margin-top: 0;
@@ -12,7 +20,8 @@ export const Title = styled.h2`
   font-weight: 700;
   line-height: 1;
 
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: calc(${globalTheme.breakpoints
+      .desktop} - 0.5px)) {
     display: none;
   }
 `;
@@ -29,22 +38,14 @@ export const BurgerBtn = styled.button`
 
   cursor: pointer;
 
-  @media screen and (min-width: 375px) {
-    width: 32px;
-    height: 32px;
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 34px;
+    height: 34px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     display: none;
   }
-`;
-
-export const Division = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: ${props => props.theme.colors.background};
 `;
 
 export const SubDivision = styled.div`

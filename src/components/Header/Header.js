@@ -1,12 +1,14 @@
-// import { useState } from 'react';
+// import { useState, useEffect } from 'react';
+
 import * as s from './Header.styled';
 import { ReactComponent as BurgerMenuIcon } from '../../icons/burger-menu.svg';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggle from 'components/ThemeToggler/ThemeToggle';
+
 import UserInfo from '../UserInfo/UserInfo';
 
-const Header = () => {
+const Header = ({ onSideBar }) => {
   // const [shownModal, setShowModal] = useState(false);
 
   // const onModal = () => {
@@ -34,7 +36,7 @@ const Header = () => {
 
         {/* <s.BurgerBtn type="button" onClick={onModal}> */}
 
-        <s.BurgerBtn type="button">
+        <s.BurgerBtn type="button" onClick={onSideBar}>
           <BurgerMenuIcon />
         </s.BurgerBtn>
         {/* {shownModal && <AddFeedbackModal onClose={onModal} />} */}

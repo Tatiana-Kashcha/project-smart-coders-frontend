@@ -12,6 +12,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: ${globalTheme.breakpoints.tablet};
+    padding: 0 32px; //! add padding for tablet & desktop
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {

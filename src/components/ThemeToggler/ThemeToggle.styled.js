@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const ThemeToggleBtn = styled.button`
   margin-right: 8px;
@@ -14,7 +15,7 @@ export const ThemeToggleBtn = styled.button`
     height: 24px;
   }
 
-  @media screen and (min-width: 678px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin-right: 14px;
     width: 32px;
     height: 32px;

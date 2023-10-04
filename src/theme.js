@@ -36,7 +36,12 @@ export const lightTheme = {
     buttonCalendar: '#606470',
     scrollColor: '#e7e5e5',
     bgScrollColor: '#f2f2f2',
+    sideBarLabel: 'rgba(52, 52, 52, 0.5)',
+    sideBarContent: 'rgba(52, 52, 52, 0.5)',
+    sideBarActive: '#e3f3ff',
+
     bgrAvatar: '#F8F8F8',
+    bgrSection: '#f7f6f9', //! add background for lightTheme
   },
 };
 
@@ -78,7 +83,12 @@ export const darkTheme = {
     buttonCalendar: '#d0d0d0',
     scrollColor: '#171820',
     bgScrollColor: '#2d3037',
+    sideBarLabel: 'rgba(250, 250, 250, 0.3)',
+    sideBarContent: '#ffffff',
+    sideBarActive: '#3e85f3',
+
     bgrAvatar: '#171820',
+    bgrSection: '#171820', //! add background for darkTheme
   },
 };
 
