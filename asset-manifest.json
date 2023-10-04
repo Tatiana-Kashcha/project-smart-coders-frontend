@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/project-smart-coders-frontend/static/css/main.8b2ec894.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.4ec437b7.js",
+    "main.js": "/project-smart-coders-frontend/static/js/main.d8cbed7e.js",
     "static/js/162.857cd845.chunk.js": "/project-smart-coders-frontend/static/js/162.857cd845.chunk.js",
     "static/js/76.8b1775e7.chunk.js": "/project-smart-coders-frontend/static/js/76.8b1775e7.chunk.js",
-    "static/js/766.3508f9ad.chunk.js": "/project-smart-coders-frontend/static/js/766.3508f9ad.chunk.js",
+    "static/js/766.a1284b87.chunk.js": "/project-smart-coders-frontend/static/js/766.a1284b87.chunk.js",
     "static/js/713.20ab40e8.chunk.js": "/project-smart-coders-frontend/static/js/713.20ab40e8.chunk.js",
     "static/js/573.19248c48.chunk.js": "/project-smart-coders-frontend/static/js/573.19248c48.chunk.js",
     "static/js/526.4a846633.chunk.js": "/project-smart-coders-frontend/static/js/526.4a846633.chunk.js",
@@ -75,10 +75,10 @@
     "static/media/burger-menu.svg": "/project-smart-coders-frontend/static/media/burger-menu.cd8139fdb902f54f6c943bb1141b4141.svg",
     "static/media/x-close.svg": "/project-smart-coders-frontend/static/media/x-close.35afc42d83c641d7796f8c48fa0420ff.svg",
     "main.8b2ec894.css.map": "/project-smart-coders-frontend/static/css/main.8b2ec894.css.map",
-    "main.4ec437b7.js.map": "/project-smart-coders-frontend/static/js/main.4ec437b7.js.map",
+    "main.d8cbed7e.js.map": "/project-smart-coders-frontend/static/js/main.d8cbed7e.js.map",
     "162.857cd845.chunk.js.map": "/project-smart-coders-frontend/static/js/162.857cd845.chunk.js.map",
     "76.8b1775e7.chunk.js.map": "/project-smart-coders-frontend/static/js/76.8b1775e7.chunk.js.map",
-    "766.3508f9ad.chunk.js.map": "/project-smart-coders-frontend/static/js/766.3508f9ad.chunk.js.map",
+    "766.a1284b87.chunk.js.map": "/project-smart-coders-frontend/static/js/766.a1284b87.chunk.js.map",
     "713.20ab40e8.chunk.js.map": "/project-smart-coders-frontend/static/js/713.20ab40e8.chunk.js.map",
     "573.19248c48.chunk.js.map": "/project-smart-coders-frontend/static/js/573.19248c48.chunk.js.map",
     "526.4a846633.chunk.js.map": "/project-smart-coders-frontend/static/js/526.4a846633.chunk.js.map",
@@ -91,6 +91,6 @@
   },
   "entrypoints": [
     "static/css/main.8b2ec894.css",
-    "static/js/main.4ec437b7.js"
+    "static/js/main.d8cbed7e.js"
   ]
 }
