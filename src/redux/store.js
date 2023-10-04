@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import { initUser } from './user/initUser';
 import { userSlice } from './user/userSlice';
-/* import { tasksReducer } from './tasks/slice'; */
+import { tasksReducer } from './tasks/slice';
 
 const initState = {
   auth: initAuth,
@@ -25,7 +25,7 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     user: userSlice.reducer,
-    /* tasks: tasksReducer, */
+    tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
