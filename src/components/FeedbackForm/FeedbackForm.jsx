@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import { Formik, Field } from 'formik';
@@ -7,6 +8,8 @@ import * as yup from 'yup';
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
+
+import Loader from 'components/Loader/Loader';
 
 const schema = yup.object({
   review: yup
@@ -17,9 +20,17 @@ const schema = yup.object({
 });
 
 const FeedbackForm = ({ onClose }) => {
+  // const isLoading = useSelector(state => state.reviews.isLoading);
+  // const error = useSelector(state => state.reviews.error);
+  // const userReview = useSelector(state => state.reviews.items);
+  // const currenUserInfo = useSelector(state => state.users.info);
   // const dispatch = useDispatch()
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState('');
+
+  // useEffect(() => {
+  //   dispatch(currentUser());
+  // }, [dispatch]);
 
   const initialValues = {
     rating,
@@ -50,6 +61,10 @@ const FeedbackForm = ({ onClose }) => {
     // setRating(1);
     // resetForm();
   };
+
+  // {isLoading && currenUserInfo === null && !error ? (
+  //       <Loader />
+  //     ) : (
 
   return (
     <Formik
