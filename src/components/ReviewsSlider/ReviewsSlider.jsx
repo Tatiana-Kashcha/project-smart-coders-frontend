@@ -95,7 +95,7 @@ export const ReviewsSlider = () => {
         >
           <s.ReviewContainer>
             {reviews.map(review => (
-              <s.SwiperSlides key={review.owner}>
+              <s.SwiperSlides key={review._id}>
                 <s.UserContainer>
                   <s.UserInfo>
                     {/* <s.UserAvatar> */}
