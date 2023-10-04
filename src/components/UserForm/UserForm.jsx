@@ -53,15 +53,13 @@ const UserForm = () => {
       <S.WrapperForm>
         <Formik
           validationSchema={UserValidSchema}
-          initialValues={
-            {
-              // name: userInfo.user.name || '',
-              // birthday: userInfo.user.birthday || `${currentDate}`,
-              // email: userInfo.user.email || '',
-              // phone: userInfo.user.phone || '',
-              // skype: userInfo.user.skype || '',
-            }
-          }
+          initialValues={{
+            name: userInfo.user.name || '',
+            birthday: userInfo.user.birthday || `${currentDate}`,
+            email: userInfo.user.email || '',
+            phone: userInfo.user.phone || '',
+            skype: userInfo.user.skype || '',
+          }}
           onSubmit={handleSubmit}
         >
           {({
@@ -82,9 +80,9 @@ const UserForm = () => {
                         alt="Avatar"
                       />
                     </label>
-                  ) : userInfo.avatarURL ? (
+                  ) : userInfo.user.avatarURL ? (
                     <label htmlFor="avatar">
-                      <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
+                      <S.ImgAvatar src={userInfo.user.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
                     <S.AvatarDefault />
@@ -104,7 +102,7 @@ const UserForm = () => {
                   <S.AddIcon />
                 </label>
               </div>
-              <S.UserTitle>{userInfo.name || '****'}</S.UserTitle>
+              <S.UserTitle>{userInfo.user.name || '****'}</S.UserTitle>
               <S.Title>User</S.Title>
               <S.UserWrapper>
                 <S.UserInfo>
@@ -148,7 +146,8 @@ const UserForm = () => {
                             sx: PopperDateStyles,
                           },
                           textField: {
-                            placeholder: userInfo.birthday || `${currentDate}`,
+                            placeholder:
+                              userInfo.user.birthday || `${currentDate}`,
                           },
                         }}
                         views={['year', 'month', 'day']}
