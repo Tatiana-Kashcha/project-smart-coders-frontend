@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkproject_smart_coders_frontend=self.webpackChunkproject_smart_coders_frontend||[]).push([[698],{698:function(e,n,r){r.r(n),r.d(n,{default:function(){return c}});var t=r(184);function c(){return(0,t.jsx)(t.Fragment,{children:(0,t.jsx)("h1",{children:"AccountPage"})})}}}]);
+//# sourceMappingURL=698.b47dd839.chunk.js.map

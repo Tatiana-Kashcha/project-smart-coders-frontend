@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkproject_smart_coders_frontend=self.webpackChunkproject_smart_coders_frontend||[]).push([[573],{2573:function(t,e,r){r.r(e),r.d(e,{default:function(){return c}});var n=r(184);function c(){return(0,n.jsx)("h1",{children:"StatisticsPage"})}}}]);
+//# sourceMappingURL=573.19248c48.chunk.js.map
