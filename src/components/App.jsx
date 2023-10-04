@@ -1,18 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
-import MainPage from 'pages/MainPage';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import Account from 'pages/AccountPage';
-import Calendar from 'pages/CalendarPage';
-import Statistics from 'pages/StatisticsPage';
-import { PrivateRoute } from 'components/PrivateRoute';
 import { Layout } from 'components/Layout/Layout';
+import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 
-import { MainLayout } from 'pages/MainLayout/MainLayout';
-
+const MainPage = lazy(() => import('pages/MainPage'));
+const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
+const AccountPage = lazy(() => import('pages/AccountPage'));
+const CalendarPage = lazy(() => import('pages/CalendarPage'));
+const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
@@ -24,33 +23,33 @@ export const App = () => {
 
           <Route
             path="account"
-            element={<PrivateRoute element={MainLayout} redirecrtTo="/" />}
+            element={<PrivateRoute element={MainLayout} redirectTo="/" />}
           >
-            <Route index element={<Account />} />
+            <Route index element={<AccountPage />} />
           </Route>
           <Route
             path="calendar"
-            element={<PrivateRoute element={MainLayout} redirecrtTo="/" />}
+            element={<PrivateRoute element={MainLayout} redirectTo="/" />}
           >
-            <Route path="month/:currrentDate" element={<Calendar />} />
-            <Route path="day/:currrentDay" element={<Calendar />} />
+            <Route path="month/:currrentDate" element={<CalendarPage />} />
+            <Route path="day/:currrentDay" element={<CalendarPage />} />
           </Route>
           <Route
             path="statistics"
-            element={<PrivateRoute element={Statistics} redirecrtTo="/" />}
+            element={<PrivateRoute element={MainLayout} redirectTo="/" />}
           >
-            <Route index element={<Statistics />} />
+            <Route index element={<StatisticsPage />} />
           </Route>
           <Route
             path="register"
             element={
-              <RestrictedRoute element={RegisterPage} redirecrtTo="/account" />
+              <RestrictedRoute element={RegisterPage} redirectTo="/account" />
             }
           />
           <Route
             path="login"
             element={
-              <RestrictedRoute element={LoginPage} redirecrtTo="/account" />
+              <RestrictedRoute element={LoginPage} redirectTo="/account" />
             }
           />
         </Route>

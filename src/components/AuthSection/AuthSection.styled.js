@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReactComponent as StartGoose } from '../../icons/start-goose.svg';
 
+import { ReactComponent as StartGoose } from '../../icons/start-goose.svg';
 import { ReactComponent as LogIn } from '../../icons/log-in.svg';
 
-import { globalTheme } from 'theme';
 import { Container } from 'stylesheet/Container.styled';
+import { globalTheme } from 'theme';
 
 export const Section = styled.section`
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 64px 0;
+
+  min-height: 100vh;
 
   background-color: ${globalTheme.colors.primary};
 `;

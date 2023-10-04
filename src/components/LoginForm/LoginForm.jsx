@@ -47,7 +47,7 @@ export const LoginForm = () => {
         );
         if (actionOutcome) {
           toast.success('Success');
-          navigate('/');
+          navigate('/calendar/month/123123');
           setSubmitting(false);
           resetForm();
         }
