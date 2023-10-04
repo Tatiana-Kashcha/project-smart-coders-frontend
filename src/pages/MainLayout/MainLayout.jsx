@@ -44,16 +44,12 @@ export default function MainLayout() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Container>
+        {(mediaQuery.matches || showSideBar) && (
+          <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
+        )}
         <DivStyled>
-          {(mediaQuery.matches || showSideBar) && (
-            <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
-          )}
-
-          <div>
-            <Header onSideBar={onSideBar} />
-
-            <Outlet />
-          </div>
+          <Header onSideBar={onSideBar} />
+          <Outlet />
         </DivStyled>
       </Container>
     </Suspense>
