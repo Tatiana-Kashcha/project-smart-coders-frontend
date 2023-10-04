@@ -9,6 +9,7 @@ export const TaskBtn = styled.button`
   padding: 14px 103.5px;
   font-weight: bold;
   font-size: 14px;
+  margin-top: 32px;
 
   display: flex;
   justify-content: center;
