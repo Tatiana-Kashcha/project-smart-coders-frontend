@@ -16,7 +16,7 @@ import * as S from './UserForm.styled';
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
 // console.info(selectUser());
-const currentDate = dayjs(new Date()).format('DD/MM/YYYY');
+const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -35,17 +35,28 @@ const UserForm = () => {
     if (values.skype) {
       formData.append('skype', values.skype);
     }
-    formData.append('birthday', dayjs(values.birthday).format('DD/MM/YYYY'));
+    if (values.birthday) {
+      formData.append('birthday', values.birthday);
+      console.log(values.birthday);
+    }
+    console.log(values.birthday);
 
-    if (avatarURL) {
-      formData.append('avatar', avatarURL);
+    if (values.avatarURL) {
+      formData.append('avatarURL', values.avatarURL);
     }
-    try {
-      await dispatch(updateUser(formData));
-      toast.success('Profile data changed successfully');
-    } catch {
-      toast.error('Something went wrong... Try again!');
-    }
+
+    dispatch(updateUser(values));
+
+    console.log(values.birthday);
+    console.log(values.avatarURL);
+    console.log(values);
+
+    //   try {
+    //     await dispatch(updateUser(formData));
+    //     toast.success('Profile data changed successfully');
+    //   } catch {
+    //     toast.error('Something went wrong... Try again!');
+    //   }
   };
 
   return (
@@ -59,6 +70,7 @@ const UserForm = () => {
             email: userInfo.email || '',
             phone: userInfo.phone || '',
             skype: userInfo.skype || '',
+            avatarURL: userInfo.avatarURL || '',
           }}
           onSubmit={handleSubmit}
         >
@@ -104,14 +116,13 @@ const UserForm = () => {
               </div>
               <S.UserTitle>{userInfo.name || '****'}</S.UserTitle>
               <S.Title>User</S.Title>
-              {/* user name */}
               <S.UserWrapper>
                 <S.UserInfo>
                   <S.Labels
                     style={{
                       color:
-                        (touched.name && errors.name && '#E74A3B') ||
-                        (touched.name && !errors.name && '#3CBC81'),
+                        (touched.avatar && errors.avatar && '#E74A3B') ||
+                        (touched.avatar && !errors.avatar && '#3CBC81'),
                     }}
                   >
                     <p>User Name</p>
@@ -130,96 +141,83 @@ const UserForm = () => {
                     </S.IconStatusBox>
                     <ErrorMessage name="name" component="span" />
                   </S.Labels>
+
+                  <S.Labels>
+                    Birthday
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DatePickerStyled
+                        name="birthday"
+                        type="date"
+                        style={{
+                          borderColor:
+                            (touched.name && errors.name && '#E74A3B') ||
+                            (touched.name && !errors.name && '#3CBC81'),
+                        }}
+                        slotProps={{
+                          popper: {
+                            sx: PopperDateStyles,
+                          },
+                          textField: {
+                            placeholder: userInfo.birthday || `${currentDate}`,
+                          },
+                        }}
+                        views={['year', 'month', 'day']}
+                        format="YYYY/MM/DD"
+                        closeOnSelect={true}
+                        disableFuture={true}
+                        onChange={date => {
+                          if (!date) setFieldValue('birthday', '');
+                          setFieldValue(
+                            'birthday',
+                            dayjs(date).format('YYYY/MM/DD')
+                          );
+                          console.log(date);
+                          console.log(dayjs(date).format('YYYY/MM/DD'));
+                        }}
+                        // onChange={value => {
+                        //   setFieldValue(
+                        //     'birthday',
+                        //     dayjs(value).format('YYYY/MM/DD')
+                        //   );
+                        //   console.log(value);
+                        //   console.log(dayjs(value).format('YYYY/MM/DD'));
+                        // }}
+                      />
+                    </LocalizationProvider>
+                  </S.Labels>
+                  <div>
+                    <S.Labels>
+                      Email
+                      <S.InputInfo
+                        name="email"
+                        type="email"
+                        placeholder="Your email"
+                        // style={{
+                        //   borderColor:
+                        //     (touched.email && errors.email && '#E74A3B') ||
+                        //     (touched.email && !errors.email && '#3CBC81'),
+                        // }}
+                      />
+                      {/* {touched.email && errors.email && <ErrorIcon />}
+                      {touched.email && !errors.email && <CorrectIcon />} */}
+                      <ErrorMessage name="email" component="span" />
+                    </S.Labels>
+                  </div>
+                </S.UserInfo>
+
+                <S.UserInfo>
                   <S.Labels
                     style={{
                       borderColor:
-                        (touched.birthday && errors.birthday && '#E74A3B') ||
-                        (touched.birthday && !errors.birthday && '#3CBC81'),
-                    }}
-                  >
-                    <p>Birthday</p>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <S.IconStatusBox>
-                        <DatePickerStyled
-                          name="birthday"
-                          type="date"
-                          style={{
-                            borderColor:
-                              (touched.birthday &&
-                                errors.birthday &&
-                                '#E74A3B') ||
-                              (touched.birthday &&
-                                !errors.birthday &&
-                                '#3CBC81'),
-                          }}
-                          slotProps={{
-                            popper: {
-                              sx: PopperDateStyles,
-                            },
-                            textField: {
-                              placeholder:
-                                userInfo.birthday || `${currentDate}`,
-                              style: {
-                                color:
-                                  (touched.birthday &&
-                                    errors.birthday &&
-                                    '#E74A3B') ||
-                                  (touched.birthday &&
-                                    !errors.birthday &&
-                                    '#3CBC81'),
-                              },
-                            },
-                          }}
-                          views={['year', 'month', 'day']}
-                          format="DD.MM.YYYY"
-                          closeOnSelect={true}
-                          disableFuture={true}
-                          onChange={date => {
-                            if (!date) setFieldValue('birthday', '');
-                            setFieldValue('birthday', date);
-                          }}
-                        />
-                      </S.IconStatusBox>
-                    </LocalizationProvider>
-                  </S.Labels>
-                  <S.Labels
-                    style={{
-                      color:
                         (touched.email && errors.email && '#E74A3B') ||
                         (touched.email && !errors.email && '#3CBC81'),
                     }}
                   >
-                    <p>Email</p>
-                    <S.IconStatusBox>
-                      <S.InputInfo
-                        name="email"
-                        placeholder="Your email"
-                        style={{
-                          borderColor:
-                            (touched.email && errors.email && '#E74A3B') ||
-                            (touched.email && !errors.email && '#3CBC81'),
-                        }}
-                      />
-                      {touched.email && errors.email && <S.ErrorIcon />}
-                      {touched.email && !errors.email && <S.CorrectIcon />}
-                    </S.IconStatusBox>
-                    <ErrorMessage name="email" component="span" />
-                  </S.Labels>
-                </S.UserInfo>
-                <S.UserInfo>
-                  <S.Labels
-                    style={{
-                      color:
-                        (touched.phone && errors.phone && '#E74A3B') ||
-                        (touched.phone && !errors.phone && '#3CBC81'),
-                    }}
-                  >
-                    <p>Phone</p>
+                    Phone
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="phone"
                         type="tel"
-                        placeholder="Add a skype number"
                         style={{
                           borderColor:
                             (touched.phone && errors.phone && '#E74A3B') ||
@@ -231,6 +229,7 @@ const UserForm = () => {
                     </S.IconStatusBox>
                     <ErrorMessage name="phone" component="span" />
                   </S.Labels>
+
                   <S.Labels
                     style={{
                       color:
@@ -238,12 +237,12 @@ const UserForm = () => {
                         (touched.skype && !errors.skype && '#3CBC81'),
                     }}
                   >
-                    <p>Skype</p>
+                    Skype
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="skype"
                         type="text"
-                        placeholder="Add a phone number"
+                        placeholder="Add a skype number"
                         style={{
                           borderColor:
                             (touched.skype && errors.skype && '#E74A3B') ||
