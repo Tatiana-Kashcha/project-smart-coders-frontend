@@ -134,6 +134,6 @@ export const ToggleShowHide = styled.span`
   position: absolute;
   width: 30px;
   right: 12px;
-  top: 12px;
+  top: 18px;
   cursor: pointer;
 `;
