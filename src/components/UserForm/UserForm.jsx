@@ -182,7 +182,6 @@ const UserForm = () => {
                       </S.IconStatusBox>
                     </LocalizationProvider>
                   </S.Labels>
-
                   <S.Labels
                     style={{
                       color:
@@ -206,6 +205,8 @@ const UserForm = () => {
                     </S.IconStatusBox>
                     <ErrorMessage name="email" component="span" />
                   </S.Labels>
+                </S.UserInfo>
+                <S.UserInfo>
                   <S.Labels
                     style={{
                       color:
@@ -230,7 +231,6 @@ const UserForm = () => {
                     </S.IconStatusBox>
                     <ErrorMessage name="phone" component="span" />
                   </S.Labels>
-
                   <S.Labels
                     style={{
                       color:
