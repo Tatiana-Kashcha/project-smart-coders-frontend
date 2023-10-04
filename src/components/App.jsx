@@ -32,10 +32,10 @@ export const App = () => {
           </Route>
           <Route
             path="calendar"
-            element={<PrivateRoute element={Calendar} redirecrtTo="/" />}
+            element={<PrivateRoute element={MainLayout} redirecrtTo="/" />}
           >
-            <Route path="month/:currrentDate" element={<ChoosedMonth />} />
-            <Route path="day/:currrentDay" element={<ChoosedDay />} />
+            <Route path="month/:currrentDate" element={<Calendar />} />
+            <Route path="day/:currrentDay" element={<Calendar />} />
           </Route>
           <Route
             path="statistics"
