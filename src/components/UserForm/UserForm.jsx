@@ -54,11 +54,11 @@ const UserForm = () => {
         <Formik
           validationSchema={UserValidSchema}
           initialValues={{
-            name: userInfo.user.name || '',
-            birthday: userInfo.user.birthday || `${currentDate}`,
-            email: userInfo.user.email || '',
-            phone: userInfo.user.phone || '',
-            skype: userInfo.user.skype || '',
+            name: userInfo.name || '',
+            birthday: userInfo.birthday || `${currentDate}`,
+            email: userInfo.email || '',
+            phone: userInfo.phone || '',
+            skype: userInfo.skype || '',
           }}
           onSubmit={handleSubmit}
         >
@@ -80,9 +80,9 @@ const UserForm = () => {
                         alt="Avatar"
                       />
                     </label>
-                  ) : userInfo.user.avatarURL ? (
+                  ) : userInfo.avatarURL ? (
                     <label htmlFor="avatar">
-                      <S.ImgAvatar src={userInfo.user.avatarURL} alt="Avatar" />
+                      <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
                     <S.AvatarDefault />
@@ -102,7 +102,7 @@ const UserForm = () => {
                   <S.AddIcon />
                 </label>
               </div>
-              <S.UserTitle>{userInfo.user.name || '****'}</S.UserTitle>
+              <S.UserTitle>{userInfo.name || '****'}</S.UserTitle>
               <S.Title>User</S.Title>
               <S.UserWrapper>
                 <S.UserInfo>
@@ -146,8 +146,7 @@ const UserForm = () => {
                             sx: PopperDateStyles,
                           },
                           textField: {
-                            placeholder:
-                              userInfo.user.birthday || `${currentDate}`,
+                            placeholder: userInfo.birthday || `${currentDate}`,
                           },
                         }}
                         views={['year', 'month', 'day']}
