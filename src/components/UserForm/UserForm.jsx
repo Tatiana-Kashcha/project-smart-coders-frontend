@@ -109,8 +109,8 @@ const UserForm = () => {
                   <S.Labels
                     style={{
                       color:
-                        (touched.avatar && errors.avatar && '#E74A3B') ||
-                        (touched.avatar && !errors.avatar && '#3CBC81'),
+                        (touched.name && errors.name && '#E74A3B') ||
+                        (touched.name && !errors.name && '#3CBC81'),
                     }}
                   >
                     <p>User Name</p>
@@ -130,7 +130,13 @@ const UserForm = () => {
                     <ErrorMessage name="name" component="span" />
                   </S.Labels>
 
-                  <S.Labels>
+                  <S.Labels
+                    style={{
+                      color:
+                        (touched.birthday && errors.birthday && '#E74A3B') ||
+                        (touched.birthday && !errors.birthday && '#3CBC81'),
+                    }}
+                  >
                     Birthday
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePickerStyled
@@ -138,8 +144,10 @@ const UserForm = () => {
                         type="date"
                         style={{
                           borderColor:
-                            (touched.name && errors.name && '#E74A3B') ||
-                            (touched.name && !errors.name && '#3CBC81'),
+                            (touched.birthday &&
+                              errors.birthday &&
+                              '#E74A3B') ||
+                            (touched.birthday && !errors.birthday && '#3CBC81'),
                         }}
                         slotProps={{
                           popper: {
@@ -150,7 +158,7 @@ const UserForm = () => {
                           },
                         }}
                         views={['year', 'month', 'day']}
-                        format="YYYY/MM/DD"
+                        format="DD.MM.YYYY"
                         closeOnSelect={true}
                         disableFuture={true}
                         onChange={date => {
@@ -161,17 +169,23 @@ const UserForm = () => {
                     </LocalizationProvider>
                   </S.Labels>
                   <div>
-                    <S.Labels>
+                    <S.Labels
+                      style={{
+                        color:
+                          (touched.skype && errors.skype && '#E74A3B') ||
+                          (touched.skype && !errors.skype && '#3CBC81'),
+                      }}
+                    >
                       Email
                       <S.InputInfo
                         name="email"
                         type="email"
                         placeholder="Your email"
-                        // style={{
-                        //   borderColor:
-                        //     (touched.email && errors.email && '#E74A3B') ||
-                        //     (touched.email && !errors.email && '#3CBC81'),
-                        // }}
+                        style={{
+                          borderColor:
+                            (touched.email && errors.email && '#E74A3B') ||
+                            (touched.email && !errors.email && '#3CBC81'),
+                        }}
                       />
                       {/* {touched.email && errors.email && <ErrorIcon />}
                       {touched.email && !errors.email && <CorrectIcon />} */}
