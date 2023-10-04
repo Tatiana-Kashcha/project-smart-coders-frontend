@@ -81,7 +81,7 @@ export const ReviewsSlider = () => {
         <s.Title>Reviews</s.Title>
         <s.StyledSwiper
           autoplay={{
-            delay: 5000,
+            delay: 6000,
             disableOnInteraction: false,
           }}
           rewind={true}
