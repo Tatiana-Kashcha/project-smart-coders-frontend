@@ -126,21 +126,23 @@ export const InputInfo = styled(Input)`
   height: 42px;
   width: 100%;
   border-radius: 8px;
-  border-width: 1px;
-  border-color: ${props => props.theme.colors.userInputBorder};
+  border: 1px solid ${props => props.theme.colors.textareaBorder};
+  border-color: ${props => props.theme.colors.userLabelColor};
   background-color: transparent;
   padding: 12px 14px;
   color: ${props => props.theme.colors.primaryText};
-  transition: ${props => props.theme.colors.defaultTransition};
+  /* transition: ${props => props.theme.colors.defaultTransition}; */
   display: flex;
 
   &::placeholder {
-    color: ${props => props.theme.colors.userPlaceholder};
+    color: ${props => props.theme.colors};
   }
   :hover,
   :focus {
-    border: 1px solid ${props => props.theme.colors.primaryText};
+    border-color: ${props => props.theme.colors.userInputBorder};
+    border: 1px solid;
   }
+  /* border: 1px solid ${props => props.theme.colors.textareaBorder}; */
 
   @media (min-width: 768px) {
     font-size: 16px;
@@ -278,7 +280,7 @@ export const CorrectIcon = styled(IconCorrect)`
   transform: translateY(-50%);
 `;
 export const UserTitle = styled.h2`
-  color: ${props => props.theme.colors.userLabelColor};
+  color: ${props => props.theme.colors.thirdText};
   font-size: 14px;
   font-weight: 700;
   line-height: 1.3;

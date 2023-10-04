@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
+
 import { globalTheme } from 'theme';
 
 export const DatePickerStyled = styled(DatePickerCalendar)`
@@ -7,34 +8,41 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   width: 100%;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.3;
   outline: none;
   border-radius: 8px;
-  transition: all 250ms;
+  border-color: ${props => props.theme.colors.textareaBorder};
+  /* /* border: 1px solid ${props => props.theme.colors.textareaBorder}; */
+
+  border-color: ${props => props.theme.colors.userPlaceholder};
+  /* transition: all 250ms; */
   &:hover .MuiOutlinedInput-root,
   &:focus .MuiOutlinedInput-root {
-    border: 1px solid ${props => props.theme.colors.inputText};
+    border: 1px solid ${props => props.theme.colors.primaryText};
   }
 
   & .MuiInputBase-input {
     position: relative;
     height: 46px;
     display: flex;
-    @media (min-width: 768px) {
-      height: 46px;
-    }
-    padding: 0px 0px 0px 14px;
     font-size: 14px;
+    padding: 0px 0px 0px 14px;
+
     line-height: 1.29;
     height: 18px;
     font-weight: 600;
-    color: ${globalTheme.colors.black}; // global styled color
+    color: ${props => props.theme.colors.userLabelColor}; // global styled color
+
+    @media (min-width: 768px) {
+      height: 46px;
+      font-size: 16px;
+    }
   }
   /* Input value */
   .MuiOutlinedInput-root {
     outline: none;
-    border: 1px solid rgba(17, 17, 17, 0.15);
+    border: 1px solid ${props => props.theme.colors.userLabelColor}; //колір Birthday
     transition: ${globalTheme.colors.defaultTransition};
 
     /* дата народження */
@@ -48,6 +56,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     border-radius: 8px;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
+    padding-right: 0;
   }
 
   &.input::placeholder {
@@ -66,6 +75,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     padding: 4px;
     stroke: #ffffff;
     margin: 0px 12px;
+    border-color: ${props => props.theme.colors.userPlaceholder};
   }
 
   && .MuiSvgIcon-root {
@@ -85,6 +95,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     font-weight: 600;
     opacity: 1;
     outline: none;
+
     @media (min-width: 768px) {
       font-size: 16px;
     }
@@ -100,7 +111,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
     line-height: 1.12;
 
     .MuiStack-root {
-      // color: ${props => props.theme.colors.inputText};
+      color: ${props => props.theme.colors.inputText};
     }
 
     && .MuiInputBase-root {
