@@ -38,6 +38,7 @@ export const SideBar = styled.aside`
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     padding: 32px 24px 24px;
+    transform: translateX(calc(100vw / 2 - 720px));
   }
 `;
 
