@@ -1,31 +1,26 @@
-import { useState } from 'react';
-import { ReactComponent as IconLogout } from '../../icons/log-out.svg';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+
+import { logout } from '../../redux/auth/authOperations';
 import * as s from './LogoutBtn.styled';
 
-export const LogoutBtn = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  // const dispatch = useDispatch();
-
-  const onClick = async (values, actions) => {
-    setIsLoading(true);
-    // await dispatch(); // тут буде редакс логаут
-    setIsLoading(false);
+const LogoutBtn = () => {
+  const dispatch = useDispatch();
+  const userLogout = useSelector(selectUser);
+  const handleClick = () => {
+    dispatch(logout(userLogout.id));
   };
 
   return (
     <>
-      <s.LogButton
-        type="button"
-        onClick={onClick}
-        disabled={isLoading}
-        aria-label="Log out"
-      >
+      <s.LogoutButton type="button" aria-label="Log out" onClick={handleClick}>
         Log out
-        <s.LogButtonIcon>
-          <IconLogout />
-        </s.LogButtonIcon>
-      </s.LogButton>
+        <s.IconWrap>
+          <s.IconLogout />
+        </s.IconWrap>
+      </s.LogoutButton>
     </>
   );
 };
+
+export default LogoutBtn;
