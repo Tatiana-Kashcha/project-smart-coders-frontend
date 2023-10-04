@@ -19,24 +19,24 @@ import { ReactComponent as plus } from '../../icons/plusBlue.svg';
 export const WrapperForm = styled.div`
   margin: 0 auto;
   max-width: 100%;
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */ //!
   position: relative;
 
-  @media screen and (max-width: calc(${globalTheme.breakpoints
-      .tablet} - 0.5px)) {
+  /* @media screen and (max-width: calc(${globalTheme.breakpoints
+    .tablet} - 0.5px)) {
     padding-top: 31px;
-  } //! add padding-top
+  } //! add padding-top */
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
     max-width: 335px;
   }
   @media (min-width: 768px) and (max-width: 1439px) {
     max-width: 704px;
-    padding-bottom: 38px;
+    /* padding-bottom: 38px; //! */
   }
   @media (min-width: 1440px) {
     min-width: 100%;
-    padding-bottom: 32px;
+    /* padding-bottom: 32px; //! */
   }
 `;
 

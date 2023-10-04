@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { useState, useEffect } from 'react'; //?
 import { Outlet } from 'react-router-dom';
 
+import { Container } from 'stylesheet/Container.styled';
 import SideBar from 'components/SideBar/SideBar';
 import Header from 'components/Header/Header';
 
@@ -43,19 +44,23 @@ export default function MainLayout() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <s.ContainerMode>
-        {(mediaQuery.matches || showSideBar) && (
-          <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
-        )}
-        <s.DivStyled>
-          {/* <s.SectionHeader> */}
-          <Header onSideBar={onSideBar} />
-          {/* </s.SectionHeader> */}
-          {/* <s.Section> */}
-          <Outlet />
-          {/* </s.Section> */}
-        </s.DivStyled>
-      </s.ContainerMode>
+      {(mediaQuery.matches || showSideBar) && (
+        <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
+      )}
+      <s.SectionHeader>
+        <Container>
+          <s.DivStyled>
+            <Header onSideBar={onSideBar} />
+          </s.DivStyled>
+        </Container>
+      </s.SectionHeader>
+      <s.Section>
+        <Container>
+          <s.DivStyled>
+            <Outlet />
+          </s.DivStyled>
+        </Container>
+      </s.Section>
     </Suspense>
   );
 }

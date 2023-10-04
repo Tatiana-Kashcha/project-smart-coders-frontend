@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
 export const Division = styled.div`
-  margin-bottom: 64px;
+  /* margin-bottom: 64px; */ //!
   /* padding-top: 24px; */ //!
 
   display: flex;
@@ -16,7 +16,7 @@ export const Division = styled.div`
   } */ //!
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-    margin-bottom: 32px;
+    /* margin-bottom: 32px; */ //!
     /* padding: 40px 0; */ //!
   }
 `;
