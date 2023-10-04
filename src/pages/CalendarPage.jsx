@@ -1,32 +1,30 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
+import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
+import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 
 export default function CalendarPage() {
-  const [monthOrDay, setMonthOrDay] = useState('');
+  const isFirstVisit = useMemo(() => {
+    const data = sessionStorage.getItem('isFirstVisit');
+    return JSON.parse(data);
+  }, []);
+
+  const [monthOrDay, setMonthOrDay] = useState(!isFirstVisit);
   const navigate = useNavigate();
 
-  const isFirstVisit = useMemo(() => {
-    return sessionStorage.getItem('isFirstVisit');
+  useEffect(() => {
+    sessionStorage.setItem('isFirstVisit', 'true');
   }, []);
 
   useEffect(() => {
-    if (!isFirstVisit) {
-      sessionStorage.setItem('isFirstVisit', 'true');
-      navigate('/calendar/month/:currentDate');
-    } else {
-      navigate('/calendar/day/:currentDay');
-    }
-  }, [isFirstVisit, navigate]);
-
-  useEffect(() => {
     switch (monthOrDay) {
-      case 'month':
+      case true:
         navigate('/calendar/month/:currentDate');
         break;
 
-      case 'day':
+      case false:
         navigate('/calendar/day/:currrentDay');
         break;
 
@@ -35,7 +33,7 @@ export default function CalendarPage() {
     }
   }, [monthOrDay, navigate]);
 
-  // true = month, false = day
+  // // true = month, false = day
   const switchMonthOrDay = monthOrDay => {
     setMonthOrDay(monthOrDay);
   };
@@ -43,7 +41,7 @@ export default function CalendarPage() {
   return (
     <>
       <CalendarToolbar switchMonthOrDay={switchMonthOrDay} />
-      <Outlet />
+      {monthOrDay ? <ChoosedMonth /> : <ChoosedDay />}
     </>
   );
 }

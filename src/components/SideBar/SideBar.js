@@ -8,7 +8,7 @@ export function SideBar() {
           <NavLink to="/account">account</NavLink>
         </li>
         <li>
-          <NavLink to="/calendar/month/:currrentDate">calendar</NavLink>
+          <NavLink to="/calendar">calendar</NavLink>
         </li>
         <li>
           <NavLink to="/statistics">statistics</NavLink>

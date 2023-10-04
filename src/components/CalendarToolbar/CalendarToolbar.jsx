@@ -1,12 +1,14 @@
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 
+import * as s from './CalendarToolbar.styled';
+
 export const CalendarToolbar = ({ switchMonthOrDay }) => {
   return (
-    <section>
+    <s.TestDiv>
       <h1>CalendarToolbar в середні якого:</h1>
       <PeriodPaginator />
       <PeriodTypeSelect switchMonthOrDay={switchMonthOrDay} />
-    </section>
+    </s.TestDiv>
   );
 };
