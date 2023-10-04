@@ -37,9 +37,9 @@ const UserForm = () => {
     }
     if (values.birthday) {
       formData.append('birthday', values.birthday);
-      console.log(values.birthday);
+      // console.log(values.birthday);
     }
-    console.log(values.birthday);
+    // console.log(values.birthday);
 
     if (values.avatarURL) {
       formData.append('avatarURL', values.avatarURL);
@@ -47,9 +47,9 @@ const UserForm = () => {
 
     dispatch(updateUser(values));
 
-    console.log(values.birthday);
-    console.log(values.avatarURL);
-    console.log(values);
+    // console.log(values.birthday);
+    // console.log(values.avatarURL);
+    // console.log(values);
 
     //   try {
     //     await dispatch(updateUser(formData));
@@ -167,21 +167,16 @@ const UserForm = () => {
                         disableFuture={true}
                         onChange={date => {
                           if (!date) setFieldValue('birthday', '');
-                          setFieldValue(
-                            'birthday',
-                            dayjs(date).format('YYYY/MM/DD')
-                          );
-                          console.log(date);
-                          console.log(dayjs(date).format('YYYY/MM/DD'));
+                          setFieldValue('birthday', date);
                         }}
-                        // onChange={value => {
+                        // onChange={date => {
+                        //   if (!date) setFieldValue('birthday', '');
                         //   setFieldValue(
                         //     'birthday',
-                        //     dayjs(value).format('YYYY/MM/DD')
+                        //     dayjs(date).format('YYYY/MM/DD')
                         //   );
-                        //   console.log(value);
-                        //   console.log(dayjs(value).format('YYYY/MM/DD'));
-                        // }}
+                        //   console.log(date);
+                        //   console.log(dayjs(date).format('YYYY/MM/DD'));
                       />
                     </LocalizationProvider>
                   </S.Labels>
