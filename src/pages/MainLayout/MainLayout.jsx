@@ -6,7 +6,7 @@ import Header from 'components/Header/Header';
 
 import { DivStyled } from 'pages/MainLayout/MainLayoutStyled.styled';
 
-export function MainLayout() {
+export default function MainLayout() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <DivStyled>

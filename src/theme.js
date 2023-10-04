@@ -1,6 +1,7 @@
 export const lightTheme = {
   colors: {
     background: '#eaeaea',
+    backgroundBtnForm: '#eaeaea',
     secondBackground: '#ffffff',
     thirdBackground: '#ffffff',
     forthBackground: '#F6F6F6',
@@ -8,7 +9,7 @@ export const lightTheme = {
     secondText: '#343434',
     thirdText: '#343434',
     backgroundButton: '#E5EDFA',
-    secondBackgroundButton: 'e3f3ff',
+    secondBackgroundButton: '#e3f3ff',
     colorButtonContentHover: '#3e85f3',
     userLabelColor: '#111111',
     userInputBorder: '1px solid rgba(17, 17, 17, 0.1)',
@@ -35,12 +36,14 @@ export const lightTheme = {
     buttonCalendar: '#606470',
     scrollColor: '#e7e5e5',
     bgScrollColor: '#f2f2f2',
+    bgrAvatar: '#F8F8F8',
   },
 };
 
 export const darkTheme = {
   colors: {
     background: '#171820',
+    backgroundBtnForm: '#3e85f3',
     secondBackground: '#21222c',
     thirdBackground: '#13151A',
     forthBackground: '#171820',
@@ -50,6 +53,7 @@ export const darkTheme = {
     backgroundButton: '#21222C',
     secondBackgroundButton: '#353647',
     colorButtonContentHover: '#ffffff',
+    userFormBorderInput: 'rgba(17, 17, 17, 0.10)',
     userLabelColor: 'rgba(250, 250, 250, 0.3)',
     userInputBorder: '1px solid rgba(255, 255, 255, 0.15)',
     calendarOutBorder: '1px solid rgba(255, 255, 255, 0.15)',
@@ -74,6 +78,7 @@ export const darkTheme = {
     buttonCalendar: '#d0d0d0',
     scrollColor: '#171820',
     bgScrollColor: '#2d3037',
+    bgrAvatar: '#171820',
   },
 };
 
@@ -87,6 +92,7 @@ export const globalTheme = {
     darkBlue: '#cae8ff',
     bgBlue: '#dcebf7',
     background: '#ffffff',
+    backAvatar: '#f8f8f8',
     white: '#ffffff',
     blackTitle: '#171820',
     black: '#111111',
@@ -103,7 +109,8 @@ export const globalTheme = {
     backdrop: 'rgba(0, 0, 0, 0.8)',
     bgDelBtn: 'rgba(234, 61, 101, 0.2)',
     bgDelHover: 'rgba(234, 61, 101, 0.5)',
-    borderColor: '1px solid rgba(220, 227, 229, 0.6)',
+    borderColor: '1px solid rgba(17, 17, 17, 0.15)',
+    placeholderColor: 'rgba(17, 17, 17, 0.15)',
   },
 
   shadow: {
