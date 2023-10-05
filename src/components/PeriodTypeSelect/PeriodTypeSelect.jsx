@@ -4,11 +4,11 @@ export const PeriodTypeSelect = ({ switchMonthOrDay }) => {
 
     switch (name) {
       case 'month':
-        switchMonthOrDay('month');
+        switchMonthOrDay(true);
         break;
 
       case 'day':
-        switchMonthOrDay('day');
+        switchMonthOrDay(false);
         break;
 
       default:
@@ -19,12 +19,15 @@ export const PeriodTypeSelect = ({ switchMonthOrDay }) => {
   return (
     <>
       <h1>PeriodTypeSelect</h1>
-      <button onClick={handleClick} name="month">
+      <button type="button" onClick={handleClick} name="month">
         month
       </button>
-      <button onClick={handleClick} name="day">
+      <button type="button" onClick={handleClick} name="day">
         day
       </button>
     </>
   );
 };
+
+/* "1. Компонент рендерить блок навігації для переадресацї юзера на таблицю з задачами відповідно до обраного типу періоду day | month. ✅
+2. Кнопка що вказує поточний тип обраного періоду має активні стилі, як показано на макеті." */

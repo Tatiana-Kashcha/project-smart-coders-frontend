@@ -31,6 +31,7 @@ export const App = () => {
             path="calendar"
             element={<PrivateRoute element={MainLayout} redirectTo="/" />}
           >
+            <Route index element={<CalendarPage />} />
             <Route path="month/:currrentDate" element={<CalendarPage />} />
             <Route path="day/:currrentDay" element={<CalendarPage />} />
           </Route>
