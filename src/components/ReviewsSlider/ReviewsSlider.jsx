@@ -76,7 +76,7 @@ export const ReviewsSlider = () => {
   return (
     // const avatar = user.url;
 
-    <section>
+    <s.SectionMod>
       <s.ContainerModify>
         <s.Title>Reviews</s.Title>
         <s.StyledSwiper
@@ -130,6 +130,6 @@ export const ReviewsSlider = () => {
           </div>
         </s.StyledSwiper>
       </s.ContainerModify>
-    </section>
+    </s.SectionMod>
   );
 };

@@ -24,6 +24,8 @@ export const List = styled.ul`
 
     @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
       flex-direction: row-reverse;
+
+      padding: 0 205px 0 128px;
     }
   }
 `;
@@ -31,8 +33,10 @@ export const List = styled.ul`
 export const Item = styled.li`
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+
+    padding: 0 128px 0 205px;
   }
 `;
 
@@ -42,13 +46,11 @@ export const ContentWrapper = styled.div`
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin: 0 0 48px 0;
 
-    width: 33.33%;
+    width: 275px;
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     margin: 0;
-
-    width: 20%;
   }
 `;
 

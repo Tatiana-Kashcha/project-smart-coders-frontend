@@ -54,7 +54,7 @@ export const RegisterForm = () => {
             })
           );
 
-          navigate('/calendar/month/123123');
+          navigate('/calendar');
           resetForm();
         }
 

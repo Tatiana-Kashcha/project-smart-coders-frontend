@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 // import { Form, ErrorMessage } from 'formik';
-// import { globalTheme } from 'theme';
+import { globalTheme } from 'theme';
 import { Container } from 'stylesheet/Container.styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
+export const SectionMod = styled.section`
+  padding: 0 0 64px 0;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    padding: 0 0 100px 0;
+  }
+
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    padding: 0 0 118px 0;
+  }
+`;
 
 export const ContainerModify = styled(Container)`
   display: flex;
@@ -54,8 +66,6 @@ export const StyledSwiper = styled(Swiper)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  margin-bottom: 64px;
 `;
 
 export const SwiperSlides = styled(SwiperSlide)`
@@ -82,7 +92,7 @@ export const ArrowButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap 25px;
+  gap: 25px;
 `;
 
 export const ArrowButton = styled.button`
