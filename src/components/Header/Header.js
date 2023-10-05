@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react';
-
+import { useLocation } from 'react-router-dom';
 import * as s from './Header.styled';
 import { ReactComponent as BurgerMenuIcon } from '../../icons/burger-menu.svg';
 
@@ -15,24 +15,24 @@ const Header = ({ onSideBar }) => {
   //   setShowModal(prevShownModal => !prevShownModal);
   // };
 
-  // const location = useLocation();
-  // console.log(location.pathname);
+  const location = useLocation();
+  console.log(location.pathname);
 
-  // const strongLocation = location.pathname.slice(1);
+  const strongLocation = location.pathname.slice(1);
 
-  // const title = strongLocation[0].toUpperCase() + strongLocation.slice(1);
-  // console.log(title);
+  const title = strongLocation[0].toUpperCase() + strongLocation.slice(1);
+  console.log(title);
 
   return (
     <>
       <s.Division>
-        <s.Title>User Profile</s.Title>
+        {/* <s.Title>User Profile</s.Title> */}
 
-        {/* {title === 'Account' ? (
-        <s.Title>User Profile</s.Title>
-      ) : (
-        <s.Title>{title}</s.Title>
-      )} */}
+        {title === 'Account' ? (
+          <s.Title>User Profile</s.Title>
+        ) : (
+          <s.Title>{title}</s.Title>
+        )}
 
         {/* <s.BurgerBtn type="button" onClick={onModal}> */}
 
