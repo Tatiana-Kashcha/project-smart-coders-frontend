@@ -1,28 +1,29 @@
-// import { selectUser } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 import * as s from './UserInfo.styled';
 
 const UserInfo = () => {
-  //   const user = useSelector(selectUser);
-  // const firstLeter = user.name.slice(0, 1);
-  // const bigFirstLeter = firstLeter.toUpperCase();
-  // console.log(bigFirstLeter);
+  const user = useSelector(selectUser);
+  const firstLeter = user.name.slice(0, 1);
+  const bigFirstLeter = firstLeter.toUpperCase();
+  console.log(bigFirstLeter);
 
-  // const userName = user.name;
-  // const avatar = user.url;
+  const userName = user.name;
+  const avatar = user.avatarURL;
 
   return (
     <>
-      <s.Name>Nadiia</s.Name>
-      {/* <s.Name>{userName}</s.Name> */}
+      {/* <s.Name>Nadiia</s.Name> */}
+      <s.Name>{userName}</s.Name>
 
-      <s.Elipse>N</s.Elipse>
+      {/* <s.Elipse>N</s.Elipse> */}
 
-      {/* {avatar === ' ' ? (
-        <s.Elipse>{bigFirstLeter}</s.Title>
+      {avatar === '' ? (
+        <s.Elipse>{bigFirstLeter}</s.Elipse>
       ) : (
-        <s.Elipse>{avatar}</s.Elipse>
-      )} */}
+        <s.Elipse>{<img src={avatar} alt="avatar" />}</s.Elipse>
+      )}
     </>
   );
 };
