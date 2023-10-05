@@ -1,13 +1,19 @@
+import { useNavigate } from 'react-router';
+
 export const PeriodTypeSelect = ({ switchMonthOrDay }) => {
+  const navigate = useNavigate();
+
   const handleClick = e => {
     const { name } = e.target;
 
     switch (name) {
       case 'month':
+        navigate('/calendar/month/:currentDate');
         switchMonthOrDay(true);
         break;
 
       case 'day':
+        navigate('/calendar/day/:currrentDay');
         switchMonthOrDay(false);
         break;
 

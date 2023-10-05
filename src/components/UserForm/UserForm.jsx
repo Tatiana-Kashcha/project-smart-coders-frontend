@@ -1,27 +1,25 @@
 // import { useAuth } from '../../hooks/useAuth';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 // import { toast } from 'react-toastify';
+import { Notify } from 'notiflix';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
-// import {с
+
 import * as S from './UserForm.styled';
 
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
-// console.info(selectUser());
-const currentDate = dayjs(new Date()).format('YYYY/MM/DD');
+const currentDate = dayjs(new Date()).format('YYYY-MM-DD');
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUser);
-  // console.log(userInfo.user.name);
   const [avatarURL, setAvatarURL] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
@@ -35,28 +33,22 @@ const UserForm = () => {
     if (values.skype) {
       formData.append('skype', values.skype);
     }
-    if (values.birthday) {
-      formData.append('birthday', values.birthday);
-      // console.log(values.birthday);
-    }
-    // console.log(values.birthday);
+    formData.append('birthday', dayjs(values.birthday).format('YYYY-MM-DD'));
 
     if (values.avatarURL) {
       formData.append('avatarURL', values.avatarURL);
     }
 
-    dispatch(updateUser(values));
+    // dispatch(updateUser(values));
 
-    // console.log(values.birthday);
-    // console.log(values.avatarURL);
-    // console.log(values);
-
-    //   try {
-    //     await dispatch(updateUser(formData));
-    //     toast.success('Profile data changed successfully');
-    //   } catch {
-    //     toast.error('Something went wrong... Try again!');
-    //   }
+    try {
+      await dispatch(updateUser(values));
+      Notify.success('Profile data changed successfully');
+      // toast.success('Profile data changed successfully');
+    } catch {
+      Notify.failure('Something went wrong... Try again!');
+      // toast.error('Something went wrong... Try again!');
+    }
   };
 
   return (
@@ -150,8 +142,10 @@ const UserForm = () => {
                         type="date"
                         style={{
                           borderColor:
-                            (touched.name && errors.name && '#E74A3B') ||
-                            (touched.name && !errors.name && '#3CBC81'),
+                            (touched.birthday &&
+                              errors.birthday &&
+                              '#E74A3B') ||
+                            (touched.birthday && !errors.birthday && '#3CBC81'),
                         }}
                         slotProps={{
                           popper: {
@@ -162,21 +156,15 @@ const UserForm = () => {
                           },
                         }}
                         views={['year', 'month', 'day']}
-                        format="YYYY/MM/DD"
+                        format="YYYY-MM-DD"
                         closeOnSelect={true}
                         disableFuture={true}
-                        onChange={date => {
-                          if (!date) setFieldValue('birthday', '');
-                          setFieldValue('birthday', date);
+                        onChange={newDate => {
+                          setFieldValue(
+                            'birthday',
+                            dayjs(newDate).format('YYYY-MM-DD')
+                          );
                         }}
-                        // onChange={date => {
-                        //   if (!date) setFieldValue('birthday', '');
-                        //   setFieldValue(
-                        //     'birthday',
-                        //     dayjs(date).format('YYYY/MM/DD')
-                        //   );
-                        //   console.log(date);
-                        //   console.log(dayjs(date).format('YYYY/MM/DD'));
                       />
                     </LocalizationProvider>
                   </S.Labels>
