@@ -79,10 +79,10 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
   }
 
   && .MuiSvgIcon-root {
-    // color: #111111;
-    // width: 30px;
-    // height: 30px;
-    // font-size: 18px;
+    /* color: #111111; */
+    /* width: 30px; */
+    /* height: 30px; */
+    /* font-size: 18px; */
   }
 
   &.MuiFormControl-root {
@@ -91,7 +91,7 @@ export const DatePickerStyled = styled(DatePickerCalendar)`
 
   & div input::placeholder {
     font-size: 14px;
-    color: ${globalTheme.colors.placeholderColor};
+    color: ${props => props.theme.colors.primaryText};
     font-weight: 600;
     opacity: 1;
     outline: none;
