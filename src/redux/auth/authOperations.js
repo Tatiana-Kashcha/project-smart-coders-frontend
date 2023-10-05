@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { Report } from 'notiflix'; //?
+
 axios.defaults.baseURL = 'http://localhost:8000/';
 
 const setToken = token => {
@@ -40,10 +42,11 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.get('/auth/logout');
+    await axios.post('/auth/logout');
     clearToken();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+    Report.failure('ERROR', `${error.message} Please Try Later`, 'Close');
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 

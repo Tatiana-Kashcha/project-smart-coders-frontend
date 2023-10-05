@@ -55,6 +55,7 @@ export const RegisterForm = () => {
           );
 
           navigate('/calendar');
+          resetForm();
         }
 
         if (outcomeAction.type === 'auth/register/rejected') {
@@ -80,7 +81,8 @@ export const RegisterForm = () => {
         value={formik.values.name}
         style={{
           borderColor:
-            formik.touched.name && formik.errors.name ? '#E74A3B' : '#3CBC81',
+            (formik.touched.name && formik.errors.name && '#E74A3B') ||
+            (formik.touched.name && !formik.errors.name && '#3CBC81'),
         }}
       />
 
@@ -99,7 +101,8 @@ export const RegisterForm = () => {
         value={formik.values.email}
         style={{
           borderColor:
-            formik.touched.email && formik.errors.email ? '#E74A3B' : '#3CBC81',
+            (formik.touched.email && formik.errors.email && '#E74A3B') ||
+            (formik.touched.email && !formik.errors.email && '#3CBC81'),
         }}
       />
 
@@ -120,9 +123,10 @@ export const RegisterForm = () => {
           value={formik.values.password}
           style={{
             borderColor:
-              formik.touched.password && formik.errors.password
-                ? '#E74A3B'
-                : '#3CBC81',
+              (formik.touched.password &&
+                formik.errors.password &&
+                '#E74A3B') ||
+              (formik.touched.password && !formik.errors.password && '#3CBC81'),
           }}
         />
         <ToggleShowHide type="button" onClick={handleShowPassword}>

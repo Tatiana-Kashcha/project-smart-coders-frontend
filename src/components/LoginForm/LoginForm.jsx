@@ -72,7 +72,8 @@ export const LoginForm = () => {
         value={formik.values.email}
         style={{
           borderColor:
-            formik.touched.email && formik.errors.email ? '#E74A3B' : '#3CBC81',
+            (formik.touched.email && formik.errors.email && '#E74A3B') ||
+            (formik.touched.email && !formik.errors.email && '#3CBC81'),
         }}
       />
       {formik.touched.email && formik.errors.email ? (
@@ -92,9 +93,10 @@ export const LoginForm = () => {
           value={formik.values.password}
           style={{
             borderColor:
-              formik.touched.password && formik.errors.password
-                ? '#E74A3B'
-                : '#3CBC81',
+              (formik.touched.password &&
+                formik.errors.password &&
+                '#E74A3B') ||
+              (formik.touched.password && !formik.errors.password && '#3CBC81'),
           }}
         />
         <ToggleShowHide type="button" onClick={handleShowPassword}>
