@@ -2,10 +2,10 @@ import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 
 import * as s from './CalendarToolbar.styled';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export const CalendarToolbar = ({ switchMonthOrDay, getPeriodType }) => {
-  const [date, setDate] = useState(null);
+  // const [date, setDate] = useState(null);
 
   const changeDate = () => {};
 
