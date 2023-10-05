@@ -16,12 +16,11 @@ const Header = ({ onSideBar }) => {
   // };
 
   const location = useLocation();
-  console.log(location.pathname);
 
   const strongLocation = location.pathname.slice(1);
 
-  const title = strongLocation[0].toUpperCase() + strongLocation.slice(1);
-  console.log(title);
+  const title =
+    strongLocation[0].toUpperCase() + strongLocation.slice(1).split('/')[0];
 
   return (
     <>
