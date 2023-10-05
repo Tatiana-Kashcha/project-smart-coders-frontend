@@ -162,7 +162,7 @@ const UserForm = () => {
                           },
                         }}
                         views={['year', 'month', 'day']}
-                        format="YYYY/MM/DD"
+                        format="DD/MM/YYYY"
                         closeOnSelect={true}
                         disableFuture={true}
                         onChange={date => {

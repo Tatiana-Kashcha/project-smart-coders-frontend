@@ -5,7 +5,7 @@
 import { StyledItem, StyledHead } from './MonthCalendarHead.styled';
 
 const MonthCalendarHead = () => {
-  const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'sat', 'sun'];
+  const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
     <StyledHead>

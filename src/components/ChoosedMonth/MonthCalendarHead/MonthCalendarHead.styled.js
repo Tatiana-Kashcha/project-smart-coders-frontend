@@ -6,15 +6,10 @@ export const StyledHead = styled.ul`
 
   padding: 14px 0px;
 
-  /* border: ${({ theme }) => theme.cellBorder}; */
-
-  border: solid 1px solid #111111;
+  border: ${({ theme }) => theme.colors.calendarOutBorder};
   border-radius: 8px;
   margin-bottom: 14px;
-
-  /* ${props => props.theme.colors.secondBackground}; */
-  background-color: ${({ theme }) => theme.mainBackgroundColor};
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.bgrCalendar}; //
 
   @media (min-width: 768px) {
     margin-bottom: 18px;
@@ -26,11 +21,13 @@ export const StyledHead = styled.ul`
 export const StyledItem = styled.li`
   font-family: 'InterSemiBold', sans-serif;
   font-size: 16px;
-  /* color: ${props =>
-    props.item === 'SAT' || props.item === 'SUN'
-      ? props.theme.monthHolidayColor
-      : props.theme.monthMainColor}; */
 
+  color: ${props =>
+    props.item === 'SAT' || props.item === 'SUN'
+      ? '#3e85f3'
+      : props.theme.colors.calendarText};
+
+  /* calendarText  */
   .full-name {
     display: block;
   }
