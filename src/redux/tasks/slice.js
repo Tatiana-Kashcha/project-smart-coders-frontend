@@ -44,7 +44,7 @@ export const taskSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(patchTask.rejected, loadingFailed)
-      .addCase(logout, state => {
+      .addCase(logout.fulfilled, state => {
         state.tasks = [];
         state.isLoading = false;
         state.error = null;
