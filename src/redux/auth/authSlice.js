@@ -38,8 +38,10 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refresh.fulfilled, (state, action) => {
-        state.user = action.payload.data;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.error = false;
         state.isRefreshing = false;
       })
       .addCase(refresh.rejected, state => {
@@ -50,7 +52,6 @@ const authSlice = createSlice({
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
 };
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);
