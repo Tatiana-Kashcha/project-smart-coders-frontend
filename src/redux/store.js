@@ -13,7 +13,7 @@ import {
 import { authReducer } from './auth/authSlice';
 import { reviewsReducer } from './reviews/reviewsSlice';
 import { userSlice } from './user/userSlice';
-/* import { tasksReducer } from './tasks/slice'; */
+import { tasksReducer } from './tasks/slice';
 
 import { initAuth } from './auth/initAuth';
 import { initUser } from './user/initUser';
@@ -30,7 +30,7 @@ export const store = configureStore({
     auth: authReducer,
     user: userSlice.reducer,
     reviews: reviewsReducer,
-    /*     tasks: tasksReducer, */
+    tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
