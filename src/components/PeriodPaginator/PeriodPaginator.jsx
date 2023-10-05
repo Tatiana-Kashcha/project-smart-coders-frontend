@@ -1,5 +1,18 @@
+import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
+import { ReactComponent as ChevronRight } from '../../icons/chevron-right.svg';
+
 export const PeriodPaginator = ({ date, periodType, changeDate }) => {
-  return <h1>PeriodPaginator - MARCH 2023 + </h1>;
+  return (
+    <>
+      <span style={{ display: 'blok', backgroundColor: 'pink' }}>{date}</span>
+      <button type="button" onClick={null} style={{ margin: '0 20px 0 20px' }}>
+        <ChevronLeft />
+      </button>
+      <button type="button" onClick={null}>
+        <ChevronRight />
+      </button>
+    </>
+  );
 };
 
 /* "1. Компонент отримує в пропсах дату, тип періоду та метод для зміни дати. ✅
