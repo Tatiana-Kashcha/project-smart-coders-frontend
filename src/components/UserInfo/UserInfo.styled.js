@@ -49,5 +49,5 @@ export const Avatar = styled.img`
   @media screen and (min-width: 768px) {
     width: 44px;
     height: 44px;
-  }
+  
 `;
