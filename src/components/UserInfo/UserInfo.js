@@ -21,7 +21,7 @@ const UserInfo = () => {
       {avatar === '' ? (
         <s.Elipse>{bigFirstLeter}</s.Elipse>
       ) : (
-        <s.Elipse>{<img src={avatar} alt="avatar" />}</s.Elipse>
+        <s.Elipse>{<s.Avatar src={avatar} alt="avatar" />}</s.Elipse>
       )}
     </>
   );

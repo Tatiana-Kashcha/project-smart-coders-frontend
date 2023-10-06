@@ -1,34 +1,47 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
-import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
-import { ReactComponent as ChevronRight } from '../../icons/chevron-right.svg';
+import * as s from './PeriodPaginator.styled';
 
 export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
-  const currentDate = dayjs(date).format('MMMM YYYY');
+  const navigate = useNavigate();
+  const currentMonth = dayjs(date).format('MMMM YYYY');
   const currentDay = dayjs(date).format('D MMM YYYY');
+  const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
+  const currentDayModify = dayjs(date).format('D-MMM-YYYY').toLowerCase();
+
+  useEffect(() => {
+    if (periodType === 'month') {
+      navigate(`/calendar/month/${currentMonthModify}`);
+    } else {
+      navigate(`/calendar/day/${currentDayModify}`);
+    }
+  }, [periodType, currentMonthModify, currentDayModify, navigate]);
 
   return (
     <>
       <span style={{ display: 'block', backgroundColor: 'pink' }}>
-        {periodType ? currentDate : currentDay}
+        {periodType === 'month' ? currentMonth : currentDay}
       </span>
-      <button
-        type="button"
-        onClick={() => {
-          upDateDate(-1);
-        }}
-        style={{ margin: '0 20px 0 20px' }}
-      >
-        <ChevronLeft />
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          upDateDate(1);
-        }}
-      >
-        <ChevronRight />
-      </button>
+      <s.ButtonWrapper>
+        <s.TestStyleButton
+          type="button"
+          onClick={() => {
+            upDateDate(-1);
+          }}
+        >
+          <s.ChevronLeftMod />
+        </s.TestStyleButton>
+        <s.TestStyleButton
+          type="button"
+          onClick={() => {
+            upDateDate(1);
+          }}
+        >
+          <s.ChevronRightMod />
+        </s.TestStyleButton>
+      </s.ButtonWrapper>
     </>
   );
 };
