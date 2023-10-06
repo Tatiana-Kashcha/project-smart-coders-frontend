@@ -10,7 +10,8 @@ import {
   selectIsLoadingReviews,
   selectErrorReviews,
 } from 'redux/reviews/selectors';
-import { selectUserInfo, selectLoading } from 'redux/user/selectors';
+import { selectLoading } from 'redux/user/selectors';
+import { selectUser } from 'redux/auth/selectors';
 
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
@@ -23,23 +24,35 @@ const FeedbackForm = ({ onClose }) => {
   const isLoading = useSelector(selectIsLoadingReviews);
   const error = useSelector(selectErrorReviews);
 
-  // const isLoading = useSelector(state => state.reviews.isLoading);
   // const error = useSelector(state => state.reviews.error);
   // const userReview = useSelector(state => state.reviews.items);
-  const currenUser = useSelector(selectUserInfo);
+  // const currentUser = useSelector(selectUserInfo); не то !!!
   const currentUserLoading = useSelector(selectLoading);
 
   // export const selectUserInfo = state => state.user.info;
   // export const selectLoading = state => state.user.loading;
 
+  // export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+  const currentUser = useSelector(selectUser);
+  // export const selectIsRefreshing = state => state.auth.isRefreshing;
+  // export const selectAccessToken = state => state.auth.accessToken;
+
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(currentUser());
+  // }, [dispatch]);
 
   console.log(reviews);
   console.log(isLoading);
   console.log(error);
 
-  console.log(currenUser);
-  console.log(currentUserLoading);
+  console.log(currentUser);
+  // console.log(currentUserLoading);
+
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
 
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState('');
