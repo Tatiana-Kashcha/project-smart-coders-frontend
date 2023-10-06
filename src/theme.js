@@ -8,6 +8,7 @@ export const lightTheme = {
     primaryText: '#111111',
     secondText: '#343434',
     thirdText: '#343434',
+
     backgroundButton: '#E5EDFA',
     secondBackgroundButton: '#e3f3ff',
     colorButtonContentHover: '#3e85f3',
@@ -15,6 +16,7 @@ export const lightTheme = {
     userInputBorder: '1px solid rgba(17, 17, 17, 0.1)',
     calendarOutBorder: '1px solid #dce3e5',
     calendarInnerBackground: '#dce3e5',
+    calendarText: '#343434  ',
     periodTypeBtnActive: '#cae8ff',
     periodTypeBtnNotActive: '#e3f3ff',
     periodTypeBtnActiveContent: '#3e85f3',
@@ -42,6 +44,7 @@ export const lightTheme = {
 
     bgrAvatar: '#F8F8F8',
     bgrSection: '#f7f6f9', //! add background for lightTheme
+    bgrCalendar: '#FFF', //! add background for Calendar
   },
 };
 
@@ -63,6 +66,7 @@ export const darkTheme = {
     userInputBorder: '1px solid rgba(255, 255, 255, 0.15)',
     calendarOutBorder: '1px solid rgba(255, 255, 255, 0.15)',
     calendarInnerBackground: 'rgba(255, 255, 255, 0.15)',
+    calendarText: '#FFF',
     periodTypeBtnActive: '#3e85f3',
     periodTypeBtnNotActive: '#21222c',
     periodTypeBtnActiveContent: '#ffffff',
@@ -89,12 +93,13 @@ export const darkTheme = {
 
     bgrAvatar: '#171820',
     bgrSection: '#171820', //! add background for darkTheme
+    bgrCalendar: '#21222C', //! add background for Calendar
   },
 };
 
 export const globalTheme = {
   breakpoints: { mobile: '375px', tablet: '768px', desktop: '1440px' },
-
+  // ${globalTheme.colors.primary} варіант
   colors: {
     primary: '#3e85f3',
     secondary: '#2b78ef',
