@@ -47,7 +47,7 @@ const FeedbackForm = ({ onClose }) => {
   console.log(isLoading);
   console.log(error);
 
-  console.log(currentUser);
+  // console.log(currentUser);
   // console.log(currentUserLoading);
 
   useEffect(() => {
