@@ -59,7 +59,7 @@ export const deleteTask = createAsyncThunk(
       console.log('Task deleted successfully');
       return taskId;
     } catch (error) {
-      console.error(`Sorry, task wasn’t deleted: ${error.message}`);
+      console.error(`Sorry, task wasn't deleted: ${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
