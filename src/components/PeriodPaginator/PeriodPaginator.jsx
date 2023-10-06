@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
-import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
-import { ReactComponent as ChevronRight } from '../../icons/chevron-right.svg';
+import * as s from './PeriodPaginator.styled';
 
 export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
   const navigate = useNavigate();
@@ -25,23 +24,24 @@ export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
       <span style={{ display: 'block', backgroundColor: 'pink' }}>
         {periodType === 'month' ? currentMonth : currentDay}
       </span>
-      <button
-        type="button"
-        onClick={() => {
-          upDateDate(-1);
-        }}
-        style={{ margin: '0 20px 0 20px' }}
-      >
-        <ChevronLeft />
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          upDateDate(1);
-        }}
-      >
-        <ChevronRight />
-      </button>
+      <s.ButtonWrapper>
+        <s.TestStyleButton
+          type="button"
+          onClick={() => {
+            upDateDate(-1);
+          }}
+        >
+          <s.ChevronLeftMod />
+        </s.TestStyleButton>
+        <s.TestStyleButton
+          type="button"
+          onClick={() => {
+            upDateDate(1);
+          }}
+        >
+          <s.ChevronRightMod />
+        </s.TestStyleButton>
+      </s.ButtonWrapper>
     </>
   );
 };
