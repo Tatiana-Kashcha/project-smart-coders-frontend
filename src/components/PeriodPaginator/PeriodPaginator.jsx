@@ -4,13 +4,13 @@ import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
 import { ReactComponent as ChevronRight } from '../../icons/chevron-right.svg';
 
 export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
-  const currentDate = dayjs(date).format('MMMM YYYY');
+  const currentMonth = dayjs(date).format('MMMM YYYY');
   const currentDay = dayjs(date).format('D MMM YYYY');
 
   return (
     <>
       <span style={{ display: 'block', backgroundColor: 'pink' }}>
-        {periodType ? currentDate : currentDay}
+        {periodType === 'month' ? currentMonth : currentDay}
       </span>
       <button
         type="button"

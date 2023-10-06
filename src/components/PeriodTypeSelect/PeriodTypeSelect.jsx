@@ -1,24 +1,22 @@
+import dayjs from 'dayjs';
 import { useNavigate } from 'react-router';
 
-export const PeriodTypeSelect = ({ switchMonthOrDay }) => {
+export const PeriodTypeSelect = ({ periodType }) => {
+  const newDate = new Date();
+  const month = newDate.setMonth(newDate.getMonth());
+  const day = newDate.setDate(newDate.getDate());
+  const currentMonth = dayjs(month).format('MMMM-YYYY').toLowerCase();
+  const currentDay = dayjs(day).format('D-MMM-YYYY').toLowerCase();
+
   const navigate = useNavigate();
 
   const handleClick = e => {
     const { name } = e.target;
 
-    switch (name) {
-      case 'month':
-        navigate('/calendar/month/:currentDate');
-        switchMonthOrDay(true);
-        break;
-
-      case 'day':
-        navigate('/calendar/day/:currrentDay');
-        switchMonthOrDay(false);
-        break;
-
-      default:
-        break;
+    if (name === 'month') {
+      navigate(`/calendar/month/${currentMonth}`);
+    } else {
+      navigate(`/calendar/day/${currentDay}`);
     }
   };
 

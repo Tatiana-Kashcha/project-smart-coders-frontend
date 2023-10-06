@@ -1,23 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 
 import * as s from './CalendarToolbar.styled';
 
-export const CalendarToolbar = ({ switchMonthOrDay, PeriodType }) => {
+export const CalendarToolbar = ({ periodType, testDate }) => {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
 
+  useEffect(() => {
+    testDate(date);
+  }, [testDate, date]);
+
   const upDateDate = PlusOrMinus => {
-    if (PeriodType) {
-      const newDate = new Date(date);
-      newDate.setMonth(newDate.getMonth() + PlusOrMinus);
-      setDate(newDate);
+    if (periodType === 'month') {
+      const newDateMonth = new Date(date);
+      newDateMonth.setMonth(newDateMonth.getMonth() + PlusOrMinus);
+      setDate(newDateMonth);
     } else {
-      const newDate = new Date(date);
-      newDate.setDate(newDate.getDate() + PlusOrMinus);
-      setDate(newDate);
+      const newDateDay = new Date(date);
+      newDateDay.setDate(newDateDay.getDate() + PlusOrMinus);
+      setDate(newDateDay);
     }
   };
 
@@ -25,10 +29,10 @@ export const CalendarToolbar = ({ switchMonthOrDay, PeriodType }) => {
     <s.TestDiv>
       <PeriodPaginator
         date={date}
-        periodType={PeriodType}
+        periodType={periodType}
         upDateDate={upDateDate}
       />
-      <PeriodTypeSelect switchMonthOrDay={switchMonthOrDay} />
+      <PeriodTypeSelect periodType={periodType} />
     </s.TestDiv>
   );
 };
