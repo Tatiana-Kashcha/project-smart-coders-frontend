@@ -2,10 +2,23 @@ import dayjs from 'dayjs';
 
 import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
 import { ReactComponent as ChevronRight } from '../../icons/chevron-right.svg';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
+  const navigate = useNavigate();
   const currentMonth = dayjs(date).format('MMMM YYYY');
   const currentDay = dayjs(date).format('D MMM YYYY');
+  const currentMonthModify = dayjs(date).format('MMMM-YYYY');
+  const currentDayModify = dayjs(date).format('D-MMM-YYYY');
+
+  useEffect(() => {
+    if (periodType === 'month') {
+      navigate(`/calendar/month/${currentMonthModify}`);
+    } else {
+      navigate(`/calendar/day/${currentDayModify}`);
+    }
+  }, [periodType, currentMonthModify, currentDayModify, navigate]);
 
   return (
     <>

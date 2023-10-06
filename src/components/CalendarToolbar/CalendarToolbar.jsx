@@ -1,17 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 
 import * as s from './CalendarToolbar.styled';
 
-export const CalendarToolbar = ({ periodType, testDate }) => {
+export const CalendarToolbar = ({ periodType }) => {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
-
-  useEffect(() => {
-    testDate(date);
-  }, [testDate, date]);
 
   const upDateDate = PlusOrMinus => {
     if (periodType === 'month') {

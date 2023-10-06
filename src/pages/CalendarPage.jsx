@@ -8,19 +8,17 @@ import dayjs from 'dayjs';
 
 export default function CalendarPage() {
   const [periodType, setPeriodType] = useState('month');
-  const [currentDate, setCurrentDate] = useState('');
-  console.log('Date-----------', currentDate);
+
   const isFirstVisit = useMemo(() => {
     const storedValue = sessionStorage.getItem('isFirstVisit');
     return storedValue ? JSON.parse(storedValue) : true;
   }, []);
 
   const newDate = new Date();
-  console.log('newDate', newDate);
   const month = newDate.setMonth(newDate.getMonth());
-  const day = newDate.setDate(newDate.getDate());
+  // const day = newDate.setDate(newDate.getDate());
   const currentMonth = dayjs(month).format('MMMM-YYYY').toLowerCase();
-  const currentDay = dayjs(day).format('D-MMM-YYYY').toLowerCase();
+  // const currentDay = dayjs(day).format('D-MMM-YYYY').toLowerCase();
 
   const navigate = useNavigate();
 
@@ -29,19 +27,16 @@ export default function CalendarPage() {
       navigate(`/calendar/month/${currentMonth}`);
       sessionStorage.setItem('isFirstVisit', 'false');
       setPeriodType('month');
-    } else {
-      navigate(`/calendar/day/${currentDay}`);
-      setPeriodType('day');
     }
-  }, [navigate, isFirstVisit, currentMonth, currentDay]);
-
-  const testDate = date => {
-    setCurrentDate(date);
-  };
+    // else {
+    //   navigate(`/calendar/day/${currentDay}`);
+    //   setPeriodType('day');
+    // }
+  }, [navigate, isFirstVisit, currentMonth]);
 
   return (
     <>
-      <CalendarToolbar periodType={periodType} testDate={testDate} />
+      <CalendarToolbar periodType={periodType} />
       {isFirstVisit ? <ChoosedMonth /> : <ChoosedDay />}
     </>
   );
