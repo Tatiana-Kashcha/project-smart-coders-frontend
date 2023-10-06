@@ -1,4 +1,3 @@
-// import { useAuth } from '../../hooks/useAuth';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
@@ -6,7 +5,6 @@ import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
-// import { toast } from 'react-toastify';
 import { Notify } from 'notiflix';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
@@ -39,15 +37,11 @@ const UserForm = () => {
       formData.append('avatarURL', values.avatarURL);
     }
 
-    // dispatch(updateUser(values));
-
     try {
       await dispatch(updateUser(values));
       Notify.success('Profile data changed successfully');
-      // toast.success('Profile data changed successfully');
     } catch {
       Notify.failure('Something went wrong... Try again!');
-      // toast.error('Something went wrong... Try again!');
     }
   };
 
@@ -175,14 +169,7 @@ const UserForm = () => {
                         name="email"
                         type="email"
                         placeholder="Your email"
-                        // style={{
-                        //   borderColor:
-                        //     (touched.email && errors.email && '#E74A3B') ||
-                        //     (touched.email && !errors.email && '#3CBC81'),
-                        // }}
                       />
-                      {/* {touched.email && errors.email && <ErrorIcon />}
-                      {touched.email && !errors.email && <CorrectIcon />} */}
                       <ErrorMessage name="email" component="span" />
                     </S.Labels>
                   </div>

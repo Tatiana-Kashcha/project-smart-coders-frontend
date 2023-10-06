@@ -7,7 +7,6 @@ const UserInfo = () => {
   const user = useSelector(selectUser);
   const firstLeter = user.name.slice(0, 1);
   const bigFirstLeter = firstLeter.toUpperCase();
-  console.log(bigFirstLeter);
 
   const userName = user.name;
   const avatar = user.avatarURL;
