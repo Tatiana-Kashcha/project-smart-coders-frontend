@@ -5,7 +5,7 @@ import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 
 import * as s from './CalendarToolbar.styled';
 
-export const CalendarToolbar = ({ periodType }) => {
+export const CalendarToolbar = ({ periodType, handleChange }) => {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
 
@@ -28,7 +28,7 @@ export const CalendarToolbar = ({ periodType }) => {
         periodType={periodType}
         upDateDate={upDateDate}
       />
-      <PeriodTypeSelect periodType={periodType} />
+      <PeriodTypeSelect periodType={periodType} handleChange={handleChange} />
     </s.TestDiv>
   );
 };

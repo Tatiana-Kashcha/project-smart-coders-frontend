@@ -1,9 +1,9 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
 import { ReactComponent as ChevronRight } from '../../icons/chevron-right.svg';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
   const navigate = useNavigate();

@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
-import { useNavigate } from 'react-router-dom';
 
 export default function CalendarPage() {
   const [periodType, setPeriodType] = useState('month');
@@ -13,21 +12,22 @@ export default function CalendarPage() {
     return storedValue ? JSON.parse(storedValue) : true;
   }, []);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (isFirstVisit) {
       sessionStorage.setItem('isFirstVisit', 'false');
-      setPeriodType('month');
     } else {
       setPeriodType('day');
     }
-  }, [navigate, isFirstVisit]);
+  }, [isFirstVisit]);
+
+  const handleChange = period => {
+    setPeriodType(period);
+  };
 
   return (
     <>
-      <CalendarToolbar periodType={periodType} />
-      {isFirstVisit ? <ChoosedMonth /> : <ChoosedDay />}
+      <CalendarToolbar periodType={periodType} handleChange={handleChange} />
+      {periodType === 'month' ? <ChoosedMonth /> : <ChoosedDay />}
     </>
   );
 }
