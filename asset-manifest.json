@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/project-smart-coders-frontend/static/css/main.8b2ec894.css",
-    "main.js": "/project-smart-coders-frontend/static/js/main.294bde6a.js",
+    "main.js": "/project-smart-coders-frontend/static/js/main.a4a38fb1.js",
     "static/css/369.9f16186c.chunk.css": "/project-smart-coders-frontend/static/css/369.9f16186c.chunk.css",
     "static/js/369.17eaccaf.chunk.js": "/project-smart-coders-frontend/static/js/369.17eaccaf.chunk.js",
     "static/js/752.ec4c2e4b.chunk.js": "/project-smart-coders-frontend/static/js/752.ec4c2e4b.chunk.js",
     "static/js/766.f518ba74.chunk.js": "/project-smart-coders-frontend/static/js/766.f518ba74.chunk.js",
-    "static/js/337.9b26301d.chunk.js": "/project-smart-coders-frontend/static/js/337.9b26301d.chunk.js",
+    "static/js/358.d2c55c11.chunk.js": "/project-smart-coders-frontend/static/js/358.d2c55c11.chunk.js",
     "static/js/573.19248c48.chunk.js": "/project-smart-coders-frontend/static/js/573.19248c48.chunk.js",
     "static/js/526.3ee986ee.chunk.js": "/project-smart-coders-frontend/static/js/526.3ee986ee.chunk.js",
     "static/js/662.7459ff57.chunk.js": "/project-smart-coders-frontend/static/js/662.7459ff57.chunk.js",
@@ -86,12 +86,12 @@
     "static/media/x-close.svg": "/project-smart-coders-frontend/static/media/x-close.b8c2a2a37d22c5916eba425ea5b71782.svg",
     "static/media/arrow-left.svg": "/project-smart-coders-frontend/static/media/arrow-left.57c61ac353d5cb690006fd72ae0bb628.svg",
     "main.8b2ec894.css.map": "/project-smart-coders-frontend/static/css/main.8b2ec894.css.map",
-    "main.294bde6a.js.map": "/project-smart-coders-frontend/static/js/main.294bde6a.js.map",
+    "main.a4a38fb1.js.map": "/project-smart-coders-frontend/static/js/main.a4a38fb1.js.map",
     "369.9f16186c.chunk.css.map": "/project-smart-coders-frontend/static/css/369.9f16186c.chunk.css.map",
     "369.17eaccaf.chunk.js.map": "/project-smart-coders-frontend/static/js/369.17eaccaf.chunk.js.map",
     "752.ec4c2e4b.chunk.js.map": "/project-smart-coders-frontend/static/js/752.ec4c2e4b.chunk.js.map",
     "766.f518ba74.chunk.js.map": "/project-smart-coders-frontend/static/js/766.f518ba74.chunk.js.map",
-    "337.9b26301d.chunk.js.map": "/project-smart-coders-frontend/static/js/337.9b26301d.chunk.js.map",
+    "358.d2c55c11.chunk.js.map": "/project-smart-coders-frontend/static/js/358.d2c55c11.chunk.js.map",
     "573.19248c48.chunk.js.map": "/project-smart-coders-frontend/static/js/573.19248c48.chunk.js.map",
     "526.3ee986ee.chunk.js.map": "/project-smart-coders-frontend/static/js/526.3ee986ee.chunk.js.map",
     "662.7459ff57.chunk.js.map": "/project-smart-coders-frontend/static/js/662.7459ff57.chunk.js.map",
@@ -104,6 +104,6 @@
   },
   "entrypoints": [
     "static/css/main.8b2ec894.css",
-    "static/js/main.294bde6a.js"
+    "static/js/main.a4a38fb1.js"
   ]
 }
