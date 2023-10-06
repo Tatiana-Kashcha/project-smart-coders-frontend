@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
+
+import dayjs from 'dayjs';
+import { Notify } from 'notiflix';
 import { Formik, ErrorMessage } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
-import { Notify } from 'notiflix';
+
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
+import { selectUser } from '../../redux/auth/selectors';
 
 import * as S from './UserForm.styled';
-
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
 
 const currentDate = dayjs(new Date()).format('YYYY-MM-DD');
