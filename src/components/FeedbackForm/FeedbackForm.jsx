@@ -1,9 +1,16 @@
 import { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import { Formik, Field } from 'formik';
-import * as yup from 'yup';
+
+import { FeedbackValidSchema } from './FeedbackValidScheme';
+import {
+  selectReviews,
+  selectIsLoadingReviews,
+  selectErrorReviews,
+} from 'redux/reviews/selectors';
+import { selectUserInfo, selectLoading } from 'redux/user/selectors';
 
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
@@ -11,20 +18,29 @@ import * as s from './FeedbackForm.styled';
 
 // import Loader from 'components/Loader/Loader';
 
-const schema = yup.object({
-  review: yup
-    .string()
-    .min(1, 'Must be at least 1 characters')
-    .max(300, 'Must be at most 300 characters')
-    .required('This review field is required'),
-});
-
 const FeedbackForm = ({ onClose }) => {
+  const reviews = useSelector(selectReviews);
+  const isLoading = useSelector(selectIsLoadingReviews);
+  const error = useSelector(selectErrorReviews);
+
   // const isLoading = useSelector(state => state.reviews.isLoading);
   // const error = useSelector(state => state.reviews.error);
   // const userReview = useSelector(state => state.reviews.items);
-  // const currenUserInfo = useSelector(state => state.users.info);
-  // const dispatch = useDispatch()
+  const currenUser = useSelector(selectUserInfo);
+  const currentUserLoading = useSelector(selectLoading);
+
+  // export const selectUserInfo = state => state.user.info;
+  // export const selectLoading = state => state.user.loading;
+
+  const dispatch = useDispatch();
+
+  console.log(reviews);
+  console.log(isLoading);
+  console.log(error);
+
+  console.log(currenUser);
+  console.log(currentUserLoading);
+
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState('');
 
@@ -69,7 +85,7 @@ const FeedbackForm = ({ onClose }) => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={schema}
+      validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
     >
       {({ errors }) => (
