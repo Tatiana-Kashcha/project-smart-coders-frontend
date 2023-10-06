@@ -4,7 +4,6 @@ import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 import { useNavigate } from 'react-router-dom';
-import dayjs from 'dayjs';
 
 export default function CalendarPage() {
   const [periodType, setPeriodType] = useState('month');
@@ -14,25 +13,16 @@ export default function CalendarPage() {
     return storedValue ? JSON.parse(storedValue) : true;
   }, []);
 
-  const newDate = new Date();
-  const month = newDate.setMonth(newDate.getMonth());
-  // const day = newDate.setDate(newDate.getDate());
-  const currentMonth = dayjs(month).format('MMMM-YYYY').toLowerCase();
-  // const currentDay = dayjs(day).format('D-MMM-YYYY').toLowerCase();
-
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isFirstVisit) {
-      navigate(`/calendar/month/${currentMonth}`);
       sessionStorage.setItem('isFirstVisit', 'false');
       setPeriodType('month');
+    } else {
+      setPeriodType('day');
     }
-    // else {
-    //   navigate(`/calendar/day/${currentDay}`);
-    //   setPeriodType('day');
-    // }
-  }, [navigate, isFirstVisit, currentMonth]);
+  }, [navigate, isFirstVisit]);
 
   return (
     <>
