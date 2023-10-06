@@ -33,12 +33,20 @@ const UserForm = () => {
     }
     formData.append('birthday', dayjs(values.birthday).format('YYYY-MM-DD'));
 
-    if (values.avatarURL) {
-      formData.append('avatarURL', values.avatarURL);
+    if (avatarURL) {
+      formData.append('avatarURL', avatarURL);
     }
 
+    console.log('name', values.name);
+    console.log('email', values.email);
+    console.log('phone', values.phone);
+    console.log('skype', values.skype);
+    console.log('birthday', dayjs(values.birthday).format('YYYY-MM-DD'));
+    console.log('avatarURL', avatarURL);
+    // console.log(values.avatarURL);
+
     try {
-      await dispatch(updateUser(values));
+      await dispatch(updateUser(formData));
       Notify.success('Profile data changed successfully');
     } catch {
       Notify.failure('Something went wrong... Try again!');
@@ -72,14 +80,14 @@ const UserForm = () => {
               <div>
                 <S.AvatarWrapper>
                   {avatarURL ? (
-                    <label htmlFor="avatar">
+                    <label htmlFor="avatarURL">
                       <S.ImgAvatar
                         src={URL.createObjectURL(avatarURL)}
                         alt="Avatar"
                       />
                     </label>
                   ) : userInfo.avatarURL ? (
-                    <label htmlFor="avatar">
+                    <label htmlFor="avatarURL">
                       <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
@@ -88,7 +96,7 @@ const UserForm = () => {
                 </S.AvatarWrapper>
                 <S.FieldAdd
                   id="add-avatar"
-                  name="avatar"
+                  name="avatarURL"
                   type="file"
                   accept="image/*, .png,.jpg, .gif"
                   onChange={e => {
