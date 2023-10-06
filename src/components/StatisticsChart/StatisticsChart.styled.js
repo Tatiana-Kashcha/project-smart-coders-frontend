@@ -6,3 +6,7 @@ export const SatatWrapper = styled.div`
   border-radius: 16px;
   background-color: red;
 `;
+export const Legend = styled.div`
+  display: flex;
+  gap: 14px;
+`;
