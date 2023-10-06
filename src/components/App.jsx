@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { refresh } from 'redux/auth/authOperations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+
 const MainPage = lazy(() => import('pages/MainPage'));
 const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
 const AccountPage = lazy(() => import('pages/AccountPage'));
@@ -16,7 +18,7 @@ const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
+// const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
