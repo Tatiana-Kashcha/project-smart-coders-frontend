@@ -9,8 +9,8 @@ export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
   const navigate = useNavigate();
   const currentMonth = dayjs(date).format('MMMM YYYY');
   const currentDay = dayjs(date).format('D MMM YYYY');
-  const currentMonthModify = dayjs(date).format('MMMM-YYYY');
-  const currentDayModify = dayjs(date).format('D-MMM-YYYY');
+  const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
+  const currentDayModify = dayjs(date).format('D-MMM-YYYY').toLowerCase();
 
   useEffect(() => {
     if (periodType === 'month') {
