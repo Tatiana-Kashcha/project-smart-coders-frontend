@@ -38,3 +38,15 @@ export const Elipse = styled.p`
     font-size: 18px;
   }
 `;
+
+export const Avatar = styled.img`
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-position: 50% 50%;
+  border-radius: 44px;
+
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+`;
