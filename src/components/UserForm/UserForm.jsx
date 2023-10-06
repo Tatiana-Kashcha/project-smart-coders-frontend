@@ -34,7 +34,7 @@ const UserForm = () => {
     formData.append('birthday', dayjs(values.birthday).format('YYYY-MM-DD'));
 
     if (avatarURL) {
-      formData.append('avatarURL', avatarURL);
+      formData.append('avatar', avatarURL);
     }
 
     try {
@@ -71,14 +71,14 @@ const UserForm = () => {
               <div>
                 <S.AvatarWrapper>
                   {avatarURL ? (
-                    <label htmlFor="avatarURL">
+                    <label htmlFor="avatar">
                       <S.ImgAvatar
                         src={URL.createObjectURL(avatarURL)}
                         alt="Avatar"
                       />
                     </label>
                   ) : userInfo.avatarURL ? (
-                    <label htmlFor="avatarURL">
+                    <label htmlFor="avatar">
                       <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
@@ -87,7 +87,7 @@ const UserForm = () => {
                 </S.AvatarWrapper>
                 <S.FieldAdd
                   id="add-avatar"
-                  name="avatarURL"
+                  name="avatar"
                   type="file"
                   accept="image/*, .png,.jpg, .gif"
                   onChange={e => {
