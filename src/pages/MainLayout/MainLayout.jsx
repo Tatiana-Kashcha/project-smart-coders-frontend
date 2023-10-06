@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -43,7 +42,7 @@ export default function MainLayout() {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       {(mediaQuery.matches || showSideBar) && (
         <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
       )}
@@ -61,6 +60,6 @@ export default function MainLayout() {
           </s.DivStyled>
         </Container>
       </s.Section>
-    </Suspense>
+    </>
   );
 }
