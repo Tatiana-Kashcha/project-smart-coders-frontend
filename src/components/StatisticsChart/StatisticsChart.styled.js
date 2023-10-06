@@ -6,6 +6,12 @@ export const SatatWrapper = styled.div`
   border-radius: 16px;
   background-color: red;
 `;
+export const DiagramWrapper = styled.div`
+  height: 100vw;
+  padding-top: 30px;
+  border-radius: 16px;
+  background-color: red;
+`;
 export const Legend = styled.div`
   display: flex;
   gap: 14px;
