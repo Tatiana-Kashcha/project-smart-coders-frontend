@@ -1,30 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 
 export default function CalendarPage() {
-  const isFirstVisit = JSON.parse(sessionStorage.getItem('isFirstVisit'));
+  const [periodType, setPeriodType] = useState('month');
 
-  const [monthOrDay, setMonthOrDay] = useState(!isFirstVisit); // !isFirstVisit = true
-
-  useEffect(() => {
-    sessionStorage.setItem('isFirstVisit', 'true');
+  const isFirstVisit = useMemo(() => {
+    const storedValue = sessionStorage.getItem('isFirstVisit');
+    return storedValue ? JSON.parse(storedValue) : true;
   }, []);
 
-  // true = month, false = day
-  const switchMonthOrDay = monthOrDay => {
-    setMonthOrDay(monthOrDay);
+  useEffect(() => {
+    if (isFirstVisit) {
+      sessionStorage.setItem('isFirstVisit', 'false');
+    } else {
+      setPeriodType('day');
+    }
+  }, [isFirstVisit]);
+
+  const handleChange = period => {
+    setPeriodType(period);
   };
 
   return (
     <>
-      <CalendarToolbar
-        switchMonthOrDay={switchMonthOrDay}
-        PeriodType={monthOrDay}
-      />
-      {monthOrDay ? <ChoosedMonth /> : <ChoosedDay />}
+      <CalendarToolbar periodType={periodType} handleChange={handleChange} />
+      {periodType === 'month' ? <ChoosedMonth /> : <ChoosedDay />}
     </>
   );
 }
