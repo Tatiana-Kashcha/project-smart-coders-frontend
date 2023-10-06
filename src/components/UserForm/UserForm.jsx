@@ -37,7 +37,6 @@ const UserForm = () => {
       formData.append('avatar', avatarURL);
     }
 
-    console.log(isFormChanged);
     try {
       await dispatch(updateUser(formData));
       Notify.success('Profile data changed successfully');
