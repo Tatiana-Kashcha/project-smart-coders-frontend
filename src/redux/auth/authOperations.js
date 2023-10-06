@@ -45,7 +45,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/auth/logout');
     clearToken();
   } catch (error) {
-    Report.failure('ERROR', `${error.message} Please Try Later`, 'Close');
+    // Report.failure('ERROR', `${error.message} Please Try Later`, 'Close');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
