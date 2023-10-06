@@ -1,4 +1,6 @@
 import * as s from './NotFoundPage.styled';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
 
 const NotFoundPage = () => {
   return (
@@ -13,7 +15,9 @@ const NotFoundPage = () => {
           We`re sorry, the page you requested could not be found. Please go back
           to the homepage.
         </s.Text>
-        <s.StyledLink to="/">Back to home</s.StyledLink>
+        <s.StyledLink to={useSelector(selectIsLoggedIn) ? '/account' : '/'}>
+          Back to home
+        </s.StyledLink>
       </s.ContentWrap>
     </s.Wrapper>
   );
