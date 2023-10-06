@@ -37,14 +37,6 @@ const UserForm = () => {
       formData.append('avatarURL', avatarURL);
     }
 
-    console.log('name', values.name);
-    console.log('email', values.email);
-    console.log('phone', values.phone);
-    console.log('skype', values.skype);
-    console.log('birthday', dayjs(values.birthday).format('YYYY-MM-DD'));
-    console.log('avatarURL', avatarURL);
-    // console.log(values.avatarURL);
-
     try {
       await dispatch(updateUser(formData));
       Notify.success('Profile data changed successfully');
@@ -64,7 +56,6 @@ const UserForm = () => {
             email: userInfo.email || '',
             phone: userInfo.phone || '',
             skype: userInfo.skype || '',
-            avatarURL: userInfo.avatarURL || '',
           }}
           onSubmit={handleSubmit}
         >
