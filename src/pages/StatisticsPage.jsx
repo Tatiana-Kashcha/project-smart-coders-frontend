@@ -19,7 +19,7 @@ export default function StatisticsPage() {
           backgroundColor: 'blueviolet',
         }}
       >
-        PeriodPaginator
+        PeriodPaginator TODO://!BAG-FIX
       </div>
       <StatisticsChart />
     </s.StatWrapper>
