@@ -63,23 +63,42 @@ const FeedbackForm = ({ onClose }) => {
     if (currentUser) {
       dispatch(getUserReview());
     }
-    if (reviews.length) {
-      setRating(reviews[0].rating);
-    }
-    if (!reviews.length) {
-      setShowSaveBtn(true);
-    }
   }, [dispatch, currentUser]);
 
-  // console.log(currentUser);
-  console.log(reviews);
-  // console.log(isLoading);
-  // console.log(error);
+  // useEffect(() => {
+  //   if (reviews.length > 0) {
+  //     // setRating(reviews[0].rating);
+  //   } else {
+  //     setShowSaveBtn(true);
+  //   }
+  // }, [reviews]);
 
-  const [rating, setRating] = useState(reviews.rating || 1);
+  console.log(reviews);
+  // console.log(reviews[0].rating);
+
+  const [rating, setRating] = useState(
+    reviews.length > 0 ? reviews[0].rating : 1
+  );
   // const [review, setReview] = useState('');
   const [showEditBtn, setShowEditBtn] = useState(false);
   const [showSaveBtn, setShowSaveBtn] = useState(false);
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     dispatch(getUserReview());
+  //   }
+  //   if (reviews.length) {
+  //     setRating(reviews[0].rating);
+  //   }
+  //   if (!reviews.length) {
+  //     setShowSaveBtn(true);
+  //   }
+  // }, [dispatch, currentUser]);
+
+  // console.log(currentUser);
+  // console.log(reviews);
+  // console.log(isLoading);
+  // console.log(error);
 
   // useEffect(() => {
   //   dispatch(currentUser());
@@ -154,7 +173,7 @@ const FeedbackForm = ({ onClose }) => {
       validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
     >
-      {isLoading || reviews.length === 0 ? (
+      {isLoading && reviews.length === 0 ? (
         <Loader />
       ) : (
         ({ errors }) => (

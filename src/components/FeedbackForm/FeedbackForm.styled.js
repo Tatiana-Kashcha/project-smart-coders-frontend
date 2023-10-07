@@ -89,11 +89,11 @@ export const EditButton = styled.button`
       ? `${globalTheme.colors.primary}`
       : props.theme.colors.secondBackgroundButton};
 
-  // &:hover {
-  //   color: ${globalTheme.colors.white};
-  //   background-color: ${globalTheme.colors.primary};
-  //   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
-  // }
+  &:hover {
+    color: ${globalTheme.colors.white};
+    background-color: ${globalTheme.colors.primary};
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+  }
 `;
 
 export const DeleteButton = styled.button`
