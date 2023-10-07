@@ -112,9 +112,59 @@ export const taskSlice = createSlice({
         category: 'to-do',
       },
       {
-        title: ' target 19',
+        title: ' target 20',
         date: '2023-10-08',
         category: 'to-do',
+      },
+      {
+        title: ' target 21',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 22',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 23',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 24',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 25',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 26',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 27',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 28',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
       },
     ],
     isLoading: false,

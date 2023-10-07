@@ -79,14 +79,18 @@ export const getChartOptions = (props) => ({
             font: {
                 family: 'Inter',
                 size: 11,
-                weight: 400,
+                weight: 500,
                 lineHeight: 1.5,
             },
-        formatter: (value) => {
-                return `${(value)}%`;
-            },
+        formatter: function(value, data) {
+        const total = data.dataset.data.reduce((previousValue, number) => {
+          return previousValue + number;
+        });
+        const percentage = ((value / total) * 100).toFixed(0) + "%";
+        return percentage;
+        },
         anchor: "end",
-          offset: -25,
+          offset: -20,
           align: "start"
   },
     legend: {
@@ -112,7 +116,7 @@ export const data = {
     labels: ['To Do', 'In Progress', 'Done'],
     datasets: [
     {
-      label: 'tascks by day',
+      label: 'tasks by day',
       // data: [40, 58, 50],
         borderRadius: 5,
         borderSkipped: 'end',
@@ -120,7 +124,7 @@ export const data = {
         categoryPercentage: 0.25,
     },
     {
-      label: 'tascks by month',
+      label: 'tasks by month',
         // data: [90, 63, 87],
         borderRadius: 5,
         borderSkipped: 'end',
@@ -162,30 +166,30 @@ export default function StatisticsChart(props) {
   });
 
   const allTascksByMonth = useSelector(selectTasks); 
-  console.log(allTascksByMonth);
+  // console.log(allTascksByMonth);
 
   const allTascksToDo = allTascksByMonth.filter(tasck => tasck.category === 'to-do').length;
-  console.log(allTascksToDo);
+  // console.log(allTascksToDo);
 
   const allTascksInProgress = allTascksByMonth.filter(tasck => tasck.category === 'in-progress').length;
-  console.log(allTascksInProgress);
+  // console.log(allTascksInProgress);
 
   const allTascksDone = allTascksByMonth.filter(tasck => tasck.category === 'done').length;
-  console.log(allTascksDone);
+  // console.log(allTascksDone);
 
   const dayOfSearch = '2023-10-08';
 
   const allTascksByDay = allTascksByMonth.filter(tasck => tasck.date === `${dayOfSearch}`);
-  console.log(allTascksByDay);
+  // console.log(allTascksByDay);
 
   const tascksByDayToDo = allTascksByDay.filter(tasck => tasck.category === 'to-do').length;
-  console.log(tascksByDayToDo);
+  // console.log(tascksByDayToDo);
 
   const tascksByDayInProgress = allTascksByDay.filter(tasck => tasck.category === 'in-progress').length;
-  console.log(tascksByDayInProgress);
+  // console.log(tascksByDayInProgress);
 
   const tascksByDayDone = allTascksByDay.filter(tasck => tasck.category === 'done').length;
-  console.log(tascksByDayDone);
+  // console.log(tascksByDayDone);
 
 
     
@@ -215,15 +219,15 @@ export default function StatisticsChart(props) {
         };
   
       setChartData(updatedData);
-      console.log(updatedData);
+      // console.log(updatedData);
         
 
         // Оновлення опцій графіка
         chart.options = getChartOptions(props);
-        // console.log(' getChartOptions(props)')
+        // console.log(getChartOptions(props));
         chart.update();
         // console.log('chart.update')
-    }, [props, chartData, allTascksDone, allTascksInProgress, allTascksToDo, tascksByDayDone, tascksByDayInProgress, tascksByDayToDo ]);
+    }, [props, allTascksDone, allTascksInProgress, allTascksToDo, tascksByDayDone, tascksByDayInProgress, tascksByDayToDo ]);
     
   return (
     <>
