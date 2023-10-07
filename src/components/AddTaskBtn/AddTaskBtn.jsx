@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TaskModal } from './TaskModal';
+import { TaskModal } from '../TaskModal/TaskModal';
 import * as s from './AddTaskBtn.styled';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
 

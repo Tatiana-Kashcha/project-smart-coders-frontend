@@ -1,113 +1,117 @@
-import React from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+
+import { useEffect, useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import * as s from './TaskForm.styled';
-import { TextAdd } from './TaskForm.styled';
+// import { TextAdd } from './TaskForm.styled';
+import { Formik } from 'formik';
+import { addTask, patchTask } from '../../redux/tasks/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTasks, selectError } from '../../redux/tasks/selectors';
 
+const emptyTask = {
+  title: '',
+  start: '00:00',
+  end: '00:00',
+  priority: 'low',
+  category: 'in-progress',
+};
 
-const TaskForm = ({ initialData, onClose, onSubmit }) => {
-  const initialValues = {
-    title: initialData?.title || '',
-    start: initialData?.start || '',
-    end: initialData?.end || '',
-    priority: initialData?.priority || 'low',
+//  const initialData = {
+//    title: 'My task 1',
+//    date: '2023-10-01',
+//    start: '09:10',
+//    end: '09:40',
+//    priority: 'low',
+//    category: 'in-progress',
+//    statusOperation: 'create',
+//  };
+export const TaskForm = ({ initialData, handlerCloseModal }) => {
+  const [informationTask, setInformationTask] = useState(emptyTask);
+  const [operation, setOperation] = useState('create');
+  const [dateSave, setDataSave] = useState(null);
+
+  const dispatch = useDispatch();
+  const successful = useSelector(selectTasks);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    const { statusOperation, _id, ...information } = initialData;
+    if (_id) information.id = _id;
+    setInformationTask(information);
+    setOperation(statusOperation);
+  }, [initialData]);
+  useEffect(() => {
+    if (!successful || !dateSave) return;
+
+    handlerCloseModal();
+  }, [dateSave, successful, handlerCloseModal]);
+
+  useEffect(() => {
+    if (!error || !dateSave) return;
+    Notify.failure(`Data save error`);
+  }, [error, dateSave]);
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setInformationTask(prev => {
+      return { ...prev, [name]: value };
+    });
   };
 
-  const validationSchema = Yup.object({
-    title: Yup.string()
-      .required('Title is required')
-      .max(250, 'Title should not exceed 250 characters'),
-    start: Yup.string()
-      .required('Start time is required')
-      .matches(
-        /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,
-        'Start time should be in HH:mm format'
-      ),
-    end: Yup.string()
-      .required('End time is required')
-      .matches(
-        /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,
-        'End time should be in HH:mm format'
-      )
-      .test(
-        'is-greater',
-        'End time should be greater than start time',
-        function (value) {
-          return value > this.parent.start;
-        }
-      ),
-    priority: Yup.string()
-      .required('Priority is required')
-      .matches(
-        /^(low|medium|high)$/,
-        'Priority should be low, medium, or high'
-      ),
-    date: Yup.string()
-      .required('Date is required')
-      .matches(/^\d{4}-\d{2}-\d{2}$/, 'Date should be in YYYY-MM-DD format'),
-    category: Yup.string()
-      .required('Category is required')
-      .matches(
-        /^(to-do|in-progress|done)$/,
-        'Category should be to-do, in-progress, or done'
-      ),
-  });
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (informationTask.start > informationTask.end) {
+      Notify.failure('Start time cannot be later than end time');
+      return;
+    }
+
+    if (operation === 'edit') {
+      dispatch(patchTask(informationTask));
+    } else {
+      dispatch(addTask(informationTask));
+    }
+    setDataSave(Date.now());
+    console.log(informationTask);
+  };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={values => {
-        onSubmit(values);
-      }}
-    >
-      <s.Form>
-        <s.Label htmlFor="title">
-          <s.Span>Title</s.Span>
+    <Formik>
+      <s.Form onSubmit={handleSubmit}>
+        <s.Label>
+          Title
           <s.Input
             type="text"
-            name="title"
-            id="title"
-            // onChange
-            // onBlur
-            // value
             placeholder="Enter text"
+            name="title"
+            value={informationTask.title}
+            onChange={handleChange}
+            required
           />
-          <s.Errors></s.Errors>
         </s.Label>
-
         <s.Wrapper>
-          <s.Label htmlFor="start">
-            <s.Span>Start</s.Span>
+          <s.Label>
+            Start
             <s.Input
+              id="time"
               type="time"
-              step="60"
               name="start"
-              id="start"
-              onChange
-              onBlur
-              value
-              placeholder="Select time"
+              value={informationTask.start}
+              onChange={handleChange}
+              required
             />
-            <s.Errors></s.Errors>
           </s.Label>
-
-          <s.Label htmlFor="end">
-            <s.Span>End</s.Span>
+          <s.Label>
+            End
             <s.Input
               type="time"
-              step="60"
               name="end"
-              id="end"
-              onChange
-              onBlur
-              value
-              placeholder="Select time"
+              value={informationTask.end}
+              onChange={handleChange}
+              required
             />
-            <s.Errors></s.Errors>
           </s.Label>
         </s.Wrapper>
-
         <s.RadioButtonGroup>
           {['Low', 'Medium', 'High'].map(priority => (
             <s.RadioButtonLabel key={priority}>
@@ -115,40 +119,32 @@ const TaskForm = ({ initialData, onClose, onSubmit }) => {
                 type="radio"
                 value={priority}
                 name="priority"
-                checked
-                onChange
+                checked={informationTask.priority === priority}
+                onChange={handleChange}
               />
               {priority}
             </s.RadioButtonLabel>
           ))}
         </s.RadioButtonGroup>
-
-        <s.Wrapper>
-          <s.Button type="submit" aria-label="Button add">
-            <s.IconPlus />
-            <TextAdd>Add</TextAdd>{' '}
+        {/* must be replaced with initialData.id */}
+        {operation === 'edit' ? (
+          <s.Button type="submit">
+            <s.IconEdit />
+            Edit
           </s.Button>
-          <s.ButtonCancel
-            aria-label="Button cancel"
-            type="button"
-            disabled
-            onClick={() => {
-              onClose();
-            }}
-          >
-            Cancel
-          </s.ButtonCancel>
+        ) : (
+          <s.Wrapper>
+            <s.Button type="submit">
+              <s.IconPlus />
+              Add
+            </s.Button>
 
-           
-        </s.Wrapper>
-      </s.Form> 
+            <s.ButtonCancel type="button" onClick={handlerCloseModal}>
+              Cancel
+            </s.ButtonCancel>
+          </s.Wrapper>
+        )}
+      </s.Form>
     </Formik>
   );
 };
-
-export default TaskForm;
-
-/* <s.Button type="submit" disabled aria-label="Button edit">
-            <s.IconEdit />
-            Edit
-          </s.Button> */
