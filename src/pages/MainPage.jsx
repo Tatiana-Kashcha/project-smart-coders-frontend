@@ -3,9 +3,7 @@
 // import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
 
 // import { TaskToolbar } from 'components/TaskToolbar/TaskToolbar';
-// import { TasksColumn } from 'components/TasksColumn/TasksColumn';
-import { ColumnHeadBar } from 'components/ColumnHeadBar/ColumnHeadBar';
-// import Header from 'components/Header/Header';
+import { TasksColumn } from 'components/TasksColumn/TasksColumn';
 
 export default function MainPage() {
   return (
@@ -13,11 +11,8 @@ export default function MainPage() {
       {/* <AuthSection />
       <Description />
       <ReviewsSlider /> */}
-      {/* <TaskToolbar />
-      <TasksColumn /> */}
-
-      <ColumnHeadBar />
-      {/* <Header /> */}
+      {/* <TaskToolbar /> */}
+      <TasksColumn />
     </>
   );
 }

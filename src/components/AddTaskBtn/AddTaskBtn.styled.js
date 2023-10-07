@@ -5,8 +5,9 @@ export const TaskBtn = styled.button`
   color: ${globalTheme.colors.closeButton};
   background-color: ${props => props.theme.colors.backgroundButton};
   border: 1px dashed ${globalTheme.colors.primary};
+  width: 100%;
   border-radius: 8px;
-  padding: 14px 103.5px;
+  padding: 14px 0 14px;
   font-weight: bold;
   font-size: 14px;
 
