@@ -8,7 +8,6 @@ import { LoginSchema } from './LoginSchema';
 
 import { ReactComponent as ShowIcon } from 'icons/eye.svg';
 import { ReactComponent as HideIcon } from 'icons/eye-slash.svg';
-import { ReactComponent as LoginIcon } from 'icons/log-in.svg';
 
 import {
   Form,
@@ -19,6 +18,10 @@ import {
   ToggleShowHide,
   Password,
   Button,
+  ButtonLogin,
+  ErrorIcon,
+  CorrectIcon,
+  IconStatusBox,
 } from './LoginForm.styled';
 
 export const LoginForm = () => {
@@ -62,20 +65,24 @@ export const LoginForm = () => {
       <Title>Log in</Title>
 
       <Label htmlFor="email">Email</Label>
-      <Input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="nadiia@gmail.com"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.email}
-        style={{
-          borderColor:
-            (formik.touched.email && formik.errors.email && '#E74A3B') ||
-            (formik.touched.email && !formik.errors.email && '#3CBC81'),
-        }}
-      />
+      <IconStatusBox>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="nadiia@gmail.com"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+          style={{
+            borderColor:
+              (formik.touched.email && formik.errors.email && '#E74A3B') ||
+              (formik.touched.email && !formik.errors.email && '#3CBC81'),
+          }}
+        />
+        {formik.touched.email && formik.errors.email && <ErrorIcon />}
+        {formik.touched.email && !formik.errors.email && <CorrectIcon />}
+      </IconStatusBox>
       {formik.touched.email && formik.errors.email ? (
         <Error>{formik.errors.email}</Error>
       ) : null}
@@ -114,9 +121,7 @@ export const LoginForm = () => {
 
       <Button type="submit">
         Log in
-        <LoginIcon
-          style={{ width: '20px', height: '20px', marginLeft: '11px' }}
-        />
+        <ButtonLogin />
       </Button>
     </Form>
   );
