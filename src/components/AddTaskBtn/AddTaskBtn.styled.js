@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
 export const TaskBtn = styled.button`
-  color: ${globalTheme.colors.closeButton};
-  background-color: ${props => props.theme.colors.backgroundButton};
+  color: ${props => props.theme.colors.primaryText};
+  background-color: ${props => props.theme.colors.addTaskBgBtn};
   border: 1px dashed ${globalTheme.colors.primary};
   width: 100%;
   border-radius: 8px;
