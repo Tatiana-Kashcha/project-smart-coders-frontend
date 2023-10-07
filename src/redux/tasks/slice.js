@@ -14,7 +14,112 @@ const loadingFailed = (state, action) => {
 
 export const taskSlice = createSlice({
   name: 'tasks',
-  initialState: { tasks: [], isLoading: false, error: null },
+  initialState: {
+    tasks: [
+      {
+        title: ' target 1',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+    ],
+    isLoading: false,
+    error: null,
+  },
   extraReducers: builder => {
     builder
       .addCase(addTask.pending, startLoading)

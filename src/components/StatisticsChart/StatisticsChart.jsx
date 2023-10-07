@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
+import { selectTasks } from '../../redux/tasks/selectors';
 import * as s from './StatisticsChart.styled';
 
 import {  
@@ -15,6 +16,7 @@ Chart as ChartJS,
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { Bar } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -75,8 +77,8 @@ export const getChartOptions = (props) => ({
         display: true,
         color: props.theme.colors.thirdText,
             font: {
-                family: 'Poppins',
-                size: 16,
+                family: 'Inter',
+                size: 11,
                 weight: 400,
                 lineHeight: 1.5,
             },
@@ -110,17 +112,17 @@ export const data = {
     labels: ['To Do', 'In Progress', 'Done'],
     datasets: [
     {
-      label: 'Dataset 1',
-      data: [40, 58, 50],
-        borderRadius: 6,
+      label: 'tascks by day',
+      // data: [40, 58, 50],
+        borderRadius: 5,
         borderSkipped: 'end',
         barPercentage: 0.7,
         categoryPercentage: 0.25,
     },
     {
-      label: 'Dataset 2',
-        data: [90, 63, 87],
-        borderRadius: 6,
+      label: 'tascks by month',
+        // data: [90, 63, 87],
+        borderRadius: 5,
         borderSkipped: 'end',
         barPercentage: 0.7,
         categoryPercentage: 0.25,
@@ -154,11 +156,38 @@ function createGradient2(ctx, area) {
 
 export default function StatisticsChart(props) {
 
-   const chartRef = useRef(null);
-    
+  const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     datasets: [],
   });
+
+  const allTascksByMonth = useSelector(selectTasks); 
+  console.log(allTascksByMonth);
+
+  const allTascksToDo = allTascksByMonth.filter(tasck => tasck.category === 'to-do').length;
+  console.log(allTascksToDo);
+
+  const allTascksInProgress = allTascksByMonth.filter(tasck => tasck.category === 'in-progress').length;
+  console.log(allTascksInProgress);
+
+  const allTascksDone = allTascksByMonth.filter(tasck => tasck.category === 'done').length;
+  console.log(allTascksDone);
+
+  const dayOfSearch = '2023-10-08';
+
+  const allTascksByDay = allTascksByMonth.filter(tasck => tasck.date === `${dayOfSearch}`);
+  console.log(allTascksByDay);
+
+  const tascksByDayToDo = allTascksByDay.filter(tasck => tasck.category === 'to-do').length;
+  console.log(tascksByDayToDo);
+
+  const tascksByDayInProgress = allTascksByDay.filter(tasck => tasck.category === 'in-progress').length;
+  console.log(tascksByDayInProgress);
+
+  const tascksByDayDone = allTascksByDay.filter(tasck => tasck.category === 'done').length;
+  console.log(tascksByDayDone);
+
+
     
     useEffect(() => {
         const chart = chartRef.current;
@@ -169,16 +198,24 @@ export default function StatisticsChart(props) {
         { backgroundColor: createGradient1(chart.ctx, chart.chartArea) },
         { backgroundColor: createGradient2(chart.ctx, chart.chartArea) }
         ];
+      
+      const realData = [
+        { data: [tascksByDayToDo, tascksByDayInProgress, tascksByDayDone] },
+        { data: [allTascksToDo, allTascksInProgress, allTascksDone] }
+      ];
 
         const updatedData = {
         ...data,
         datasets: data.datasets.map((datasets, index) => {
-            const obj2 = gradients[index];
-            return { ...datasets, ...obj2 }
+          const obj2 = gradients[index];
+          const obj3 = realData[index];
+          return { ...datasets, ...obj2, ...obj3 }
+          
         })
         };
-
-        setChartData(updatedData);
+  
+      setChartData(updatedData);
+      console.log(updatedData);
         
 
         // Оновлення опцій графіка
@@ -186,7 +223,7 @@ export default function StatisticsChart(props) {
         // console.log(' getChartOptions(props)')
         chart.update();
         // console.log('chart.update')
-    }, [props]);
+    }, [props, chartData, allTascksDone, allTascksInProgress, allTascksToDo, tascksByDayDone, tascksByDayInProgress, tascksByDayToDo ]);
     
   return (
     <>
