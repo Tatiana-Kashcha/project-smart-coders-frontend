@@ -18,8 +18,9 @@ import { ReactComponent as plus } from '../../icons/plusBlue.svg';
 
 export const WrapperForm = styled.div`
   margin: 0 auto;
+  padding-top: 31px;
   max-width: 100%;
-  /* padding-bottom: 40px; */ //! add to section in MainLayout
+
   position: relative;
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
@@ -27,11 +28,9 @@ export const WrapperForm = styled.div`
   }
   @media (min-width: 768px) and (max-width: 1439px) {
     max-width: 704px;
-    /* padding-bottom: 38px; */ //! add to section in MainLayout
   }
   @media (min-width: 1440px) {
     min-width: 100%;
-    /* padding-bottom: 32px;  */ //! add to section in MainLayout
   }
 `;
 
