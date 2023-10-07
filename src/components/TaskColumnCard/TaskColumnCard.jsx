@@ -3,7 +3,7 @@ import TaskToolbar from './TaskToolbar';
 import TaskModal from './TaskModal';
 import * as s from './TaskColumnCard.styled';
 
-const TaskColumnCard = (props) => {
+export const TaskColumnCard = (props) => {
   const { description, avatarUrl, priority } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,4 +30,3 @@ const TaskColumnCard = (props) => {
   );
 };
 
-export default TaskColumnCard;
