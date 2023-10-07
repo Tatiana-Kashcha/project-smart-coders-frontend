@@ -1,0 +1,29 @@
+import React, { useState } from 'react';
+import TaskToolbar from './TaskToolbar';
+import TaskModal from './TaskModal';
+import * as s from './TaskColumnCard.styled';
+
+const TaskColumnCard = (props) => {
+  const { description, avatarUrl, priority } = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <s.Card>
+      <s.CardDescr>{description}</s.CardDescr>
+      <s.CardAvatar src={avatarUrl} alt="User Avatar" />
+      <s.Priority>{priority}</s.Priority>
+      <TaskToolbar onEditClick={handleEditClick} />
+      {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />}
+    </s.Card>
+  );
+};
+
+export default TaskColumnCard;
