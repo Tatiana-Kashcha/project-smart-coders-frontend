@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
+import { Notify } from 'notiflix';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
@@ -8,6 +9,7 @@ import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 import { useTasks } from 'hooks/useTasks';
 
 export default function CalendarPage() {
+  console.log('CalendarPage is call');
   const [periodType, setPeriodType] = useState('month');
   const { tasks, error, getAllTasks } = useTasks();
   const currentDate = new Date();
@@ -31,13 +33,13 @@ export default function CalendarPage() {
 
   useEffect(() => {
     if (tasks.length === 0) {
-      getAllTasks({ month: monthMod, year: 'yearMod' });
+      getAllTasks({ month: monthMod, year: yearMod });
     }
   }, [getAllTasks, monthMod, tasks.length, yearMod]);
 
   useEffect(() => {
     if (error) {
-      console.log('faild');
+      Notify.failure('Request failed.');
     }
   }, [error]);
 
