@@ -8,6 +8,7 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { useDispatch } from 'react-redux';
 import { refresh } from 'redux/auth/authOperations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
+import Loader from 'components/Loader/Loader';
 
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
@@ -27,7 +28,7 @@ export const App = () => {
   }, [dispatch]);
   const isRefreshing = useSelector(selectIsRefreshing);
   return isRefreshing ? (
-    'Fetching user data...'
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
