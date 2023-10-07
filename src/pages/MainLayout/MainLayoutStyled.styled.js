@@ -24,7 +24,6 @@ export const Section = styled.section`
 
   @media screen and (max-width: calc(${globalTheme.breakpoints
       .tablet} - 0.5px)) {
-    padding-top: 31px;
     padding-bottom: 40px;
   }
 
