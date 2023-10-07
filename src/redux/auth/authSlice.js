@@ -45,7 +45,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(refresh.rejected, state => {
-        state.isRefreshing = true;
+        state.isRefreshing = false;
       }),
 });
 
