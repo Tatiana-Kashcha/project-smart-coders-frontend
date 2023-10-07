@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 
 import * as s from './CalendarToolbar.styled';
+import dayjs from 'dayjs';
 
 export const CalendarToolbar = ({ periodType, handleChange }) => {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
+  const navigate = useNavigate();
+  const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
+  const currentDayModify = dayjs(date).format('D-MMM-YYYY').toLowerCase();
+
+  useEffect(() => {
+    if (periodType === 'month') {
+      navigate(`/calendar/month/${currentMonthModify}`);
+    } else {
+      navigate(`/calendar/day/${currentDayModify}`);
+    }
+  }, [periodType, currentMonthModify, currentDayModify, navigate]);
 
   const upDateDate = PlusOrMinus => {
     if (periodType === 'month') {
