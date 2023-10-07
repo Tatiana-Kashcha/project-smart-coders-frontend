@@ -1,11 +1,21 @@
-// import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator'; //?
+import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
 import * as s from '../components/StatisticsChart/StatisticsChart.styled';
+import { useState } from 'react';
 
 export default function StatisticsPage() {
+  const currentDate = new Date();
+  const [date, setDate] = useState(currentDate);
+
+  const upDateDate = PlusOrMinus => {
+    const newDateDay = new Date(date);
+    newDateDay.setDate(newDateDay.getDate() + PlusOrMinus);
+    setDate(newDateDay);
+  };
+
   return (
     <s.StatWrapper>
-      {/* <PeriodPaginator /> */}
+      <PeriodPaginator date={date} upDateDate={upDateDate} />
       <div
         style={{
           width: '307px',
@@ -18,9 +28,7 @@ export default function StatisticsPage() {
           textTransform: 'uppercase',
           backgroundColor: 'blueviolet',
         }}
-      >
-        PeriodPaginator TODO://!BAG-FIX
-      </div>
+      ></div>
       <StatisticsChart />
     </s.StatWrapper>
   );
