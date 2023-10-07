@@ -7,7 +7,6 @@ const UserInfo = () => {
   const user = useSelector(selectUser);
   const firstLeter = user.name.slice(0, 1);
   const bigFirstLeter = firstLeter.toUpperCase();
-  console.log(bigFirstLeter);
 
   const userName = user.name;
   const avatar = user.avatarURL;
@@ -22,7 +21,7 @@ const UserInfo = () => {
       {avatar === '' ? (
         <s.Elipse>{bigFirstLeter}</s.Elipse>
       ) : (
-        <s.Elipse>{<img src={avatar} alt="avatar" />}</s.Elipse>
+        <s.Elipse>{<s.Avatar src={avatar} alt="avatar" />}</s.Elipse>
       )}
     </>
   );

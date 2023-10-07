@@ -8,7 +8,6 @@ import { RegisterSchema } from './RegisterSchema';
 
 import { ReactComponent as ShowIcon } from 'icons/eye.svg';
 import { ReactComponent as HideIcon } from 'icons/eye-slash.svg';
-import { ReactComponent as LoginIcon } from 'icons/log-in.svg';
 
 import {
   Form,
@@ -19,6 +18,10 @@ import {
   Button,
   Password,
   ToggleShowHide,
+  ButtonLogin,
+  ErrorIcon,
+  CorrectIcon,
+  IconStatusBox,
 } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
@@ -62,7 +65,7 @@ export const RegisterForm = () => {
           toast.error(outcomeAction.payload.response.data.message);
         }
       } catch (error) {
-        toast.error(error.message);
+        toast.error('Something went wrong... Try again!');
       }
     },
   });
@@ -71,40 +74,48 @@ export const RegisterForm = () => {
     <Form onSubmit={formik.handleSubmit}>
       <Title>Sign Up</Title>
       <Label htmlFor="name">Name</Label>
-      <Input
-        id="name"
-        name="name"
-        type="text"
-        placeholder="Enter your name"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.name}
-        style={{
-          borderColor:
-            (formik.touched.name && formik.errors.name && '#E74A3B') ||
-            (formik.touched.name && !formik.errors.name && '#3CBC81'),
-        }}
-      />
+      <IconStatusBox>
+        <Input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Enter your name"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.name}
+          style={{
+            borderColor:
+              (formik.touched.name && formik.errors.name && '#E74A3B') ||
+              (formik.touched.name && !formik.errors.name && '#3CBC81'),
+          }}
+        />
+        {formik.touched.name && formik.errors.name && <ErrorIcon />}
+        {formik.touched.name && !formik.errors.name && <CorrectIcon />}
+      </IconStatusBox>
 
       {formik.touched.name && formik.errors.name ? (
         <Error>{formik.errors.name}</Error>
       ) : null}
 
       <Label htmlFor="email">Email</Label>
-      <Input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Enter email"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.email}
-        style={{
-          borderColor:
-            (formik.touched.email && formik.errors.email && '#E74A3B') ||
-            (formik.touched.email && !formik.errors.email && '#3CBC81'),
-        }}
-      />
+      <IconStatusBox>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Enter email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+          style={{
+            borderColor:
+              (formik.touched.email && formik.errors.email && '#E74A3B') ||
+              (formik.touched.email && !formik.errors.email && '#3CBC81'),
+          }}
+        />
+        {formik.touched.email && formik.errors.email && <ErrorIcon />}
+        {formik.touched.email && !formik.errors.email && <CorrectIcon />}
+      </IconStatusBox>
 
       {formik.touched.email && formik.errors.email ? (
         <Error>{formik.errors.email}</Error>
@@ -144,9 +155,7 @@ export const RegisterForm = () => {
 
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
         Sign Up
-        <LoginIcon
-          style={{ width: '20px', height: '20px', marginLeft: '11px' }}
-        />
+        <ButtonLogin />
       </Button>
     </Form>
   );

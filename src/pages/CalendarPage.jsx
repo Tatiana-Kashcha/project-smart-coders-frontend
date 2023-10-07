@@ -1,27 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 
 export default function CalendarPage() {
-  const isFirstVisit = JSON.parse(sessionStorage.getItem('isFirstVisit'));
+  const [periodType, setPeriodType] = useState('month');
 
-  const [monthOrDay, setMonthOrDay] = useState(!isFirstVisit); // !isFirstVisit = true
-
-  useEffect(() => {
-    sessionStorage.setItem('isFirstVisit', 'true');
+  const isFirstVisit = useMemo(() => {
+    const storedValue = sessionStorage.getItem('isFirstVisit');
+    return storedValue ? JSON.parse(storedValue) : true;
   }, []);
 
-  // true = month, false = day
-  const switchMonthOrDay = monthOrDay => {
-    setMonthOrDay(monthOrDay);
+  useEffect(() => {
+    if (isFirstVisit) {
+      sessionStorage.setItem('isFirstVisit', 'false');
+    } else {
+      setPeriodType('day');
+    }
+  }, [isFirstVisit]);
+
+  const handleChange = period => {
+    setPeriodType(period);
   };
 
   return (
     <>
-      <CalendarToolbar switchMonthOrDay={switchMonthOrDay} />
-      {monthOrDay ? <ChoosedMonth /> : <ChoosedDay />}
+      <CalendarToolbar periodType={periodType} handleChange={handleChange} />
+      {periodType === 'month' ? <ChoosedMonth /> : <ChoosedDay />}
     </>
   );
 }
@@ -34,6 +40,6 @@ export default function CalendarPage() {
  - ChoosedMonth - дозволяє подивитись всі задачі на місяць, перейти на сторінку одного дня ChoosedDay. ✅
  - ChoosedDay - дозволяє створювати задачі та розділити ці задачі  на групи по ступеню їх виконання. ✅
 5. При новому відвідуванні додатку та першому вході на сторінку відображаеться модуль ChoosedMonth з розкладкою комірок з датами поточного місяця. ✅
-6. На сторінці повинен здійснюватись запит за завданнями, якщо вони відсутні в глобальному стейті ➖
-7. Успіх - дані записуються у відповідний стейт ➖
-8. Помилка - користувачу показується відповідне пуш-повідомлення" ➖ */
+6. На сторінці повинен здійснюватись запит за завданнями, якщо вони відсутні в глобальному стейті 
+7. Успіх - дані записуються у відповідний стейт 
+8. Помилка - користувачу показується відповідне пуш-повідомлення"  */
