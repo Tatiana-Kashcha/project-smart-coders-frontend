@@ -19,26 +19,22 @@ export default function MainLayout() {
   useEffect(() => {
     const handleResize = evt => {
       setShowSideBar(evt.matches);
+      console.log('handleResize', evt.matches);
     };
 
     mediaQuery.addEventListener('change', handleResize);
-    // console.log('useEffect', showSideBar); //!
 
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
     };
-  }, [mediaQuery]); //?
+  }, [mediaQuery, showSideBar]); //?
 
   const onSideBar = () => {
     setShowSideBar(prevState => !prevState);
-    // console.log('onSideBar'); //!
-    // console.log('onSideBar', showSideBar); //!
   };
 
   const onRedirect = () => {
     setShowSideBar(false);
-    // console.log('onRedirect'); //!
-    // console.log(showSideBar); //!
   };
 
   return (
