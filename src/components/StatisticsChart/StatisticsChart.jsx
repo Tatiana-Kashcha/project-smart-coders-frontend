@@ -4,14 +4,10 @@ export default function StatisticsChart() {
   return (
     <>
       <s.Legend>
-        <p>
-          <span>*</span>By Day
-        </p>
-        <p>
-          <span>*</span>By Month
-        </p>
+        <s.DayLegend>By Day</s.DayLegend>
+        <s.MonthLegend>By Month</s.MonthLegend>
       </s.Legend>
-      <s.SatatWrapper>HELLO!</s.SatatWrapper>
+      <s.DiagramWrapper>Ш</s.DiagramWrapper>
     </>
   );
 }
