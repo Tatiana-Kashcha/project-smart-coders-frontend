@@ -45,6 +45,7 @@ export const lightTheme = {
     bgrAvatar: '#F8F8F8',
     bgrSection: '#f7f6f9', //! add background for lightTheme
     bgrCalendar: '#FFF', //! add background for Calendar
+    borderStat: '#e3f3ff', //! add background for Statistic
   },
 };
 
@@ -94,6 +95,7 @@ export const darkTheme = {
     bgrAvatar: '#171820',
     bgrSection: '#171820', //! add background for darkTheme
     bgrCalendar: '#21222C', //! add background for Calendar
+    borderStat: 'rgba(227, 243, 255, 0.15)', //! add background for Statistic
   },
 };
 
