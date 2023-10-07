@@ -1,8 +1,12 @@
 // import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator'; //?
+
+import { useThemeContext } from 'hooks';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
 import * as s from '../components/StatisticsChart/StatisticsChart.styled';
 
 export default function StatisticsPage() {
+  const { theme } = useThemeContext();
+
   return (
     <s.StatWrapper>
       {/* <PeriodPaginator /> */}
@@ -21,7 +25,7 @@ export default function StatisticsPage() {
       >
         PeriodPaginator TODO://!BAG-FIX
       </div>
-      <StatisticsChart />
+      <StatisticsChart theme={theme}/>
     </s.StatWrapper>
   );
 }
