@@ -4,10 +4,25 @@ import { globalTheme } from 'theme';
 export const Card = styled.div`
   width: 300px;
   height: 112px;
+  padding: 14px 14px 18px 14px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
   background: ${props => props.theme.colors.taskItemBg};
+`;
+
+export const CardEl = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CardAvAndPri = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
 `;
 
 export const CardDescr = styled.div`

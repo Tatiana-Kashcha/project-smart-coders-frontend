@@ -7,9 +7,9 @@ const TaskColumnCard = (props) => {
   const { description, avatarUrl, priority } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleEditClick = () => {
-    setIsModalOpen(true);
-  };
+  // const handleEditClick = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -18,9 +18,13 @@ const TaskColumnCard = (props) => {
   return (
     <s.Card>
       <s.CardDescr>{description}</s.CardDescr>
-      <s.CardAvatar src={avatarUrl} alt="User Avatar" />
-      <s.Priority>{priority}</s.Priority>
-      <TaskToolbar onEditClick={handleEditClick} />
+      <s.CardEl>
+        <s.CardAvAndPri>
+          <s.CardAvatar src={avatarUrl} alt="User Avatar" />
+          <s.Priority>{priority}</s.Priority>
+        </s.CardAvAndPri>
+        <TaskToolbar />
+      </s.CardEl>
       {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />}
     </s.Card>
   );
