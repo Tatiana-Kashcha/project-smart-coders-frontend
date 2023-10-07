@@ -1,13 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
+import { useTasks } from 'hooks/useTasks';
 
 import * as s from './CalendarToolbar.styled';
 
 export const CalendarToolbar = ({ periodType, handleChange }) => {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
+  const { tasks, getAllTasks } = useTasks();
+  const navigate = useNavigate();
+  const month = dayjs(date).format('MM').toLowerCase();
+  const day = dayjs(date).format('DD').toLowerCase();
+  const monthMod = dayjs(date).format('MM');
+  const yearMod = dayjs(date).format('YYYY');
+  const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
+  const currentDayModify = dayjs(date).format('DD-MMM-YYYY').toLowerCase();
+
+  useEffect(() => {
+    if (periodType === 'month') {
+      navigate(`/calendar/month/${currentMonthModify}`);
+    } else {
+      navigate(`/calendar/day/${currentDayModify}`);
+    }
+  }, [periodType, currentMonthModify, currentDayModify, navigate]);
+
+  // useEffect(() => {
+  //   tasks.map(task => {
+  //     const arrayOfData = task.date.split('-');
+
+  //     if (!arrayOfData[1].includes(month) && !arrayOfData[2].includes(day)) {
+  //       return null;
+  //     }
+  //     return getAllTasks({ month: monthMod, year: yearMod });
+  //   });
+  // }, [date]);
 
   const upDateDate = PlusOrMinus => {
     if (periodType === 'month') {
