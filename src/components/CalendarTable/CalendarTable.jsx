@@ -25,7 +25,7 @@ const CalendarTable = ({ startDay }) => {
     day.add(1, 'day');
   }
 
-  window.moment = moment;
+  // window.moment = moment;
 
   const totalDays = 42;
   const daysArray = [...Array(totalDays)].map(() => day.add(1, 'day').clone());
@@ -37,7 +37,7 @@ const CalendarTable = ({ startDay }) => {
         {daysArray.map(dayItem => (
           <CellWrapper
             key={dayItem.format('DDMMYYYY')}
-            IsWeekend={dayItem.day() === 6 || dayItem.day() === 0}
+            // IsWeekend={dayItem.day() === 6 || dayItem.day() === 0}
           >
             <DayWrapper>
               <RowInCell>

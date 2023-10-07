@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // зовнішній контур
-export const CalendarGridWrapper = styled.table`
+export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
