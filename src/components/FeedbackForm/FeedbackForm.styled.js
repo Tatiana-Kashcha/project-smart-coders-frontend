@@ -94,11 +94,6 @@ export const EditButton = styled.button`
   //   background-color: ${globalTheme.colors.primary};
   //   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   // }
-
-  &:active {
-    color: ${globalTheme.colors.white};
-    background-color: ${globalTheme.colors.primary};
-  }
 `;
 
 export const DeleteButton = styled.button`
