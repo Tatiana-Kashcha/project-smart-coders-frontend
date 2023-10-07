@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { Notify } from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'http://localhost:8000/';
@@ -40,9 +40,10 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/auth/logout');
+    await axios.post('/auth/logoutt');
     clearToken();
   } catch (error) {
+    Notify.failure('Something went wrong... Try again!');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
