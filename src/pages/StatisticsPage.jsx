@@ -1,3 +1,4 @@
+import { useThemeContext } from 'hooks';
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
 import * as s from '../components/StatisticsChart/StatisticsChart.styled';
@@ -6,6 +7,7 @@ import { useState } from 'react';
 export default function StatisticsPage() {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
+  const { theme } = useThemeContext();
 
   const upDateDate = PlusOrMinus => {
     const newDateDay = new Date(date);
@@ -29,7 +31,7 @@ export default function StatisticsPage() {
           backgroundColor: 'blueviolet',
         }}
       ></div>
-      <StatisticsChart />
+      <StatisticsChart theme={theme} />
     </s.StatWrapper>
   );
 }
