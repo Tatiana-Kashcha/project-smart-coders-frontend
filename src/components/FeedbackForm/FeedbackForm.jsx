@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
@@ -12,12 +12,20 @@ import {
 } from 'redux/reviews/selectors';
 import { selectLoading } from 'redux/user/selectors';
 import { selectUser } from 'redux/auth/selectors';
+import {
+  deleteReview,
+  getUserReview,
+  updateReview,
+  // createReview,
+  // updateReview,
+  // deleteReview,
+} from 'redux/reviews/operations';
 
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
 
-// import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 const FeedbackForm = ({ onClose }) => {
   const reviews = useSelector(selectReviews);
@@ -47,24 +55,29 @@ const FeedbackForm = ({ onClose }) => {
   console.log(isLoading);
   console.log(error);
 
-  // console.log(currentUser);
+  // console.log(currentUser._id);
   // console.log(currentUserLoading);
 
   useEffect(() => {
-    dispatch(currentUser());
+    dispatch(getUserReview());
   }, [dispatch]);
 
-  const [rating, setRating] = useState(1);
-  const [review, setReview] = useState('');
+  const [rating, setRating] = useState(reviews[0].rating || 1);
+  // const [review, setReview] = useState('');
+  const [showEditBtn, setShowEditBtn] = useState(false);
+  const [showSaveBtn, setShowSaveBtn] = useState(false);
 
   // useEffect(() => {
   //   dispatch(currentUser());
   // }, [dispatch]);
 
   const initialValues = {
-    rating,
-    review,
+    // rating: reviews[0].rating || 1,
+    review: reviews[0].comment || '',
   };
+
+  console.log(reviews[0].rating);
+  console.log(reviews[0].comment);
 
   const starsConfig = {
     size: 24,
@@ -80,8 +93,11 @@ const FeedbackForm = ({ onClose }) => {
   };
 
   const handleSubmit = values => {
+    const formData = new FormData();
+    formData.append('rating', rating);
+    formData.append('review', values.review);
     //  { resetForm }
-    setReview(values.review);
+    // setReview(values.review);
 
     console.log(rating);
     console.log(values.review);
@@ -94,6 +110,18 @@ const FeedbackForm = ({ onClose }) => {
   // {isLoading && currenUserInfo === null && !error ? (
   //       <Loader />
   //     ) : (
+  const onEdit = () => {
+    // dispatch(updateReview(currentUser._id));
+
+    setShowEditBtn(true);
+
+    // onClose();
+  };
+
+  const onDelete = () => {
+    dispatch(deleteReview(currentUser._id));
+    onClose();
+  };
 
   return (
     <Formik
@@ -101,43 +129,62 @@ const FeedbackForm = ({ onClose }) => {
       validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors }) => (
-        <s.FormWrapper autoComplete="off">
-          <div>
-            <s.Label htmlFor="rating">Rating </s.Label>
-            <ReactStars {...starsConfig} />
-          </div>
-          <s.ReviewContainer>
-            <s.ContainerLabelAndBtn>
-              <s.Label htmlFor="review">Review</s.Label>
+      {currentUser._id === reviews[0].owner && isLoading && !error ? (
+        <Loader />
+      ) : (
+        ({ errors }) => (
+          <s.FormWrapper autoComplete="off">
+            <div>
+              <s.Label htmlFor="rating">Rating </s.Label>
+              <ReactStars {...starsConfig} />
+            </div>
+            <s.ReviewContainer>
+              <s.ContainerLabelAndBtn>
+                <s.Label htmlFor="review">Review</s.Label>
 
-              <s.UpContainerButton>
-                <s.EditButton type="button">
-                  <Pencil />
-                </s.EditButton>
-                <s.DeleteButton type="button">
-                  <TrashBox />
-                </s.DeleteButton>
-              </s.UpContainerButton>
-            </s.ContainerLabelAndBtn>
-            <s.ReviewInput
-              name="review"
-              placeholder="Enter text"
-              as={Field}
-              component="textarea"
-              error={!!errors.review ? 'true' : undefined}
-              required
-            />
-            <s.ErrorContainer name="review" component="div" />
-          </s.ReviewContainer>
+                <s.UpContainerButton>
+                  <s.EditButton
+                    type="button"
+                    onClick={onEdit}
+                    isActive={showEditBtn}
+                  >
+                    <Pencil />
+                  </s.EditButton>
+                  <s.DeleteButton type="button" onClick={onDelete}>
+                    <TrashBox />
+                  </s.DeleteButton>
+                </s.UpContainerButton>
+              </s.ContainerLabelAndBtn>
+              <s.ReviewInput
+                name="review"
+                placeholder="Enter text"
+                as={Field}
+                component="textarea"
+                error={!!errors.review ? 'true' : undefined}
+                required
+              />
+              <s.ErrorContainer name="review" component="div" />
+            </s.ReviewContainer>
 
-          <s.DownContainerButton>
-            <s.ConfirmButton type="submit">Save</s.ConfirmButton>
-            <s.CancelButton type="button" onClick={onClose}>
-              Cancel
-            </s.CancelButton>
-          </s.DownContainerButton>
-        </s.FormWrapper>
+            {showSaveBtn ? (
+              <s.DownContainerButton>
+                <s.ConfirmButton type="submit">Save</s.ConfirmButton>
+                <s.CancelButton type="button" onClick={onClose}>
+                  Cancel
+                </s.CancelButton>
+              </s.DownContainerButton>
+            ) : null}
+
+            {showEditBtn ? (
+              <s.DownContainerButton>
+                <s.ConfirmButton type="submit">Edit</s.ConfirmButton>
+                <s.CancelButton type="button" onClick={onClose}>
+                  Cancel
+                </s.CancelButton>
+              </s.DownContainerButton>
+            ) : null}
+          </s.FormWrapper>
+        )
       )}
     </Formik>
   );

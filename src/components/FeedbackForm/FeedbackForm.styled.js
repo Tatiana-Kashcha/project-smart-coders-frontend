@@ -80,13 +80,24 @@ export const EditButton = styled.button`
   border: none;
   cursor: pointer;
 
-  color: ${globalTheme.colors.primary};
-  background-color: ${props => props.theme.colors.secondBackgroundButton};
+  color: ${props =>
+    props.isActive
+      ? `${globalTheme.colors.white}`
+      : `${globalTheme.colors.primary}`};
+  background-color: ${props =>
+    props.isActive
+      ? `${globalTheme.colors.primary}`
+      : props.theme.colors.secondBackgroundButton};
 
-  &:hover {
+  // &:hover {
+  //   color: ${globalTheme.colors.white};
+  //   background-color: ${globalTheme.colors.primary};
+  //   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+  // }
+
+  &:active {
     color: ${globalTheme.colors.white};
     background-color: ${globalTheme.colors.primary};
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
 `;
 
@@ -132,12 +143,14 @@ export const ConfirmButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
 
-  color: ${props => props.theme.colors.secondText};
-  background-color: ${props => props.theme.colors.backgroundButton};
+  color: ${globalTheme.colors.white};
+  background-color: ${globalTheme.colors.secondary};
+  // // color: ${props => props.theme.colors.secondText};
+  // background-color: ${props => props.theme.colors.backgroundButton};
 
   &:hover {
-    color: ${globalTheme.colors.white};
-    background-color: ${globalTheme.colors.secondary};
+    // color: ${globalTheme.colors.white};
+    // background-color: ${globalTheme.colors.secondary};
     box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
 `;
