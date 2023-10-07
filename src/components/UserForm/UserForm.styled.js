@@ -18,19 +18,19 @@ import { ReactComponent as plus } from '../../icons/plusBlue.svg';
 
 export const WrapperForm = styled.div`
   margin: 0 auto;
+  padding-top: 31px;
   max-width: 100%;
-  padding-bottom: 40px;
+
   position: relative;
+
   @media screen and (min-width: 375px) and (max-width: 768px) {
     max-width: 335px;
   }
   @media (min-width: 768px) and (max-width: 1439px) {
     max-width: 704px;
-    padding-bottom: 38px;
   }
   @media (min-width: 1440px) {
     min-width: 100%;
-    padding-bottom: 32px;
   }
 `;
 
@@ -168,7 +168,7 @@ export const AvatarWrapper = styled.div`
   height: 72px;
   position: absolute;
   left: calc(50% - 36px);
-  top: -36px;
+  top: -31px;
   fill: rgba(62, 133, 243, 0.18);
   background-color: ${props => props.theme.colors.bgrAvatar};
   border: 2px solid #3e85f3;

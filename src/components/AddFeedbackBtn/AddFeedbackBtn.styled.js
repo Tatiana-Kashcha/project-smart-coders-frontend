@@ -16,7 +16,7 @@ export const FeedbackBtn = styled.button`
   font-weight: 600;
   color: #ffffff;
 
-  @media screen and (min-width: 678px) {
+  @media screen and (min-width: 768px) {
     padding: 12px 32px;
     margin-right: 24px;
     border-radius: 14px;

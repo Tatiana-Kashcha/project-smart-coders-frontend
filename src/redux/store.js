@@ -1,17 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
-import persistStore from "redux-persist/es/persistStore";
-import { authReducer } from "./auth/authSlice";
-import { initAuth } from "./auth/initAuth";
+import { configureStore } from '@reduxjs/toolkit';
+import persistStore from 'redux-persist/es/persistStore';
+
 import {
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
 } from 'redux-persist';
-import { initUser } from "./user/initUser";
-import { userSlice } from "./user/userSlice";
+
+import { authReducer } from './auth/authSlice';
+import { reviewsReducer } from './reviews/reviewsSlice';
+import { userSlice } from './user/userSlice';
+import { tasksReducer } from './tasks/slice';
+
+import { initAuth } from './auth/initAuth';
+import { initUser } from './user/initUser';
 
 const initState = {
   auth: initAuth,
@@ -24,6 +29,8 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     user: userSlice.reducer,
+    reviews: reviewsReducer,
+    tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -34,4 +41,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-

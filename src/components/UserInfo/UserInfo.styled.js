@@ -8,7 +8,7 @@ export const Name = styled.p`
   font-weight: 700;
   line-height: 1.28;
 
-  @media screen and (min-width: 678px) {
+  @media screen and (min-width: 768px) {
     margin-right: 14px;
     font-size: 18px;
     line-height: 1;
@@ -36,5 +36,18 @@ export const Elipse = styled.p`
 
     font-family: Inter;
     font-size: 18px;
+  }
+`;
+
+export const Avatar = styled.img`
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-position: 50% 50%;
+  border-radius: 44px;
+
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
   }
 `;

@@ -1,9 +1,14 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
 export const PrivateRoute = ({ element: Element, redirectTo = '/' }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  return !isLoggedIn ? <Navigate to={redirectTo} /> : <Element />;
+  return !isLoggedIn && !isRefreshing ? (
+    <Navigate to={redirectTo} />
+  ) : (
+    <Element />
+  );
 };

@@ -1,9 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Layout } from 'components/Layout/Layout';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
+import { useDispatch } from 'react-redux';
+import { refresh } from 'redux/auth/authOperations';
+import { selectIsRefreshing } from 'redux/auth/selectors';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
@@ -15,46 +19,52 @@ const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  return isRefreshing ? (
+    'Fetching user data...'
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<MainPage />} />
 
-          <Route
-            path="account"
-            element={<PrivateRoute element={MainLayout} redirectTo="/" />}
-          >
-            <Route index element={<AccountPage />} />
-          </Route>
-          <Route
-            path="calendar"
-            element={<PrivateRoute element={MainLayout} redirectTo="/" />}
-          >
-            <Route path="month/:currrentDate" element={<CalendarPage />} />
-            <Route path="day/:currrentDay" element={<CalendarPage />} />
-          </Route>
-          <Route
-            path="statistics"
-            element={<PrivateRoute element={MainLayout} redirectTo="/" />}
-          >
-            <Route index element={<StatisticsPage />} />
-          </Route>
-          <Route
-            path="register"
-            element={
-              <RestrictedRoute element={RegisterPage} redirectTo="/account" />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute element={LoginPage} redirectTo="/account" />
-            }
-          />
+        <Route
+          path="account"
+          element={<PrivateRoute element={MainLayout} redirectTo="/" />}
+        >
+          <Route index element={<AccountPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
-      </Routes>
-    </>
+        <Route
+          path="calendar"
+          element={<PrivateRoute element={MainLayout} redirectTo="/" />}
+        >
+          <Route index element={<CalendarPage />} />
+          <Route path="month/:currrentDate" element={<CalendarPage />} />
+          <Route path="day/:currrentDay" element={<CalendarPage />} />
+        </Route>
+        <Route
+          path="statistics"
+          element={<PrivateRoute element={MainLayout} redirectTo="/" />}
+        >
+          <Route index element={<StatisticsPage />} />
+        </Route>
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute element={RegisterPage} redirectTo="/account" />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute element={LoginPage} redirectTo="/account" />
+          }
+        />
+      </Route>
+      <Route path="*" element={<NotFoundPage />}></Route>
+    </Routes>
   );
 };

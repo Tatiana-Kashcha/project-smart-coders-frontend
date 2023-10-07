@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import {TaskModal} from './TaskModal';
+import { TaskModal } from './TaskModal';
 import * as s from './AddTaskBtn.styled';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
 
@@ -22,7 +22,7 @@ export const AddTaskBtn = ({ groupId }) => {
         </s.PlusIcon>
         Add task
       </s.TaskBtn>
-      {/* {isModalOpen && <TaskModal groupId={groupId} closeModal={closeModal} />} */}
+      {isModalOpen && <TaskModal groupId={groupId} closeModal={closeModal} />}
     </div>
   );
 };

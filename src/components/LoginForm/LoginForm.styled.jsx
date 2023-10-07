@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
+import { ReactComponent as IconCorrect } from '../../icons/done.svg';
+import { ReactComponent as IconError } from '../../icons/ic_baseline-error-outline.svg';
+import { ReactComponent as LoginButton } from '../../icons/log-in.svg';
 
 export const Form = styled.form`
   width: 335px;
@@ -133,7 +136,49 @@ export const Password = styled.div`
 export const ToggleShowHide = styled.span`
   position: absolute;
   width: 30px;
-  right: 12px;
-  top: 12px;
+  right: 18px;
+  top: 13px;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    top: 18px;
+  }
+`;
+
+export const ButtonLogin = styled(LoginButton)`
+  width: 18px;
+  height: 18px;
+  margin-left: 11px;
+
+  @media (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const ErrorIcon = styled(IconError)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+export const CorrectIcon = styled(IconCorrect)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+export const IconStatusBox = styled.div`
+  position: relative;
+  height: 46px;
+  display: flex;
+  @media (min-width: 768px) {
+    height: 54px;
+  }
 `;
