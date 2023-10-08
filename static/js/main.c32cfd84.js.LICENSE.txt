@@ -114,6 +114,8 @@
 
 //! add background for Calendar
 
+//! add background for Statistic
+
 //! add background for darkTheme
 
 //! add background for lightTheme
