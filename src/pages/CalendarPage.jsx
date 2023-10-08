@@ -1,19 +1,19 @@
 import { useEffect, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
-import { Notify } from 'notiflix';
+
+import { useTasks } from 'hooks/useTasks';
+import { useDate } from 'hooks/useDate';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { ChoosedMonth } from 'components/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 
-import { useTasks } from 'hooks/useTasks';
-import { useDate } from 'hooks/useDate';
-
 export default function CalendarPage() {
   const [periodType, setPeriodType] = useState('month');
   const { choosedDate } = useDate();
-  const { tasks, error, getAllTasks } = useTasks();
+  const { tasks, getAllTasks } = useTasks();
   const currentDate = useMemo(() => new Date(), []);
+
   const month = currentDate.setMonth(currentDate.getMonth());
   const year = currentDate.setFullYear(currentDate.getFullYear());
   const monthMod = dayjs(month).format('MM');
@@ -38,12 +38,6 @@ export default function CalendarPage() {
     }
   }, [choosedDate, currentDate, getAllTasks, monthMod, tasks.length, yearMod]);
 
-  useEffect(() => {
-    if (error) {
-      Notify.failure('Request failed.');
-    }
-  }, [error]);
-
   const handleChange = period => {
     setPeriodType(period);
   };
@@ -66,4 +60,4 @@ export default function CalendarPage() {
 5. При новому відвідуванні додатку та першому вході на сторінку відображаеться модуль ChoosedMonth з розкладкою комірок з датами поточного місяця. ✅
 6. На сторінці повинен здійснюватись запит за завданнями, якщо вони відсутні в глобальному стейті ✅
 7. Успіх - дані записуються у відповідний стейт ✅
-8. Помилка - користувачу показується відповідне пуш-повідомлення" ✅  */
+8. Помилка - користувачу показується відповідне пуш-повідомлення"   */

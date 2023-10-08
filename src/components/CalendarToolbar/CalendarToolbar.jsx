@@ -1,32 +1,29 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
+import { useTasks } from 'hooks/useTasks';
+import { useDate } from 'hooks/useDate';
+
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
-import { useTasks } from 'hooks/useTasks';
 
 import * as s from './CalendarToolbar.styled';
-import { useDate } from 'hooks/useDate';
 
 export const CalendarToolbar = ({ periodType, handleChange }) => {
   const { choosedDate, setChoosedDate } = useDate();
   const [date, setDate] = useState(choosedDate);
-  const { tasks, getAllTasks } = useTasks();
+  const { getAllTasks } = useTasks();
 
-  const currentDate = useMemo(() => new Date(), []);
-
-  useEffect(() => {
-    setChoosedDate(date);
-  }, [date, setChoosedDate]);
   const navigate = useNavigate();
-
-  // const month = dayjs(date).format('MM').toLowerCase();
-  // const day = dayjs(date).format('DD').toLowerCase();
   const monthMod = dayjs(date).format('MM');
   const yearMod = dayjs(date).format('YYYY');
   const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
   const currentDayModify = dayjs(date).format('DD-MMM-YYYY').toLowerCase();
+
+  useEffect(() => {
+    setChoosedDate(date);
+  }, [date, setChoosedDate]);
 
   useEffect(() => {
     if (periodType === 'month') {
@@ -37,10 +34,8 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
   }, [periodType, currentMonthModify, currentDayModify, navigate]);
 
   useEffect(() => {
-    if (currentDate !== choosedDate) {
-      getAllTasks({ month: monthMod, year: yearMod });
-    }
-  }, [choosedDate, currentDate, getAllTasks, monthMod, yearMod]);
+    getAllTasks({ month: monthMod, year: yearMod });
+  }, [getAllTasks, monthMod, yearMod]);
 
   const upDateDate = PlusOrMinus => {
     if (periodType === 'month') {
@@ -70,8 +65,8 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
  - PeriodPaginator - дозволяє юзеру змінити дату періоду, задачі за який він хоче подивитись. ✅
  - PeriodTypeSelect - дозволяє юзеру змінити тип періоду, задачі за який він хоче подивитись. ✅
 2. Компонент отримує тип періоду, та має локальний стейт з датою.✅
-При зміні дати або типу періоду відбуваеться запит на отримання задач за обраний період, якщо задач з даного періоду досі немає в глобальному стейті.
-Успіх - дані пишуться в глобальний стейт
+При зміні дати або типу періоду відбуваеться запит на отримання задач за обраний період, якщо задач з даного періоду досі немає в глобальному стейті.✅
+Успіх - дані пишуться в глобальний стейт✅
 Помилка - виводиться відповідне пуш повідомлення.
  
  */
