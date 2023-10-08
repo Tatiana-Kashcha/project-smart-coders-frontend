@@ -57,6 +57,10 @@ export const ButtonLeft = styled.button`
 
   border: ${props => props.theme.colors.borderPeriodPaginator};
 
+  color: ${props =>
+    props.disabled
+      ? props.theme.colors.calendarInnerBackground
+      : props.theme.colors.secondText};
   background-color: ${props => props.theme.colors.secondBackground};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
@@ -76,6 +80,7 @@ export const ButtonRight = styled.button`
 
   border: ${props => props.theme.colors.borderPeriodPaginator};
 
+  color: ${props => props.theme.colors.secondText};
   background-color: ${props => props.theme.colors.secondBackground};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
@@ -87,11 +92,6 @@ export const ChevronLeftMod = styled(ChevronLeft)`
   width: 16px;
   height: 16px;
 
-  color: ${props =>
-    props.isActive
-      ? props.theme.colors.secondText
-      : props.theme.colors.calendarInnerBackground};
-
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 18px;
     height: 18px;
@@ -101,8 +101,6 @@ export const ChevronLeftMod = styled(ChevronLeft)`
 export const ChevronRightMod = styled(ChevronRight)`
   width: 16px;
   height: 16px;
-
-  color: ${props => props.theme.colors.secondText};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 18px;
