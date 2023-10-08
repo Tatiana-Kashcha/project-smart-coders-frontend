@@ -5,6 +5,7 @@ import {
   CellWrapper,
   DayWrapper,
   RowInCell,
+  CurrentDay,
 } from './CalendarTable.styled';
 
 moment.updateLocale('en', {
@@ -25,6 +26,7 @@ const CalendarTable = () => {
     const day = startDay.clone();
     const endDay = moment(currentDate).endOf('month').endOf('week');
     const calendar = [];
+    const isCurrentDay = day => moment().isSame(day, 'day');
 
     while (!day.isAfter(endDay)) {
       calendar.push(day.clone());
