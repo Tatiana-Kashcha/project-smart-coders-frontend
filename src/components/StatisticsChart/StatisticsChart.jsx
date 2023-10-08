@@ -86,12 +86,14 @@ export const getChartOptions = props => ({
         lineHeight: 1.5,
       },
       formatter: function (value, data) {
-          if (data.length === 0) {
-            return 0 + "%";
-          }
         const total = data.dataset.data.reduce((previousValue, number) => {
           return previousValue + number;
         });
+
+        if (value === 0) {
+          return 0 + '%'
+        }
+
         const percentage = ((value / total) * 100).toFixed(0) + '%';
         return percentage;
       },
@@ -176,19 +178,19 @@ export default function StatisticsChart(props) {
   const allTascksToDo = allTascksByMonth.filter(
     tasck => tasck.category === 'to-do'
   ).length;
-  // console.log(allTascksToDo);
+  console.log(allTascksToDo);
 
   const allTascksInProgress = allTascksByMonth.filter(
     tasck => tasck.category === 'in-progress'
   ).length;
-  // console.log(allTascksInProgress);
+  console.log(allTascksInProgress);
 
   const allTascksDone = allTascksByMonth.filter(
     tasck => tasck.category === 'done'
   ).length;
-  // console.log(allTascksDone);
+  console.log(allTascksDone);
 
-  // console.log(props.date);
+  console.log(props.date);
   const dateMod = dayjs(props.date).format('YYYY-MM-DD');
   console.log(dateMod);
   // const dayOfSearch = '2023-10-08';
