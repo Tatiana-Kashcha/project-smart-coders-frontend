@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
-// import { useTasks } from 'hooks/useTasks';
+import { useTasks } from 'hooks/useTasks';
 
 import * as s from './CalendarToolbar.styled';
 import { useDate } from 'hooks/useDate';
@@ -12,7 +12,9 @@ import { useDate } from 'hooks/useDate';
 export const CalendarToolbar = ({ periodType, handleChange }) => {
   const { choosedDate, setChoosedDate } = useDate();
   const [date, setDate] = useState(choosedDate);
-  // const { tasks, getAllTasks } = useTasks();
+  const { tasks, getAllTasks } = useTasks();
+
+  const currentDate = useMemo(() => new Date(), []);
 
   useEffect(() => {
     setChoosedDate(date);
@@ -21,8 +23,8 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
 
   // const month = dayjs(date).format('MM').toLowerCase();
   // const day = dayjs(date).format('DD').toLowerCase();
-  // const monthMod = dayjs(date).format('MM');
-  // const yearMod = dayjs(date).format('YYYY');
+  const monthMod = dayjs(date).format('MM');
+  const yearMod = dayjs(date).format('YYYY');
   const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
   const currentDayModify = dayjs(date).format('DD-MMM-YYYY').toLowerCase();
 
@@ -34,16 +36,11 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
     }
   }, [periodType, currentMonthModify, currentDayModify, navigate]);
 
-  // useEffect(() => {
-  //   tasks.map(task => {
-  //     const arrayOfData = task.date.split('-');
-
-  //     if (!arrayOfData[1].includes(month) && !arrayOfData[2].includes(day)) {
-  //       return null;
-  //     }
-  //     return getAllTasks({ month: monthMod, year: yearMod });
-  //   });
-  // }, [date]);
+  useEffect(() => {
+    if (currentDate !== choosedDate) {
+      getAllTasks({ month: monthMod, year: yearMod });
+    }
+  }, [choosedDate, currentDate, getAllTasks, monthMod, yearMod]);
 
   const upDateDate = PlusOrMinus => {
     if (periodType === 'month') {
