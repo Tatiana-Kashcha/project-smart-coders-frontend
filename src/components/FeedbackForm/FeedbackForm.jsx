@@ -9,7 +9,7 @@ import { FeedbackValidSchema } from './FeedbackValidScheme';
 import {
   selectReviews,
   selectIsLoadingReviews,
-  selectErrorReviews,
+  // selectErrorReviews,
 } from 'redux/reviews/selectors';
 import { selectUser } from 'redux/auth/selectors';
 import {
@@ -29,7 +29,7 @@ const FeedbackForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
   const isLoading = useSelector(selectIsLoadingReviews);
-  const error = useSelector(selectErrorReviews);
+  // const error = useSelector(selectErrorReviews);
 
   const currentUser = useSelector(selectUser);
 
@@ -39,41 +39,6 @@ const FeedbackForm = ({ onClose }) => {
 
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState('');
-
-  useEffect(() => {
-    if (currentUser) {
-      dispatch(getUserReview());
-      //   .catch(error => {
-      //   if (error.response && error.response.status === 404) {
-      //     // setHasError(true);
-      //   } else {
-      //     // console.error(error);
-      //   }
-      // });
-    }
-  }, [dispatch, currentUser]);
-
-  useEffect(() => {
-    if (reviews.length > 0) {
-      if (reviews[0].owner === currentUser?._id) {
-        setRating(reviews[0].rating);
-        setReview(reviews[0].comment);
-        setHasReviews(true);
-        setShowSaveBtn(false);
-      }
-      // if (reviews[0].owner !== currentUser?._id) {
-      //   setRating(1);
-      //   setReview('');
-      //   setHasReviews(true);
-      //   setShowSaveBtn(true);
-      // }
-    } else {
-      setRating(1);
-      setReview('');
-      setHasReviews(true);
-      setShowSaveBtn(true);
-    }
-  }, [reviews, currentUser]);
 
   const starsConfig = {
     size: 24,
@@ -88,11 +53,31 @@ const FeedbackForm = ({ onClose }) => {
     onChange: newValue => setRating(newValue),
   };
 
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(getUserReview());
+    }
+  }, [dispatch, currentUser]);
+
+  useEffect(() => {
+    if (reviews.length > 0) {
+      if (reviews[0].owner === currentUser?._id) {
+        setRating(reviews[0].rating);
+        setReview(reviews[0].comment);
+        setHasReviews(true);
+        setShowSaveBtn(false);
+      }
+    } else {
+      setHasReviews(true);
+      setShowSaveBtn(true);
+    }
+  }, [reviews, currentUser]);
+
   const handleSubmit = values => {
-    if (showEditBtn) {
-      dispatch(updateReview({ rating, comment: values.review }))
+    if (showSaveBtn) {
+      dispatch(createReview({ rating, comment: values.review }))
         .then(() => {
-          Notify.success('You have successfully updated your review');
+          Notify.success('You have successfully created your review');
           onClose();
         })
         .catch(error => {
@@ -100,10 +85,10 @@ const FeedbackForm = ({ onClose }) => {
         });
     }
 
-    if (showSaveBtn) {
-      dispatch(createReview({ rating, comment: values.review }))
+    if (showEditBtn) {
+      dispatch(updateReview({ rating, comment: values.review }))
         .then(() => {
-          Notify.success('You have successfully created your review');
+          Notify.success('You have successfully updated your review');
           onClose();
         })
         .catch(error => {
@@ -129,7 +114,7 @@ const FeedbackForm = ({ onClose }) => {
 
   return (
     <Formik
-      initialValues={{ review }}
+      initialValues={{ rating, review }}
       enableReinitialize={true}
       validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
