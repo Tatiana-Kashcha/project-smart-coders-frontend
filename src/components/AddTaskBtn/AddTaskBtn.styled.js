@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
+import { ReactComponent as Plus } from '../../icons/plus.svg';
 
 export const TaskBtn = styled.button`
   color: ${props => props.theme.colors.primaryText};
@@ -15,7 +16,7 @@ export const TaskBtn = styled.button`
   justify-content: center;
   align-items: center;
 `;
-export const PlusIcon = styled.svg`
+export const PlusIcon = styled(Plus)`
   fill: ${globalTheme.colors.closeButton};
   width: 24px;
   height: 24px;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { TaskModal } from 'components/TaskModal/TaskModal';
 import * as s from './AddTaskBtn.styled';
-import { ReactComponent as Plus } from '../../icons/plus.svg';
 
 export const AddTaskBtn = ({ groupId }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -17,9 +16,7 @@ export const AddTaskBtn = ({ groupId }) => {
   return (
     <div>
       <s.TaskBtn onClick={openModal}>
-        <s.PlusIcon>
-          <Plus />
-        </s.PlusIcon>
+        <s.PlusIcon />
         Add task
       </s.TaskBtn>
       {isModalOpen && <TaskModal groupId={groupId} closeModal={closeModal} />}
