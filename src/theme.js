@@ -41,11 +41,13 @@ export const lightTheme = {
     sideBarLabel: 'rgba(52, 52, 52, 0.5)',
     sideBarContent: 'rgba(52, 52, 52, 0.5)',
     sideBarActive: '#e3f3ff',
+    disabledBatton: '#3e85f3',
 
     bgrAvatar: '#F8F8F8',
     bgrSection: '#f7f6f9', //! add background for lightTheme
     bgrCalendar: '#FFF', //! add background for Calendar
     borderStat: '#e3f3ff', //! add background for Statistic
+    borderPeriodPaginator: '1px solid rgba(220, 227, 229, 0.50)',
     addTaskBgBtn: '#e3f3ff',
   },
 };
@@ -92,11 +94,13 @@ export const darkTheme = {
     sideBarLabel: 'rgba(250, 250, 250, 0.3)',
     sideBarContent: '#ffffff',
     sideBarActive: '#3e85f3',
+    disabledBatton: '#3e85f3',
 
     bgrAvatar: '#171820',
     bgrSection: '#171820', //! add background for darkTheme
     bgrCalendar: '#21222C', //! add background for Calendar
     borderStat: 'rgba(227, 243, 255, 0.15)', //! add background for Statistic
+    borderPeriodPaginator: '1px solid rgba(255, 255, 255, 0.15)',
     addTaskBgBtn: '#3E85F3',
   },
 };
