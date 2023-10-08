@@ -32,7 +32,7 @@ export default function StatisticsPage() {
           backgroundColor: 'blueviolet',
         }}
       ></div>
-      <StatisticsChart theme={theme} />
+      <StatisticsChart date={date} theme={theme} />
     </s.StatWrapper>
   );
 }
