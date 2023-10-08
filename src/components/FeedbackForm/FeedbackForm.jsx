@@ -11,7 +11,6 @@ import {
   selectIsLoadingReviews,
   selectErrorReviews,
 } from 'redux/reviews/selectors';
-// import { selectLoading } from 'redux/user/selectors';
 import { selectUser } from 'redux/auth/selectors';
 import {
   getUserReview,
@@ -27,90 +26,54 @@ import * as s from './FeedbackForm.styled';
 import Loader from '../Loader/Loader';
 
 const FeedbackForm = ({ onClose }) => {
+  const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
   const isLoading = useSelector(selectIsLoadingReviews);
   const error = useSelector(selectErrorReviews);
 
-  // const error = useSelector(state => state.reviews.error);
-  // const userReview = useSelector(state => state.reviews.items);
-  // const currentUser = useSelector(selectUserInfo); не то !!!
-  // const currentUserLoading = useSelector(selectLoading);
-
-  // export const selectUserInfo = state => state.user.info;
-  // export const selectLoading = state => state.user.loading;
-
-  // export const selectIsLoggedIn = state => state.auth.isLoggedIn;
   const currentUser = useSelector(selectUser);
-  // export const selectIsRefreshing = state => state.auth.isRefreshing;
-  // export const selectAccessToken = state => state.auth.accessToken;
 
-  const dispatch = useDispatch();
+  const [hasReviews, setHasReviews] = useState(false);
+  const [showEditBtn, setShowEditBtn] = useState(false);
+  const [showSaveBtn, setShowSaveBtn] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(currentUser());
-  // }, [dispatch]);
-
-  // console.log(currentUser._id);
-  // console.log(currentUserLoading);
-
-  // useEffect(() => {
-  //   dispatch(getUserReview());
-  //   console.log('dispatch');
-  //   console.log(reviews);
-  // }, [dispatch]);
+  const [rating, setRating] = useState(1);
+  const [review, setReview] = useState('');
 
   useEffect(() => {
     if (currentUser) {
       dispatch(getUserReview());
+      //   .catch(error => {
+      //   if (error.response && error.response.status === 404) {
+      //     // setHasError(true);
+      //   } else {
+      //     // console.error(error);
+      //   }
+      // });
     }
   }, [dispatch, currentUser]);
 
-  // useEffect(() => {
-  //   if (reviews.length > 0) {
-  //     // setRating(reviews[0].rating);
-  //   } else {
-  //     setShowSaveBtn(true);
-  //   }
-  // }, [reviews]);
-
-  console.log(reviews);
-  // console.log(reviews[0].rating);
-
-  const [rating, setRating] = useState(
-    reviews.length > 0 ? reviews[0].rating : 1
-  );
-  // const [review, setReview] = useState('');
-  const [showEditBtn, setShowEditBtn] = useState(false);
-  const [showSaveBtn, setShowSaveBtn] = useState(false);
-
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     dispatch(getUserReview());
-  //   }
-  //   if (reviews.length) {
-  //     setRating(reviews[0].rating);
-  //   }
-  //   if (!reviews.length) {
-  //     setShowSaveBtn(true);
-  //   }
-  // }, [dispatch, currentUser]);
-
-  // console.log(currentUser);
-  // console.log(reviews);
-  // console.log(isLoading);
-  // console.log(error);
-
-  // useEffect(() => {
-  //   dispatch(currentUser());
-  // }, [dispatch]);
-
-  const initialValues = {
-    // rating: reviews[0].rating || 1,
-    review: reviews.length > 0 ? reviews[0].comment : '',
-  };
-
-  // console.log(reviews.rating);
-  // console.log(reviews.comment);
+  useEffect(() => {
+    if (reviews.length > 0) {
+      if (reviews[0].owner === currentUser?._id) {
+        setRating(reviews[0].rating);
+        setReview(reviews[0].comment);
+        setHasReviews(true);
+        setShowSaveBtn(false);
+      }
+      // if (reviews[0].owner !== currentUser?._id) {
+      //   setRating(1);
+      //   setReview('');
+      //   setHasReviews(true);
+      //   setShowSaveBtn(true);
+      // }
+    } else {
+      setRating(1);
+      setReview('');
+      setHasReviews(true);
+      setShowSaveBtn(true);
+    }
+  }, [reviews, currentUser]);
 
   const starsConfig = {
     size: 24,
@@ -127,53 +90,51 @@ const FeedbackForm = ({ onClose }) => {
 
   const handleSubmit = values => {
     if (showEditBtn) {
-      dispatch(updateReview({ rating, comment: values.review }));
-      Notify.success('You have successfully updated your review');
+      dispatch(updateReview({ rating, comment: values.review }))
+        .then(() => {
+          Notify.success('You have successfully updated your review');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
+
     if (showSaveBtn) {
-      dispatch(createReview({ rating, comment: values.review }));
-      Notify.success('You have successfully create your review');
+      dispatch(createReview({ rating, comment: values.review }))
+        .then(() => {
+          Notify.success('You have successfully created your review');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
-    //  { resetForm }
-    // setReview(values.review);
-
-    // console.log(rating);
-    // console.log(values.review);
-
-    onClose();
-    // setRating(1);
-    // resetForm();
   };
-  // Notify.success('Profile data changed successfully');
-  // } catch {
-  // Notify.failure('Something went wrong... Try again!');
 
-  // {isLoading && currenUserInfo === null && !error ? (
-  //       <Loader />
-  //     ) : (
-
-  const onEdit = () => {
-    // dispatch(updateReview(currentUser._id));
+  const handleEdit = () => {
     setShowEditBtn(true);
-    // onClose();
   };
 
-  const onDelete = () => {
-    dispatch(deleteReview(currentUser._id));
-    Notify.success('You have successfully deleted your review');
-    onClose();
+  const handleDelete = () => {
+    dispatch(deleteReview(currentUser._id))
+      .then(() => {
+        Notify.success('You have successfully deleted your review');
+        onClose();
+      })
+      .catch(error => {
+        Notify.failure(`${error.message}`);
+      });
   };
 
-  console.log(isLoading);
-  console.log(error);
-  console.log(reviews.length === 0);
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ review }}
+      enableReinitialize={true}
       validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
     >
-      {isLoading && reviews.length === 0 ? (
+      {isLoading || !hasReviews ? (
         <Loader />
       ) : (
         ({ errors }) => (
@@ -190,12 +151,12 @@ const FeedbackForm = ({ onClose }) => {
                   <s.UpContainerButton>
                     <s.EditButton
                       type="button"
-                      onClick={onEdit}
-                      // isActive={showEditBtn}
+                      onClick={handleEdit}
+                      data-active={showEditBtn}
                     >
                       <Pencil />
                     </s.EditButton>
-                    <s.DeleteButton type="button" onClick={onDelete}>
+                    <s.DeleteButton type="button" onClick={handleDelete}>
                       <TrashBox />
                     </s.DeleteButton>
                   </s.UpContainerButton>

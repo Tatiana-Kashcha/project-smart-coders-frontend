@@ -9,7 +9,7 @@ import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
 import { useTasks } from 'hooks/useTasks';
 
 export default function CalendarPage() {
-  console.log('CalendarPage is call');
+  // console.log('CalendarPage is call');
   const [periodType, setPeriodType] = useState('month');
   const { tasks, error, getAllTasks } = useTasks();
   const currentDate = new Date();

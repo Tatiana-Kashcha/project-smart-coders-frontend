@@ -59,12 +59,12 @@ export const ContainerLabelAndBtn = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 `;
 
 export const UpContainerButton = styled.div`
   display: flex;
   gap: 8px;
-  margin-bottom: 8px;
 `;
 
 export const EditButton = styled.button`
@@ -81,11 +81,11 @@ export const EditButton = styled.button`
   cursor: pointer;
 
   color: ${props =>
-    props.isActive
+    props['data-active']
       ? `${globalTheme.colors.white}`
       : `${globalTheme.colors.primary}`};
   background-color: ${props =>
-    props.isActive
+    props['data-active']
       ? `${globalTheme.colors.primary}`
       : props.theme.colors.secondBackgroundButton};
 
