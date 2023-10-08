@@ -87,7 +87,10 @@ export const ChevronLeftMod = styled(ChevronLeft)`
   width: 16px;
   height: 16px;
 
-  color: ${props => props.theme.colors.secondText};
+  color: ${props =>
+    props.isActive
+      ? props.theme.colors.secondText
+      : props.theme.colors.calendarInnerBackground};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 18px;

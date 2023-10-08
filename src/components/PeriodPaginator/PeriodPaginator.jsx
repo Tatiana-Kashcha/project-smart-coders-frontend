@@ -34,7 +34,7 @@ export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
             upDateDate(-1);
           }}
         >
-          <s.ChevronLeftMod />
+          <s.ChevronLeftMod isActive={isActive} />
         </s.ButtonLeft>
         <s.ButtonRight
           type="button"
