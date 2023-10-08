@@ -10,14 +10,13 @@ export const PeriodTypeSelect = ({ handleChange }) => {
   };
 
   return (
-    <>
-      <h1>PeriodTypeSelect</h1>
+    <div>
       <button type="button" onClick={handleClick} name="month">
         month
       </button>
       <button type="button" onClick={handleClick} name="day">
         day
       </button>
-    </>
+    </div>
   );
 };

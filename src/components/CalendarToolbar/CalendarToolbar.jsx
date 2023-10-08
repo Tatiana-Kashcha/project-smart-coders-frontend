@@ -50,13 +50,13 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
   };
 
   return (
-    <s.TestDiv>
+    <s.ToolbarWrapper>
       <PeriodPaginator
         date={date}
         periodType={periodType}
         upDateDate={upDateDate}
       />
       <PeriodTypeSelect periodType={periodType} handleChange={handleChange} />
-    </s.TestDiv>
+    </s.ToolbarWrapper>
   );
 };
