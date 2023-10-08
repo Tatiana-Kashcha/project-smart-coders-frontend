@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
-// зовнішній контур
 export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -11,15 +10,10 @@ export const CalendarGridWrapper = styled.div`
   max-height: 625px;
   margin: 0 auto;
   height: 470px;
-  border: ${props => props.theme.colors.userInputBorder}; //border
-  color: ${props => props.theme.colors.calendarText}; //циферки
-  /* border: 1px solid rgba(220, 227, 229, 0.8); */
+  border: ${props => props.theme.colors.userInputBorder};
+  color: ${props => props.theme.colors.calendarText};
   border-radius: 8px;
   overflow: hidden;
-  background-color: ${props =>
-    props.isWeekend ? 'opacity = 0,3 ' : 'inherit'};
-  /* background-color: inherit; */
-  /* background-color: inherit; */
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -31,7 +25,6 @@ export const CalendarGridWrapper = styled.div`
     height: calc(100vh - 270px);
   }
 
-  /* transition-property: all; */
   transition-duration: 100ms;
   transition-timing-function: linear;
   :focus,
@@ -46,14 +39,9 @@ export const CalendarGridWrapper = styled.div`
 
 export const RowInCell = styled.div`
   display: flex;
-  /* margin: 4px 8px; */
-  @media screen and (min-width: 1440px) {
-    /* margin: 14px 14px; */
-  }
 `;
 
 export const CellWrapper = styled.div`
-  //циферки
   display: flex;
   margin-bottom: 0px;
   padding: 8px 4px;
@@ -65,19 +53,14 @@ export const CellWrapper = styled.div`
     padding: 14px;
   }
 `;
-// клітинка-дні
 
 export const DayWrapper = styled.div`
   width: 24px;
   height: 26px;
-  /* margin: 6px; */
-  /* margin: 4px 6px; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-  /* justify-content: flex-end; */
-  /* margin-right: 2px; */
 
   font-family: Inter;
   font-weight: 700;
@@ -138,7 +121,7 @@ export const SelectLow = styled.select`
 
 export const OptionSelectLow = styled.option`
   color: ${globalTheme.colors.primary};
-  text-overflow: ellipsis; /* Добавляем многоточие */
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   width: 94px;
@@ -159,7 +142,7 @@ export const SelectMedium = styled.select`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
-  text-overflow: ellipsis; /* Добавляем многоточие */
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 `;
@@ -180,7 +163,7 @@ export const SelectHigh = styled.select`
   border: none;
   font-size: 14px;
   font-weight: 700;
-  text-overflow: ellipsis; /* Добавляем многоточие */
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 `;
@@ -198,7 +181,7 @@ export const HiddenTaskCount = styled.span`
   font-size: 10px;
   line-height: 1.4;
   font-weight: 600;
-  text-overflow: ellipsis; /* Добавляем многоточие */
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 
