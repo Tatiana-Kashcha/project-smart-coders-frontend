@@ -18,10 +18,14 @@ import { ReactComponent as plus } from '../../icons/plusBlue.svg';
 
 export const WrapperForm = styled.div`
   margin: 0 auto;
-  padding-top: 31px;
   max-width: 100%;
 
   position: relative;
+
+  @media screen and (max-width: calc(${globalTheme.breakpoints
+      .desktop} - 0.5px)) {
+    padding-top: 31px;
+  }
 
   @media screen and (min-width: 375px) and (max-width: 768px) {
     max-width: 335px;

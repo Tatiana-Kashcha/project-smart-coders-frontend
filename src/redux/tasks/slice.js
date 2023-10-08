@@ -14,7 +14,1061 @@ const loadingFailed = (state, action) => {
 
 export const taskSlice = createSlice({
   name: 'tasks',
-  initialState: { tasks: [], isLoading: false, error: null },
+  initialState: {
+    tasks: [
+      {
+        title: ' target 1',
+        date: '2023-10-02',
+        category: 'done',
+        priority: 'low',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+        priority: 'low',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+        priority: 'low',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+        priority: 'medium',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+        priority: 'medium',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+        priority: 'medium',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+        priority: 'high',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+        priority: 'high',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+        priority: 'high',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 20',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 21',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 22',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 23',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 24',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 25',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 26',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 27',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 28',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 24',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 25',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 26',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 27',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 28',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 28',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 24',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 25',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 26',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 27',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 28',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 24',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 25',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 26',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 27',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 28',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 29',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 30',
+        date: '2023-10-08',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 2',
+        date: '2023-10-02',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 3',
+        date: '2023-10-02',
+        category: 'done',
+      },
+      {
+        title: ' target 4',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 5',
+        date: '2023-10-04',
+        category: 'done',
+      },
+      {
+        title: ' target 6',
+        date: '2023-10-04',
+        category: 'to-do',
+      },
+      {
+        title: ' target 7',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 8',
+        date: '2023-10-06',
+        category: 'to-do',
+      },
+      {
+        title: ' target 9',
+        date: '2023-10-05',
+        category: 'done',
+      },
+      {
+        title: ' target 10',
+        date: '2023-10-07',
+        category: 'in-progress',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 12',
+        date: '2023-10-03',
+        category: 'to-do',
+      },
+      {
+        title: ' target 13',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 14',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 15',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 16',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 17',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 18',
+        date: '2023-10-08',
+        category: 'done',
+      },
+      {
+        title: ' target 19',
+        date: '2023-10-08',
+        category: 'to-do',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+      {
+        title: ' target 11',
+        date: '2023-10-07',
+        category: 'done',
+      },
+    ],
+    isLoading: false,
+    error: null,
+  },
   extraReducers: builder => {
     builder
       .addCase(addTask.pending, startLoading)

@@ -8,6 +8,7 @@ import { ReactComponent as CalendarCheck } from '../../icons/calendar-check.svg'
 import { ReactComponent as Stat } from '../../icons/stat.svg';
 
 export const List = styled.ul`
+  margin-bottom: 424px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -15,7 +16,12 @@ export const List = styled.ul`
   color: ${props => props.theme.colors.sideBarContent};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    margin-bottom: 563px;
     gap: 16px;
+  }
+
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    margin-bottom: 439px;
   }
 `;
 

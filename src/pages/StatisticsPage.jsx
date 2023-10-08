@@ -18,19 +18,6 @@ export default function StatisticsPage() {
   return (
     <s.StatWrapper>
       <PeriodPaginator date={date} upDateDate={upDateDate} />
-      <div
-        style={{
-          width: '307px',
-          height: '30px',
-          color: '#FFF',
-          textAlign: 'center',
-          fontSize: '14px',
-          fontWeight: '700',
-          lineHeight: '18px',
-          textTransform: 'uppercase',
-          backgroundColor: 'blueviolet',
-        }}
-      ></div>
       <StatisticsChart theme={theme} />
     </s.StatWrapper>
   );
