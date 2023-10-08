@@ -14,17 +14,6 @@ export const Card = styled.div`
   background: ${props => props.theme.colors.taskItemBg};
 `;
 
-export const CardEl = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const CardAvAndPri = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-`;
-
 export const CardDescr = styled.div`
   width: 296px;
   height: 16px;
@@ -37,6 +26,17 @@ export const CardDescr = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+`;
+
+export const CardEl = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CardAvAndPri = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
 `;
 
 export const CardAvatar = styled.img`
@@ -55,7 +55,7 @@ export const CardAvatar = styled.img`
 // `;
 
 export const Priority = styled.div`
-  display: inline-block;
+  display: flex;
   padding: 4px 12px;
   border-radius: 4px;
   background: ${props => {
