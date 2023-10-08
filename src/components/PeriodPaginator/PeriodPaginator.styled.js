@@ -43,6 +43,8 @@ export const DisplayData = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ButtonLeft = styled.button`
@@ -52,8 +54,7 @@ export const ButtonLeft = styled.button`
 
   padding: 7px 10px;
 
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-radius: 8px 0px 0px 8px;
 
   border: ${props => props.theme.colors.borderPeriodPaginator};
 
@@ -75,8 +76,7 @@ export const ButtonRight = styled.button`
 
   padding: 7px 10px;
 
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 0px 8px 8px 0px;
 
   border: ${props => props.theme.colors.borderPeriodPaginator};
 
