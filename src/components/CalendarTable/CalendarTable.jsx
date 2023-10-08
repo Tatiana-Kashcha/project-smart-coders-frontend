@@ -42,16 +42,11 @@ const CalendarTable = () => {
     setCalendarDays(calendar);
   }, [currentDate]);
 
-  // const currentMonth = moment(currentDate).format('MMMM');
-
   return (
     <div>
       <CalendarGridWrapper>
         {calendarDays.map(dayItem => (
-          <CellWrapper
-            key={dayItem.format('DDMMYYYY')}
-            IsWeekend={dayItem.day() === 0 || dayItem.day() === 6}
-          >
+          <CellWrapper key={dayItem.format('DDMMYYYY')}>
             <DayWrapper>
               <RowInCell>
                 {dayItem.month() === currentDate.month() ? (

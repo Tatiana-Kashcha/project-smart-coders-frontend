@@ -18,7 +18,7 @@ export default function StatisticsPage() {
   return (
     <s.StatWrapper>
       <PeriodPaginator date={date} upDateDate={upDateDate} />
-      <StatisticsChart theme={theme} />
+      <StatisticsChart date={date} theme={theme} />
     </s.StatWrapper>
   );
 }

@@ -22,7 +22,7 @@ export const Legend = styled.div`
   gap: 14px;
   margin-top: 20px;
 
-  font-family: Poppins;
+  font-family: Inter;
   font-size: 14px;
   line-height: calc(18 / 14);
 
