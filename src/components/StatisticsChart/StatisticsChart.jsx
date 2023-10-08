@@ -88,7 +88,6 @@ export const getChartOptions = (props) => ({
           if (data.length === 0) {
             return 0 + "%";
           }
-          
         const total = data.dataset.data.reduce((previousValue, number) => {
           return previousValue + number;
         });
