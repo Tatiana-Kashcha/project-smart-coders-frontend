@@ -65,16 +65,10 @@ export const getChartOptions = props => ({
       ticks: {
         stepSize: 20,
         color: props.theme.colors.thirdText,
-            font: {
-                family: 'Inter',
-                size: 11,
-                weight: 500,
-                lineHeight: 1.5,
-            },
         font: {
           family: 'Inter',
-          size: 14,
-          weight: 400,
+          size: 11,
+          weight: 500,
           lineHeight: 1.5,
         },
         maxTicksLimit: 100,
