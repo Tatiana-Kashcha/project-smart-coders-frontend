@@ -9,9 +9,6 @@ export const LogoutButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  position: absolute;
-  bottom: 24px;
-
   width: 131px;
   padding: 14px 0;
 
