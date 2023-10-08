@@ -1,19 +1,13 @@
-// import { AuthSection } from 'components/AuthSection/AuthSection';
-// import { Description } from 'components/Description/Description';
-// import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
-
-import { TaskToolbar } from 'components/TaskToolbar/TaskToolbar';
-import { TasksColumn } from 'components/TasksColumn/TasksColumn';
+import { AuthSection } from 'components/AuthSection/AuthSection';
+import { Description } from 'components/Description/Description';
+import { ReviewsSlider } from 'components/ReviewsSlider/ReviewsSlider';
 
 export default function MainPage() {
   return (
     <>
-      {/* <AuthSection />
+      <AuthSection />
       <Description />
-      <ReviewsSlider /> */}
-
-      <TasksColumn />
-      <TaskToolbar />
+      <ReviewsSlider />
     </>
   );
 }
