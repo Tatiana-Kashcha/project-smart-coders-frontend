@@ -5,6 +5,7 @@ export const CardList = styled.div`
   max-height: 80vh;
   overflow-y: auto;
   padding-top: 28px;
+  background-color: red;
 
   & > div:not(:last-child) {
     margin-bottom: 18px;
