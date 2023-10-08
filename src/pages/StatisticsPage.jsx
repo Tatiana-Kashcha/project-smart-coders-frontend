@@ -3,10 +3,11 @@ import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
 import * as s from '../components/StatisticsChart/StatisticsChart.styled';
 import { useState } from 'react';
+import { useDate } from 'hooks/useDate';
 
 export default function StatisticsPage() {
-  const currentDate = new Date();
-  const [date, setDate] = useState(currentDate);
+  const { choosedDate } = useDate();
+  const [date, setDate] = useState(choosedDate);
   const { theme } = useThemeContext();
 
   const upDateDate = PlusOrMinus => {
