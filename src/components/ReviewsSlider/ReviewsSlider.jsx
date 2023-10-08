@@ -6,25 +6,22 @@ import { Autoplay, Navigation } from 'swiper/modules';
 
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
-// import LinesEllipsis from 'react-lines-ellipsis';
 
 import { getAllReviews } from 'redux/reviews/operations';
 import { selectReviews } from 'redux/reviews/selectors';
 
 import { ReactComponent as PrevArrow } from '../../icons/arrow-left.svg';
 import { ReactComponent as NextArrow } from '../../icons/arrow-right.svg';
-// import { ReactComponent as UserAvatarIcon } from '../../icons/user.svg';
 
-// import { selectUser } from 'redux/auth/selectors';
 import * as s from './ReviewsSlider.styled';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export const ReviewsSlider = () => {
-  const swiper = useSwiper();
   const dispatch = useDispatch();
+
+  const swiper = useSwiper();
   const reviews = useSelector(selectReviews);
-  // const isLoading = useSelector(selectIsLoadingReviews);
 
   const [slidesPerView, setSlidesPerView] = useState(2);
 

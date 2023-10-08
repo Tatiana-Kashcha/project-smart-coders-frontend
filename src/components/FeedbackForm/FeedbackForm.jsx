@@ -6,11 +6,7 @@ import { Formik, Field } from 'formik';
 import { Notify } from 'notiflix';
 
 import { FeedbackValidSchema } from './FeedbackValidScheme';
-import {
-  selectReviews,
-  selectIsLoadingReviews,
-  // selectErrorReviews,
-} from 'redux/reviews/selectors';
+import { selectReviews, selectIsLoadingReviews } from 'redux/reviews/selectors';
 import { selectUser } from 'redux/auth/selectors';
 import {
   getUserReview,
@@ -22,14 +18,12 @@ import {
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
-
 import Loader from '../Loader/Loader';
 
 const FeedbackForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
   const isLoading = useSelector(selectIsLoadingReviews);
-  // const error = useSelector(selectErrorReviews);
 
   const currentUser = useSelector(selectUser);
 

@@ -37,13 +37,14 @@ export const ContainerModify = styled(Container)`
 `;
 
 export const Title = styled.h2`
-  color: ${globalTheme.colors.primary};
+  margin-bottom: 40px;
+
   font-size: 40px;
   font-weight: 700;
-  line-height: 44px;
+  line-height: 1.1;
   text-transform: uppercase;
 
-  margin-bottom: 40px;
+  color: ${globalTheme.colors.primary};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin-bottom: 50px;
@@ -52,10 +53,10 @@ export const Title = styled.h2`
 
 export const ReviewContainer = styled.div`
   display: flex;
-  padding: 24px 20px 24px 24px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
   gap: 24px;
   height: 72px;
 
@@ -64,32 +65,28 @@ export const ReviewContainer = styled.div`
 `;
 
 export const StyledSwiper = styled(Swiper)`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  height: 100%;
 `;
 
 export const SwiperSlides = styled(SwiperSlide)`
   display: flex;
-
   align-items: center;
-
   text-align: center;
-  font-size: 18px;
-  background: ${globalTheme.colors.secondBackground};
-
   box-sizing: border-box;
-  width: 100%;
 
+  width: 100%;
   padding: 24px 20px 24px 24px;
   margin-bottom: 8px;
-  width: 335px;
 
   border-radius: 8px;
   border: 1px solid ${globalTheme.colors.reviewsSliderBorder};
+  background-color: ${globalTheme.colors.secondBackground};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding: 32px;
@@ -121,10 +118,9 @@ export const ArrowButton = styled.button`
   width: 50px;
   height: 50px;
 
+  background-color: transparent;
   border: none;
   cursor: pointer;
-
-  background-color: transparent;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 61px;
@@ -160,14 +156,16 @@ export const UserHeadInfo = styled.div`
 export const UserReview = styled(LinesEllipsis)`
   width: 100%;
   height: 54px;
+
   border-radius: 8px;
   border: transparent;
 
-  color: ${globalTheme.colors.reviewsSliderText};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.28;
   text-align: left;
+
+  color: ${globalTheme.colors.reviewsSliderText};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding-left: 68px;
@@ -178,24 +176,27 @@ export const Elipse = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 50px;
   height: 50px;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  color: ${globalTheme.colors.black};
   border-radius: 50px;
   border: 1px solid transparent;
   background-color: ${globalTheme.colors.primary};
-
-  // font-family: Inter;
-  font-size: 22px;
-  font-weight: 600;
-  color: ${globalTheme.colors.black};
 `;
 
 export const Avatar = styled.img`
   display: block;
+
   width: 50px;
   height: 50px;
   object-position: 50% 50%;
-  border-radius: 50px;
+
+  border-radius: 44px;
 `;
 
 export const CustomStarContainer = styled.div`
