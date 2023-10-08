@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import {
   CalendarGridWrapper,
@@ -7,45 +7,50 @@ import {
   RowInCell,
 } from './CalendarTable.styled';
 
-const currentDate = moment();
-const startDay = currentDate.startOf('month').startOf('week');
-const day = startDay.clone().add(1, 'd');
+moment.updateLocale('en', {
+  week: {
+    dow: 1, // Установите начальный день недели как понедельник (1)
+  },
+});
 
-moment.updateLocale('en', { week: { dow: 1 } });
+const initialDate = moment().startOf('month'); // Устанавливаем текущую дату на первый день месяца
 
-const CalendarTable = ({ startDay }) => {
-  const currentDayOfMonth = currentDate.format('D');
-  const currentMonth = currentDate.format('MMMM');
+const CalendarTable = () => {
+  const [currentDate, setCurrentDate] = useState(initialDate);
+  const [calendarDays, setCalendarDays] = useState([]);
 
-  const endDay = currentDate.endOf('month').endOf('week');
-  const calendar = [];
+  useEffect(() => {
+    // Выполняется при первом рендере и при изменении currentDate
+    const startDay = moment(currentDate).startOf('week'); // Начало недели
+    const day = startDay.clone();
+    const endDay = moment(currentDate).endOf('month').endOf('week');
+    const calendar = [];
 
-  while (!day.isAfter(endDay)) {
-    calendar.push(day.clone());
-    day.add(1, 'day');
-  }
+    while (!day.isAfter(endDay)) {
+      calendar.push(day.clone());
+      day.add(1, 'day');
+    }
 
-  // window.moment = moment;
+    setCalendarDays(calendar);
+  }, [currentDate]);
 
-  const totalDays = 42;
-  const daysArray = [...Array(totalDays)].map(() => day.add(1, 'day').clone());
+  // const currentDayOfMonth = moment(currentDate).format('D');
+  const currentMonth = moment(currentDate).format('MMMM');
 
   return (
     <div>
       <h1>Current Month: {currentMonth}</h1>
       <CalendarGridWrapper>
-        {daysArray.map(dayItem => (
+        {calendarDays.map(dayItem => (
           <CellWrapper
             key={dayItem.format('DDMMYYYY')}
-            // IsWeekend={dayItem.day() === 6 || dayItem.day() === 0}
+            IsWeekend={dayItem.day() === 0 || dayItem.day() === 6}
           >
             <DayWrapper>
               <RowInCell>
-                {dayItem.format('D') === currentDayOfMonth ? (
-                  <strong>{dayItem.format('D')}</strong>
-                ) : (
-                  dayItem.format('D')
-                )}
+                {dayItem.month() === currentDate.month()
+                  ? dayItem.format('D')
+                  : null}
               </RowInCell>
             </DayWrapper>
           </CellWrapper>

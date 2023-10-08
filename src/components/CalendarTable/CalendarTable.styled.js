@@ -40,6 +40,7 @@ export const CalendarGridWrapper = styled.div`
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
+    /* background-color: blue; */
   }
 `;
 
@@ -48,6 +49,11 @@ export const RowInCell = styled.div`
   /* margin: 4px 8px; */
   @media screen and (min-width: 1440px) {
     /* margin: 14px 14px; */
+  }
+  .current-day {
+    background-color: #ffcccb; /* Цвет фона для текущей даты */
+    font-weight: bold; /* Жирный шрифт для текущей даты */
+    color: #ff0000; /* Цвет текста для текущей даты */
   }
 `;
 
@@ -65,6 +71,13 @@ export const CellWrapper = styled.div`
   }
 `;
 // клітинка-дні
+
+export const CalendarTableCell = styled(CellWrapper)`
+  // Добавьте стили для выделения текущей даты
+  background-color: #ffcccb; /* Цвет фона для текущей даты */
+  font-weight: bold; /* Жирный шрифт для текущей даты */
+  color: #ff0000; /* Цвет текста для текущей даты */
+`;
 
 export const DayWrapper = styled.div`
   width: 24px;
@@ -108,6 +121,15 @@ export const CurrentDay = styled.span`
 
   background: ${({ theme }) => theme.colors.primaryText};
   border-radius: 50%;
+  :focus,
+  :hover {
+    transform: scale(1.05);
+    z-index: 1;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor: pointer;
+    background-color: blue;
+  }
 
   @media screen and (min-width: 768px) {
     width: 27px;
@@ -117,72 +139,6 @@ export const CurrentDay = styled.span`
     line-height: ${props => props.theme.lineHeights.heading};
   }
 `;
-
-// export const ShowDayWrapper = styled.div`
-//   display: flex;
-//   justify-content: flex-end;
-// `;
-
-// export const TaskList = styled.ul`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   gap: 2px;
-//   width: 100%;
-//   padding: 0;
-//   margin: 0;
-
-//   font-family: ${props => props.theme.fonts.heading};
-//   font-style: normal;
-//   font-weight: ${props => props.theme.fontWeights.bold};
-//   font-size: ${props => props.theme.fontSizes.xs};
-//   line-height: ${props => props.theme.lineHeights.body};
-
-//   list-style: none;
-// `;
-
-// export const TaskItem = styled.li`
-//   padding: 4px 4px 4px 4px;
-
-//   border-radius: ${props => props.theme.radii.small};
-
-//   background-color: ${props => {
-//     switch (props.priority) {
-//       case 'low':
-//         return '#72C2F8';
-//       case 'medium':
-//         return props.theme.colors.lightYellow;
-//       case 'high':
-//         return props.theme.colors.lightRed;
-//       default:
-//         return props.theme.colors.lightRed;
-//     }
-//   }};
-
-//   color: ${props => {
-//     switch (props.priority) {
-//       case 'low':
-//         return props.theme.colors.primary;
-//       case 'medium':
-//         return props.theme.colors.mainYellow;
-//       case 'high':
-//         return props.theme.colors.mainRed;
-//       default:
-//         return '#72C2F8';
-//     }
-//   }};
-
-/* @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    padding: 4px 10px 4px 12px;
-
-    font-size: ${props => props.theme.fontSizes.s};
-    line-height: ${props => props.theme.lineHeights.body};
-  }
-
-  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    padding: 4px 15px 4px 12px;
-  }
-`; */
 
 export const HiddenTaskCount = styled.span`
   color: green;
