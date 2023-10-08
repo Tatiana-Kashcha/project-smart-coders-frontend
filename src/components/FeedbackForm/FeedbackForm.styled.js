@@ -109,8 +109,8 @@ export const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
 
-  background-color: ${globalTheme.colors.bgDelBtn};
   color: ${globalTheme.colors.mainRed};
+  background-color: ${globalTheme.colors.bgDelBtn};
 
   &:hover {
     color: ${globalTheme.colors.white};
