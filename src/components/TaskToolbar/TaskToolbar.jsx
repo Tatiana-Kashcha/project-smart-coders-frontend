@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as ArrowCircle } from '../../icons/arrow-circle-broken-right.svg';
 import { TaskModal } from 'components/TaskModal/TaskModal';
 // import { deleteTask, patchTask } from '../../redux/tasks/operations'; //?
-// import { selectTasks } from 'redux/tasks/selectors'; //!
+import { selectTasks } from '../../redux/tasks/selectors';
+//!
 
 import * as s from './TaskToolbar.styled';
 
@@ -21,8 +22,8 @@ export const TaskToolbar = ({
 
   const dispatch = useDispatch();
 
-  // const Tasks = useSelector(selectTasks); //!
-  // console.log('selectTasks', selectTasks()); //!
+  const Tasks = useSelector(selectTasks); //!
+  console.log('Tasks', Tasks); //!
 
   const chooseGroup = () => {
     setIsMenuOpen(prevState => !prevState);
