@@ -130,6 +130,7 @@ export const globalTheme = {
     bgDelHover: 'rgba(234, 61, 101, 0.5)',
     borderColor: '1px solid rgba(17, 17, 17, 0.15)',
     placeholderColor: 'rgba(17, 17, 17, 0.15)',
+    lowTasksBg: '#CEEEFD',
   },
 
   shadow: {

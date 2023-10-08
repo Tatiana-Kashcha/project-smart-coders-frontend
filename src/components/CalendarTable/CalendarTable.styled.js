@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 // зовнішній контур
 export const CalendarGridWrapper = styled.div`
@@ -83,6 +84,8 @@ export const DayWrapper = styled.div`
   font-size: 12px;
   line-height: 1.17;
 
+  position: relative;
+
   color: ${props => props.theme.colors.primaryText};
   @media screen and (min-width: 768px) {
     width: 27px;
@@ -118,15 +121,62 @@ export const CurrentDay = styled.span`
   }
 `;
 
-export const SelectLow = styled.select`
-  /* max-width: 100%; */
-
-  /* color: ${props => props.theme.colors.white};
-  background: ${props => props.theme.colors.primaryText};
-  border: ${props => props.theme.colors.userInputBorder};
-  border-radius: 30%; */
+export const DivSelectLow = styled.div`
+  position: absolute;
+  top: 20%;
+  right: 120%;
 `;
-// export const ShowDayWrapper = styled.div`
+
+export const SelectLow = styled.select`
+  border-radius: 15%;
+  background-color: ${globalTheme.colors.lowTasksBg};
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+`;
+
+export const OptionSelectLow = styled.option`
+  color: ${globalTheme.colors.primary};
+`;
+
+export const DivSelectMedium = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 120%;
+`;
+
+export const SelectMedium = styled.select`
+  border-radius: 15%;
+  background-color: ${globalTheme.colors.lightYellow};
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+`;
+
+export const OptionSelectMedium = styled.option`
+  color: ${globalTheme.colors.mainYellow};
+`;
+
+export const DivSelectHigh = styled.div`
+  position: absolute;
+  top: 180%;
+  right: 120%;
+`;
+
+export const SelectHigh = styled.select`
+  border-radius: 15%;
+  background-color: ${globalTheme.colors.lightRed};
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+`;
+
+export const OptionSelectHigh = styled.option`
+  color: ${globalTheme.colors.mainRed};
+`;
+
+// export const ShowDayWrapper = styled.div
+
 //   display: flex;
 //   justify-content: flex-end;
 // `;

@@ -5,7 +5,15 @@ import {
   CellWrapper,
   DayWrapper,
   RowInCell,
+  DivSelectLow,
   SelectLow,
+  OptionSelectLow,
+  DivSelectMedium,
+  SelectMedium,
+  OptionSelectMedium,
+  DivSelectHigh,
+  SelectHigh,
+  OptionSelectHigh,
 } from './CalendarTable.styled';
 
 const currentDate = moment();
@@ -49,14 +57,29 @@ const CalendarTable = ({ startDay }) => {
                 )}
               </RowInCell>
 
-              <SelectLow id="size" name="size">
-                <option value="xs">Extra Small</option>
-                <option value="s">Small</option>
-                <option value="m" selected>
-                  Medium
-                </option>
-                <option value="l">Large</option>
-              </SelectLow>
+              <DivSelectLow>
+                <SelectLow id="low" name="low">
+                  <OptionSelectLow>Extranh </OptionSelectLow>
+                  <OptionSelectLow>Small</OptionSelectLow>
+                  <OptionSelectLow>Large</OptionSelectLow>
+                </SelectLow>
+              </DivSelectLow>
+
+              <DivSelectMedium>
+                <SelectMedium id="medium" name="medium">
+                  <OptionSelectMedium>Extranh </OptionSelectMedium>
+                  <OptionSelectMedium>Small</OptionSelectMedium>
+                  <OptionSelectMedium>Large</OptionSelectMedium>
+                </SelectMedium>
+              </DivSelectMedium>
+
+              <DivSelectHigh>
+                <SelectHigh id="high" name="high">
+                  <OptionSelectHigh>Extranh </OptionSelectHigh>
+                  <OptionSelectHigh>Small</OptionSelectHigh>
+                  <OptionSelectHigh>Large</OptionSelectHigh>
+                </SelectHigh>
+              </DivSelectHigh>
             </DayWrapper>
           </CellWrapper>
         ))}
