@@ -46,9 +46,9 @@ export const ToolMenu = styled.div`
   height: 70px;
   padding: 14px;
 
-  border-radius: 8px;
-  background: ${props => props.theme.colors.secondBackground};
-  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  border: ${props => props.theme.colors.userInputBorder};
+  border-radius: 7px;
+  background-color: ${props => props.theme.colors.secondBackground};
 
   display: flex;
   flex-direction: column;
