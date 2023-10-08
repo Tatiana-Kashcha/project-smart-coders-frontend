@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { TaskModal } from 'components/TaskModal/TaskModal';
+import { deleteTask } from '../../redux/tasks/operations';
+import { selectTasks } from 'redux/tasks/selectors';
+
 import * as s from './TaskToolbar.styled';
 
 export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false); //!
+
+  const dispatch = useDispatch();
+  const selectTask = useSelector(selectTasks);
 
   const handleMoveToGroup = () => {
     setIsMenuOpen(true);
@@ -16,7 +24,7 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   };
 
   const handleDeleteTask = () => {
-    setIsDeleting(true);
+    dispatch(deleteTask(selectTask.id));
   };
 
   return (
@@ -26,7 +34,11 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
 
         <s.PencilBtn onClick={handleEditTask} />
 
-        <s.TrashBtn onClick={handleDeleteTask} disabled={isDeleting} />
+        <s.TrashBtn
+          type="button"
+          aria-label="Delete task"
+          onClick={handleDeleteTask}
+        />
 
         {showEditModal && (
           <TaskModal
@@ -50,3 +62,5 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
     </>
   );
 };
+
+// disabled = { isDeleting }; //!?
