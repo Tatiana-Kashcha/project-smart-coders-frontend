@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import { selectTasks } from '../../redux/tasks/selectors';
 import * as s from './StatisticsChart.styled';
 
+
 import {  
 Chart as ChartJS,
   CategoryScale,
@@ -17,6 +18,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { Bar } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
+import dayjs from 'dayjs';
 
 ChartJS.register(
   CategoryScale,
@@ -82,7 +84,11 @@ export const getChartOptions = (props) => ({
                 weight: 500,
                 lineHeight: 1.5,
             },
-        formatter: function(value, data) {
+        formatter: function (value, data) {
+          if (data.length === 0) {
+            return 0 + "%";
+          }
+          
         const total = data.dataset.data.reduce((previousValue, number) => {
           return previousValue + number;
         });
@@ -165,8 +171,8 @@ export default function StatisticsChart(props) {
     datasets: [],
   });
 
-  const allTascksByMonth = useSelector(selectTasks); 
-  // console.log(allTascksByMonth);
+  const allTascksByMonth = useSelector(selectTasks);
+  console.log(allTascksByMonth);
 
   const allTascksToDo = allTascksByMonth.filter(tasck => tasck.category === 'to-do').length;
   // console.log(allTascksToDo);
@@ -177,9 +183,12 @@ export default function StatisticsChart(props) {
   const allTascksDone = allTascksByMonth.filter(tasck => tasck.category === 'done').length;
   // console.log(allTascksDone);
 
-  const dayOfSearch = '2023-10-08';
+  // console.log(props.date);
+  const dateMod = dayjs(props.date).format('YYYY-MM-DD');
+  console.log(dateMod);
+  // const dayOfSearch = '2023-10-08';
 
-  const allTascksByDay = allTascksByMonth.filter(tasck => tasck.date === `${dayOfSearch}`);
+  const allTascksByDay = allTascksByMonth.filter(tasck => tasck.date === `${dateMod}`);
   // console.log(allTascksByDay);
 
   const tascksByDayToDo = allTascksByDay.filter(tasck => tasck.category === 'to-do').length;
