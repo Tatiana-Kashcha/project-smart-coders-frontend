@@ -5,6 +5,7 @@ import {
   CellWrapper,
   DayWrapper,
   RowInCell,
+  SelectLow,
 } from './CalendarTable.styled';
 
 const currentDate = moment();
@@ -47,6 +48,15 @@ const CalendarTable = ({ startDay }) => {
                   dayItem.format('D')
                 )}
               </RowInCell>
+
+              <SelectLow id="size" name="size">
+                <option value="xs">Extra Small</option>
+                <option value="s">Small</option>
+                <option value="m" selected>
+                  Medium
+                </option>
+                <option value="l">Large</option>
+              </SelectLow>
             </DayWrapper>
           </CellWrapper>
         ))}

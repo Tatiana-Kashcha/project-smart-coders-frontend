@@ -118,6 +118,14 @@ export const CurrentDay = styled.span`
   }
 `;
 
+export const SelectLow = styled.select`
+  /* max-width: 100%; */
+
+  /* color: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.primaryText};
+  border: ${props => props.theme.colors.userInputBorder};
+  border-radius: 30%; */
+`;
 // export const ShowDayWrapper = styled.div`
 //   display: flex;
 //   justify-content: flex-end;
