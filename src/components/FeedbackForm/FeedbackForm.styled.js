@@ -101,9 +101,9 @@ export const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
 
+  padding: 12px auto;
   width: 30px;
   height: 30px;
-  padding: 12px center;
 
   border-radius: 50px;
   border: none;
