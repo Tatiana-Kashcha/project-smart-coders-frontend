@@ -12,13 +12,8 @@ export const CalendarGridWrapper = styled.div`
   height: 470px;
   border: ${({ theme }) => theme.colors.userInputBorder}; //border
   color: ${({ theme }) => theme.colors.calendarText}; //циферки
-  /* border: 1px solid rgba(220, 227, 229, 0.8); */
   border-radius: 8px;
   overflow: hidden;
-  background-color: ${props =>
-    props.isWeekend ? 'opacity = 0,3 ' : 'inherit'};
-  /* background-color: inherit; */
-  /* background-color: inherit; */
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -30,7 +25,6 @@ export const CalendarGridWrapper = styled.div`
     height: calc(100vh - 270px);
   }
 
-  /* transition-property: all; */
   transition-duration: 100ms;
   transition-timing-function: linear;
   :focus,
@@ -40,7 +34,6 @@ export const CalendarGridWrapper = styled.div`
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
-    /* background-color: blue; */
   }
 `;
 
@@ -71,26 +64,15 @@ export const CellWrapper = styled.div`
     padding: 14px;
   }
 `;
-// клітинка-дні
-
-// export const CalendarTableCell = styled(CellWrapper)`
-//   // Добавьте стили для выделения текущей даты
-//   background-color: #ffcccb; /* Цвет фона для текущей даты */
-//   font-weight: bold; /* Жирный шрифт для текущей даты */
-//   color: #ff0000; /* Цвет текста для текущей даты */
-// `;
 
 export const DayWrapper = styled.div`
   width: 24px;
   height: 26px;
-  /* margin: 6px; */
-  /* margin: 4px 6px; */
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-  /* justify-content: flex-end; */
-  /* margin-right: 2px; */
 
   font-family: Inter;
   font-weight: 700;
