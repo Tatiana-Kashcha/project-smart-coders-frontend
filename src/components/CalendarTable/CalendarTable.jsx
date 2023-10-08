@@ -5,28 +5,25 @@ import {
   CellWrapper,
   DayWrapper,
   RowInCell,
-  CurrentDay,
 } from './CalendarTable.styled';
 
 moment.updateLocale('en', {
   week: {
-    dow: 1, // Установите начальный день недели как понедельник (1)
+    dow: 1,
   },
 });
 
-const initialDate = moment().startOf('month'); // Устанавливаем текущую дату на первый день месяца
+const initialDate = moment().startOf('month');
 
 const CalendarTable = () => {
-  const [currentDate, setCurrentDate] = useState(initialDate);
+  const [currentDate] = useState(initialDate);
   const [calendarDays, setCalendarDays] = useState([]);
 
   useEffect(() => {
-    // Выполняется при первом рендере и при изменении currentDate
-    const startDay = moment(currentDate).startOf('week'); // Начало недели
+    const startDay = moment(currentDate).startOf('week');
     const day = startDay.clone();
     const endDay = moment(currentDate).endOf('month').endOf('week');
     const calendar = [];
-    const isCurrentDay = day => moment().isSame(day, 'day');
 
     while (!day.isAfter(endDay)) {
       calendar.push(day.clone());
@@ -36,7 +33,6 @@ const CalendarTable = () => {
     setCalendarDays(calendar);
   }, [currentDate]);
 
-  // const currentDayOfMonth = moment(currentDate).format('D');
   const currentMonth = moment(currentDate).format('MMMM');
 
   return (
@@ -50,9 +46,15 @@ const CalendarTable = () => {
           >
             <DayWrapper>
               <RowInCell>
-                {dayItem.month() === currentDate.month()
-                  ? dayItem.format('D')
-                  : null}
+                {dayItem.month() === currentDate.month() ? (
+                  <span
+                    style={{
+                      color: dayItem.isSame(moment(), 'day') ? 'blue' : null,
+                    }}
+                  >
+                    {dayItem.format('D')}
+                  </span>
+                ) : null}
               </RowInCell>
             </DayWrapper>
           </CellWrapper>

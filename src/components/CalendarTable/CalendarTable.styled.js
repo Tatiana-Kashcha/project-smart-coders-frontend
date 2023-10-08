@@ -46,6 +46,7 @@ export const CalendarGridWrapper = styled.div`
 
 export const RowInCell = styled.div`
   display: flex;
+  /* .span: background-color: #ffcccb; */
   /* margin: 4px 8px; */
   @media screen and (min-width: 1440px) {
     /* margin: 14px 14px; */
@@ -72,12 +73,12 @@ export const CellWrapper = styled.div`
 `;
 // клітинка-дні
 
-export const CalendarTableCell = styled(CellWrapper)`
-  // Добавьте стили для выделения текущей даты
-  background-color: #ffcccb; /* Цвет фона для текущей даты */
-  font-weight: bold; /* Жирный шрифт для текущей даты */
-  color: #ff0000; /* Цвет текста для текущей даты */
-`;
+// export const CalendarTableCell = styled(CellWrapper)`
+//   // Добавьте стили для выделения текущей даты
+//   background-color: #ffcccb; /* Цвет фона для текущей даты */
+//   font-weight: bold; /* Жирный шрифт для текущей даты */
+//   color: #ff0000; /* Цвет текста для текущей даты */
+// `;
 
 export const DayWrapper = styled.div`
   width: 24px;
@@ -108,13 +109,13 @@ export const DayWrapper = styled.div`
   animation: scaleAnimation 1s linear infinite alternate;
 `;
 
-export const CurrentDay = styled.span`
+export const Day = styled.span`
   width: 100%;
   height: 100%;
 
   display: flex;
-  color: ${({ theme }) => theme.colors.white};
-
+  /* color: ${({ theme }) => theme.colors.white}; */
+  /* color: #00ff00; */
   align-items: center;
   justify-content: center;
   padding: 4px 8px;
