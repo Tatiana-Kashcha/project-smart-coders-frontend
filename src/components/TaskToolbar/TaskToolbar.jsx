@@ -13,7 +13,8 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   // const [isDeleting, setIsDeleting] = useState(false); //!
 
   const dispatch = useDispatch();
-  const selectTask = useSelector(selectTasks);
+  // const selectTask = useSelector(selectTasks); //!
+  // console.log('selectTasks', selectTasks); //!
 
   const handleMoveToGroup = () => {
     setIsMenuOpen(true);
@@ -24,7 +25,7 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   };
 
   const handleDeleteTask = () => {
-    dispatch(deleteTask(selectTask.id));
+    // dispatch(deleteTask(id)); //?
   };
 
   return (
@@ -64,3 +65,4 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
 };
 
 // disabled = { isDeleting }; //!?
+/* <ButtonDelete type="button" onClick={() => handleDeleteContact(id)}></ButtonDelete> */ //!

@@ -1,3 +1,5 @@
+import { TaskToolbar } from 'components/TaskToolbar/TaskToolbar';
+
 export const TasksColumnsList = () => {
   return (
     <>
@@ -7,6 +9,7 @@ export const TasksColumnsList = () => {
         версії має горизонтальний скрол, якщо колонок більше ніж вміщає ширина
         екрану пристрою юзера.
       </h1>
+      <TaskToolbar />
     </>
   );
 };
