@@ -65,29 +65,39 @@ const CalendarTable = () => {
                 ) : null}
               </RowInCell>
 
-              <DivSelectLow>
-                <SelectLow id="low" name="low">
-                  <OptionSelectLow>Extranh </OptionSelectLow>
-                  <OptionSelectLow>Small</OptionSelectLow>
-                  <OptionSelectLow>Large</OptionSelectLow>
-                </SelectLow>
-              </DivSelectLow>
+              {dayItem.month() === currentDate.month() ? (
+                <DivSelectLow>
+                  <SelectLow id="low" name="low">
+                    <OptionSelectLow>Extranh </OptionSelectLow>
+                    <OptionSelectLow>Small</OptionSelectLow>
+                    <OptionSelectLow>Large</OptionSelectLow>
+                  </SelectLow>
 
-              <DivSelectMedium>
-                <SelectMedium id="medium" name="medium">
-                  <OptionSelectMedium>Extranh </OptionSelectMedium>
-                  <OptionSelectMedium>Small</OptionSelectMedium>
-                  <OptionSelectMedium>Large</OptionSelectMedium>
-                </SelectMedium>
-              </DivSelectMedium>
-
-              <DivSelectHigh>
-                <SelectHigh id="high" name="high">
-                  <OptionSelectHigh>Extranh </OptionSelectHigh>
-                  <OptionSelectHigh>Small</OptionSelectHigh>
-                  <OptionSelectHigh>Large</OptionSelectHigh>
-                </SelectHigh>
-              </DivSelectHigh>
+                  <SelectLow id="low" name="low">
+                    <OptionSelectLow>Extranh </OptionSelectLow>
+                    <OptionSelectLow>Small</OptionSelectLow>
+                    <OptionSelectLow>Large</OptionSelectLow>
+                  </SelectLow>
+                </DivSelectLow>
+              ) : null}
+              {dayItem.month() === currentDate.month() ? (
+                <DivSelectMedium>
+                  <SelectMedium id="medium" name="medium">
+                    <OptionSelectMedium>Extranh </OptionSelectMedium>
+                    <OptionSelectMedium>Small</OptionSelectMedium>
+                    <OptionSelectMedium>Large</OptionSelectMedium>
+                  </SelectMedium>
+                </DivSelectMedium>
+              ) : null}
+              {dayItem.month() === currentDate.month() ? (
+                <DivSelectHigh>
+                  <SelectHigh id="high" name="high">
+                    <OptionSelectHigh>Extranh </OptionSelectHigh>
+                    <OptionSelectHigh>Small</OptionSelectHigh>
+                    <OptionSelectHigh>Large</OptionSelectHigh>
+                  </SelectHigh>
+                </DivSelectHigh>
+              ) : null}
             </DayWrapper>
           </CellWrapper>
         ))}

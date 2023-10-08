@@ -133,10 +133,17 @@ export const SelectLow = styled.select`
   border: none;
   font-size: 14px;
   font-weight: 700;
+  line-height: 1.28;
 `;
 
 export const OptionSelectLow = styled.option`
   color: ${globalTheme.colors.primary};
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 94px;
+  height: 26px;
+  border-radius: 8px;
 `;
 
 export const DivSelectMedium = styled.div`
@@ -151,6 +158,10 @@ export const SelectMedium = styled.select`
   border: none;
   font-size: 14px;
   font-weight: 700;
+  line-height: 1.28;
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const OptionSelectMedium = styled.option`
@@ -169,6 +180,9 @@ export const SelectHigh = styled.select`
   border: none;
   font-size: 14px;
   font-weight: 700;
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const OptionSelectHigh = styled.option`
@@ -184,6 +198,9 @@ export const HiddenTaskCount = styled.span`
   font-size: 10px;
   line-height: 1.4;
   font-weight: 600;
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  white-space: nowrap;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     left: 2px;
