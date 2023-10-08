@@ -64,6 +64,8 @@ export const ButtonLeft = styled.button`
       : props.theme.colors.secondText};
   background-color: ${props => props.theme.colors.secondBackground};
 
+  cursor: pointer;
+
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding: 8px 10px;
   }
@@ -82,6 +84,8 @@ export const ButtonRight = styled.button`
 
   color: ${props => props.theme.colors.secondText};
   background-color: ${props => props.theme.colors.secondBackground};
+
+  cursor: pointer;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding: 8px 10px;
