@@ -73,19 +73,19 @@ export const MonthLegend = styled.p`
 
 export const DiagramWrapper = styled.div`
   margin-top: 40px;
-  height: 413px; //TODO: DELETE!!!
+  /* height: 413px; //TODO: DELETE!!! */
   font-size: 300px; //TODO: DELETE!!!
 
-  padding: 40px 14px;
+  /* padding: 40px 14px; */
   border: 0.8px solid ${props => props.theme.colors.borderStat};
   border-radius: 20px;
 
   color: ${props => props.theme.colors.secondText};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
-    padding: 32px;
+    /* padding: 32px; */
     border-radius: 29px;
-    height: 424px; //TODO: DELETE!!!
+    /* height: 424px; //TODO: DELETE!!! */
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
