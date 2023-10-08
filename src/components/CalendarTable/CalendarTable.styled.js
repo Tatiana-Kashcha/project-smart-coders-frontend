@@ -10,8 +10,8 @@ export const CalendarGridWrapper = styled.div`
   max-height: 625px;
   margin: 0 auto;
   height: 470px;
-  border: ${({ theme }) => theme.colors.userInputBorder}; //border
-  color: ${({ theme }) => theme.colors.calendarText}; //циферки
+  border: ${props => props.theme.colors.userInputBorder}; //border
+  color: ${props => props.theme.colors.calendarText}; //циферки
   /* border: 1px solid rgba(220, 227, 229, 0.8); */
   border-radius: 8px;
   overflow: hidden;
@@ -57,7 +57,7 @@ export const CellWrapper = styled.div`
   margin-bottom: 0px;
   padding: 8px 4px;
   justify-content: flex-end;
-  background-color: ${({ theme }) => theme.colors.bgrCalendar};
+  background-color: ${props => props.theme.colors.bgrCalendar};
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1440px) {
@@ -83,7 +83,7 @@ export const DayWrapper = styled.div`
   font-size: 12px;
   line-height: 1.17;
 
-  color: ${({ theme }) => theme.colors.primaryText};
+  color: ${props => props.theme.colors.primaryText};
   @media screen and (min-width: 768px) {
     width: 27px;
     height: 26px;
@@ -100,13 +100,13 @@ export const CurrentDay = styled.span`
   height: 100%;
 
   display: flex;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${props => props.theme.colors.white};
 
   align-items: center;
   justify-content: center;
   padding: 4px 8px;
 
-  background: ${({ theme }) => theme.colors.primaryText};
+  background: ${props => props.theme.colors.primaryText};
   border-radius: 50%;
 
   @media screen and (min-width: 768px) {
