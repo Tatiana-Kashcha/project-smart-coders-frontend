@@ -4,7 +4,13 @@ import { DARK, LIGHT } from '../components/constans/thems';
 
 const ThemeContext = createContext();
 
-export const useThemeContext = () => useContext(ThemeContext);
+export const useThemeContext = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useThemeContext must be used within a ThemeProvider');
+  }
+  return context;
+};
 
 const ThemeProvider = ({ children }) => {
   const savedTheme = localStorage.getItem('theme');

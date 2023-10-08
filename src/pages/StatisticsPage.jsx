@@ -1,11 +1,24 @@
-// import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator'; //?
+import { useThemeContext } from 'hooks';
+import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
 import * as s from '../components/StatisticsChart/StatisticsChart.styled';
+import { useState } from 'react';
+import { useDate } from 'hooks/useDate';
 
 export default function StatisticsPage() {
+  const { choosedDate } = useDate();
+  const [date, setDate] = useState(choosedDate);
+  const { theme } = useThemeContext();
+
+  const upDateDate = PlusOrMinus => {
+    const newDateDay = new Date(date);
+    newDateDay.setDate(newDateDay.getDate() + PlusOrMinus);
+    setDate(newDateDay);
+  };
+
   return (
     <s.StatWrapper>
-      {/* <PeriodPaginator /> */}
+      <PeriodPaginator date={date} upDateDate={upDateDate} />
       <div
         style={{
           width: '307px',
@@ -18,10 +31,8 @@ export default function StatisticsPage() {
           textTransform: 'uppercase',
           backgroundColor: 'blueviolet',
         }}
-      >
-        PeriodPaginator TODO://!BAG-FIX
-      </div>
-      <StatisticsChart />
+      ></div>
+      <StatisticsChart date={date} theme={theme} />
     </s.StatWrapper>
   );
 }
