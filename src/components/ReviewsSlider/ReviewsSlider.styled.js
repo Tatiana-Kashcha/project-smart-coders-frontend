@@ -1,20 +1,22 @@
 import styled from 'styled-components';
-// import { Form, ErrorMessage } from 'formik';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import LinesEllipsis from 'react-lines-ellipsis';
+
 import { globalTheme } from 'theme';
 import { Container } from 'stylesheet/Container.styled';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export const SectionMod = styled.section`
-  padding: 0 0 64px 0;
+  margin-bottom: 64px;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
-    padding: 0 0 100px 0;
+    margin-bottom: 100px;
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-    padding: 0 0 118px 0;
+    margin-bottom: 118px;
   }
 `;
 
@@ -24,23 +26,26 @@ export const ContainerModify = styled(Container)`
   justify-content: center;
   align-items: center;
 
-  //   height: 100%;
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 580px;
+    padding: 0;
+  }
+
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    width: 1184px;
+  }
 `;
 
 export const Title = styled.h2`
-  color: var(--blue1, #3e85f3);
-  font-family: Inter;
+  color: ${globalTheme.colors.primary};
   font-size: 40px;
-  font-style: normal;
   font-weight: 700;
   line-height: 44px;
   text-transform: uppercase;
 
   margin-bottom: 40px;
 
-  //   background-color: ${props => props.theme.colors.modalWindow};
-
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin-bottom: 50px;
   }
 `;
@@ -52,11 +57,10 @@ export const ReviewContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 24px;
-  //   width: 335px;
   height: 72px;
 
   border-radius: 8px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  border: 1px solid ${globalTheme.colors.reviewsSliderBorder};
 `;
 
 export const StyledSwiper = styled(Swiper)`
@@ -75,7 +79,7 @@ export const SwiperSlides = styled(SwiperSlide)`
 
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: ${globalTheme.colors.secondBackground};
 
   box-sizing: border-box;
   width: 100%;
@@ -85,14 +89,32 @@ export const SwiperSlides = styled(SwiperSlide)`
   width: 335px;
 
   border-radius: 8px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  border: 1px solid ${globalTheme.colors.reviewsSliderBorder};
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    padding: 32px;
+    margin-bottom: 18px;
+  }
+
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    margin-bottom: 32px;
+  }
 `;
 
 export const ArrowButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
+`;
+
+export const ArrowBtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  color: ${globalTheme.colors.black};
 `;
 
 export const ArrowButton = styled.button`
@@ -103,7 +125,11 @@ export const ArrowButton = styled.button`
   cursor: pointer;
 
   background-color: transparent;
-  color: #111111;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 61px;
+    height: 61px;
+  }
 `;
 
 export const UserContainer = styled.div`
@@ -111,27 +137,17 @@ export const UserContainer = styled.div`
   flex-direction: column;
 `;
 
-// export const UserAvatar = styled.div`
-//   align-items: start;
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50px;
-//   border: 3px solid #111;
-//   // background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-// `;
-
 export const UserInfo = styled.div`
   display: flex;
   gap: 18px;
+  margin-bottom: 24px;
 `;
 
 export const UserName = styled.h3`
-  color: #343434;
-  font-family: Inter;
+  color: ${globalTheme.colors.text};
   font-size: 18px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 18px; /* 100% */
+  line-height: 1;
 `;
 
 export const UserHeadInfo = styled.div`
@@ -139,51 +155,47 @@ export const UserHeadInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 13px;
-  margin-bottom: 24px;
 `;
 
-export const UserReview = styled.h3`
-  width: 287px;
-  height: auto;
-
+export const UserReview = styled(LinesEllipsis)`
+  width: 100%;
+  height: 54px;
   border-radius: 8px;
   border: transparent;
-  //   overflow: hidden;
 
-  height: 54px;
-  color: rgba(17, 17, 17, 0.7);
-  font-family: Inter;
+  color: ${globalTheme.colors.reviewsSliderText};
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 18px;
-
+  line-height: 1.28;
   text-align: left;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    padding-left: 68px;
+  }
 `;
 
 export const Elipse = styled.p`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
   border-radius: 50px;
+  border: 1px solid transparent;
+  background-color: ${globalTheme.colors.primary};
 
-  border: 3px solid #111;
-
-  font-family: Inter;
-  font-size: 100%;
+  // font-family: Inter;
+  font-size: 22px;
   font-weight: 600;
-  font-size: 40px;
-  color: ${props => props.theme.colors.primaryText};
+  color: ${globalTheme.colors.black};
+`;
 
-  @media screen and (min-width: 768px) {
-    width: 44px;
-    height: 44px;
-
-    // font-family: Inter;
-    // font-size: 18px;
-  }
+export const Avatar = styled.img`
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-position: 50% 50%;
+  border-radius: 50px;
 `;
 
 export const CustomStarContainer = styled.div`

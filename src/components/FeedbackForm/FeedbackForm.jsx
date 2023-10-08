@@ -73,11 +73,12 @@ const FeedbackForm = ({ onClose }) => {
     }
   }, [reviews, currentUser]);
 
-  const handleSubmit = values => {
+  const handleSubmit = (values, { resetForm }) => {
     if (showSaveBtn) {
       dispatch(createReview({ rating, comment: values.review }))
         .then(() => {
           Notify.success('You have successfully created your review');
+          resetForm();
           onClose();
         })
         .catch(error => {
@@ -89,6 +90,7 @@ const FeedbackForm = ({ onClose }) => {
       dispatch(updateReview({ rating, comment: values.review }))
         .then(() => {
           Notify.success('You have successfully updated your review');
+          resetForm();
           onClose();
         })
         .catch(error => {
