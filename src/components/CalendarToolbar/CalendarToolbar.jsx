@@ -7,12 +7,18 @@ import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 // import { useTasks } from 'hooks/useTasks';
 
 import * as s from './CalendarToolbar.styled';
+import { useDate } from 'hooks/useDate';
 
 export const CalendarToolbar = ({ periodType, handleChange }) => {
-  const currentDate = new Date();
-  const [date, setDate] = useState(currentDate);
+  const { choosedDate, setChoosedDate } = useDate();
+  const [date, setDate] = useState(choosedDate);
   // const { tasks, getAllTasks } = useTasks();
+
+  useEffect(() => {
+    setChoosedDate(date);
+  }, [date, setChoosedDate]);
   const navigate = useNavigate();
+
   // const month = dayjs(date).format('MM').toLowerCase();
   // const day = dayjs(date).format('DD').toLowerCase();
   // const monthMod = dayjs(date).format('MM');

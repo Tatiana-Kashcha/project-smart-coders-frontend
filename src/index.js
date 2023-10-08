@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'normalize.css';
 import '../src/stylesheet/global.css';
 import ThemeProvider from 'hooks/useTheme';
+import { DateProvider } from 'hooks/useDate';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter basename="/project-smart-coders-frontend">
-            <App />
+            <DateProvider>
+              <App />
+            </DateProvider>
           </BrowserRouter>
         </PersistGate>
       </Provider>
