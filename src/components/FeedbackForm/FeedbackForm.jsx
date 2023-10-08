@@ -54,16 +54,16 @@ const FeedbackForm = ({ onClose }) => {
   }, [dispatch, currentUser]);
 
   useEffect(() => {
-    if (reviews.length > 0) {
-      if (reviews[0].owner === currentUser?._id) {
-        setRating(reviews[0].rating);
-        setReview(reviews[0].comment);
-        setHasReviews(true);
-        setShowSaveBtn(false);
-      }
-    } else {
+    if (reviews.rating !== undefined && reviews.comment !== undefined) {
+      setRating(reviews.rating);
+      setReview(reviews.comment);
       setHasReviews(true);
+      setShowSaveBtn(false);
+    } else {
+      setRating(1);
+      setReview('');
       setShowSaveBtn(true);
+      setHasReviews(true);
     }
   }, [reviews, currentUser]);
 
@@ -110,7 +110,7 @@ const FeedbackForm = ({ onClose }) => {
 
   return (
     <Formik
-      initialValues={{ rating, review }}
+      initialValues={{ review }}
       enableReinitialize={true}
       validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
