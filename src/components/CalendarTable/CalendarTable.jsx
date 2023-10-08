@@ -1,52 +1,103 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import {
   CalendarGridWrapper,
   CellWrapper,
   DayWrapper,
   RowInCell,
+  DivSelectLow,
+  SelectLow,
+  OptionSelectLow,
+  DivSelectMedium,
+  SelectMedium,
+  OptionSelectMedium,
+  DivSelectHigh,
+  SelectHigh,
+  OptionSelectHigh,
 } from './CalendarTable.styled';
 
-const currentDate = moment();
-const startDay = currentDate.startOf('month').startOf('week');
-const day = startDay.clone().add(1, 'd');
+moment.updateLocale('en', {
+  week: {
+    dow: 1,
+  },
+});
 
-moment.updateLocale('en', { week: { dow: 1 } });
+const initialDate = moment().startOf('month');
 
-const CalendarTable = ({ startDay }) => {
-  const currentDayOfMonth = currentDate.format('D');
-  const currentMonth = currentDate.format('MMMM');
+const CalendarTable = () => {
+  const [currentDate] = useState(initialDate);
+  const [calendarDays, setCalendarDays] = useState([]);
 
-  const endDay = currentDate.endOf('month').endOf('week');
-  const calendar = [];
+  useEffect(() => {
+    const startDay = moment(currentDate).startOf('week');
+    const day = startDay.clone();
+    const endDay = moment(currentDate).endOf('month').endOf('week');
+    const calendar = [];
 
-  while (!day.isAfter(endDay)) {
-    calendar.push(day.clone());
-    day.add(1, 'day');
-  }
+    while (!day.isAfter(endDay)) {
+      calendar.push(day.clone());
+      day.add(1, 'day');
+    }
 
-  // window.moment = moment;
+    setCalendarDays(calendar);
+  }, [currentDate]);
 
-  const totalDays = 42;
-  const daysArray = [...Array(totalDays)].map(() => day.add(1, 'day').clone());
+  // const currentMonth = moment(currentDate).format('MMMM');
 
   return (
     <div>
-      <h1>Current Month: {currentMonth}</h1>
       <CalendarGridWrapper>
-        {daysArray.map(dayItem => (
+        {calendarDays.map(dayItem => (
           <CellWrapper
             key={dayItem.format('DDMMYYYY')}
-            // IsWeekend={dayItem.day() === 6 || dayItem.day() === 0}
+            IsWeekend={dayItem.day() === 0 || dayItem.day() === 6}
           >
             <DayWrapper>
               <RowInCell>
-                {dayItem.format('D') === currentDayOfMonth ? (
-                  <strong>{dayItem.format('D')}</strong>
-                ) : (
-                  dayItem.format('D')
-                )}
+                {dayItem.month() === currentDate.month() ? (
+                  <span
+                    style={{
+                      color: dayItem.isSame(moment(), 'day') ? 'blue' : null,
+                    }}
+                  >
+                    {dayItem.format('D')}
+                  </span>
+                ) : null}
               </RowInCell>
+
+              {dayItem.month() === currentDate.month() ? (
+                <DivSelectLow>
+                  <SelectLow id="low" name="low">
+                    <OptionSelectLow>Extranh </OptionSelectLow>
+                    <OptionSelectLow>Small</OptionSelectLow>
+                    <OptionSelectLow>Large</OptionSelectLow>
+                  </SelectLow>
+
+                  <SelectLow id="low" name="low">
+                    <OptionSelectLow>Extranh </OptionSelectLow>
+                    <OptionSelectLow>Small</OptionSelectLow>
+                    <OptionSelectLow>Large</OptionSelectLow>
+                  </SelectLow>
+                </DivSelectLow>
+              ) : null}
+              {dayItem.month() === currentDate.month() ? (
+                <DivSelectMedium>
+                  <SelectMedium id="medium" name="medium">
+                    <OptionSelectMedium>Extranh </OptionSelectMedium>
+                    <OptionSelectMedium>Small</OptionSelectMedium>
+                    <OptionSelectMedium>Large</OptionSelectMedium>
+                  </SelectMedium>
+                </DivSelectMedium>
+              ) : null}
+              {dayItem.month() === currentDate.month() ? (
+                <DivSelectHigh>
+                  <SelectHigh id="high" name="high">
+                    <OptionSelectHigh>Extranh </OptionSelectHigh>
+                    <OptionSelectHigh>Small</OptionSelectHigh>
+                    <OptionSelectHigh>Large</OptionSelectHigh>
+                  </SelectHigh>
+                </DivSelectHigh>
+              ) : null}
             </DayWrapper>
           </CellWrapper>
         ))}
