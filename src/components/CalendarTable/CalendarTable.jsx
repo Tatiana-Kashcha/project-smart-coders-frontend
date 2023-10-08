@@ -42,11 +42,10 @@ const CalendarTable = () => {
     setCalendarDays(calendar);
   }, [currentDate]);
 
-  const currentMonth = moment(currentDate).format('MMMM');
+  // const currentMonth = moment(currentDate).format('MMMM');
 
   return (
     <div>
-      <h1>Current Month: {currentMonth}</h1>
       <CalendarGridWrapper>
         {calendarDays.map(dayItem => (
           <CellWrapper
