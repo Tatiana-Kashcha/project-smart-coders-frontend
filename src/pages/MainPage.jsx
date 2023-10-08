@@ -10,7 +10,6 @@ export default function MainPage() {
       <AuthSection />
       <Description />
       <ReviewsSlider />
-      {/* <TaskToolbar /> */}
     </>
   );
 }

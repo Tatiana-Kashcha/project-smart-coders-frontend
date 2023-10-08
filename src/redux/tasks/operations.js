@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Notify } from 'notiflix';
+
 axios.defaults.baseURL = 'https://project-smart-coders-backend.onrender.com';
 
 const handleResponse = (response, errorMessage) => {
@@ -60,6 +62,7 @@ export const deleteTask = createAsyncThunk(
       return taskId;
     } catch (error) {
       console.error(`Sorry, task wasn't deleted: ${error.message}`);
+      Notify.failure('Something went wrong... Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

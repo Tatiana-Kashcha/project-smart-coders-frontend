@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { ReactComponent as ArrowCircle } from '../../icons/arrow-circle-broken-right.svg';
 import { TaskModal } from 'components/TaskModal/TaskModal';
-import { deleteTask } from '../../redux/tasks/operations';
-import { selectTasks } from 'redux/tasks/selectors';
+// import { deleteTask, patchTask } from '../../redux/tasks/operations'; //?
+// import { selectTasks } from 'redux/tasks/selectors'; //!
 
 import * as s from './TaskToolbar.styled';
 
-export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
+export const TaskToolbar = ({
+  id,
+  task,
+  groups,
+  onDeleteTask,
+  onUpdateTask,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false); //!!!!!!!!!!
   // const [isDeleting, setIsDeleting] = useState(false); //!
 
   const dispatch = useDispatch();
+
   // const selectTask = useSelector(selectTasks); //!
-  // console.log('selectTasks', selectTasks); //!
+  // console.log('selectTasks', selectTasks()); //!
+
+  const chooseGroup = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
 
   const handleMoveToGroup = () => {
-    setIsMenuOpen(true);
+    chooseGroup();
+    // TODO: patchTask
   };
 
   const handleEditTask = () => {
@@ -25,20 +38,28 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   };
 
   const handleDeleteTask = () => {
-    // dispatch(deleteTask(id)); //?
+    // TODO: dispatch(deleteTask(id));
   };
 
   return (
     <>
       <s.Toolbar>
-        <s.ArrowCircleBtn onClick={handleMoveToGroup} />
+        <s.ArrowCircleBtn
+          type="button"
+          aria-label="Change task group"
+          onClick={chooseGroup}
+        />
 
-        <s.PencilBtn onClick={handleEditTask} />
+        <s.PencilBtn
+          type="button"
+          aria-label="Edit task"
+          onClick={handleEditTask}
+        />
 
         <s.TrashBtn
           type="button"
           aria-label="Delete task"
-          onClick={handleDeleteTask}
+          onClick={() => dispatch(handleDeleteTask(id))}
         />
 
         {showEditModal && (
@@ -51,12 +72,12 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
       </s.Toolbar>
       {isMenuOpen && (
         <s.ToolMenu>
-          <s.ToolMenuBtn>
+          <s.ToolMenuBtn onClick={() => dispatch(handleMoveToGroup(id))}>
             In progress
-            <s.ArrowCircleBtn width={16} />
+            <ArrowCircle width={16} />
           </s.ToolMenuBtn>
-          <s.ToolMenuBtn>
-            Done <s.ArrowCircleBtn width={16} />
+          <s.ToolMenuBtn onClick={() => dispatch(handleMoveToGroup(id))}>
+            Done <ArrowCircle width={16} />
           </s.ToolMenuBtn>
         </s.ToolMenu>
       )}
