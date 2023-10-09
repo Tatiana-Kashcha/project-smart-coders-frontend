@@ -30,8 +30,9 @@ export const Legend = styled.div`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     position: absolute;
+    margin-top: 0;
     right: 64px;
-    top: 140px; //TODO: CHANGE!!!
+    top: 140px;
     gap: 20px;
     font-size: 16px;
     line-height: calc(18 / 16);
@@ -39,7 +40,7 @@ export const Legend = styled.div`
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     right: 154px;
-    top: 142px; //TODO: CHANGE!!!
+    top: 142px;
   }
 `;
 
