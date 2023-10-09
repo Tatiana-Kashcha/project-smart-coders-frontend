@@ -1,12 +1,11 @@
-// import { reviewsReducer } from './reviews/reviewsSlice';
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
   getAllReviews,
-  //   getUserReview,
+  getUserReview,
   createReview,
-  //   updateReview,
-  //   deleteReview,
+  updateReview,
+  deleteReview,
 } from './operations';
 
 const initialState = {
@@ -34,20 +33,18 @@ export const reviewsSlice = createSlice({
         state.error = action.error.message;
       })
 
-      //   .addCase(getUserReview.pending, state => {
-      //     state.isLoading = true;
-      //   })
-      //   .addCase(getUserReview.fulfilled, (state, action) => {
-      //     state.isLoading = false;
-      //     state.error = null;
-
-      //     state.rating = action.payload;
-      //     state.review = action.payload;
-      //   })
-      //   .addCase(getUserReview.rejected, (state, action) => {
-      //     state.isLoading = false;
-      //     state.error = action.error.message;
-      //   })
+      .addCase(getUserReview.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getUserReview.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(getUserReview.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
 
       .addCase(createReview.pending, state => {
         state.isLoading = true;
@@ -55,44 +52,38 @@ export const reviewsSlice = createSlice({
       .addCase(createReview.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
-        state.reviews.rating = action.payload;
-        state.reviews.review = action.payload;
+        state.items = action.payload;
       })
       .addCase(createReview.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
+      })
+
+      .addCase(updateReview.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(updateReview.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(updateReview.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+
+      .addCase(deleteReview.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteReview.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(deleteReview.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
       });
-
-    //   .addCase(updateReview.pending, state => {
-    //     state.isLoading = true;
-    //   })
-    //   .addCase(updateReview.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = null;
-
-    //     state.rating = action.payload;
-    //     state.review = action.payload;
-    //   })
-    //   .addCase(updateReview.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = action.error.message;
-    //   })
-
-    //   .addCase(deleteReview.pending, state => {
-    //     state.isLoading = true;
-    //   })
-    //   .addCase(deleteReview.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = null;
-
-    //     state.rating = action.payload;
-    //     state.review = action.payload;
-    //   })
-    //   .addCase(deleteReview.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = action.error.message;
-    //   });
   },
 });
 

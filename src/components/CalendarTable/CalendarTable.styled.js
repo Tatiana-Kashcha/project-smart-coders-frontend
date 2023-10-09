@@ -1,6 +1,6 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
-// зовнішній контур
 export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -10,15 +10,10 @@ export const CalendarGridWrapper = styled.div`
   max-height: 625px;
   margin: 0 auto;
   height: 470px;
-  border: ${({ theme }) => theme.colors.userInputBorder}; //border
-  color: ${({ theme }) => theme.colors.calendarText}; //циферки
-  /* border: 1px solid rgba(220, 227, 229, 0.8); */
+  border: ${props => props.theme.colors.userInputBorder};
+  color: ${props => props.theme.colors.calendarText};
   border-radius: 8px;
   overflow: hidden;
-  background-color: ${props =>
-    props.isWeekend ? 'opacity = 0,3 ' : 'inherit'};
-  /* background-color: inherit; */
-  /* background-color: inherit; */
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -30,7 +25,6 @@ export const CalendarGridWrapper = styled.div`
     height: calc(100vh - 270px);
   }
 
-  /* transition-property: all; */
   transition-duration: 100ms;
   transition-timing-function: linear;
   :focus,
@@ -45,45 +39,37 @@ export const CalendarGridWrapper = styled.div`
 
 export const RowInCell = styled.div`
   display: flex;
-  /* margin: 4px 8px; */
-  @media screen and (min-width: 1440px) {
-    /* margin: 14px 14px; */
-  }
 `;
 
 export const CellWrapper = styled.div`
-  //циферки
   display: flex;
   margin-bottom: 0px;
   padding: 8px 4px;
   justify-content: flex-end;
-  background-color: ${({ theme }) => theme.colors.bgrCalendar};
+  background-color: ${props => props.theme.colors.bgrCalendar};
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1440px) {
     padding: 14px;
   }
 `;
-// клітинка-дні
 
 export const DayWrapper = styled.div`
   width: 24px;
   height: 26px;
-  /* margin: 6px; */
-  /* margin: 4px 6px; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-  /* justify-content: flex-end; */
-  /* margin-right: 2px; */
 
   font-family: Inter;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
 
-  color: ${({ theme }) => theme.colors.primaryText};
+  position: relative;
+
+  color: ${props => props.theme.colors.primaryText};
   @media screen and (min-width: 768px) {
     width: 27px;
     height: 26px;
@@ -100,13 +86,13 @@ export const CurrentDay = styled.span`
   height: 100%;
 
   display: flex;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${props => props.theme.colors.white};
 
   align-items: center;
   justify-content: center;
   padding: 4px 8px;
 
-  background: ${({ theme }) => theme.colors.primaryText};
+  background: ${props => props.theme.colors.primaryText};
   border-radius: 50%;
 
   @media screen and (min-width: 768px) {
@@ -118,71 +104,73 @@ export const CurrentDay = styled.span`
   }
 `;
 
-// export const ShowDayWrapper = styled.div`
-//   display: flex;
-//   justify-content: flex-end;
-// `;
+export const DivSelectLow = styled.div`
+  position: absolute;
+  top: 20%;
+  right: 120%;
+`;
 
-// export const TaskList = styled.ul`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   gap: 2px;
-//   width: 100%;
-//   padding: 0;
-//   margin: 0;
+export const SelectLow = styled.select`
+  border-radius: 15%;
+  background-color: ${globalTheme.colors.lowTasksBg};
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+`;
 
-//   font-family: ${props => props.theme.fonts.heading};
-//   font-style: normal;
-//   font-weight: ${props => props.theme.fontWeights.bold};
-//   font-size: ${props => props.theme.fontSizes.xs};
-//   line-height: ${props => props.theme.lineHeights.body};
+export const OptionSelectLow = styled.option`
+  color: ${globalTheme.colors.primary};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 94px;
+  height: 26px;
+  border-radius: 8px;
+`;
 
-//   list-style: none;
-// `;
+export const DivSelectMedium = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 120%;
+`;
 
-// export const TaskItem = styled.li`
-//   padding: 4px 4px 4px 4px;
+export const SelectMedium = styled.select`
+  border-radius: 15%;
+  background-color: ${globalTheme.colors.lightYellow};
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
 
-//   border-radius: ${props => props.theme.radii.small};
+export const OptionSelectMedium = styled.option`
+  color: ${globalTheme.colors.mainYellow};
+`;
 
-//   background-color: ${props => {
-//     switch (props.priority) {
-//       case 'low':
-//         return '#72C2F8';
-//       case 'medium':
-//         return props.theme.colors.lightYellow;
-//       case 'high':
-//         return props.theme.colors.lightRed;
-//       default:
-//         return props.theme.colors.lightRed;
-//     }
-//   }};
+export const DivSelectHigh = styled.div`
+  position: absolute;
+  top: 180%;
+  right: 120%;
+`;
 
-//   color: ${props => {
-//     switch (props.priority) {
-//       case 'low':
-//         return props.theme.colors.primary;
-//       case 'medium':
-//         return props.theme.colors.mainYellow;
-//       case 'high':
-//         return props.theme.colors.mainRed;
-//       default:
-//         return '#72C2F8';
-//     }
-//   }};
+export const SelectHigh = styled.select`
+  border-radius: 15%;
+  background-color: ${globalTheme.colors.lightRed};
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
 
-/* @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    padding: 4px 10px 4px 12px;
-
-    font-size: ${props => props.theme.fontSizes.s};
-    line-height: ${props => props.theme.lineHeights.body};
-  }
-
-  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    padding: 4px 15px 4px 12px;
-  }
-`; */
+export const OptionSelectHigh = styled.option`
+  color: ${globalTheme.colors.mainRed};
+`;
 
 export const HiddenTaskCount = styled.span`
   color: green;
@@ -193,6 +181,9 @@ export const HiddenTaskCount = styled.span`
   font-size: 10px;
   line-height: 1.4;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     left: 2px;

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = 'https://project-smart-coders-backend.onrender.com';
 
 const handleResponse = (response, errorMessage) => {
   if (response.status !== 200) {

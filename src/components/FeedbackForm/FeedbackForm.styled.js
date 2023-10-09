@@ -59,12 +59,12 @@ export const ContainerLabelAndBtn = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 `;
 
 export const UpContainerButton = styled.div`
   display: flex;
   gap: 8px;
-  margin-bottom: 8px;
 `;
 
 export const EditButton = styled.button`
@@ -80,8 +80,14 @@ export const EditButton = styled.button`
   border: none;
   cursor: pointer;
 
-  color: ${globalTheme.colors.primary};
-  background-color: ${props => props.theme.colors.secondBackgroundButton};
+  color: ${props =>
+    props['data-active']
+      ? `${globalTheme.colors.white}`
+      : `${globalTheme.colors.primary}`};
+  background-color: ${props =>
+    props['data-active']
+      ? `${globalTheme.colors.primary}`
+      : props.theme.colors.secondBackgroundButton};
 
   &:hover {
     color: ${globalTheme.colors.white};
@@ -95,16 +101,16 @@ export const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
 
+  padding: 12px auto;
   width: 30px;
   height: 30px;
-  padding: 12px center;
 
   border-radius: 50px;
   border: none;
   cursor: pointer;
 
-  background-color: ${globalTheme.colors.bgDelBtn};
   color: ${globalTheme.colors.mainRed};
+  background-color: ${globalTheme.colors.bgDelBtn};
 
   &:hover {
     color: ${globalTheme.colors.white};
@@ -132,12 +138,14 @@ export const ConfirmButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
 
-  color: ${props => props.theme.colors.secondText};
-  background-color: ${props => props.theme.colors.backgroundButton};
+  color: ${globalTheme.colors.white};
+  background-color: ${globalTheme.colors.secondary};
+  // // color: ${props => props.theme.colors.secondText};
+  // background-color: ${props => props.theme.colors.backgroundButton};
 
   &:hover {
-    color: ${globalTheme.colors.white};
-    background-color: ${globalTheme.colors.secondary};
+    // color: ${globalTheme.colors.white};
+    // background-color: ${globalTheme.colors.secondary};
     box-shadow: ${globalTheme.shadow.modalHoverShadow};
   }
 `;
