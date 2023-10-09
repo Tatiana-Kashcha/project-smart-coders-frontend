@@ -1,41 +1,38 @@
-import { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import { Formik, Field } from 'formik';
-import * as yup from 'yup';
+import { Notify } from 'notiflix';
+
+import { FeedbackValidSchema } from './FeedbackValidScheme';
+import { selectReviews, selectIsLoadingReviews } from 'redux/reviews/selectors';
+import { selectUser } from 'redux/auth/selectors';
+import {
+  getUserReview,
+  createReview,
+  updateReview,
+  deleteReview,
+} from 'redux/reviews/operations';
 
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
-
-// import Loader from 'components/Loader/Loader';
-
-const schema = yup.object({
-  review: yup
-    .string()
-    .min(1, 'Must be at least 1 characters')
-    .max(300, 'Must be at most 300 characters')
-    .required('This review field is required'),
-});
+import Loader from '../Loader/Loader';
 
 const FeedbackForm = ({ onClose }) => {
-  // const isLoading = useSelector(state => state.reviews.isLoading);
-  // const error = useSelector(state => state.reviews.error);
-  // const userReview = useSelector(state => state.reviews.items);
-  // const currenUserInfo = useSelector(state => state.users.info);
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const reviews = useSelector(selectReviews);
+  const isLoading = useSelector(selectIsLoadingReviews);
+
+  const currentUser = useSelector(selectUser);
+
+  const [hasReviews, setHasReviews] = useState(false);
+  const [showEditBtn, setShowEditBtn] = useState(false);
+  const [showSaveBtn, setShowSaveBtn] = useState(false);
+
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState('');
-
-  // useEffect(() => {
-  //   dispatch(currentUser());
-  // }, [dispatch]);
-
-  const initialValues = {
-    rating,
-    review,
-  };
 
   const starsConfig = {
     size: 24,
@@ -50,65 +47,132 @@ const FeedbackForm = ({ onClose }) => {
     onChange: newValue => setRating(newValue),
   };
 
-  const handleSubmit = values => {
-    //  { resetForm }
-    setReview(values.review);
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(getUserReview());
+    }
+  }, [dispatch, currentUser]);
 
-    console.log(rating);
-    console.log(values.review);
+  useEffect(() => {
+    if (reviews.rating !== undefined && reviews.comment !== undefined) {
+      setRating(reviews.rating);
+      setReview(reviews.comment);
+      setHasReviews(true);
+      setShowSaveBtn(false);
+    } else {
+      setRating(1);
+      setReview('');
+      setShowSaveBtn(true);
+      setHasReviews(true);
+    }
+  }, [reviews, currentUser]);
 
-    onClose();
-    // setRating(1);
-    // resetForm();
+  const handleSubmit = (values, { resetForm }) => {
+    if (showSaveBtn) {
+      dispatch(createReview({ rating, comment: values.review }))
+        .then(() => {
+          Notify.success('You have successfully created your review');
+          resetForm();
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
+    }
+
+    if (showEditBtn) {
+      dispatch(updateReview({ rating, comment: values.review }))
+        .then(() => {
+          Notify.success('You have successfully updated your review');
+          resetForm();
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
+    }
   };
 
-  // {isLoading && currenUserInfo === null && !error ? (
-  //       <Loader />
-  //     ) : (
+  const handleEdit = () => {
+    setShowEditBtn(true);
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteReview(currentUser._id))
+      .then(() => {
+        Notify.success('You have successfully deleted your review');
+        onClose();
+      })
+      .catch(error => {
+        Notify.failure(`${error.message}`);
+      });
+  };
 
   return (
     <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
+      initialValues={{ review }}
+      enableReinitialize={true}
+      validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors }) => (
-        <s.FormWrapper autoComplete="off">
-          <div>
-            <s.Label htmlFor="rating">Rating </s.Label>
-            <ReactStars {...starsConfig} />
-          </div>
-          <s.ReviewContainer>
-            <s.ContainerLabelAndBtn>
-              <s.Label htmlFor="review">Review</s.Label>
+      {isLoading || !hasReviews ? (
+        <Loader />
+      ) : (
+        ({ errors }) => (
+          <s.FormWrapper autoComplete="off">
+            <div>
+              <s.Label htmlFor="rating">Rating </s.Label>
+              <ReactStars {...starsConfig} />
+            </div>
+            <s.ReviewContainer>
+              <s.ContainerLabelAndBtn>
+                <s.Label htmlFor="review">Review</s.Label>
 
-              <s.UpContainerButton>
-                <s.EditButton type="button">
-                  <Pencil />
-                </s.EditButton>
-                <s.DeleteButton type="button">
-                  <TrashBox />
-                </s.DeleteButton>
-              </s.UpContainerButton>
-            </s.ContainerLabelAndBtn>
-            <s.ReviewInput
-              name="review"
-              placeholder="Enter text"
-              as={Field}
-              component="textarea"
-              error={!!errors.review ? 'true' : undefined}
-              required
-            />
-            <s.ErrorContainer name="review" component="div" />
-          </s.ReviewContainer>
+                {!showSaveBtn ? (
+                  <s.UpContainerButton>
+                    <s.EditButton
+                      type="button"
+                      onClick={handleEdit}
+                      data-active={showEditBtn}
+                    >
+                      <Pencil />
+                    </s.EditButton>
+                    <s.DeleteButton type="button" onClick={handleDelete}>
+                      <TrashBox />
+                    </s.DeleteButton>
+                  </s.UpContainerButton>
+                ) : null}
+              </s.ContainerLabelAndBtn>
+              <s.ReviewInput
+                name="review"
+                placeholder="Enter text"
+                as={Field}
+                component="textarea"
+                error={!!errors.review ? 'true' : undefined}
+                required
+              />
+              <s.ErrorContainer name="review" component="div" />
+            </s.ReviewContainer>
 
-          <s.DownContainerButton>
-            <s.ConfirmButton type="submit">Save</s.ConfirmButton>
-            <s.CancelButton type="button" onClick={onClose}>
-              Cancel
-            </s.CancelButton>
-          </s.DownContainerButton>
-        </s.FormWrapper>
+            {showSaveBtn ? (
+              <s.DownContainerButton>
+                <s.ConfirmButton type="submit">Save</s.ConfirmButton>
+                <s.CancelButton type="button" onClick={onClose}>
+                  Cancel
+                </s.CancelButton>
+              </s.DownContainerButton>
+            ) : null}
+
+            {showEditBtn ? (
+              <s.DownContainerButton>
+                <s.ConfirmButton type="submit">Edit</s.ConfirmButton>
+                <s.CancelButton type="button" onClick={onClose}>
+                  Cancel
+                </s.CancelButton>
+              </s.DownContainerButton>
+            ) : null}
+          </s.FormWrapper>
+        )
       )}
     </Formik>
   );
