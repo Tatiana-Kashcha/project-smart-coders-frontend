@@ -7,9 +7,9 @@ export const TaskColumnCard = props => {
   const { description, avatarUrl, priority } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleEditClick = () => {
-    setIsModalOpen(true);
-  };
+  // const handleEditClick = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
