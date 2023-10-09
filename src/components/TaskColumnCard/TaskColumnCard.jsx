@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-// import TaskToolbar from './TaskToolbar';
-// import TaskModal from './TaskModal';
+import { TaskToolbar } from 'components/TaskToolbar/TaskToolbar';
+import { TaskModal } from 'components/TaskModal/TaskModal';
 import * as s from './TaskColumnCard.styled';
 
-export const TaskColumnCard = (props) => {
+export const TaskColumnCard = props => {
   const { description, avatarUrl, priority } = props;
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleEditClick = () => {
-  //   setIsModalOpen(true);
-  // };
+  const handleEditClick = () => {
+    setIsModalOpen(true);
+  };
 
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <s.Card>
@@ -23,10 +23,9 @@ export const TaskColumnCard = (props) => {
           <s.CardAvatar src={avatarUrl} alt="User Avatar" />
           <s.Priority>{priority}</s.Priority>
         </s.CardAvAndPri>
-        {/* <TaskToolbar /> */}
+        <TaskToolbar />
       </s.CardEl>
-      {/* {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />} */}
+      {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />}
     </s.Card>
   );
 };
-
