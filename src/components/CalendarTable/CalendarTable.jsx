@@ -71,8 +71,8 @@ const CalendarTable = () => {
               {dayItem.month() === selectedMonth ? (
                 <DivSelectLow>
                   <SelectLow id="low" name="low">
-                    <OptionSelectLow>Extranh </OptionSelectLow>
-                    <OptionSelectLow>Small</OptionSelectLow>
+                    <OptionSelectLow value="E">Extranh </OptionSelectLow>
+                    <OptionSelectLow value="S"> Small</OptionSelectLow>
                     <OptionSelectLow value="l">Large</OptionSelectLow>
                   </SelectLow>
                 </DivSelectLow>
@@ -80,17 +80,17 @@ const CalendarTable = () => {
               {dayItem.month() === selectedMonth ? (
                 <DivSelectMedium>
                   <SelectMedium id="medium" name="medium">
-                    <OptionSelectMedium>Extranh </OptionSelectMedium>
-                    <OptionSelectMedium>Small</OptionSelectMedium>
-                    <OptionSelectMedium value="l">Large</OptionSelectMedium>
+                    <OptionSelectMedium value="E">Extranh </OptionSelectMedium>
+                    <OptionSelectMedium value="S">Small</OptionSelectMedium>
+                    <OptionSelectMedium value="L">Large</OptionSelectMedium>
                   </SelectMedium>
                 </DivSelectMedium>
               ) : null}
               {dayItem.month() === selectedMonth ? (
                 <DivSelectHigh>
                   <SelectHigh id="high" name="high">
-                    <OptionSelectHigh>Extranh </OptionSelectHigh>
-                    <OptionSelectHigh>Small</OptionSelectHigh>
+                    <OptionSelectHigh value="E">Extranh </OptionSelectHigh>
+                    <OptionSelectHigh value="S">Small</OptionSelectHigh>
                     <OptionSelectHigh value="l">Large</OptionSelectHigh>
                   </SelectHigh>
                 </DivSelectHigh>
