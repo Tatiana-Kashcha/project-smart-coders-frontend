@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { globalTheme } from 'theme';
+// import { globalTheme } from 'theme';
 
 export const Card = styled.div`
   width: 300px;
@@ -55,4 +55,41 @@ export const Priority = styled.div`
         return '#72c2f8';
     }
   }};
+`;
+
+export const Elipse = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 44px;
+  border: 1.8px solid #3e85f3;
+  background-color: #3e85f3;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  color: ${props => props.theme.colors.primaryText};
+
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+
+    font-family: Inter;
+    font-size: 18px;
+  }
+`;
+
+export const Avatar = styled.img`
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-position: 50% 50%;
+  border-radius: 44px;
+
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
 `;
