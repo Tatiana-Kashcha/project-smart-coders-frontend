@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { TaskToolbar } from 'components/TaskToolbar/TaskToolbar';
 import { TaskModal } from 'components/TaskModal/TaskModal';
-import UserInfo from 'components/UserInfo/UserInfo';
+// import UserInfo from '../UserInfo/UserInfo';
 
 import * as s from './TaskColumnCard.styled';
 
 export const TaskColumnCard = props => {
-  const { description, avatarUrl, priority } = props;
+  const { description, priority } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // const handleEditClick = () => {
@@ -22,7 +22,7 @@ export const TaskColumnCard = props => {
       <s.CardDescr>{description}</s.CardDescr>
       <s.CardEl>
         <s.CardAvAndPri>
-          <UserInfo />
+          {/* <UserInfo /> */}
           <s.Priority>{priority}</s.Priority>
         </s.CardAvAndPri>
         <TaskToolbar />
