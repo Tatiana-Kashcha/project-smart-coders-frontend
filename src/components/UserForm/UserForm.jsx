@@ -61,10 +61,10 @@ const UserForm = () => {
           onSubmit={handleSubmit}
         >
           {({
-            values,
+            // values,
             setFieldValue,
             dirty,
-            isSubmitting,
+            // isSubmitting,
             touched,
             errors,
           }) => (
@@ -79,7 +79,7 @@ const UserForm = () => {
                       />
                     </label>
                   ) : userInfo.avatarURL ? (
-                    <label htmlFor="avatar">
+                    <label for="avatar">
                       <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
@@ -87,7 +87,7 @@ const UserForm = () => {
                   )}
                 </S.AvatarWrapper>
                 <S.FieldAdd
-                  id="add-avatar"
+                  id="avatar"
                   name="avatar"
                   type="file"
                   accept="image/*, .png,.jpg, .gif"
@@ -96,7 +96,7 @@ const UserForm = () => {
                     setIsFormChanged(true);
                   }}
                 />
-                <label htmlFor="add-avatar">
+                <label for="avatar">
                   <S.AddIcon />
                 </label>
               </div>
@@ -115,6 +115,8 @@ const UserForm = () => {
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="name"
+                        id="name"
+                        type="text"
                         placeholder="Your name"
                         style={{
                           borderColor:
@@ -133,6 +135,7 @@ const UserForm = () => {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePickerStyled
                         name="birthday"
+                        id="birthday"
                         type="date"
                         style={{
                           borderColor:
@@ -168,6 +171,7 @@ const UserForm = () => {
                       <S.InputInfo
                         name="email"
                         type="email"
+                        id="email"
                         placeholder="Your email"
                       />
                       <ErrorMessage name="email" component="span" />
@@ -187,6 +191,7 @@ const UserForm = () => {
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="phone"
+                        id="phone"
                         type="tel"
                         style={{
                           borderColor:
@@ -211,6 +216,7 @@ const UserForm = () => {
                     <S.IconStatusBox>
                       <S.InputInfo
                         name="skype"
+                        id="skype"
                         type="text"
                         placeholder="Add a skype number"
                         style={{
