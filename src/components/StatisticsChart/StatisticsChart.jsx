@@ -86,12 +86,14 @@ export const getChartOptions = props => ({
         lineHeight: 1.5,
       },
       formatter: function (value, data) {
-          if (data.length === 0) {
-            return 0 + "%";
-          }
+
         const total = data.dataset.data.reduce((previousValue, number) => {
           return previousValue + number;
         });
+
+          if (value === 0) {
+          return 0 + '%'
+        }
         const percentage = ((value / total) * 100).toFixed(0) + '%';
         return percentage;
       },

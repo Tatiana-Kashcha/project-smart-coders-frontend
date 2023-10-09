@@ -1,32 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { useSwiper } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
 import { AiFillStar } from 'react-icons/ai';
-import * as s from './ReviewsSlider.styled';
-
 import ReactStars from 'react-rating-stars-component';
+
 import { getAllReviews } from 'redux/reviews/operations';
+import { selectReviews } from 'redux/reviews/selectors';
 
 import { ReactComponent as PrevArrow } from '../../icons/arrow-left.svg';
 import { ReactComponent as NextArrow } from '../../icons/arrow-right.svg';
-// import { ReactComponent as UserAvatarIcon } from '../../icons/user.svg';
 
-// import { selectUser } from 'redux/auth/selectors';
-
+import * as s from './ReviewsSlider.styled';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export const ReviewsSlider = () => {
-  const swiper = useSwiper();
-  const reviews = useSelector(state => state.reviews.items);
   const dispatch = useDispatch();
-  const [slidesPerView, setSlidesPerView] = useState(2);
 
-  //   const user = useSelector(selectUser);
-  // const firstLeter = user.name.slice(0, 1);
-  // const bigFirstLeter = firstLeter.toUpperCase();
+  const swiper = useSwiper();
+  const reviews = useSelector(selectReviews);
+
+  const [slidesPerView, setSlidesPerView] = useState(2);
 
   useEffect(() => {
     dispatch(getAllReviews());
@@ -34,7 +31,7 @@ export const ReviewsSlider = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1440) {
         setSlidesPerView(1);
       } else {
         setSlidesPerView(2);
@@ -73,9 +70,7 @@ export const ReviewsSlider = () => {
     }
   };
 
-  return (
-    // const avatar = user.url;
-
+  return reviews.length > 0 ? (
     <s.SectionMod>
       <s.ContainerModify>
         <s.Title>Reviews</s.Title>
@@ -98,38 +93,49 @@ export const ReviewsSlider = () => {
               <s.SwiperSlides key={review._id}>
                 <s.UserContainer>
                   <s.UserInfo>
-                    {/* <s.UserAvatar> */}
-                    <s.Elipse>N</s.Elipse>
-                    {/* <UserAvatarIcon /> */}
-                    {/* {avatar === ' ' ? (
-        <s.Elipse>{bigFirstLeter}</s.Title>
-      ) : (
-        <s.Elipse>{avatar}</s.Elipse>
-      )} */}
-                    {/* </s.UserAvatar> */}
+                    {review.owner.avatarURL === '' ? (
+                      <s.Elipse>
+                        {review.owner.name.slice(0, 1).toUpperCase()}
+                      </s.Elipse>
+                    ) : (
+                      <s.Elipse>
+                        {<s.Avatar src={review.owner.avatarURL} alt="avatar" />}
+                      </s.Elipse>
+                    )}
                     <s.UserHeadInfo>
-                      <s.UserName>UserName</s.UserName>
+                      <s.UserName>{review.owner.name}</s.UserName>
                       <s.CustomStarContainer>
                         <ReactStars {...starsConfig} value={review.rating} />
                       </s.CustomStarContainer>
                     </s.UserHeadInfo>
                   </s.UserInfo>
-                  <s.UserReview>{review.comment}</s.UserReview>
+
+                  <s.UserReview
+                    text={review.comment}
+                    maxLine="3"
+                    ellipsis="..."
+                    trimRight
+                    basedOn="letters"
+                  />
                 </s.UserContainer>
               </s.SwiperSlides>
             ))}
           </s.ReviewContainer>
 
-          <div>
+          <s.ArrowButtonContainer>
             <s.ArrowButton className="prev" onClick={handlePrevClick}>
-              <PrevArrow />
+              <s.ArrowBtnWrapper>
+                <PrevArrow />
+              </s.ArrowBtnWrapper>
             </s.ArrowButton>
             <s.ArrowButton className="next" onClick={handleNextClick}>
-              <NextArrow />
+              <s.ArrowBtnWrapper>
+                <NextArrow />
+              </s.ArrowBtnWrapper>
             </s.ArrowButton>
-          </div>
+          </s.ArrowButtonContainer>
         </s.StyledSwiper>
       </s.ContainerModify>
     </s.SectionMod>
-  );
+  ) : null;
 };
