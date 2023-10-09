@@ -11,7 +11,7 @@ export const Card = styled.div`
   align-items: stretch;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background: ${props => props.theme.colors.taskItemBg};
+  background-color: ${props => props.theme.colors.secondBackground};
 `;
 
 export const CardDescr = styled.div`
@@ -44,12 +44,12 @@ export const Priority = styled.div`
   padding: 4px 12px;
   border-radius: 4px;
   background: ${props => {
-    switch (props.globalTheme) {
-      case 'Medium':
-        return 'mainYellow';
-      case 'Low':
+    switch (props.priority) {
+      case 'medium':
+        return 'yellow';
+      case 'low':
         return '#008000';
-      case 'High':
+      case 'high':
         return '#FF0000';
       default:
         return '#72c2f8';
