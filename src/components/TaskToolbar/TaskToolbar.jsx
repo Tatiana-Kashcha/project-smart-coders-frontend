@@ -10,7 +10,7 @@ import * as s from './TaskToolbar.styled';
 
 export const TaskToolbar = ({ taskId, categoryTitle }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [isShowEditModal, setIsShowEditModal] = useState(false);
 
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
@@ -42,14 +42,18 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
   };
 
   const togglShowEditModal = () => {
-    setShowEditModal(prevState => !prevState);
+    setIsShowEditModal(prevState => !prevState);
+  };
+
+  const takeChosedTask = () => {
+    const chosedTask = tasks.filter(task => task._id === taskId)[0];
+    console.log('chosedTask from takeChosedTask', chosedTask); //!
+
+    return chosedTask;
   };
 
   const handleEditTask = () => {
     togglShowEditModal();
-    const chosedTask = tasks.filter(task => task._id === taskId)[0];
-    console.log('chosedTask', chosedTask); //!
-    return chosedTask; //????!!
   };
 
   const handleDeleteTask = () => {
@@ -59,24 +63,18 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
   const handleMoveToCategory = evt => {
     togglShowChooseCategory();
 
-    const chosedTask = tasks.filter(task => task._id === taskId)[0];
-    console.log('chosedTask', chosedTask); //!
-
     const newCategoryTitle = evt.target.textContent
       .trim()
       .toLowerCase()
       .split(' ')
       .join('-');
-    console.log('newCategory', newCategoryTitle); //!
     console.log('categoryTitle', categoryTitle); //!
+    console.log('newCategory', newCategoryTitle); //!
 
-    const changedTask = { ...chosedTask, category: newCategoryTitle };
-    const owner = changedTask.owner._id; //!
-    console.log('ownerId', owner); //!
-
+    const changedTask = { ...takeChosedTask(), category: newCategoryTitle };
     console.log('changedTask', changedTask); //!
+
     dispatch(patchTask(changedTask)); //?/???????????????
-    console.log('taskId', typeof taskId); //!
   };
 
   return (
@@ -100,14 +98,15 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
           onClick={handleDeleteTask}
         />
 
-        {showEditModal && (
+        {isShowEditModal && (
           <TaskModal
-            // task={chosedTask} //!????
+            task={takeChosedTask()} //!????
             taskId={taskId}
             onClose={togglShowEditModal}
           />
         )}
       </s.Toolbar>
+
       {isMenuOpen && (
         <s.ToolMenu>
           <s.ToolMenuBtn onClick={handleMoveToCategory}>
