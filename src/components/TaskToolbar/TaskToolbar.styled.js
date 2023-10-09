@@ -42,6 +42,9 @@ export const TrashBtn = styled(Trash)`
 `;
 
 export const ToolMenu = styled.div`
+  position: absolute;
+  top: 26px;
+  right: -45px;
   width: 115px;
   height: 70px;
   margin-top: 10px;

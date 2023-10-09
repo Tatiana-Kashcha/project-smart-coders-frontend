@@ -3,10 +3,8 @@ import { useRef, useEffect, useState } from 'react';
 import { selectTasks } from '../../redux/tasks/selectors';
 import * as s from './StatisticsChart.styled';
 
-
-
-import {  
-Chart as ChartJS,
+import {
+  Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -86,13 +84,12 @@ export const getChartOptions = props => ({
         lineHeight: 1.5,
       },
       formatter: function (value, data) {
-
         const total = data.dataset.data.reduce((previousValue, number) => {
           return previousValue + number;
         });
 
-          if (value === 0) {
-          return 0 + '%'
+        if (value === 0) {
+          return 0 + '%';
         }
         const percentage = ((value / total) * 100).toFixed(0) + '%';
         return percentage;
@@ -172,46 +169,48 @@ export default function StatisticsChart(props) {
     datasets: [],
   });
 
-  const allTascksByMonth = useSelector(selectTasks);
-  console.log(allTascksByMonth);
+  const allTasksByMonth = useSelector(selectTasks);
+  console.log(allTasksByMonth);
 
-  const allTascksToDo = allTascksByMonth.filter(
-    tasck => tasck.category === 'to-do'
+  const allTasksToDo = allTasksByMonth.filter(
+    task => task.category === 'to-do'
   ).length;
-  // console.log(allTascksToDo);
+  // console.log(allTasksToDo);
 
-  const allTascksInProgress = allTascksByMonth.filter(
-    tasck => tasck.category === 'in-progress'
+  const allTasksInProgress = allTasksByMonth.filter(
+    task => task.category === 'in-progress'
   ).length;
-  // console.log(allTascksInProgress);
+  // console.log(allTasksInProgress);
 
-  const allTascksDone = allTascksByMonth.filter(
-    tasck => tasck.category === 'done'
+  const allTasksDone = allTasksByMonth.filter(
+    task => task.category === 'done'
   ).length;
-  // console.log(allTascksDone);
+  // console.log(allTasksDone);
 
   // console.log(props.date);
   const dateMod = dayjs(props.date).format('YYYY-MM-DD');
   console.log(dateMod);
   // const dayOfSearch = '2023-10-08';
 
-  const allTascksByDay = allTascksByMonth.filter(tasck => tasck.date === `${dateMod}`);
-  // console.log(allTascksByDay);
+  const allTasksByDay = allTasksByMonth.filter(
+    task => task.date === `${dateMod}`
+  );
+  // console.log(allTasksByDay);
 
-  const tascksByDayToDo = allTascksByDay.filter(
-    tasck => tasck.category === 'to-do'
+  const tasksByDayToDo = allTasksByDay.filter(
+    task => task.category === 'to-do'
   ).length;
-  // console.log(tascksByDayToDo);
+  // console.log(tasksByDayToDo);
 
-  const tascksByDayInProgress = allTascksByDay.filter(
-    tasck => tasck.category === 'in-progress'
+  const tasksByDayInProgress = allTasksByDay.filter(
+    task => task.category === 'in-progress'
   ).length;
-  // console.log(tascksByDayInProgress);
+  // console.log(tasksByDayInProgress);
 
-  const tascksByDayDone = allTascksByDay.filter(
-    tasck => tasck.category === 'done'
+  const tasksByDayDone = allTasksByDay.filter(
+    task => task.category === 'done'
   ).length;
-  // console.log(tascksByDayDone);
+  // console.log(tasksByDayDone);
 
   useEffect(() => {
     const chart = chartRef.current;
@@ -224,8 +223,8 @@ export default function StatisticsChart(props) {
     ];
 
     const realData = [
-      { data: [tascksByDayToDo, tascksByDayInProgress, tascksByDayDone] },
-      { data: [allTascksToDo, allTascksInProgress, allTascksDone] },
+      { data: [tasksByDayToDo, tasksByDayInProgress, tasksByDayDone] },
+      { data: [allTasksToDo, allTasksInProgress, allTasksDone] },
     ];
 
     const updatedData = {
@@ -247,12 +246,12 @@ export default function StatisticsChart(props) {
     // console.log('chart.update')
   }, [
     props,
-    allTascksDone,
-    allTascksInProgress,
-    allTascksToDo,
-    tascksByDayDone,
-    tascksByDayInProgress,
-    tascksByDayToDo,
+    allTasksDone,
+    allTasksInProgress,
+    allTasksToDo,
+    tasksByDayDone,
+    tasksByDayInProgress,
+    tasksByDayToDo,
   ]);
 
   return (

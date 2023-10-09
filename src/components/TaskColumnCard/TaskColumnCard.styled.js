@@ -29,6 +29,7 @@ export const CardDescr = styled.div`
 `;
 
 export const CardEl = styled.div`
+  position: relative; //?
   display: flex;
   justify-content: space-between;
 `;

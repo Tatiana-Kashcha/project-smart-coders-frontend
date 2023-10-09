@@ -9,7 +9,15 @@ import { selectTasks } from '../../redux/tasks/selectors';
 
 import * as s from './TaskToolbar.styled';
 
-export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
+export const TaskToolbar = ({
+  taskId,
+  groupTitle,
+  allTasks,
+  task,
+  groups,
+  onDeleteTask,
+  onUpdateTask,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false); //!!!!!!!!!!
   // const [isDeleting, setIsDeleting] = useState(false); //!
@@ -19,13 +27,23 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   const tasks = useSelector(selectTasks); //!
   console.log('Tasks', tasks); //!
 
-  const chooseGroup = () => {
+  const onChooseGroup = () => {
     setIsMenuOpen(prevState => !prevState);
   };
 
-  const handleMoveToGroup = () => {
-    // TODO: patchTask
-    chooseGroup();
+  const handleMoveToGroup = evt => {
+    onChooseGroup();
+
+    const buttonText = evt.target.textContent;
+    console.log('buttonText', buttonText); //!
+
+    const taskToRemove = tasks.filter(task => task._id === taskId)[0];
+    console.log('taskToRemove', taskToRemove); //!
+
+    const qwe = { ...taskToRemove, category: 'done' };
+    console.log('qwe', qwe); //!
+
+    // TODO: patchTask(taskId, task)
   };
 
   const handleEditTask = () => {
@@ -33,70 +51,17 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
   };
 
   const handleDeleteTask = () => {
-    dispatch(deleteTask('6522b2c3c8b849d6e391fc52')); //??! ID
+    dispatch(deleteTask(taskId)); //??! ID
     // TODO: dispatch(deleteTask(id));
   };
 
   return (
     <>
-      <ul>
-        {tasks.map(task => (
-          <li key={task._id}>
-            <p>{task.start}</p>
-            <p>{task.end}</p>
-            <p>{task.priority}</p>
-            <p>{task.category}</p>
-            <s.Toolbar>
-              <s.ArrowCircleBtn
-                type="button"
-                aria-label="Change task group"
-                onClick={chooseGroup}
-              />
-
-              <s.PencilBtn
-                type="button"
-                aria-label="Edit task"
-                onClick={handleEditTask}
-              />
-
-              <s.TrashBtn
-                type="button"
-                aria-label="Delete task"
-                onClick={() => dispatch(handleDeleteTask(task._id))}
-              />
-
-              {showEditModal && (
-                <TaskModal
-                  task={task}
-                  onClose={() => setShowEditModal(false)}
-                  onUpdateTask={onUpdateTask}
-                />
-              )}
-            </s.Toolbar>
-            {isMenuOpen && (
-              <s.ToolMenu>
-                <s.ToolMenuBtn
-                  onClick={() => dispatch(handleMoveToGroup(task._id))}
-                >
-                  In progress
-                  <ArrowCircle width={16} />
-                </s.ToolMenuBtn>
-                <s.ToolMenuBtn
-                  onClick={() => dispatch(handleMoveToGroup(task._id))}
-                >
-                  Done <ArrowCircle width={16} />
-                </s.ToolMenuBtn>
-              </s.ToolMenu>
-            )}
-          </li>
-        ))}
-      </ul>
-
-      {/* <s.Toolbar>
+      <s.Toolbar>
         <s.ArrowCircleBtn
           type="button"
           aria-label="Change task group"
-          onClick={chooseGroup}
+          onClick={onChooseGroup}
         />
 
         <s.PencilBtn
@@ -108,7 +73,8 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
         <s.TrashBtn
           type="button"
           aria-label="Delete task"
-          onClick={() => dispatch(handleDeleteTask(task._id))}
+          onClick={handleDeleteTask}
+          // onClick={() => dispatch(handleDeleteTask(id))}
         />
 
         {showEditModal && (
@@ -121,15 +87,15 @@ export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
       </s.Toolbar>
       {isMenuOpen && (
         <s.ToolMenu>
-          <s.ToolMenuBtn onClick={() => dispatch(handleMoveToGroup(id))}>
+          <s.ToolMenuBtn onClick={handleMoveToGroup}>
             In progress
             <ArrowCircle width={16} />
           </s.ToolMenuBtn>
-          <s.ToolMenuBtn onClick={() => dispatch(handleMoveToGroup(id))}>
+          <s.ToolMenuBtn onClick={handleMoveToGroup}>
             Done <ArrowCircle width={16} />
           </s.ToolMenuBtn>
         </s.ToolMenu>
-      )} */}
+      )}
     </>
   );
 };
