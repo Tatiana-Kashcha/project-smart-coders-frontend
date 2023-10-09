@@ -837,37 +837,37 @@ export const taskSlice = createSlice({
       },
       {
         title: ' target 6',
-        date: '2023-10-04',
+        date: '2023-10-10',
         category: 'to-do',
       },
       {
         title: ' target 7',
-        date: '2023-10-05',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 8',
-        date: '2023-10-06',
+        date: '2023-10-10',
         category: 'to-do',
       },
       {
         title: ' target 9',
-        date: '2023-10-05',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 10',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'in-progress',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 12',
-        date: '2023-10-03',
+        date: '2023-10-10',
         category: 'to-do',
       },
       {
@@ -907,32 +907,32 @@ export const taskSlice = createSlice({
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-10',
         category: 'done',
       },
       {
@@ -947,62 +947,62 @@ export const taskSlice = createSlice({
       },
       {
         title: ' target 2',
-        date: '2023-10-02',
+        date: '2023-10-10',
         category: 'in-progress',
       },
       {
         title: ' target 3',
-        date: '2023-10-02',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 4',
-        date: '2023-10-03',
+        date: '2023-10-10',
         category: 'to-do',
       },
       {
         title: ' target 5',
-        date: '2023-10-04',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 6',
-        date: '2023-10-04',
+        date: '2023-10-10',
         category: 'to-do',
       },
       {
         title: ' target 7',
-        date: '2023-10-05',
+        date: '2023-10-10',
         category: 'done',
       },
       {
         title: ' target 8',
-        date: '2023-10-06',
+        date: '2023-10-09',
         category: 'to-do',
       },
       {
         title: ' target 9',
-        date: '2023-10-05',
+        date: '2023-10-09',
         category: 'done',
       },
       {
         title: ' target 10',
-        date: '2023-10-07',
+        date: '2023-10-09',
         category: 'in-progress',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-09',
         category: 'done',
       },
       {
         title: ' target 12',
-        date: '2023-10-03',
+        date: '2023-10-09',
         category: 'to-do',
       },
       {
         title: ' target 13',
-        date: '2023-10-08',
+        date: '2023-10-09',
         category: 'done',
       },
       {
@@ -1017,7 +1017,7 @@ export const taskSlice = createSlice({
       },
       {
         title: ' target 16',
-        date: '2023-10-08',
+        date: '2023-10-09',
         category: 'to-do',
       },
       {
@@ -1042,22 +1042,22 @@ export const taskSlice = createSlice({
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-09',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-09',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-09',
         category: 'done',
       },
       {
         title: ' target 11',
-        date: '2023-10-07',
+        date: '2023-10-09',
         category: 'done',
       },
       {
@@ -1079,6 +1079,10 @@ export const taskSlice = createSlice({
       .addCase(addTask.rejected, loadingFailed)
       .addCase(getAllTasks.pending, startLoading)
       .addCase(getAllTasks.fulfilled, (state, { payload }) => {
+        if (payload.length === 0) {
+          state.isLoading = false;
+          return state;
+        }
         state.tasks = payload;
         state.isLoading = false;
       })

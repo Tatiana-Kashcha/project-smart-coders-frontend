@@ -1,41 +1,33 @@
 import { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { AiFillStar } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import { Formik, Field } from 'formik';
-import * as yup from 'yup';
+import { Notify } from 'notiflix';
+
+import { FeedbackValidSchema } from './FeedbackValidScheme';
+import { selectUser } from 'redux/auth/selectors';
+import {
+  createReview,
+  updateReview,
+  deleteReview,
+} from 'redux/reviews/operations';
 
 import { ReactComponent as Pencil } from '../../icons/pencil.svg';
 import { ReactComponent as TrashBox } from '../../icons/trash-box-with-line.svg';
 import * as s from './FeedbackForm.styled';
 
-// import Loader from 'components/Loader/Loader';
+const FeedbackForm = ({ onClose, showSaveBtnRew, ratingRew, reviewRew }) => {
+  const dispatch = useDispatch();
 
-const schema = yup.object({
-  review: yup
-    .string()
-    .min(1, 'Must be at least 1 characters')
-    .max(300, 'Must be at most 300 characters')
-    .required('This review field is required'),
-});
+  const currentUser = useSelector(selectUser);
 
-const FeedbackForm = ({ onClose }) => {
-  // const isLoading = useSelector(state => state.reviews.isLoading);
-  // const error = useSelector(state => state.reviews.error);
-  // const userReview = useSelector(state => state.reviews.items);
-  // const currenUserInfo = useSelector(state => state.users.info);
-  // const dispatch = useDispatch()
-  const [rating, setRating] = useState(1);
-  const [review, setReview] = useState('');
+  const [showEditBtn, setShowEditBtn] = useState(false);
+  const showSaveBtn = showSaveBtnRew || false;
 
-  // useEffect(() => {
-  //   dispatch(currentUser());
-  // }, [dispatch]);
-
-  const initialValues = {
-    rating,
-    review,
-  };
+  const [rating, setRating] = useState(ratingRew);
+  const review = reviewRew;
 
   const starsConfig = {
     size: 24,
@@ -50,26 +42,51 @@ const FeedbackForm = ({ onClose }) => {
     onChange: newValue => setRating(newValue),
   };
 
-  const handleSubmit = values => {
-    //  { resetForm }
-    setReview(values.review);
+  const handleSubmit = (values, { resetForm }) => {
+    if (showSaveBtn) {
+      dispatch(createReview({ rating, comment: values.review }))
+        .then(() => {
+          Notify.success('You have successfully created your review');
+          resetForm();
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
+    }
 
-    console.log(rating);
-    console.log(values.review);
-
-    onClose();
-    // setRating(1);
-    // resetForm();
+    if (showEditBtn) {
+      dispatch(updateReview({ rating, comment: values.review }))
+        .then(() => {
+          Notify.success('You have successfully updated your review');
+          resetForm();
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
+    }
   };
 
-  // {isLoading && currenUserInfo === null && !error ? (
-  //       <Loader />
-  //     ) : (
+  const handleEdit = () => {
+    setShowEditBtn(true);
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteReview(currentUser._id))
+      .then(() => {
+        Notify.success('You have successfully deleted your review');
+        onClose();
+      })
+      .catch(error => {
+        Notify.failure(`${error.message}`);
+      });
+  };
 
   return (
     <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
+      initialValues={{ rating, review }}
+      validationSchema={FeedbackValidSchema}
       onSubmit={handleSubmit}
     >
       {({ errors }) => (
@@ -82,14 +99,20 @@ const FeedbackForm = ({ onClose }) => {
             <s.ContainerLabelAndBtn>
               <s.Label htmlFor="review">Review</s.Label>
 
-              <s.UpContainerButton>
-                <s.EditButton type="button">
-                  <Pencil />
-                </s.EditButton>
-                <s.DeleteButton type="button">
-                  <TrashBox />
-                </s.DeleteButton>
-              </s.UpContainerButton>
+              {!showSaveBtn ? (
+                <s.UpContainerButton>
+                  <s.EditButton
+                    type="button"
+                    onClick={handleEdit}
+                    data-active={showEditBtn}
+                  >
+                    <Pencil />
+                  </s.EditButton>
+                  <s.DeleteButton type="button" onClick={handleDelete}>
+                    <TrashBox />
+                  </s.DeleteButton>
+                </s.UpContainerButton>
+              ) : null}
             </s.ContainerLabelAndBtn>
             <s.ReviewInput
               name="review"
@@ -102,12 +125,23 @@ const FeedbackForm = ({ onClose }) => {
             <s.ErrorContainer name="review" component="div" />
           </s.ReviewContainer>
 
-          <s.DownContainerButton>
-            <s.ConfirmButton type="submit">Save</s.ConfirmButton>
-            <s.CancelButton type="button" onClick={onClose}>
-              Cancel
-            </s.CancelButton>
-          </s.DownContainerButton>
+          {showSaveBtn ? (
+            <s.DownContainerButton>
+              <s.ConfirmButton type="submit">Save</s.ConfirmButton>
+              <s.CancelButton type="button" onClick={onClose}>
+                Cancel
+              </s.CancelButton>
+            </s.DownContainerButton>
+          ) : null}
+
+          {showEditBtn ? (
+            <s.DownContainerButton>
+              <s.ConfirmButton type="submit">Edit</s.ConfirmButton>
+              <s.CancelButton type="button" onClick={onClose}>
+                Cancel
+              </s.CancelButton>
+            </s.DownContainerButton>
+          ) : null}
         </s.FormWrapper>
       )}
     </Formik>
