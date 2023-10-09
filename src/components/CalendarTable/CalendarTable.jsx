@@ -34,7 +34,7 @@ const CalendarTable = () => {
 
   useEffect(() => {
     setInitialDate(moment(choosedDate).startOf('month'));
-  }, [selectedMonth]);
+  }, [choosedDate, selectedMonth]);
 
   useEffect(() => {
     const startDay = moment(initialDate).startOf('week');
@@ -73,13 +73,7 @@ const CalendarTable = () => {
                   <SelectLow id="low" name="low">
                     <OptionSelectLow>Extranh </OptionSelectLow>
                     <OptionSelectLow>Small</OptionSelectLow>
-                    <OptionSelectLow>Large</OptionSelectLow>
-                  </SelectLow>
-
-                  <SelectLow id="low" name="low">
-                    <OptionSelectLow>Extranh </OptionSelectLow>
-                    <OptionSelectLow>Small</OptionSelectLow>
-                    <OptionSelectLow>Large</OptionSelectLow>
+                    <OptionSelectLow value="l">Large</OptionSelectLow>
                   </SelectLow>
                 </DivSelectLow>
               ) : null}
@@ -88,7 +82,7 @@ const CalendarTable = () => {
                   <SelectMedium id="medium" name="medium">
                     <OptionSelectMedium>Extranh </OptionSelectMedium>
                     <OptionSelectMedium>Small</OptionSelectMedium>
-                    <OptionSelectMedium>Large</OptionSelectMedium>
+                    <OptionSelectMedium value="l">Large</OptionSelectMedium>
                   </SelectMedium>
                 </DivSelectMedium>
               ) : null}
@@ -97,7 +91,7 @@ const CalendarTable = () => {
                   <SelectHigh id="high" name="high">
                     <OptionSelectHigh>Extranh </OptionSelectHigh>
                     <OptionSelectHigh>Small</OptionSelectHigh>
-                    <OptionSelectHigh>Large</OptionSelectHigh>
+                    <OptionSelectHigh value="l">Large</OptionSelectHigh>
                   </SelectHigh>
                 </DivSelectHigh>
               ) : null}
