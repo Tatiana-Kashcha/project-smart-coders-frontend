@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Notify } from 'notiflix';
 import { login } from '../../redux/auth/authOperations';
 import { LoginSchema } from './LoginSchema';
 
@@ -49,13 +49,13 @@ export const LoginForm = () => {
           })
         );
         if (actionOutcome) {
-          toast.success('Success');
+          Notify.success('Success');
           navigate('/calendar');
           setSubmitting(false);
           resetForm();
         }
       } catch (e) {
-        toast.error('Login or password wrong');
+        Notify.failure('Login or password wrong');
       }
     },
   });
