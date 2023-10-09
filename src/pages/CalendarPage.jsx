@@ -28,7 +28,7 @@ export default function CalendarPage() {
     if (isFirstVisit) {
       sessionStorage.setItem('isFirstVisit', 'false');
     } else {
-      setPeriodType('month');
+      setPeriodType('day');
     }
   }, [isFirstVisit]);
 
