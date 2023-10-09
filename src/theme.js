@@ -135,6 +135,8 @@ export const globalTheme = {
     borderColor: '1px solid rgba(17, 17, 17, 0.15)',
     placeholderColor: 'rgba(17, 17, 17, 0.15)',
     lowTasksBg: '#CEEEFD',
+    reviewsSliderBorder: 'rgba(17, 17, 17, 0.1)',
+    reviewsSliderText: 'rgba(17, 17, 17, 0.7)',
   },
 
   shadow: {
