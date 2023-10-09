@@ -72,7 +72,7 @@ const UserForm = () => {
               <div>
                 <S.AvatarWrapper>
                   {avatarURL ? (
-                    <label htmlFor="avatar">
+                    <label for="avatar">
                       <S.ImgAvatar
                         src={URL.createObjectURL(avatarURL)}
                         alt="Avatar"
