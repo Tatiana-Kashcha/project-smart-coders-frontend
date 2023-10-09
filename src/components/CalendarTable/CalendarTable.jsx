@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDate } from 'hooks/useDate';
 import moment from 'moment';
 import {
   CalendarGridWrapper,
@@ -22,16 +23,23 @@ moment.updateLocale('en', {
   },
 });
 
-const initialDate = moment().startOf('month');
-
 const CalendarTable = () => {
-  const [currentDate] = useState(initialDate);
+  const { choosedDate } = useDate();
+  const selectedMonth = moment(choosedDate).month();
+
   const [calendarDays, setCalendarDays] = useState([]);
+  const [initialDate, setInitialDate] = useState(
+    moment(choosedDate).startOf('week')
+  );
 
   useEffect(() => {
-    const startDay = moment(currentDate).startOf('week');
+    setInitialDate(moment(choosedDate).startOf('month'));
+  }, [choosedDate, selectedMonth]);
+
+  useEffect(() => {
+    const startDay = moment(initialDate).startOf('week');
     const day = startDay.clone();
-    const endDay = moment(currentDate).endOf('month').endOf('week');
+    const endDay = moment(initialDate).endOf('month').endOf('week');
     const calendar = [];
 
     while (!day.isAfter(endDay)) {
@@ -40,7 +48,7 @@ const CalendarTable = () => {
     }
 
     setCalendarDays(calendar);
-  }, [currentDate]);
+  }, [initialDate]);
 
   return (
     <div>
@@ -49,10 +57,10 @@ const CalendarTable = () => {
           <CellWrapper key={dayItem.format('DDMMYYYY')}>
             <DayWrapper>
               <RowInCell>
-                {dayItem.month() === currentDate.month() ? (
+                {dayItem.month() === selectedMonth ? (
                   <span
                     style={{
-                      color: dayItem.isSame(moment(), 'day') ? 'blue' : null,
+                      color: dayItem.isSame(moment(), 'day') ? '#3e85f3' : null,
                     }}
                   >
                     {dayItem.format('D')}
@@ -60,36 +68,30 @@ const CalendarTable = () => {
                 ) : null}
               </RowInCell>
 
-              {dayItem.month() === currentDate.month() ? (
+              {dayItem.month() === selectedMonth ? (
                 <DivSelectLow>
                   <SelectLow id="low" name="low">
-                    <OptionSelectLow>Extranh </OptionSelectLow>
-                    <OptionSelectLow>Small</OptionSelectLow>
-                    <OptionSelectLow>Large</OptionSelectLow>
-                  </SelectLow>
-
-                  <SelectLow id="low" name="low">
-                    <OptionSelectLow>Extranh </OptionSelectLow>
-                    <OptionSelectLow>Small</OptionSelectLow>
-                    <OptionSelectLow>Large</OptionSelectLow>
+                    <OptionSelectLow value="E">Extranh </OptionSelectLow>
+                    <OptionSelectLow value="S"> Small</OptionSelectLow>
+                    <OptionSelectLow value="l">Large</OptionSelectLow>
                   </SelectLow>
                 </DivSelectLow>
               ) : null}
-              {dayItem.month() === currentDate.month() ? (
+              {dayItem.month() === selectedMonth ? (
                 <DivSelectMedium>
                   <SelectMedium id="medium" name="medium">
-                    <OptionSelectMedium>Extranh </OptionSelectMedium>
-                    <OptionSelectMedium>Small</OptionSelectMedium>
-                    <OptionSelectMedium>Large</OptionSelectMedium>
+                    <OptionSelectMedium value="E">Extranh </OptionSelectMedium>
+                    <OptionSelectMedium value="S">Small</OptionSelectMedium>
+                    <OptionSelectMedium value="L">Large</OptionSelectMedium>
                   </SelectMedium>
                 </DivSelectMedium>
               ) : null}
-              {dayItem.month() === currentDate.month() ? (
+              {dayItem.month() === selectedMonth ? (
                 <DivSelectHigh>
                   <SelectHigh id="high" name="high">
-                    <OptionSelectHigh>Extranh </OptionSelectHigh>
-                    <OptionSelectHigh>Small</OptionSelectHigh>
-                    <OptionSelectHigh>Large</OptionSelectHigh>
+                    <OptionSelectHigh value="E">Extranh </OptionSelectHigh>
+                    <OptionSelectHigh value="S">Small</OptionSelectHigh>
+                    <OptionSelectHigh value="l">Large</OptionSelectHigh>
                   </SelectHigh>
                 </DivSelectHigh>
               ) : null}
