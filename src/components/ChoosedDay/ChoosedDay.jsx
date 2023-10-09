@@ -5,7 +5,6 @@ import { ChoosedDayDivStyled } from 'components/ChoosedDay/ChoosedDayStyled.styl
 export const ChoosedDay = () => {
   return (
     <>
-      <h1>ChoosedDay містить в собі:</h1>
       <DayCalendarHead />
       <ChoosedDayDivStyled>
         <ColumnTasksList />
