@@ -26,7 +26,7 @@ export const TaskColumnCard = props => {
   };
 
   return (
-    <s.Card>
+    <s.Card priority={priority}>
       <s.CardDescr>{description}</s.CardDescr>
       <s.CardEl>
         <s.CardAvAndPri>

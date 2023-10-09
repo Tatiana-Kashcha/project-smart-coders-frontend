@@ -11,7 +11,15 @@ export const Card = styled.div`
   align-items: stretch;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background: ${props => props.theme.colors.taskItemBg};
+  background-color: ${props => {
+    if (props.priority === 'low') {
+      return 'green';
+    }
+    if (props.priority === 'high') {
+      return 'red';
+    }
+    return 'yellow';
+  }};
 `;
 
 export const CardDescr = styled.div`
