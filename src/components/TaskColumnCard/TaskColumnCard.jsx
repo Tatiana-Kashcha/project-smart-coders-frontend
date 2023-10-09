@@ -8,7 +8,6 @@ import { TaskModal } from 'components/TaskModal/TaskModal';
 import * as s from './TaskColumnCard.styled';
 
 export const TaskColumnCard = props => {
-  console.log('props', props); //!
   const user = useSelector(selectUser);
   const { taskId, groupTitle, description, priority } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,7 +37,7 @@ export const TaskColumnCard = props => {
           )}
           <s.Priority priority={priority}>{priority}</s.Priority>
         </s.CardAvAndPri>
-        <TaskToolbar taskId={taskId} groupTitle={groupTitle} />
+        <TaskToolbar taskId={taskId} categoryTitle={groupTitle} />
       </s.CardEl>
       {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />}
     </s.Card>

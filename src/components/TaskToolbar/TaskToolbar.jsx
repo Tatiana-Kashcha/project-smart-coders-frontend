@@ -5,58 +5,77 @@ import { ReactComponent as ArrowCircle } from '../../icons/arrow-circle-broken-r
 import { TaskModal } from 'components/TaskModal/TaskModal';
 import { deleteTask, patchTask } from '../../redux/tasks/operations'; //?
 import { selectTasks } from '../../redux/tasks/selectors';
-//!
 
 import * as s from './TaskToolbar.styled';
 
-export const TaskToolbar = ({
-  taskId,
-  groupTitle,
-  allTasks,
-  task,
-  groups,
-  onDeleteTask,
-  onUpdateTask,
-}) => {
+export const TaskToolbar = ({ taskId, categoryTitle }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false); //!!!!!!!!!!
   // const [isDeleting, setIsDeleting] = useState(false); //!
-
   const dispatch = useDispatch();
+  const tasks = useSelector(selectTasks); //!?
 
-  const tasks = useSelector(selectTasks); //!
-  console.log('Tasks', tasks); //!
+  let firstMoveToCategoryBtn;
+  let secondMoveToCategoryBtn;
+  switch (categoryTitle) {
+    case 'in-progress':
+      firstMoveToCategoryBtn = 'to-do';
+      secondMoveToCategoryBtn = 'done';
+      break;
 
-  const onChooseGroup = () => {
+    case 'to-do':
+      firstMoveToCategoryBtn = 'in-progress';
+      secondMoveToCategoryBtn = 'done';
+      break;
+
+    case 'done':
+      firstMoveToCategoryBtn = 'in-progress';
+      secondMoveToCategoryBtn = 'to-do';
+      break;
+
+    default:
+      break;
+  }
+
+  const togglShowChooseCategory = () => {
     setIsMenuOpen(prevState => !prevState);
   };
 
-  const handleMoveToGroup = evt => {
-    onChooseGroup();
-
-    const newGroupTitle = evt.target.textContent
-      .toLowerCase()
-      .split(' ')
-      .join('-');
-    console.log('newGroup', newGroupTitle); //!
-    console.log('groupTitle', groupTitle); //!
-
-    const taskToRemove = tasks.filter(task => task._id === taskId)[0];
-    console.log('taskToRemove', taskToRemove); //!
-
-    const qwe = { ...taskToRemove, category: 'done' };
-    console.log('qwe', qwe); //!
-
-    // TODO: patchTask(taskId, task)
+  const togglShowEditModal = () => {
+    setShowEditModal(prevState => !prevState);
   };
 
   const handleEditTask = () => {
-    setShowEditModal(true);
+    togglShowEditModal();
+    const chosedTask = tasks.filter(task => task._id === taskId)[0];
+    console.log('chosedTask', chosedTask); //!
+    return chosedTask;
   };
 
   const handleDeleteTask = () => {
-    dispatch(deleteTask(taskId)); //??! ID
-    // TODO: dispatch(deleteTask(id));
+    dispatch(deleteTask(taskId));
+  };
+
+  // const chosedTask = tasks.filter(task => task._id === taskId)[0];
+  // console.log('chosedTask', chosedTask); //!
+
+  const handleMoveToCategory = evt => {
+    togglShowChooseCategory();
+
+    const chosedTask = tasks.filter(task => task._id === taskId)[0];
+    console.log('chosedTask', chosedTask); //!
+
+    const newCategoryTitle = evt.target.textContent
+      .trim()
+      .toLowerCase()
+      .split(' ')
+      .join('-');
+    console.log('newCategory', newCategoryTitle); //!
+    console.log('categoryTitle', categoryTitle); //!
+
+    const changedTask = { ...chosedTask, category: newCategoryTitle };
+    console.log('changedTask', changedTask); //!
+    dispatch(patchTask(taskId, changedTask));
   };
 
   return (
@@ -64,8 +83,8 @@ export const TaskToolbar = ({
       <s.Toolbar>
         <s.ArrowCircleBtn
           type="button"
-          aria-label="Change task group"
-          onClick={onChooseGroup}
+          aria-label="Change task category"
+          onClick={togglShowChooseCategory}
         />
 
         <s.PencilBtn
@@ -78,31 +97,27 @@ export const TaskToolbar = ({
           type="button"
           aria-label="Delete task"
           onClick={handleDeleteTask}
-          // onClick={() => dispatch(handleDeleteTask(id))}
         />
 
         {showEditModal && (
           <TaskModal
-            task={task}
-            onClose={() => setShowEditModal(false)}
-            onUpdateTask={onUpdateTask}
+            // task={chosedTask} //!????
+            taskId={taskId}
+            onClose={togglShowEditModal}
           />
         )}
       </s.Toolbar>
       {isMenuOpen && (
         <s.ToolMenu>
-          <s.ToolMenuBtn onClick={handleMoveToGroup}>
-            In progress
+          <s.ToolMenuBtn onClick={handleMoveToCategory}>
+            {firstMoveToCategoryBtn}
             <ArrowCircle width={16} />
           </s.ToolMenuBtn>
-          <s.ToolMenuBtn onClick={handleMoveToGroup}>
-            Done <ArrowCircle width={16} />
+          <s.ToolMenuBtn onClick={handleMoveToCategory}>
+            {secondMoveToCategoryBtn} <ArrowCircle width={16} />
           </s.ToolMenuBtn>
         </s.ToolMenu>
       )}
     </>
   );
 };
-
-// disabled = { isDeleting }; //!?
-/* <ButtonDelete type="button" onClick={() => handleDeleteContact(id)}></ButtonDelete> */ //!

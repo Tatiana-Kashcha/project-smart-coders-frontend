@@ -23,7 +23,6 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
       return category === groupTitle && date === params.currrentDay;
     });
   }, [tasks, groupTitle, params.currrentDay]);
-  console.log('inProgress', inProgress); //!
 
   return (
     <s.TasksCol>

@@ -82,6 +82,7 @@ export const patchTask = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error(`Sorry, something went wrong: ${error.message}`);
+      Notify.failure('Something went wrong... Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
