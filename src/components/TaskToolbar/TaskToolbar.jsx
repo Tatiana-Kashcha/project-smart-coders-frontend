@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ReactComponent as ArrowCircle } from '../../icons/arrow-circle-broken-right.svg';
 import { TaskModal } from 'components/TaskModal/TaskModal';
-import { deleteTask, patchTask } from '../../redux/tasks/operations'; //?
+import { deleteTask, patchTask } from '../../redux/tasks/operations';
 import { selectTasks } from '../../redux/tasks/selectors';
 
 import * as s from './TaskToolbar.styled';
 
 export const TaskToolbar = ({ taskId, categoryTitle }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false); //!!!!!!!!!!
-  // const [isDeleting, setIsDeleting] = useState(false); //!
+  const [showEditModal, setShowEditModal] = useState(false);
+
   const dispatch = useDispatch();
-  const tasks = useSelector(selectTasks); //!?
+  const tasks = useSelector(selectTasks);
 
   let firstMoveToCategoryBtn;
   let secondMoveToCategoryBtn;
@@ -56,9 +56,6 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
     dispatch(deleteTask(taskId));
   };
 
-  // const chosedTask = tasks.filter(task => task._id === taskId)[0];
-  // console.log('chosedTask', chosedTask); //!
-
   const handleMoveToCategory = evt => {
     togglShowChooseCategory();
 
@@ -74,8 +71,12 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
     console.log('categoryTitle', categoryTitle); //!
 
     const changedTask = { ...chosedTask, category: newCategoryTitle };
+    const owner = changedTask.owner._id; //!
+    console.log('ownerId', owner); //!
+
     console.log('changedTask', changedTask); //!
-    dispatch(patchTask(taskId, changedTask)); //?/???????????????
+    dispatch(patchTask(changedTask)); //?/???????????????
+    console.log('taskId', typeof taskId); //!
   };
 
   return (

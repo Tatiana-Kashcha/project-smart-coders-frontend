@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Notify } from 'notiflix';
-
 axios.defaults.baseURL = 'https://project-smart-coders-backend.onrender.com';
 
 const handleResponse = (response, errorMessage) => {
@@ -62,7 +60,6 @@ export const deleteTask = createAsyncThunk(
       return taskId;
     } catch (error) {
       console.error(`Sorry, task wasn't deleted: ${error.message}`);
-      Notify.failure('Something went wrong... Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -70,9 +67,10 @@ export const deleteTask = createAsyncThunk(
 
 export const patchTask = createAsyncThunk(
   'tasks/updateTask',
-  async ({ id, task }, thunkAPI) => {
+  async (task, thunkAPI) => {
+    console.log('task in patchTask', task);
     try {
-      const response = await axios.patch(`tasks/${id}`, task);
+      const response = await axios.patch(`tasks/${task._id}`, task);
 
       if (response.status !== 200) {
         throw new Error('Failed to update task due to server error');
@@ -82,7 +80,6 @@ export const patchTask = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error(`Sorry, something went wrong: ${error.message}`);
-      Notify.failure('Something went wrong... Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

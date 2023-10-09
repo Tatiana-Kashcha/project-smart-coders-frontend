@@ -1,5 +1,6 @@
 // import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import * as s from './Header.styled';
 import { ReactComponent as BurgerMenuIcon } from '../../icons/burger-menu.svg';
 
@@ -8,12 +9,17 @@ import ThemeToggle from 'components/ThemeToggler/ThemeToggle';
 
 import UserInfo from '../UserInfo/UserInfo';
 
-const Header = ({ onSideBar }) => {
-  // const [shownModal, setShowModal] = useState(false);
+const Header = ({ shownBurger, togglshownBurger, onSideBar }) => {
+  // const [shownBurger, setShowBurger] = useState(true);
 
-  // const onModal = () => {
-  //   setShowModal(prevShownModal => !prevShownModal);
+  // const togglshownBurger = () => {
+  //   setShowBurger(prevState => !prevState);
   // };
+
+  const handleClick = () => {
+    togglshownBurger();
+    onSideBar();
+  };
 
   const location = useLocation();
 
@@ -34,10 +40,12 @@ const Header = ({ onSideBar }) => {
         )}
 
         {/* <s.BurgerBtn type="button" onClick={onModal}> */}
+        {shownBurger && (
+          <s.BurgerBtn type="button" onClick={handleClick}>
+            <BurgerMenuIcon />
+          </s.BurgerBtn>
+        )}
 
-        <s.BurgerBtn type="button" onClick={onSideBar}>
-          <BurgerMenuIcon />
-        </s.BurgerBtn>
         {/* {shownModal && <AddFeedbackModal onClose={onModal} />} */}
 
         <s.SubDivision>
