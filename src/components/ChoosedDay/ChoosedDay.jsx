@@ -1,6 +1,5 @@
 import { DayCalendarHead } from 'components/DayCalendarHead/DayCalendarHead';
-// import { TasksColumnsList } from 'components/TasksColumnsList/TasksColumnsList';
-import { TasksColumn } from 'components/TasksColumn/TasksColumn';
+import { ColumnTasksList } from 'components/ColumnTasksList/ColumnTasksList';
 import { ChoosedDayDivStyled } from 'components/ChoosedDay/ChoosedDayStyled.styled';
 
 export const ChoosedDay = () => {
@@ -9,12 +8,8 @@ export const ChoosedDay = () => {
       <h1>ChoosedDay містить в собі:</h1>
       <DayCalendarHead />
       <ChoosedDayDivStyled>
-        <TasksColumn groupTitle="in-progress" groupId="123" />
-        <TasksColumn groupTitle="to-do" groupId="123" />
-        <TasksColumn groupTitle="done" groupId="123" />
+        <ColumnTasksList />
       </ChoosedDayDivStyled>
     </>
   );
 };
-// to-do
-// done
