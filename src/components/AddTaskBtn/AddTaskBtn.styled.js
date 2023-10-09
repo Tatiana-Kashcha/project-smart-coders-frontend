@@ -11,7 +11,7 @@ export const TaskBtn = styled.button`
   padding: 14px 0 14px;
   font-weight: bold;
   font-size: 14px;
-
+  margin-top: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
