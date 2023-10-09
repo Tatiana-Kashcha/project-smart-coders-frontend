@@ -18,7 +18,6 @@ export default function CalendarPage() {
   const year = currentDate.setFullYear(currentDate.getFullYear());
   const monthMod = dayjs(month).format('MM');
   const yearMod = dayjs(year).format('YYYY');
-
   const isFirstVisit = useMemo(() => {
     const storedValue = sessionStorage.getItem('isFirstVisit');
     return storedValue ? JSON.parse(storedValue) : true;

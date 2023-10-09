@@ -19,7 +19,7 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
   const monthMod = dayjs(date).format('MM');
   const yearMod = dayjs(date).format('YYYY');
   const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
-  const currentDayModify = dayjs(date).format('DD-MMM-YYYY').toLowerCase();
+  const currentDayModify = dayjs(date).format('YYYY-MM-DD').toLowerCase();
 
   useEffect(() => {
     setChoosedDate(date);
