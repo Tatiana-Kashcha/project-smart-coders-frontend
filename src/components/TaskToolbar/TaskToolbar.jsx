@@ -49,7 +49,7 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
     togglShowEditModal();
     const chosedTask = tasks.filter(task => task._id === taskId)[0];
     console.log('chosedTask', chosedTask); //!
-    return chosedTask;
+    return chosedTask; //????!!
   };
 
   const handleDeleteTask = () => {
@@ -75,7 +75,7 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
 
     const changedTask = { ...chosedTask, category: newCategoryTitle };
     console.log('changedTask', changedTask); //!
-    dispatch(patchTask(taskId, changedTask));
+    dispatch(patchTask(taskId, changedTask)); //?/???????????????
   };
 
   return (
