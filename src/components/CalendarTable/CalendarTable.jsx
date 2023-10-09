@@ -9,12 +9,12 @@ import {
   DivSelectLow,
   SelectLow,
   OptionSelectLow,
-  DivSelectMedium,
-  SelectMedium,
-  OptionSelectMedium,
-  DivSelectHigh,
-  SelectHigh,
-  OptionSelectHigh,
+  // DivSelectMedium,
+  // SelectMedium,
+  // OptionSelectMedium,
+  // DivSelectHigh,
+  // SelectHigh,
+  // OptionSelectHigh,
 } from './CalendarTable.styled';
 
 moment.updateLocale('en', {
@@ -76,24 +76,6 @@ const CalendarTable = () => {
                     <OptionSelectLow value="l">Large</OptionSelectLow>
                   </SelectLow>
                 </DivSelectLow>
-              ) : null}
-              {dayItem.month() === selectedMonth ? (
-                <DivSelectMedium>
-                  <SelectMedium id="medium" name="medium">
-                    <OptionSelectMedium value="E">Extranh </OptionSelectMedium>
-                    <OptionSelectMedium value="S">Small</OptionSelectMedium>
-                    <OptionSelectMedium value="L">Large</OptionSelectMedium>
-                  </SelectMedium>
-                </DivSelectMedium>
-              ) : null}
-              {dayItem.month() === selectedMonth ? (
-                <DivSelectHigh>
-                  <SelectHigh id="high" name="high">
-                    <OptionSelectHigh value="E">Extranh </OptionSelectHigh>
-                    <OptionSelectHigh value="S">Small</OptionSelectHigh>
-                    <OptionSelectHigh value="l">Large</OptionSelectHigh>
-                  </SelectHigh>
-                </DivSelectHigh>
               ) : null}
             </DayWrapper>
           </CellWrapper>
