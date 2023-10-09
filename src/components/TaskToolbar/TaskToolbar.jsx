@@ -9,36 +9,36 @@ import { selectTasks } from '../../redux/tasks/selectors';
 import * as s from './TaskToolbar.styled';
 
 export const TaskToolbar = ({ taskId, categoryTitle }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
 
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
 
-  let firstMoveToCategoryBtn;
-  let secondMoveToCategoryBtn;
+  let topChoseCategoryBtn;
+  let lowerChoseCategoryBtn;
   switch (categoryTitle) {
     case 'in-progress':
-      firstMoveToCategoryBtn = 'to-do';
-      secondMoveToCategoryBtn = 'done';
+      topChoseCategoryBtn = 'to-do';
+      lowerChoseCategoryBtn = 'done';
       break;
 
     case 'to-do':
-      firstMoveToCategoryBtn = 'in-progress';
-      secondMoveToCategoryBtn = 'done';
+      topChoseCategoryBtn = 'in-progress';
+      lowerChoseCategoryBtn = 'done';
       break;
 
     case 'done':
-      firstMoveToCategoryBtn = 'in-progress';
-      secondMoveToCategoryBtn = 'to-do';
+      topChoseCategoryBtn = 'in-progress';
+      lowerChoseCategoryBtn = 'to-do';
       break;
 
     default:
       break;
   }
 
-  const togglShowChooseCategory = () => {
-    setIsMenuOpen(prevState => !prevState);
+  const togglShowCategoryMenu = () => {
+    setIsCategoryMenuOpen(prevState => !prevState);
   };
 
   const togglShowEditModal = () => {
@@ -61,7 +61,7 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
   };
 
   const handleMoveToCategory = evt => {
-    togglShowChooseCategory();
+    togglShowCategoryMenu();
 
     const newCategoryTitle = evt.target.textContent
       .trim()
@@ -83,7 +83,7 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
         <s.ArrowCircleBtn
           type="button"
           aria-label="Change task category"
-          onClick={togglShowChooseCategory}
+          onClick={togglShowCategoryMenu}
         />
 
         <s.PencilBtn
@@ -101,20 +101,19 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
         {isShowEditModal && (
           <TaskModal
             task={takeChosedTask()} //!????
-            taskId={taskId}
             onClose={togglShowEditModal}
           />
         )}
       </s.Toolbar>
 
-      {isMenuOpen && (
+      {isCategoryMenuOpen && (
         <s.ToolMenu>
           <s.ToolMenuBtn onClick={handleMoveToCategory}>
-            {firstMoveToCategoryBtn}
+            {topChoseCategoryBtn}
             <ArrowCircle width={16} />
           </s.ToolMenuBtn>
           <s.ToolMenuBtn onClick={handleMoveToCategory}>
-            {secondMoveToCategoryBtn} <ArrowCircle width={16} />
+            {lowerChoseCategoryBtn} <ArrowCircle width={16} />
           </s.ToolMenuBtn>
         </s.ToolMenu>
       )}
