@@ -30,8 +30,8 @@ export const TaskToolbar = ({
   };
 
   const handleMoveToGroup = () => {
-    chooseGroup();
     // TODO: patchTask
+    chooseGroup();
   };
 
   const handleEditTask = () => {
