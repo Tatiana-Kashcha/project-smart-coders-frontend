@@ -10,15 +10,17 @@ export const PaginatorWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  margin: ${props => (props.calendarOrStatistic ? '0 0 18px 0' : '0 0 20px 0')};
+  margin: ${props =>
+    props.calendarorstatistic === 'calendar' ? '0 0 18px 0' : '0 0 20px 0'};
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     margin: 0;
 
     justify-content: ${props =>
-      props.calendarOrStatistic ? 'space-between' : 'start'};
+      props.calendarorstatistic === 'calendar' ? 'space-between' : 'start'};
 
-    padding: ${props => (props.calendarOrStatistic ? '0' : '0 0 0 64px')};
+    padding: ${props =>
+      props.calendarorstatistic === 'calendar' ? '0' : '0 0 0 64px'};
   }
 `;
 
