@@ -34,8 +34,12 @@ export const TaskToolbar = ({
   const handleMoveToGroup = evt => {
     onChooseGroup();
 
-    const newGroup = evt.target.textContent.toLowerCase();
-    console.log('buttonText', newGroup);
+    const newGroupTitle = evt.target.textContent
+      .toLowerCase()
+      .split(' ')
+      .join('-');
+    console.log('newGroup', newGroupTitle); //!
+    console.log('groupTitle', groupTitle); //!
 
     const taskToRemove = tasks.filter(task => task._id === taskId)[0];
     console.log('taskToRemove', taskToRemove); //!
