@@ -26,7 +26,7 @@ export const TaskColumnCard = props => {
   };
 
   return (
-    <s.Card priority={priority}>
+    <s.Card>
       <s.CardDescr>{description}</s.CardDescr>
       <s.CardEl>
         <s.CardAvAndPri>
@@ -35,7 +35,7 @@ export const TaskColumnCard = props => {
           ) : (
             <s.Elipse>{<s.Avatar src={avatar} alt="avatar" />}</s.Elipse>
           )}
-          <s.Priority>{priority}</s.Priority>
+          <s.Priority priority={priority}>{priority}</s.Priority>
         </s.CardAvAndPri>
         <TaskToolbar />
       </s.CardEl>
