@@ -32,10 +32,11 @@ ChartJS.register(
 );
 
 export const getChartOptions = props => ({
-  responsive: true,
-  layout: {
-    padding: 40,
-  },
+  maintainAspectRatio: false,
+  // responsive: true,
+  // layout: {
+  //   padding: 40,
+  // },
   scales: {
     x: {
       grid: {
@@ -67,7 +68,7 @@ export const getChartOptions = props => ({
         color: props.theme.colors.thirdText,
         font: {
           family: 'Inter',
-          size: 11,
+          size: 14,
           weight: 500,
           lineHeight: 1.5,
         },
@@ -81,7 +82,7 @@ export const getChartOptions = props => ({
       color: props.theme.colors.thirdText,
       font: {
         family: 'Inter',
-        size: 11,
+        size: 12,
         weight: 500,
         lineHeight: 1.5,
       },
