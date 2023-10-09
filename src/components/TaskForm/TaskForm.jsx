@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import * as s from './TaskForm.styled';
 
-
 import { addTask, patchTask } from '../../redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTasks, selectError } from '../../redux/tasks/selectors';
@@ -25,10 +24,10 @@ export const TaskForm = ({ initialData, onClose }) => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    // const { statusOperation, _id, ...information } = initialData;
-    // if (_id) information.id = _id;
-    // setInformationTask(information);
-    // setOperation(statusOperation);
+    const { statusOperation, _id, ...information } = initialData;
+    if (_id) information.id = _id;
+    setInformationTask(information);
+    setOperation(statusOperation);
   }, [initialData]);
 
   useEffect(() => {
@@ -64,8 +63,6 @@ export const TaskForm = ({ initialData, onClose }) => {
     }
     setDataSave(Date.now());
   };
-
-
 
   return (
     <s.Form onSubmit={handleSubmit}>
