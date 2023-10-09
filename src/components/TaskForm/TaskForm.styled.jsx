@@ -4,31 +4,26 @@ import { ReactComponent as Plus } from '../../icons/plus.svg';
 import { globalTheme } from 'theme';
 
 export const IconEdit = styled(EditTask)`
-  
   height: 100%;
   color: ${globalTheme.colors.white};
 `;
 export const IconPlus = styled(Plus)`
-  
   height: 100%;
   color: ${globalTheme.colors.white};
 `;
 
-
 export const Form = styled.form`
-
-
-font-family: 'Inter';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
-  color:${props => props.theme.colors.secondText};
+  color: ${props => props.theme.colors.secondText};
   text-align: left;
 
   @media (min-width: 768px) {
-    padding: 24px 0px; 
-     height: 360px; 
+    padding: 24px 0px;
+    height: 360px;
   }
 `;
 
@@ -62,7 +57,7 @@ export const Input = styled.input`
   padding: 14px;
   width: 100%;
   outline: none;
-  background-color:${props => props.theme.colors.forthBackground};
+  background-color: ${props => props.theme.colors.forthBackground};
   border: 1px solid rgba(220, 227, 229, 0.6);
   border-radius: 8px;
   font-family: 'Inter';
@@ -74,13 +69,11 @@ export const Input = styled.input`
 
   @media (min-width: 768px) {
     height: 46px;
-
   }
 
   &::placeholder {
-    
     color: ${props => props.theme.colors.black};
-  } 
+  }
 `;
 
 export const Errors = styled.span`
@@ -101,7 +94,7 @@ export const Errors = styled.span`
 
 export const TextAdd = styled.span`
   color: white;
-`
+`;
 
 export const Button = styled.button`
   flex-grow: 1;
@@ -131,7 +124,6 @@ export const Button = styled.button`
   }
 
   @media (min-width: 768px) {
-
     height: 48px;
   }
 `;
@@ -160,7 +152,6 @@ export const ButtonCancel = styled.button`
   }
 
   @media (min-width: 768px) {
-
     height: 48px;
   }
 `;
@@ -170,7 +161,6 @@ export const Svg = styled.svg`
   height: 18px;
   fill: none;
   stroke: ${globalTheme.colors.white};
-  
 
   @media (min-width: 768px) {
     width: 20px;
@@ -189,14 +179,12 @@ export const RadioButtonGroup = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 40px;
-  color:${props => props.theme.colors.secondText};
-
-  
+  color: ${props => props.theme.colors.secondText};
 `;
 
 export const RadioButtonLabel = styled.label`
   padding-left: 20px;
-  
+
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -204,7 +192,6 @@ export const RadioButtonLabel = styled.label`
   line-height: 1.17;
   color: ${globalTheme.colors.secondText};
   cursor: pointer;
-  
 
   &:not(:last-child) {
     margin-right: 16px;
@@ -217,7 +204,6 @@ export const RadioButtonInput = styled.input`
   height: 0;
   width: 0;
   border: none;
-  
 
   &::before {
     content: '';
@@ -229,7 +215,7 @@ export const RadioButtonInput = styled.input`
     height: 10px;
     width: 10px;
     border: 1px solid var(--btn-text-color);
-    
+
     ${({ value }) => {
       switch (value) {
         case 'Low':
@@ -249,6 +235,6 @@ export const RadioButtonInput = styled.input`
     position: absolute;
     height: 10px;
     width: 10px;
-     outline: 2px solid;
+    outline: 2px solid;
   }
 `;
