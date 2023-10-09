@@ -2,7 +2,7 @@ import styled from 'styled-components';
 // import { globalTheme } from 'theme';
 
 export const Card = styled.div`
-  width: 300px;
+  max-width: 300px;
   height: 112px;
   padding: 14px 14px 18px 14px;
   flex-shrink: 0;
