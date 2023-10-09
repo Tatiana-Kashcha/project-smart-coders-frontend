@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { createContext, useContext, useState } from 'react';
-// const DateContext = createContext();
-// export const useDate = () => useContext(DateContext);
-
-// export const DateProvider = ({ children }) => {
-//   const currentDate = new Date();
-//   const [choosedDate, setChoosedDate] = useState(currentDate);
-
-// import { useDate } from '../../hooks/useDate';
-// import { selectUser } from '../../redux/auth/selectors';
-// import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
-
+import { useDate } from 'hooks/useDate';
 import moment from 'moment';
 import {
   CalendarGridWrapper,
@@ -34,16 +23,23 @@ moment.updateLocale('en', {
   },
 });
 
-const initialDate = moment().startOf('month');
-
 const CalendarTable = () => {
-  const [currentDate] = useState(initialDate);
+  const { choosedDate } = useDate();
+  const selectedMonth = moment(choosedDate).month();
+
   const [calendarDays, setCalendarDays] = useState([]);
+  const [initialDate, setInitialDate] = useState(
+    moment(choosedDate).startOf('week')
+  );
 
   useEffect(() => {
-    const startDay = moment(currentDate).startOf('week');
+    setInitialDate(moment(choosedDate).startOf('month'));
+  }, [selectedMonth]);
+
+  useEffect(() => {
+    const startDay = moment(initialDate).startOf('week');
     const day = startDay.clone();
-    const endDay = moment(currentDate).endOf('month').endOf('week');
+    const endDay = moment(initialDate).endOf('month').endOf('week');
     const calendar = [];
 
     while (!day.isAfter(endDay)) {
@@ -52,7 +48,7 @@ const CalendarTable = () => {
     }
 
     setCalendarDays(calendar);
-  }, [currentDate]);
+  }, [initialDate]);
 
   return (
     <div>
@@ -61,10 +57,10 @@ const CalendarTable = () => {
           <CellWrapper key={dayItem.format('DDMMYYYY')}>
             <DayWrapper>
               <RowInCell>
-                {dayItem.month() === currentDate.month() ? (
+                {dayItem.month() === selectedMonth ? (
                   <span
                     style={{
-                      color: dayItem.isSame(moment(), 'day') ? 'blue' : null,
+                      color: dayItem.isSame(moment(), 'day') ? '#3e85f3' : null,
                     }}
                   >
                     {dayItem.format('D')}
@@ -72,7 +68,7 @@ const CalendarTable = () => {
                 ) : null}
               </RowInCell>
 
-              {dayItem.month() === currentDate.month() ? (
+              {dayItem.month() === selectedMonth ? (
                 <DivSelectLow>
                   <SelectLow id="low" name="low">
                     <OptionSelectLow>Extranh </OptionSelectLow>
@@ -87,7 +83,7 @@ const CalendarTable = () => {
                   </SelectLow>
                 </DivSelectLow>
               ) : null}
-              {dayItem.month() === currentDate.month() ? (
+              {dayItem.month() === selectedMonth ? (
                 <DivSelectMedium>
                   <SelectMedium id="medium" name="medium">
                     <OptionSelectMedium>Extranh </OptionSelectMedium>
@@ -96,7 +92,7 @@ const CalendarTable = () => {
                   </SelectMedium>
                 </DivSelectMedium>
               ) : null}
-              {dayItem.month() === currentDate.month() ? (
+              {dayItem.month() === selectedMonth ? (
                 <DivSelectHigh>
                   <SelectHigh id="high" name="high">
                     <OptionSelectHigh>Extranh </OptionSelectHigh>

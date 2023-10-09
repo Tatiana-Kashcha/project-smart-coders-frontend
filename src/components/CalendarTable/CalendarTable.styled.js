@@ -61,12 +61,12 @@ export const DayWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-
+  border-radius: solid 1px #111111;
   font-family: Inter;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
-
+  border-radius: 50%;
   position: relative;
 
   color: ${props => props.theme.colors.primaryText};
@@ -80,11 +80,23 @@ export const DayWrapper = styled.div`
   }
   animation: scaleAnimation 1s linear infinite alternate;
 `;
-
 export const CurrentDay = styled.span`
+  border: 1px solid #111111;
+  display: flex;
+  display: inline-flex;
+  padding: 4px 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  background: #3e85f3;
+  color: #fff;
+`;
+
+export const Day = styled.span`
   width: 100%;
   height: 100%;
-
+  border: 1px solid #111111;
   display: flex;
   color: ${props => props.theme.colors.white};
 
@@ -99,8 +111,8 @@ export const CurrentDay = styled.span`
     width: 27px;
     height: 26px;
 
-    font-size: ${props => props.theme.fontSizes.s};
-    line-height: ${props => props.theme.lineHeights.heading};
+    font-size: 14px;
+    line-height: 1.28;
   }
 `;
 
