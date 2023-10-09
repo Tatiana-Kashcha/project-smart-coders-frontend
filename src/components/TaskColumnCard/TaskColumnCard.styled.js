@@ -39,21 +39,6 @@ export const CardAvAndPri = styled.div`
   align-items: flex-end;
 `;
 
-export const CardAvatar = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 32px;
-  border: 1.8px solid ${globalTheme.colors.primary};
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-`;
-
-// export const Priority = styled.div`
-//   display: inline-block;
-//   padding: 4px 12px;
-//   border-radius: 4px;
-//   background: #72c2f8;
-// `;
-
 export const Priority = styled.div`
   display: flex;
   padding: 4px 12px;
