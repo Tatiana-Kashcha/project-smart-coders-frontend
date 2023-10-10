@@ -31,13 +31,15 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
         {inProgress.map(({ _id, title, priority }) => {
           const id = nanoid();
           return (
-            <TaskColumnCard
-              key={id}
-              taskId={_id}
-              groupTitle={groupTitle}
-              description={title}
-              priority={priority}
-            />
+            <li>
+              <TaskColumnCard
+                key={id}
+                taskId={_id}
+                groupTitle={groupTitle}
+                description={title}
+                priority={priority}
+              />
+            </li>
           );
         })}
       </ul>
