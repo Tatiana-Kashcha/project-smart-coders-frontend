@@ -13,12 +13,6 @@ import {
   SelectLow,
   OptionSelectLow,
   DivTaskLeg,
-  // DivSelectMedium,
-  // SelectMedium,
-  // OptionSelectMedium,
-  // DivSelectHigh,
-  // SelectHigh,
-  // OptionSelectHigh,
 } from './CalendarTable.styled';
 
 moment.updateLocale('en', {
@@ -62,7 +56,6 @@ const CalendarTable = () => {
           const taskDay = task.filter(({ date }) => {
             return date === dayItem.format('YYYY-MM-DD');
           });
-          // console.log(dayItem.format('MM-DD'), taskDay);
           return (
             <CellWrapper key={dayItem.format('DDMMYYYY')}>
               <DayWrapper>
