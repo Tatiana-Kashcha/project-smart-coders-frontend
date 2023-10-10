@@ -34,10 +34,10 @@ export const TasksScroll = styled.ul`
   scroll-behavior: smooth;
 `;
 
-// export const DivList = styled.div`
-//   margin-top: 24px;
+export const DivList = styled.div`
+  margin-top: 24px;
 
-//   @media (min-width: 320px) {
-//     margin-top: 28px;
-//   }
-// `;
+  @media (min-width: 375px) {
+    margin-top: 28px;
+  }
+`;

@@ -42,8 +42,12 @@ export const TrashBtn = styled(Trash)`
 `;
 
 export const ToolMenu = styled.div`
+  position: absolute;
+  top: 26px;
+  right: -45px;
   width: 115px;
   height: 70px;
+  margin-top: 10px;
   padding: 14px;
 
   border: ${props => props.theme.colors.userInputBorder};
@@ -55,13 +59,13 @@ export const ToolMenu = styled.div`
   justify-content: space-between;
 `;
 
-export const ToolMenuIcon = styled(ArrowCircle)`
-  color: ${props => props.theme.colors.primaryText};
+// export const ToolMenuIcon = styled(ArrowCircle)`
+//   color: ${props => props.theme.colors.primaryText};
 
-  &:hover {
-    color: ${globalTheme.colors.primary};
-  }
-`;
+//   &:hover {
+//     color: ${globalTheme.colors.primary};
+//   }
+// `;
 
 export const ToolMenuBtn = styled.button`
   height: 18px;

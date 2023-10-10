@@ -15,24 +15,27 @@ import { AddTaskBtn } from 'components/AddTaskBtn/AddTaskBtn';
 import * as s from './TasksColumn.styled';
 
 export const TasksColumn = ({ groupTitle, groupId }) => {
-  const task = useSelector(selectTasks);
+  const tasks = useSelector(selectTasks);
   const params = useParams();
 
   const inProgress = useMemo(() => {
-    return task.filter(({ category, date }) => {
+    return tasks.filter(({ category, date }) => {
       return category === groupTitle && date === params.currrentDay;
     });
-  }, [task, groupTitle, params.currrentDay]);
+  }, [tasks, groupTitle, params.currrentDay]);
+
   return (
     <s.TasksCol>
       <ColumnHeadBar title={groupTitle} columnId={groupId} />
       <s.TasksScroll>
-        {inProgress.map(({ title, priority }) => {
+        {inProgress.map(({ _id, title, priority }) => {
           const id = nanoid();
           return (
             <li>
               <TaskColumnCard
                 key={id}
+                taskId={_id}
+                groupTitle={groupTitle}
                 description={title}
                 priority={priority}
               />

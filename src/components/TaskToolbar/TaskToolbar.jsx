@@ -1,49 +1,121 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { ReactComponent as ArrowCircle } from '../../icons/arrow-circle-broken-right.svg';
 import { TaskModal } from 'components/TaskModal/TaskModal';
+import { deleteTask, patchTask } from '../../redux/tasks/operations';
+import { selectTasks } from '../../redux/tasks/selectors';
+
 import * as s from './TaskToolbar.styled';
 
-export const TaskToolbar = ({ task, groups, onDeleteTask, onUpdateTask }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+export const TaskToolbar = ({ taskId, categoryTitle }) => {
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleMoveToGroup = () => {
-    setIsMenuOpen(true);
+  const dispatch = useDispatch();
+  const tasks = useSelector(selectTasks);
+
+  let topChoseCategoryBtn;
+  let lowerChoseCategoryBtn;
+  switch (categoryTitle) {
+    case 'in-progress':
+      topChoseCategoryBtn = 'to-do';
+      lowerChoseCategoryBtn = 'done';
+      break;
+
+    case 'to-do':
+      topChoseCategoryBtn = 'in-progress';
+      lowerChoseCategoryBtn = 'done';
+      break;
+
+    case 'done':
+      topChoseCategoryBtn = 'in-progress';
+      lowerChoseCategoryBtn = 'to-do';
+      break;
+
+    default:
+      break;
+  }
+
+  const togglShowCategoryMenu = () => {
+    setIsCategoryMenuOpen(prevState => !prevState);
   };
 
-  const handleEditTask = () => {
-    setShowEditModal(true);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const takeChosedTask = () => {
+    const chosedTask = tasks.filter(task => task._id === taskId)[0];
+
+    return chosedTask;
   };
 
   const handleDeleteTask = () => {
-    setIsDeleting(true);
+    dispatch(deleteTask(taskId));
+  };
+
+  const handleMoveToCategory = evt => {
+    togglShowCategoryMenu();
+
+    const newCategoryTitle = evt.target.textContent
+      .trim()
+      .toLowerCase()
+      .split(' ')
+      .join('-');
+
+    const chosedTask = takeChosedTask();
+
+    const changedTask = {
+      title: chosedTask.title,
+      start: chosedTask.start,
+      end: chosedTask.end,
+      priority: chosedTask.priority,
+      date: chosedTask.date,
+      category: newCategoryTitle,
+    };
+
+    dispatch(patchTask({ taskId, changedTask }));
   };
 
   return (
     <>
       <s.Toolbar>
-        <s.ArrowCircleBtn onClick={handleMoveToGroup} />
+        <s.ArrowCircleBtn
+          type="button"
+          aria-label="Change task category"
+          onClick={togglShowCategoryMenu}
+        />
 
-        <s.PencilBtn onClick={handleEditTask} />
+        <s.PencilBtn type="button" aria-label="Edit task" onClick={openModal} />
 
-        <s.TrashBtn onClick={handleDeleteTask} disabled={isDeleting} />
+        <s.TrashBtn
+          type="button"
+          aria-label="Delete task"
+          onClick={handleDeleteTask}
+        />
 
-        {showEditModal && (
+        {isModalOpen && (
           <TaskModal
-            task={task}
-            onClose={() => setShowEditModal(false)}
-            onUpdateTask={onUpdateTask}
+            task={takeChosedTask()}
+            closeModal={closeModal}
+            showAddBtnRew={false}
           />
         )}
       </s.Toolbar>
-      {isMenuOpen && (
+
+      {isCategoryMenuOpen && (
         <s.ToolMenu>
-          <s.ToolMenuBtn>
-            In progress
-            <s.ArrowCircleBtn width={16} />
+          <s.ToolMenuBtn onClick={handleMoveToCategory}>
+            {topChoseCategoryBtn}
+            <ArrowCircle width={16} />
           </s.ToolMenuBtn>
-          <s.ToolMenuBtn>
-            Done <s.ArrowCircleBtn width={16} />
+          <s.ToolMenuBtn onClick={handleMoveToCategory}>
+            {lowerChoseCategoryBtn} <ArrowCircle width={16} />
           </s.ToolMenuBtn>
         </s.ToolMenu>
       )}
