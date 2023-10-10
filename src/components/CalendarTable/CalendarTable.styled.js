@@ -192,7 +192,7 @@ export const HiddenTaskCount = styled.span`
   font-style: italic;
   font-size: 10px;
   line-height: 1.4;
-  font-weight: 600;
+  font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -209,4 +209,25 @@ export const HiddenTaskCount = styled.span`
     left: 4px;
     top: 25px;
   }
+`;
+export const CarrDayItem = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 26px;
+  padding: 5px;
+  background: ${props =>
+    props.isToday
+      ? 'rgb(62, 133, 243)'
+      : props.isSelected
+      ? '#3e85f3'
+      : 'inherit'};
+  border-radius: 6px;
+  color: ${props => (props.isToday || props.isSelected ? '#fff' : 'inherit')};
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1, 12;
+  cursor: pointer;
 `;

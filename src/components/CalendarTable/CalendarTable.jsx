@@ -15,6 +15,7 @@ import {
   DivSelectHigh,
   SelectHigh,
   OptionSelectHigh,
+  CarrDayItem,
 } from './CalendarTable.styled';
 
 moment.updateLocale('en', {
@@ -26,7 +27,7 @@ moment.updateLocale('en', {
 const CalendarTable = () => {
   const { choosedDate } = useDate();
   const selectedMonth = moment(choosedDate).month();
-
+  const [selectedDate, setSelectedDate] = useState(moment());
   const [calendarDays, setCalendarDays] = useState([]);
   const [initialDate, setInitialDate] = useState(
     moment(choosedDate).startOf('week')
@@ -58,13 +59,13 @@ const CalendarTable = () => {
             <DayWrapper>
               <RowInCell>
                 {dayItem.month() === selectedMonth ? (
-                  <span
-                    style={{
-                      color: dayItem.isSame(moment(), 'day') ? '#3e85f3' : null,
-                    }}
+                  // Используем компонент StyledDayItem
+                  <CarrDayItem
+                    isSelected={dayItem.isSame(selectedDate, 'day')}
+                    isToday={dayItem.isSame(moment(), 'day')}
                   >
                     {dayItem.format('D')}
-                  </span>
+                  </CarrDayItem>
                 ) : null}
               </RowInCell>
 
