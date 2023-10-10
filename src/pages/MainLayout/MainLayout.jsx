@@ -28,7 +28,7 @@ export default function MainLayout() {
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
     };
-  }, [mediaQuery, showSideBar]); //?
+  }, [mediaQuery, showSideBar]);
 
   const onSideBar = () => {
     setShowSideBar(prevState => !prevState);

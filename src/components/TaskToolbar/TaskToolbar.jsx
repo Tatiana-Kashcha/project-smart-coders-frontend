@@ -10,7 +10,7 @@ import * as s from './TaskToolbar.styled';
 
 export const TaskToolbar = ({ taskId, categoryTitle }) => {
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
-  const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
@@ -41,19 +41,19 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
     setIsCategoryMenuOpen(prevState => !prevState);
   };
 
-  const togglShowEditModal = () => {
-    setIsShowEditModal(prevState => !prevState);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   const takeChosedTask = () => {
     const chosedTask = tasks.filter(task => task._id === taskId)[0];
-    console.log('chosedTask from takeChosedTask', chosedTask); //!
+    console.log('chosedTask from takeChosedTask', chosedTask);
 
     return chosedTask;
-  };
-
-  const handleEditTask = () => {
-    togglShowEditModal();
   };
 
   const handleDeleteTask = () => {
@@ -68,13 +68,19 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
       .toLowerCase()
       .split(' ')
       .join('-');
-    console.log('categoryTitle', categoryTitle); //!
-    console.log('newCategory', newCategoryTitle); //!
 
-    const changedTask = { ...takeChosedTask(), category: newCategoryTitle };
-    console.log('changedTask', changedTask); //!
+    const chosedTask = takeChosedTask();
 
-    dispatch(patchTask(changedTask)); //?/???????????????
+    const changedTask = {
+      title: chosedTask.title,
+      start: chosedTask.start,
+      end: chosedTask.end,
+      priority: chosedTask.priority,
+      date: chosedTask.date,
+      category: newCategoryTitle,
+    };
+
+    dispatch(patchTask({ taskId, changedTask }));
   };
 
   return (
@@ -86,11 +92,7 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
           onClick={togglShowCategoryMenu}
         />
 
-        <s.PencilBtn
-          type="button"
-          aria-label="Edit task"
-          onClick={handleEditTask}
-        />
+        <s.PencilBtn type="button" aria-label="Edit task" onClick={openModal} />
 
         <s.TrashBtn
           type="button"
@@ -98,10 +100,11 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
           onClick={handleDeleteTask}
         />
 
-        {isShowEditModal && (
+        {isModalOpen && (
           <TaskModal
-            task={takeChosedTask()} //!????
-            onClose={togglShowEditModal}
+            task={takeChosedTask()}
+            closeModal={closeModal}
+            showAddBtnRew={false}
           />
         )}
       </s.Toolbar>
