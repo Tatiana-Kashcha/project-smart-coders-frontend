@@ -14,7 +14,6 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
 
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
-  console.log('tasks', tasks); //!
 
   let topChoseCategoryBtn;
   let lowerChoseCategoryBtn;
@@ -73,7 +72,7 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
     console.log('newCategory', newCategoryTitle); //!
 
     const changedTask = { ...takeChosedTask(), category: newCategoryTitle };
-    console.log('changedTask', changedTask._id); //!
+    console.log('changedTask', changedTask); //!
 
     dispatch(patchTask(changedTask)); //?/???????????????
   };
