@@ -75,7 +75,7 @@ const CalendarTable = () => {
 
                 {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
                   <DivSelectLow>
-                    <DivTaskLeg>task: {taskDay.length}</DivTaskLeg>
+                    <DivTaskLeg>{taskDay.length}task</DivTaskLeg>
                     <SelectLow>
                       {taskDay.map(({ title, priority }) => {
                         const id = nanoid();
