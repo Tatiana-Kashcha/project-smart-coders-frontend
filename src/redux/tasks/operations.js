@@ -67,9 +67,9 @@ export const deleteTask = createAsyncThunk(
 
 export const patchTask = createAsyncThunk(
   'tasks/updateTask',
-  async ({ id, task }, thunkAPI) => {
+  async ({ taskId, changedTask }, thunkAPI) => {
     try {
-      const response = await axios.patch(`tasks/${id}`, task);
+      const response = await axios.patch(`tasks/${taskId}`, changedTask);
 
       if (response.status !== 200) {
         throw new Error('Failed to update task due to server error');

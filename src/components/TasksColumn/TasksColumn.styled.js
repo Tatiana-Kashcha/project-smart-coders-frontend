@@ -14,11 +14,11 @@ export const TasksCol = styled.div`
   /* justify-content: space-between; */
 
   overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   scroll-behavior: smooth;
 
   @media (min-width: 768px) {
-    min-width: 344px;
+    max-width: 344px;
     max-height: 568px;
     padding: 18px 20px 28px 20px;
   }
@@ -30,14 +30,14 @@ export const TasksCol = styled.div`
 
 export const TasksScroll = styled.ul`
   overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   scroll-behavior: smooth;
 `;
 
-// export const DivList = styled.div`
-//   margin-top: 24px;
+export const DivList = styled.div`
+  margin-top: 24px;
 
-//   @media (min-width: 320px) {
-//     margin-top: 28px;
-//   }
-// `;
+  @media (min-width: 375px) {
+    margin-top: 28px;
+  }
+`;
