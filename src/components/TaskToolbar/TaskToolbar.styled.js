@@ -43,6 +43,7 @@ export const TrashBtn = styled(Trash)`
 
 export const ToolMenu = styled.div`
   position: absolute;
+
   top: 26px;
   right: -45px;
   width: 115px;
@@ -58,14 +59,6 @@ export const ToolMenu = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
-
-// export const ToolMenuIcon = styled(ArrowCircle)`
-//   color: ${props => props.theme.colors.primaryText};
-
-//   &:hover {
-//     color: ${globalTheme.colors.primary};
-//   }
-// `;
 
 export const ToolMenuBtn = styled.button`
   height: 18px;
