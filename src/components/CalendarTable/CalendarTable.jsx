@@ -12,6 +12,7 @@ import {
   DivSelectLow,
   SelectLow,
   OptionSelectLow,
+  DivTaskLeg,
   // DivSelectMedium,
   // SelectMedium,
   // OptionSelectMedium,
@@ -79,9 +80,9 @@ const CalendarTable = () => {
                   ) : null}
                 </RowInCell>
 
-                {taskDay.length !== 0 ? (
+                {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
                   <DivSelectLow>
-                    <div>{taskDay.length}</div>
+                    <DivTaskLeg>task: {taskDay.length}</DivTaskLeg>
                     <SelectLow>
                       {taskDay.map(({ title, priority }) => {
                         const id = nanoid();

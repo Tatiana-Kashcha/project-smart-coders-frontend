@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
+export const DivTaskLeg = styled.div`
+  border: solid 1px #111111;
+  border-radius: 8px;
+  padding: 8px 4px;
+  background-color: tomato;
+`;
+
 export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -38,8 +45,9 @@ export const CalendarGridWrapper = styled.div`
   :focus,
   :hover ul {
     opacity: 1;
-    visibility: visible:
-  };
+    visibility: visible;
+    transform: translate(50%, -100%);
+  }
 `;
 
 export const RowInCell = styled.div`
@@ -62,10 +70,7 @@ export const CellWrapper = styled.div`
 export const DayWrapper = styled.div`
   width: 24px;
   height: 26px;
-  display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex-direction: column;
   border-radius: solid 1px #111111;
   font-family: Inter;
   font-weight: 700;
@@ -130,12 +135,17 @@ export const DivSelectLow = styled.div`
 export const SelectLow = styled.ul`
   position: absolute;
   opacity: 0;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 15px);
   border-radius: 15%;
   background-color: ${globalTheme.colors.lowTasksBg};
   border: none;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
+  visibility: hidden;
+  transition: all 0.5s ease;
 `;
 
 export const OptionSelectLow = styled.li`
