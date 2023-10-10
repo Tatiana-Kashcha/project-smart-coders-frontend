@@ -2,16 +2,24 @@ import styled from 'styled-components';
 // import { globalTheme } from 'theme';
 
 export const Card = styled.div`
-  width: 300px;
+  /* width: 300px; */
+  width: 100%;
   height: 112px;
+  margin-top: 28px;
   padding: 14px 14px 18px 14px;
   flex-shrink: 0;
+  gap: 30px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  /* align-items: stretch; */
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
   background-color: ${props => props.theme.colors.secondBackground};
+
+  @media screen and (min-width: 375px) {
+    width: 100%;
+    height: 108px;
+  }
 `;
 
 export const CardDescr = styled.div`
@@ -32,6 +40,7 @@ export const CardEl = styled.div`
   position: relative; 
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const CardAvAndPri = styled.div`
@@ -64,7 +73,7 @@ export const Elipse = styled.p`
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: 44px;
+  border-radius: 32px;
   border: 1.8px solid #3e85f3;
   background-color: #3e85f3;
 
@@ -74,8 +83,8 @@ export const Elipse = styled.p`
   color: ${props => props.theme.colors.primaryText};
 
   @media screen and (min-width: 768px) {
-    width: 44px;
-    height: 44px;
+    /* width: 32px;
+    height: 32px; */
 
     font-family: Inter;
     font-size: 18px;
@@ -90,7 +99,7 @@ export const Avatar = styled.img`
   border-radius: 44px;
 
   @media screen and (min-width: 768px) {
-    width: 44px;
-    height: 44px;
+    /* width: 32px;
+    height: 32px; */
   }
 `;

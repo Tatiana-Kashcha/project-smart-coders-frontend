@@ -11,11 +11,12 @@ export const TaskBtn = styled.button`
   padding: 14px 0 14px;
   font-weight: bold;
   font-size: 14px;
-
+  margin-top: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 export const PlusIcon = styled(Plus)`
   fill: ${globalTheme.colors.closeButton};
   width: 24px;
