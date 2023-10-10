@@ -9,7 +9,6 @@ import { nanoid } from 'nanoid';
 
 import { selectTasks } from 'redux/tasks/selectors';
 import { TaskColumnCard } from 'components/TaskColumnCard/TaskColumnCard';
-// import { ColumnTasksList } from 'components/ColumnTasksList/ColumnTasksList';
 import { ColumnHeadBar } from 'components/ColumnHeadBar/ColumnHeadBar';
 import { AddTaskBtn } from 'components/AddTaskBtn/AddTaskBtn';
 import * as s from './TasksColumn.styled';
@@ -34,7 +33,6 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
           );
         })}
       </ul>
-      {/* <s.DivList><ColumnTasksList tasks={tasks} /></s.DivList> */}
 
       <AddTaskBtn groupId={groupId} />
     </s.TasksCol>

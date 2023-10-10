@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDate } from 'hooks/useDate';
+import { useSelector } from 'react-redux';
+import { selectTasks } from 'redux/tasks/selectors';
 import moment from 'moment';
+import { nanoid } from 'nanoid';
 import {
   CalendarGridWrapper,
   CellWrapper,
@@ -26,6 +29,7 @@ moment.updateLocale('en', {
 const CalendarTable = () => {
   const { choosedDate } = useDate();
   const selectedMonth = moment(choosedDate).month();
+  const task = useSelector(selectTasks);
 
   const [calendarDays, setCalendarDays] = useState([]);
   const [initialDate, setInitialDate] = useState(
@@ -53,33 +57,46 @@ const CalendarTable = () => {
   return (
     <div>
       <CalendarGridWrapper>
-        {calendarDays.map(dayItem => (
-          <CellWrapper key={dayItem.format('DDMMYYYY')}>
-            <DayWrapper>
-              <RowInCell>
-                {dayItem.month() === selectedMonth ? (
-                  <span
-                    style={{
-                      color: dayItem.isSame(moment(), 'day') ? '#3e85f3' : null,
-                    }}
-                  >
-                    {dayItem.format('D')}
-                  </span>
-                ) : null}
-              </RowInCell>
+        {calendarDays.map(dayItem => {
+          const taskDay = task.filter(({ date }) => {
+            return date === dayItem.format('YYYY-MM-DD');
+          });
+          // console.log(dayItem.format('MM-DD'), taskDay);
+          return (
+            <CellWrapper key={dayItem.format('DDMMYYYY')}>
+              <DayWrapper>
+                <RowInCell>
+                  {dayItem.month() === selectedMonth ? (
+                    <span
+                      style={{
+                        color: dayItem.isSame(moment(), 'day')
+                          ? '#3e85f3'
+                          : null,
+                      }}
+                    >
+                      {dayItem.format('DD')}
+                    </span>
+                  ) : null}
+                </RowInCell>
 
-              {dayItem.month() === selectedMonth ? (
-                <DivSelectLow>
-                  <SelectLow id="low" name="low">
-                    <OptionSelectLow value="E">Extranh </OptionSelectLow>
-                    <OptionSelectLow value="S"> Small</OptionSelectLow>
-                    <OptionSelectLow value="l">Large</OptionSelectLow>
-                  </SelectLow>
-                </DivSelectLow>
-              ) : null}
-            </DayWrapper>
-          </CellWrapper>
-        ))}
+                {taskDay.length !== 0 ? (
+                  <DivSelectLow>
+                    <SelectLow id="low" name="low">
+                      {taskDay.map(({ title, priority }) => {
+                        const id = nanoid();
+                        return (
+                          <OptionSelectLow key={id} priority={priority}>
+                            {title}, {priority}
+                          </OptionSelectLow>
+                        );
+                      })}
+                    </SelectLow>
+                  </DivSelectLow>
+                ) : null}
+              </DayWrapper>
+            </CellWrapper>
+          );
+        })}
       </CalendarGridWrapper>
     </div>
   );

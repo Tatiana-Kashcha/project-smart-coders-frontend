@@ -133,6 +133,18 @@ export const SelectLow = styled.select`
 
 export const OptionSelectLow = styled.option`
   color: ${globalTheme.colors.primary};
+  background: ${props => {
+    switch (props.priority) {
+      case 'medium':
+        return 'yellow';
+      case 'low':
+        return '#008000';
+      case 'high':
+        return '#FF0000';
+      default:
+        return '#72c2f8';
+    }
+  }};
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
