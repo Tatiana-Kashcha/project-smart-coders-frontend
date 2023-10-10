@@ -46,7 +46,7 @@ export const CalendarGridWrapper = styled.div`
   :hover ul {
     opacity: 1;
     visibility: visible;
-    transform: translate(50%, -100%);
+    transform: translate(50%, -80%);
   }
 `;
 
