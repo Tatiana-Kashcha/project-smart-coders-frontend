@@ -23,6 +23,7 @@ export const TasksCol = styled.div`
     padding: 18px 20px 28px 20px;
   }
 
+
   @media (min-width: 375px) {
     margin-top: 28px;
   }
@@ -37,7 +38,22 @@ export const TasksScroll = styled.ul`
 export const DivList = styled.div`
   margin-top: 24px;
 
-  @media (min-width: 320px) {
+  @media (min-width: 375px) {
+
     margin-top: 28px;
   }
 `;
+
+export const TasksScroll = styled.ul`
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+`;
+
+// export const DivList = styled.div`
+//   margin-top: 24px;
+
+//   @media (min-width: 320px) {
+//     margin-top: 28px;
+//   }
+// `;

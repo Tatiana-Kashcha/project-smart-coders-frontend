@@ -3,6 +3,7 @@ import { ReactComponent as PlusBtn } from '../../icons/plus-circle.svg';
 
 export const ColumnHB = styled.div`
   width: 100%;
+
   padding: 7px 0 7px;
   display: flex;
   justify-content: space-between;

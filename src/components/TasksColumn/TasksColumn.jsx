@@ -40,9 +40,10 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
                 priority={priority}
               />
             </s.TasksScroll>
+
           );
         })}
-      </ul>
+      </s.TasksScroll>
       {/* <s.DivList><ColumnTasksList tasks={tasks} /></s.DivList> */}
 
       <AddTaskBtn groupId={groupId} />
