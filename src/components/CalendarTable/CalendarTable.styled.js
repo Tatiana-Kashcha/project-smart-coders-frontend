@@ -227,7 +227,11 @@ export const CarrDayItem = styled.span`
   color: ${props => (props.isToday || props.isSelected ? '#fff' : 'inherit')};
   font-family: Inter;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1, 12;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;

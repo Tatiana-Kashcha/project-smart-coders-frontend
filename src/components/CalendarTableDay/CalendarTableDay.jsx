@@ -2,23 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useDate } from 'hooks/useDate';
 import moment from 'moment';
-import {
-  CalendarGridWrapperDay,
-  CellWrapperDay,
-  DayWrapperDay,
-  RowInCellDay,
-  // CurrDay,
-  StyledDayItem,
-  // DivSelectLow,
-  // SelectLow,
-  // OptionSelectLow,
-  // DivSelectMedium,
-  // SelectMedium,
-  // OptionSelectMedium,
-  // DivSelectHigh,
-  // SelectHigh,
-  // OptionSelectHigh,
-} from './CalendarTableDay.styled';
+import * as s from './CalendarTableDay.styled';
 
 moment.updateLocale('en', {
   week: {
@@ -61,22 +45,22 @@ const CalendarTableDay = () => {
 
   return (
     <div>
-      <CalendarGridWrapperDay>
+      <s.CalendarGridWrapperDay>
         {calendarDays.map(dayItem => (
-          <CellWrapperDay key={dayItem.format('DD')}>
-            <DayWrapperDay>
-              <RowInCellDay>
-                <StyledDayItem
+          <s.CellWrapperDay key={dayItem.format('DD')}>
+            <s.DayWrapperDay>
+              <s.RowInCellDay>
+                <s.StyledDayItem
                   isSelected={dayItem.isSame(selectedDate, 'day')}
                   onClick={() => handleDayClick(dayItem)}
                 >
                   {dayItem.format('D')}
-                </StyledDayItem>
-              </RowInCellDay>
-            </DayWrapperDay>
-          </CellWrapperDay>
+                </s.StyledDayItem>
+              </s.RowInCellDay>
+            </s.DayWrapperDay>
+          </s.CellWrapperDay>
         ))}
-      </CalendarGridWrapperDay>
+      </s.CalendarGridWrapperDay>
     </div>
   );
 };
