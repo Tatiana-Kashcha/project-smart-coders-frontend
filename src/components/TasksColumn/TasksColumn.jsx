@@ -18,11 +18,17 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
   const tasks = useSelector(selectTasks);
   const params = useParams();
 
+  const groupTitleOptimised = groupTitle
+    .trim()
+    .toLowerCase()
+    .split(' ')
+    .join('-'); //! add optimisation
+
   const inProgress = useMemo(() => {
     return tasks.filter(({ category, date }) => {
-      return category === groupTitle && date === params.currrentDay;
+      return category === groupTitleOptimised && date === params.currrentDay;
     });
-  }, [tasks, groupTitle, params.currrentDay]);
+  }, [tasks, groupTitleOptimised, params.currrentDay]);
 
   return (
     <s.TasksCol>
