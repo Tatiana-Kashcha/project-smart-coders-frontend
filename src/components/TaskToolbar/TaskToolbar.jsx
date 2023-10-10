@@ -51,7 +51,6 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
 
   const takeChosedTask = () => {
     const chosedTask = tasks.filter(task => task._id === taskId)[0];
-    console.log('chosedTask from takeChosedTask', chosedTask);
 
     return chosedTask;
   };
