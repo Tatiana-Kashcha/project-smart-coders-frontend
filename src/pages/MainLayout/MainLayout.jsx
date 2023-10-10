@@ -15,6 +15,7 @@ export default function MainLayout() {
   );
 
   const [showSideBar, setShowSideBar] = useState(mediaQuery.matches);
+  const [shownBurger, setShowBurger] = useState(true);
 
   useEffect(() => {
     const handleResize = evt => {
@@ -27,10 +28,14 @@ export default function MainLayout() {
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
     };
-  }, [mediaQuery, showSideBar]); //?
+  }, [mediaQuery, showSideBar]);
 
   const onSideBar = () => {
     setShowSideBar(prevState => !prevState);
+  };
+
+  const togglshownBurger = () => {
+    setShowBurger(prevState => !prevState);
   };
 
   const onRedirect = () => {
@@ -40,12 +45,20 @@ export default function MainLayout() {
   return (
     <>
       {(mediaQuery.matches || showSideBar) && (
-        <SideBar onSideBar={onSideBar} onRedirect={onRedirect} />
+        <SideBar
+          togglshownBurger={togglshownBurger}
+          onSideBar={onSideBar}
+          onRedirect={onRedirect}
+        />
       )}
       <s.SectionHeader>
         <Container>
           <s.DivStyled>
-            <Header onSideBar={onSideBar} />
+            <Header
+              shownBurger={shownBurger}
+              togglshownBurger={togglshownBurger}
+              onSideBar={onSideBar}
+            />
           </s.DivStyled>
         </Container>
       </s.SectionHeader>

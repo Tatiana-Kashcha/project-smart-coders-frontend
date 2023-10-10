@@ -4,7 +4,7 @@ import { globalTheme } from 'theme';
 export const Division = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -52,4 +52,5 @@ export const SubDivision = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: auto;
 `;

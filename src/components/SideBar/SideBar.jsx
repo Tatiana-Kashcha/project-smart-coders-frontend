@@ -7,7 +7,7 @@ import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
 import { globalTheme } from 'theme';
 import * as s from './SideBar.styled';
 
-const SideBar = ({ onSideBar, onRedirect }) => {
+const SideBar = ({ togglshownBurger, onSideBar, onRedirect }) => {
   const mediaQuery = window.matchMedia(
     `(max-width: calc(${globalTheme.breakpoints.desktop} - 0.5px))`
   );
@@ -37,7 +37,10 @@ const SideBar = ({ onSideBar, onRedirect }) => {
             <s.CloseBtn
               type="button"
               aria-label="Close"
-              onClick={() => onSideBar()}
+              onClick={() => {
+                onSideBar();
+                togglshownBurger();
+              }}
             >
               <s.IconWrap>
                 <s.IconClose />

@@ -15,25 +15,40 @@ import { AddTaskBtn } from 'components/AddTaskBtn/AddTaskBtn';
 import * as s from './TasksColumn.styled';
 
 export const TasksColumn = ({ groupTitle, groupId }) => {
-  const task = useSelector(selectTasks);
+  const tasks = useSelector(selectTasks);
   const params = useParams();
 
+  const groupTitleOptimised = groupTitle
+    .trim()
+    .toLowerCase()
+    .split(' ')
+    .join('-'); //! add optimisation
+
   const inProgress = useMemo(() => {
-    return task.filter(({ category, date }) => {
-      return category === groupTitle && date === params.currrentDay;
+    return tasks.filter(({ category, date }) => {
+      return category === groupTitleOptimised && date === params.currrentDay;
     });
-  }, [task, groupTitle, params.currrentDay]);
+  }, [tasks, groupTitleOptimised, params.currrentDay]);
+
   return (
     <s.TasksCol>
       <ColumnHeadBar title={groupTitle} columnId={groupId} />
-      <ul>
-        {inProgress.map(({ title, priority }) => {
+      <s.TasksScroll>
+        {inProgress.map(({ _id, title, priority }) => {
           const id = nanoid();
           return (
-            <TaskColumnCard key={id} description={title} priority={priority} />
+            <li>
+              <TaskColumnCard
+                key={id}
+                taskId={_id}
+                groupTitle={groupTitle}
+                description={title}
+                priority={priority}
+              />
+            </li>
           );
         })}
-      </ul>
+      </s.TasksScroll>
       {/* <s.DivList><ColumnTasksList tasks={tasks} /></s.DivList> */}
 
       <AddTaskBtn groupId={groupId} />
