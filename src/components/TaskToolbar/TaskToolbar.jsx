@@ -19,18 +19,18 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
   let lowerChoseCategoryBtn;
   switch (categoryTitle) {
     case 'in-progress':
-      topChoseCategoryBtn = 'to-do';
-      lowerChoseCategoryBtn = 'done';
+      topChoseCategoryBtn = 'To do';
+      lowerChoseCategoryBtn = 'Done';
       break;
 
     case 'to-do':
-      topChoseCategoryBtn = 'in-progress';
-      lowerChoseCategoryBtn = 'done';
+      topChoseCategoryBtn = 'In progress';
+      lowerChoseCategoryBtn = 'Done';
       break;
 
     case 'done':
-      topChoseCategoryBtn = 'in-progress';
-      lowerChoseCategoryBtn = 'to-do';
+      topChoseCategoryBtn = 'In progress';
+      lowerChoseCategoryBtn = 'To do';
       break;
 
     default:
