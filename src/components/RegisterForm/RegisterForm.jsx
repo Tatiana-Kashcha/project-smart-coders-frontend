@@ -56,7 +56,7 @@ export const RegisterForm = () => {
               password: values.password,
             })
           );
-
+          Notify.success('Success');
           navigate('/calendar');
           resetForm();
         }
