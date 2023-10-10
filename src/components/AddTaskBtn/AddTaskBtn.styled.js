@@ -16,6 +16,7 @@ export const TaskBtn = styled.button`
   justify-content: center;
   align-items: center;
 `;
+
 export const PlusIcon = styled(Plus)`
   fill: ${globalTheme.colors.closeButton};
   width: 24px;
