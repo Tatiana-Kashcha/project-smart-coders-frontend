@@ -35,6 +35,11 @@ export const CalendarGridWrapper = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
   }
+  :focus,
+  :hover ul {
+    opacity: 1;
+    visibility: visible:
+  };
 `;
 
 export const RowInCell = styled.div`
@@ -122,7 +127,9 @@ export const DivSelectLow = styled.div`
   right: 120%;
 `;
 
-export const SelectLow = styled.select`
+export const SelectLow = styled.ul`
+  position: absolute;
+  opacity: 0;
   border-radius: 15%;
   background-color: ${globalTheme.colors.lowTasksBg};
   border: none;
@@ -131,7 +138,7 @@ export const SelectLow = styled.select`
   line-height: 1.28;
 `;
 
-export const OptionSelectLow = styled.option`
+export const OptionSelectLow = styled.li`
   color: ${globalTheme.colors.primary};
   background: ${props => {
     switch (props.priority) {
@@ -151,74 +158,4 @@ export const OptionSelectLow = styled.option`
   width: 94px;
   height: 26px;
   border-radius: 8px;
-`;
-
-export const DivSelectMedium = styled.div`
-  position: absolute;
-  top: 100%;
-  right: 120%;
-`;
-
-export const SelectMedium = styled.select`
-  border-radius: 15%;
-  background-color: ${globalTheme.colors.lightYellow};
-  border: none;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.28;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-export const OptionSelectMedium = styled.option`
-  color: ${globalTheme.colors.mainYellow};
-`;
-
-export const DivSelectHigh = styled.div`
-  position: absolute;
-  top: 180%;
-  right: 120%;
-`;
-
-export const SelectHigh = styled.select`
-  border-radius: 15%;
-  background-color: ${globalTheme.colors.lightRed};
-  border: none;
-  font-size: 14px;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-export const OptionSelectHigh = styled.option`
-  color: ${globalTheme.colors.mainRed};
-`;
-
-export const HiddenTaskCount = styled.span`
-  color: green;
-  position: absolute;
-  left: 2px;
-  top: 15px;
-  font-style: italic;
-  font-size: 10px;
-  line-height: 1.4;
-  font-weight: 600;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    left: 2px;
-    top: 20px;
-
-    font-size: 14px;
-    line-height: 1.29;
-  }
-
-  @media (min-width: 1440px) {
-    left: 4px;
-    top: 25px;
-  }
 `;

@@ -81,12 +81,13 @@ const CalendarTable = () => {
 
                 {taskDay.length !== 0 ? (
                   <DivSelectLow>
-                    <SelectLow id="low" name="low">
+                    <div>{taskDay.length}</div>
+                    <SelectLow>
                       {taskDay.map(({ title, priority }) => {
                         const id = nanoid();
                         return (
                           <OptionSelectLow key={id} priority={priority}>
-                            {title}, {priority}
+                            {title}
                           </OptionSelectLow>
                         );
                       })}
