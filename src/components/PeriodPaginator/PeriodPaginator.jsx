@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
+import { useDate } from 'hooks/useDate';
+
 import * as s from './PeriodPaginator.styled';
 
 export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
   const [isActive, setIsActive] = useState(true);
+  const { setChoosedDate } = useDate();
 
   useEffect(() => {
     const currentDate = new Date();
@@ -13,10 +16,12 @@ export const PeriodPaginator = ({ date, periodType, upDateDate }) => {
       date.setDate(date.getDate()) > currentDate.setDate(currentDate.getDate())
     ) {
       setIsActive(true);
+      setChoosedDate(date);
     } else {
       setIsActive(false);
+      setChoosedDate(date);
     }
-  }, [date]);
+  }, [date, setChoosedDate]);
 
   const currentMonth = dayjs(date).format('MMMM YYYY');
   const currentDay = dayjs(date).format('D MMM YYYY');

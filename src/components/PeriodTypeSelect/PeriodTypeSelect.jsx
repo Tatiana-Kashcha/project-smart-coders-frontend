@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as s from './PeriodTypeSelect.styled';
 
-export const PeriodTypeSelect = ({ handleChange }) => {
+export const PeriodTypeSelect = ({ handleChange, periodType }) => {
   const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    if (periodType === 'month') {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [periodType]);
 
   const handleClick = e => {
     const { name } = e.target;

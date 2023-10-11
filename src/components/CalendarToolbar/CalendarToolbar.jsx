@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
@@ -12,18 +12,21 @@ import * as s from './CalendarToolbar.styled';
 
 export const CalendarToolbar = ({ periodType, handleChange }) => {
   const { choosedDate, setChoosedDate } = useDate();
-  const [date, setDate] = useState(choosedDate);
   const { getAllTasks } = useTasks();
 
   const navigate = useNavigate();
-  const monthMod = dayjs(date).format('MM');
-  const yearMod = dayjs(date).format('YYYY');
-  const currentMonthModify = dayjs(date).format('MMMM-YYYY').toLowerCase();
-  const currentDayModify = dayjs(date).format('YYYY-MM-DD').toLowerCase();
+  const monthMod = dayjs(choosedDate).format('MM');
+  const yearMod = dayjs(choosedDate).format('YYYY');
+  const currentMonthModify = dayjs(choosedDate)
+    .format('MMMM-YYYY')
+    .toLowerCase();
+  const currentDayModify = dayjs(choosedDate)
+    .format('YYYY-MM-DD')
+    .toLowerCase();
 
   useEffect(() => {
-    setChoosedDate(date);
-  }, [date, setChoosedDate]);
+    setChoosedDate(choosedDate);
+  }, [choosedDate, setChoosedDate]);
 
   useEffect(() => {
     if (periodType === 'month') {
@@ -31,7 +34,7 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
     } else {
       navigate(`/calendar/day/${currentDayModify}`);
     }
-  }, [periodType, currentMonthModify, currentDayModify, navigate]);
+  }, [choosedDate, currentDayModify, currentMonthModify, navigate, periodType]);
 
   useEffect(() => {
     getAllTasks({ month: monthMod, year: yearMod });
@@ -39,20 +42,20 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
 
   const upDateDate = PlusOrMinus => {
     if (periodType === 'month') {
-      const newDateMonth = new Date(date);
+      const newDateMonth = new Date(choosedDate);
       newDateMonth.setMonth(newDateMonth.getMonth() + PlusOrMinus);
-      setDate(newDateMonth);
+      setChoosedDate(newDateMonth);
     } else {
-      const newDateDay = new Date(date);
+      const newDateDay = new Date(choosedDate);
       newDateDay.setDate(newDateDay.getDate() + PlusOrMinus);
-      setDate(newDateDay);
+      setChoosedDate(newDateDay);
     }
   };
 
   return (
     <s.ToolbarWrapper>
       <PeriodPaginator
-        date={date}
+        date={choosedDate}
         periodType={periodType}
         upDateDate={upDateDate}
       />

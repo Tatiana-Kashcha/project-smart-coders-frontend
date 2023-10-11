@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
 export const DivTaskLeg = styled.div`
-  border: solid 1px #111111;
   border-radius: 8px;
   padding-left: 8px;
 `;
@@ -35,7 +34,6 @@ export const CalendarGridWrapper = styled.div`
   transition-timing-function: linear;
   :focus,
   :hover {
-    transform: scale(1.05);
     z-index: 1;
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
