@@ -150,13 +150,13 @@ export const OptionSelectLow = styled.li`
   background: ${props => {
     switch (props.priority) {
       case 'medium':
-        return 'yellow';
+        return globalTheme.colors.lightYellow;
       case 'low':
-        return '#008000';
+        return globalTheme.colors.lowTasksBg;
       case 'high':
-        return '#FF0000';
+        return globalTheme.colors.lightRed;
       default:
-        return '#72c2f8';
+        return globalTheme.colors.lowTasksBg;
     }
   }};
   text-overflow: ellipsis;
