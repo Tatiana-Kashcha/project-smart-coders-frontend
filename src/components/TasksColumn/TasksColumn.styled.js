@@ -30,6 +30,9 @@ export const TasksCol = styled.div`
 `;
 
 export const TasksScroll = styled.ul`
+  margin-right: -14px;
+  padding-right: 6px;
+
   height: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
