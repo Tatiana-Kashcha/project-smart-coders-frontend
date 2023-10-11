@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Notify } from 'notiflix';
 import { login, register } from 'redux/auth/authOperations';
 import { RegisterSchema } from './RegisterSchema';
 
@@ -56,16 +56,16 @@ export const RegisterForm = () => {
               password: values.password,
             })
           );
-
+          Notify.success('Success');
           navigate('/calendar');
           resetForm();
         }
 
         if (outcomeAction.type === 'auth/register/rejected') {
-          toast.error(outcomeAction.payload.response.data.message);
+          Notify.failure(outcomeAction.payload.response.data.message);
         }
       } catch (error) {
-        toast.error('Something went wrong... Try again!');
+        Notify.failure('Something went wrong... Try again!');
       }
     },
   });

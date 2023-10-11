@@ -81,7 +81,7 @@ const UserForm = () => {
                       />
                     </label>
                   ) : userInfo.avatarURL ? (
-                    <label for="avatar">
+                    <label htmlFor="avatar">
                       <S.ImgAvatar src={userInfo.avatarURL} alt="Avatar" />
                     </label>
                   ) : (
@@ -98,7 +98,7 @@ const UserForm = () => {
                     setIsFormChanged(true);
                   }}
                 />
-                <label for="avatar">
+                <label htmlFor="avatar">
                   <S.AddIcon />
                 </label>
               </div>
