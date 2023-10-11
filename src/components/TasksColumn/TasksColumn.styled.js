@@ -1,43 +1,44 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const TasksCol = styled.div`
-  width: 100%;
-  max-height: 432px;
-  padding: 18px 18px 10px 18px;
-
-  border: 1px solid #dce3e5;
-  border: ${props => props.theme.colors.userInputBorder};
-  border-radius: 7px;
-  background-color: ${props => props.theme.colors.secondBackground};
+  position: relative;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 
-  overflow-x: hidden;
-  /* overflow-y: scroll; */
-  scroll-behavior: smooth;
+  height: 432px;
+  min-width: 100%;
+  max-width: 335px;
+  margin-top: 14px;
+  padding: 18px 18px 10px;
 
-  @media (min-width: 768px) {
-    max-width: 344px;
-    max-height: 568px;
-    padding: 18px 20px 28px 20px;
+  border: ${props => props.theme.colors.userInputBorder};
+  border-radius: 8px;
+  background-color: ${props => props.theme.colors.secondBackground};
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    min-width: 344px;
+
+    height: 568px;
+    margin-top: 16px;
+    padding: 18px 20px 28px;
   }
 
-  @media (min-width: 375px) {
-    margin-top: 28px;
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    max-width: 344px;
   }
 `;
 
 export const TasksScroll = styled.ul`
-  overflow-x: hidden;
-  /* overflow-y: scroll; */
+  height: 100%;
+  /* overflow-y: hidden; */
+
+  overflow-y: auto;
   scroll-behavior: smooth;
 `;
 
-export const DivList = styled.div`
-  margin-top: 24px;
-
-  @media (min-width: 375px) {
-    margin-top: 28px;
+export const TasksScrollItem = styled.li`
+  &:last-child {
+    margin-bottom: 80px;
   }
 `;

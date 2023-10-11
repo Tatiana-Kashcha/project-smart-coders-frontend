@@ -2,6 +2,8 @@ import styled from 'styled-components';
 // import { globalTheme } from 'theme';
 
 export const Card = styled.div`
+  position: relative; //!?
+
   /* width: 300px; */
   width: 100%;
   height: 112px;
@@ -23,7 +25,6 @@ export const Card = styled.div`
 `;
 
 export const CardDescr = styled.div`
-  width: 296px;
   height: 16px;
   flex-shrink: 0;
   overflow: hidden;
@@ -31,13 +32,12 @@ export const CardDescr = styled.div`
   white-space: nowrap;
   color: ${props => props.theme.colors.primaryText};
   font-size: 14px;
-  font-style: normal;
+
   font-weight: 500;
   line-height: 18px;
 `;
 
 export const CardEl = styled.div`
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
