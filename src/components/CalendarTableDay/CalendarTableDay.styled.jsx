@@ -5,7 +5,7 @@ export const CalendarGridWrapperDay = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   width: 100%;
-  height: 100%;
+
   margin: 0;
   display: flex;
 
