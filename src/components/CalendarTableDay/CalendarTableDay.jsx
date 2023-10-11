@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDate } from 'hooks/useDate';
 import moment from 'moment';
 import * as s from './CalendarTableDay.styled';
+import { StyleSheetManager } from 'styled-components';
 
 moment.updateLocale('en', {
   week: {
@@ -11,8 +12,7 @@ moment.updateLocale('en', {
 });
 
 const CalendarTableDay = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const { choosedDate } = useDate();
+  const { choosedDate, setChoosedDate } = useDate();
   const selectedMonth = moment(choosedDate).month();
 
   const [calendarDays, setCalendarDays] = useState([]);
@@ -20,7 +20,7 @@ const CalendarTableDay = () => {
     moment(choosedDate).startOf('week')
   );
   const handleDayClick = day => {
-    setSelectedDate(day);
+    setChoosedDate(day.toDate());
   };
 
   useEffect(() => {
@@ -33,8 +33,6 @@ const CalendarTableDay = () => {
     const endDay = moment(initialDate).endOf('week').endOf('day');
     const calendar = [];
 
-    // Здесь вы можете выполнить дополнительные действия при выборе даты
-
     while (!day.isAfter(endDay)) {
       calendar.push(day.clone());
       day.add(1, 'day');
@@ -44,14 +42,15 @@ const CalendarTableDay = () => {
   }, [initialDate]);
 
   return (
-    <div>
+    <StyleSheetManager shouldForwardProp={prop => prop !== 'isSelected'}>
+      {' '}
       <s.CalendarGridWrapperDay>
         {calendarDays.map(dayItem => (
           <s.CellWrapperDay key={dayItem.format('DD')}>
             <s.DayWrapperDay>
               <s.RowInCellDay>
                 <s.StyledDayItem
-                  isSelected={dayItem.isSame(selectedDate, 'day')}
+                  isSelected={dayItem.isSame(choosedDate, 'day')}
                   onClick={() => handleDayClick(dayItem)}
                 >
                   {dayItem.format('D')}
@@ -61,7 +60,7 @@ const CalendarTableDay = () => {
           </s.CellWrapperDay>
         ))}
       </s.CalendarGridWrapperDay>
-    </div>
+    </StyleSheetManager>
   );
 };
 

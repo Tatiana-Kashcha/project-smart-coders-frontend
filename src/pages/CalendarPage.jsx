@@ -18,6 +18,7 @@ export default function CalendarPage() {
   const year = currentDate.setFullYear(currentDate.getFullYear());
   const monthMod = dayjs(month).format('MM');
   const yearMod = dayjs(year).format('YYYY');
+
   const isFirstVisit = useMemo(() => {
     const storedValue = sessionStorage.getItem('isFirstVisit');
     return storedValue ? JSON.parse(storedValue) : true;
@@ -27,7 +28,7 @@ export default function CalendarPage() {
     if (isFirstVisit) {
       sessionStorage.setItem('isFirstVisit', 'false');
     } else {
-      setPeriodType('month');
+      setPeriodType('day');
     }
   }, [isFirstVisit]);
 

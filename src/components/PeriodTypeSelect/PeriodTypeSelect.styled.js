@@ -30,6 +30,8 @@ export const ButtonMonth = styled.button`
       ? props.theme.colors.periodTypeBtnActive
       : props.theme.colors.periodTypeBtnNotActive};
 
+  cursor: pointer;
+
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     font-size: 16px;
   }
@@ -57,6 +59,8 @@ export const ButtonDay = styled.button`
     props.disabled
       ? props.theme.colors.periodTypeBtnActive
       : props.theme.colors.periodTypeBtnNotActive};
+
+  cursor: pointer;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     font-size: 16px;

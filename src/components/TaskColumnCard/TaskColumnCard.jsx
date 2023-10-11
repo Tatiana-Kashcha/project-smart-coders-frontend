@@ -6,6 +6,7 @@ import { TaskToolbar } from 'components/TaskToolbar/TaskToolbar';
 import { TaskModal } from 'components/TaskModal/TaskModal';
 
 import * as s from './TaskColumnCard.styled';
+import { StyleSheetManager } from 'styled-components';
 
 export const TaskColumnCard = props => {
   const user = useSelector(selectUser);
@@ -22,20 +23,22 @@ export const TaskColumnCard = props => {
   };
 
   return (
-    <s.Card>
-      <s.CardDescr>{description}</s.CardDescr>
-      <s.CardEl>
-        <s.CardAvAndPri>
-          {avatar === '' ? (
-            <s.Elipse>{bigFirstLeter}</s.Elipse>
-          ) : (
-            <s.Elipse>{<s.Avatar src={avatar} alt="avatar" />}</s.Elipse>
-          )}
-          <s.Priority priority={priority}>{priority}</s.Priority>
-        </s.CardAvAndPri>
-        <TaskToolbar taskId={taskId} categoryTitle={groupTitle} />
-      </s.CardEl>
-      {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />}
-    </s.Card>
+    <StyleSheetManager shouldForwardProp={prop => prop !== 'priority'}>
+      <s.Card>
+        <s.CardDescr>{description}</s.CardDescr>
+        <s.CardEl>
+          <s.CardAvAndPri>
+            {avatar === '' ? (
+              <s.Elipse>{bigFirstLeter}</s.Elipse>
+            ) : (
+              <s.Elipse>{<s.Avatar src={avatar} alt="avatar" />}</s.Elipse>
+            )}
+            <s.Priority priority={priority}>{priority}</s.Priority>
+          </s.CardAvAndPri>
+          <TaskToolbar taskId={taskId} categoryTitle={groupTitle} />
+        </s.CardEl>
+        {isModalOpen && <TaskModal onCloseModal={handleCloseModal} />}
+      </s.Card>
+    </StyleSheetManager>
   );
 };

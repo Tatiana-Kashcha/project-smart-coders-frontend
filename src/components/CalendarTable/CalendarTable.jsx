@@ -5,6 +5,7 @@ import { selectTasks } from 'redux/tasks/selectors';
 import moment from 'moment';
 import { nanoid } from 'nanoid';
 import * as s from './CalendarTable.styled';
+import { StyleSheetManager } from 'styled-components';
 
 moment.updateLocale('en', {
   week: {
@@ -17,7 +18,6 @@ const CalendarTable = () => {
   const selectedMonth = moment(choosedDate).month();
   const task = useSelector(selectTasks);
 
-  // const [selectedDate] = useState(moment());
   const [calendarDays, setCalendarDays] = useState([]);
   const [initialDate, setInitialDate] = useState(
     moment(choosedDate).startOf('week')
@@ -42,7 +42,10 @@ const CalendarTable = () => {
   }, [initialDate]);
 
   return (
-    <div>
+    <StyleSheetManager
+      shouldForwardProp={prop => prop !== 'isSelected' && prop !== 'isToday'}
+    >
+      {' '}
       <s.CalendarGridWrapper>
         {calendarDays.map(dayItem => {
           const taskDay = task.filter(({ date }) => {
@@ -129,7 +132,7 @@ const CalendarTable = () => {
           );
         })}
       </s.CalendarGridWrapper>
-    </div>
+    </StyleSheetManager>
   );
 };
 
