@@ -23,8 +23,7 @@ export const TaskForm = styled(Form)`
   text-align: left;
 
   @media (min-width: 768px) {
-    padding: 24px 0px;
-    height: 360px;
+    height: 280px;
   }
 `;
 

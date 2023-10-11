@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
+import { Notify } from 'notiflix';
 
 import { useDispatch } from 'react-redux';
 import * as s from './TaskForm.styled';
@@ -64,7 +65,14 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
           date: `${currentDate}`,
           category: groupId,
         })
-      );
+      )
+        .then(() => {
+          Notify.success('Task created');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
 
     const changedTask = {
@@ -81,9 +89,15 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
           taskId: task._id,
           changedTask,
         })
-      );
+      )
+        .then(() => {
+          Notify.success('Task changed');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
-    onClose();
   };
 
   return (
