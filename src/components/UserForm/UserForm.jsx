@@ -10,6 +10,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { UserValidSchema } from './UserValidSchema';
 import { updateUser } from '../../redux/user/operations';
 import { selectUser } from '../../redux/auth/selectors';
+import { refresh } from 'redux/auth/authOperations';
 
 import * as S from './UserForm.styled';
 import { DatePickerStyled, PopperDateStyles } from './DatePicker.styled';
@@ -40,6 +41,7 @@ const UserForm = () => {
 
     try {
       await dispatch(updateUser(formData));
+      await dispatch(refresh());
       Notify.success('Profile data changed successfully');
     } catch {
       Notify.failure('Something went wrong... Try again!');
