@@ -107,7 +107,7 @@ export const darkTheme = {
 
 export const globalTheme = {
   breakpoints: { mobile: '375px', tablet: '768px', desktop: '1440px' },
-  // ${globalTheme.colors.primary} варіант
+
   colors: {
     primary: '#3e85f3',
     secondary: '#2b78ef',
@@ -137,12 +137,14 @@ export const globalTheme = {
     lowTasksBg: '#CEEEFD',
     reviewsSliderBorder: 'rgba(17, 17, 17, 0.1)',
     reviewsSliderText: 'rgba(17, 17, 17, 0.7)',
+    mainBlue: '#72c2f8',
   },
 
   shadow: {
     boxShadow: '4px 2px 16px rgba(136, 165, 191, 0.48)',
     modalShadow: '0px 4px 57px rgba(17, 17, 17, 0.05)',
     modalHoverShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48)',
+    toolMenuShadow: '0px 4px 16px 0px rgba(17, 17, 17, 0.1)',
   },
 
   cubic: {

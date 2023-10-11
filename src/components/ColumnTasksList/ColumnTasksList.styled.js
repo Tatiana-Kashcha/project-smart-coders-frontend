@@ -5,7 +5,6 @@ export const DivTasksCol = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 0;
 
   @media (min-width: ${globalTheme.breakpoints.desktop}) {
     gap: 27px;

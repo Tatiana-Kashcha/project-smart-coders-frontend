@@ -17,10 +17,6 @@ export const TaskColumnCard = props => {
 
   const avatar = user.avatarURL;
 
-  // const handleEditClick = () => {
-  //   setIsModalOpen(true);
-  // };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
