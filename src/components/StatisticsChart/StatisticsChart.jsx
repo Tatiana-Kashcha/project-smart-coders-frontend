@@ -171,47 +171,36 @@ export default function StatisticsChart(props) {
   });
 
   const allTasksByMonth = useSelector(selectTasks);
-  console.log(allTasksByMonth);
 
   const allTasksToDo = allTasksByMonth.filter(
     task => task.category === 'to-do'
   ).length;
-  // console.log(allTasksToDo);
 
   const allTasksInProgress = allTasksByMonth.filter(
     task => task.category === 'in-progress'
   ).length;
-  // console.log(allTasksInProgress);
 
   const allTasksDone = allTasksByMonth.filter(
     task => task.category === 'done'
   ).length;
-  // console.log(allTasksDone);
 
-  // console.log(props.date);
   const dateMod = dayjs(props.date).format('YYYY-MM-DD');
-  console.log(dateMod);
-  // const dayOfSearch = '2023-10-08';
 
   const allTasksByDay = allTasksByMonth.filter(
     task => task.date === `${dateMod}`
   );
-  // console.log(allTasksByDay);
 
   const tasksByDayToDo = allTasksByDay.filter(
     task => task.category === 'to-do'
   ).length;
-  // console.log(tasksByDayToDo);
 
   const tasksByDayInProgress = allTasksByDay.filter(
     task => task.category === 'in-progress'
   ).length;
-  // console.log(tasksByDayInProgress);
 
   const tasksByDayDone = allTasksByDay.filter(
     task => task.category === 'done'
   ).length;
-  // console.log(tasksByDayDone);
 
   useEffect(() => {
     const chart = chartRef.current;
@@ -238,13 +227,11 @@ export default function StatisticsChart(props) {
     };
 
     setChartData(updatedData);
-    // console.log(updatedData);
 
     // Оновлення опцій графіка
     chart.options = getChartOptions(props);
-    // console.log(getChartOptions(props));
+
     chart.update();
-    // console.log('chart.update')
   }, [
     props,
     allTasksDone,

@@ -13,10 +13,7 @@ const UserInfo = () => {
 
   return (
     <>
-      {/* <s.Name>Nadiia</s.Name> */}
       <s.Name>{userName}</s.Name>
-
-      {/* <s.Elipse>N</s.Elipse> */}
 
       {avatar === '' ? (
         <s.Elipse>{bigFirstLeter}</s.Elipse>

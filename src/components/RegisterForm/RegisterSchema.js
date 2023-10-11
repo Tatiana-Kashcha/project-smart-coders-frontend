@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$/;
-const emailRegex = /^[a-z0-9.]+@[a-z]+\.[a-z]{2,3}$/;
 
 export const RegisterSchema = yup.object().shape({
   name: yup

@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$/;
-const emailRegex = /^[a-z0-9.]+@[a-z]+\.[a-z]{2,3}$/;
 
 export const LoginSchema = yup.object().shape({
   email: yup
@@ -15,6 +15,6 @@ export const LoginSchema = yup.object().shape({
     .max(30, 'Password must contain 30 characters or less')
     .matches(
       passwordRegex,
-      'Password should contain  at least eight characters and at least one number and one letter'
+      'Password should contain at least eight characters and at least one number and one letter'
     ),
 });
