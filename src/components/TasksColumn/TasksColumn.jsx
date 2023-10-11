@@ -29,7 +29,7 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
         {inProgress.map(({ title, priority }) => {
           const id = nanoid();
           return (
-            <li>
+            <li key={id}>
               <TaskColumnCard
                 key={id}
                 description={title}
