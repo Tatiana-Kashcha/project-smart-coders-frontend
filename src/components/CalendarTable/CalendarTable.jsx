@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDate } from 'hooks/useDate';
+import { useSelector } from 'react-redux';
+import { selectTasks } from 'redux/tasks/selectors';
 import moment from 'moment';
+import { nanoid } from 'nanoid';
 import * as s from './CalendarTable.styled';
 
 moment.updateLocale('en', {
@@ -12,7 +15,9 @@ moment.updateLocale('en', {
 const CalendarTable = () => {
   const { choosedDate } = useDate();
   const selectedMonth = moment(choosedDate).month();
-  const [selectedDate] = useState(moment());
+  const task = useSelector(selectTasks);
+
+  // const [selectedDate] = useState(moment());
   const [calendarDays, setCalendarDays] = useState([]);
   const [initialDate, setInitialDate] = useState(
     moment(choosedDate).startOf('week')
@@ -39,52 +44,90 @@ const CalendarTable = () => {
   return (
     <div>
       <s.CalendarGridWrapper>
-        {calendarDays.map(dayItem => (
-          <s.CellWrapper key={dayItem.format('DDMMYYYY')}>
-            <s.DayWrapper>
-              <s.RowInCell>
-                {dayItem.month() === selectedMonth ? (
-                  <s.CarrDayItem
-                    isSelected={dayItem.isSame(selectedDate, 'day')}
-                    isToday={dayItem.isSame(moment(), 'day')}
-                  >
-                    {dayItem.format('D')}
-                  </s.CarrDayItem>
-                ) : null}
-              </s.RowInCell>
+        {calendarDays.map(dayItem => {
+          const taskDay = task.filter(({ date }) => {
+            return date === dayItem.format('YYYY-MM-DD');
+          });
 
-              {dayItem.month() === selectedMonth ? (
-                <s.DivSelectLow>
-                  <s.SelectLow id="low" name="low">
-                    <s.OptionSelectLow value="E">Extranh </s.OptionSelectLow>
-                    <s.OptionSelectLow value="S"> Small</s.OptionSelectLow>
-                    <s.OptionSelectLow value="l">Large</s.OptionSelectLow>
-                  </s.SelectLow>
-                </s.DivSelectLow>
-              ) : null}
-              {dayItem.month() === selectedMonth ? (
-                <s.DivSelectMedium>
-                  <s.SelectMedium id="medium" name="medium">
-                    <s.OptionSelectMedium value="E">
-                      Extranh{' '}
-                    </s.OptionSelectMedium>
-                    <s.OptionSelectMedium value="S">Small</s.OptionSelectMedium>
-                    <s.OptionSelectMedium value="L">Large</s.OptionSelectMedium>
-                  </s.SelectMedium>
-                </s.DivSelectMedium>
-              ) : null}
-              {dayItem.month() === selectedMonth ? (
-                <s.DivSelectHigh>
-                  <s.SelectHigh id="high" name="high">
-                    <s.OptionSelectHigh value="E">Extranh </s.OptionSelectHigh>
-                    <s.OptionSelectHigh value="S">Small</s.OptionSelectHigh>
-                    <s.OptionSelectHigh value="l">Large</s.OptionSelectHigh>
-                  </s.SelectHigh>
-                </s.DivSelectHigh>
-              ) : null}
-            </s.DayWrapper>
-          </s.CellWrapper>
-        ))}
+          const doneTask = taskDay.filter(
+            ({ priority }) => priority === 'medium'
+          );
+          const todoTask = taskDay.filter(
+            ({ priority }) => priority === 'high'
+          );
+          const inprogressTask = taskDay.filter(
+            ({ priority }) => priority === 'low'
+          );
+          return (
+            <s.CellWrapper key={dayItem.format('DDMMYYYY')}>
+              <s.DayWrapper>
+                <s.RowInCell>
+                  {dayItem.month() === selectedMonth ? (
+                    <span
+                      style={{
+                        color: dayItem.isSame(moment(), 'day')
+                          ? '#3e85f3'
+                          : null,
+                      }}
+                    >
+                      {dayItem.format('DD')}
+                    </span>
+                  ) : null}
+                </s.RowInCell>
+
+                {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
+                  <>
+                    {inprogressTask.length !== 0 && (
+                      <s.DivSelectLow>
+                        <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
+                        <s.SelectLow>
+                          {inprogressTask.map(({ title, priority }) => {
+                            const id = nanoid();
+                            return (
+                              <s.OptionSelectLow key={id} priority={priority}>
+                                {title}
+                              </s.OptionSelectLow>
+                            );
+                          })}
+                        </s.SelectLow>
+                      </s.DivSelectLow>
+                    )}
+                    {doneTask.length !== 0 && (
+                      <s.DivSelectMedium>
+                        <s.DivTaskLeg>medium {doneTask.length}</s.DivTaskLeg>
+                        <s.SelectLow>
+                          {doneTask.map(({ title, priority }) => {
+                            const id = nanoid();
+                            return (
+                              <s.OptionSelectLow key={id} priority={priority}>
+                                {title}
+                              </s.OptionSelectLow>
+                            );
+                          })}
+                        </s.SelectLow>
+                      </s.DivSelectMedium>
+                    )}
+                    {todoTask.length !== 0 && (
+                      <s.DivSelectHigh>
+                        <s.DivTaskLeg>high {todoTask.length}</s.DivTaskLeg>
+                        <s.SelectLow>
+                          {todoTask.map(({ title, priority }) => {
+                            const id = nanoid();
+                            return (
+                              <s.OptionSelectLow key={id} priority={priority}>
+                                {title}
+                              </s.OptionSelectLow>
+                            );
+                          })}
+                        </s.SelectLow>
+                      </s.DivSelectHigh>
+                    )}
+                  </>
+                ) : null}
+              </s.DayWrapper>
+            </s.CellWrapper>
+          );
+        })}
       </s.CalendarGridWrapper>
     </div>
   );

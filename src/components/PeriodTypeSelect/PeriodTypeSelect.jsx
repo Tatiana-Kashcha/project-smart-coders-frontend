@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as s from './PeriodTypeSelect.styled';
 
 export const PeriodTypeSelect = ({ handleChange }) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
   const handleClick = e => {
     const { name } = e.target;
