@@ -30,7 +30,7 @@ export const ModalField = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 468px;
-    padding: 32px;
+    padding: 35px;
   }
 `;
 

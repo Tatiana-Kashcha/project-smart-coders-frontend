@@ -46,7 +46,7 @@ const FeedbackForm = ({ onClose, showSaveBtnRew, ratingRew, reviewRew }) => {
     if (showSaveBtn) {
       dispatch(createReview({ rating, comment: values.review.trim() }))
         .then(() => {
-          Notify.success('You have successfully created your review');
+          Notify.success('Review created');
           resetForm();
           onClose();
         })
@@ -58,7 +58,7 @@ const FeedbackForm = ({ onClose, showSaveBtnRew, ratingRew, reviewRew }) => {
     if (showEditBtn) {
       dispatch(updateReview({ rating, comment: values.review.trim() }))
         .then(() => {
-          Notify.success('You have successfully updated your review');
+          Notify.success('Review updated');
           resetForm();
           onClose();
         })
@@ -75,7 +75,7 @@ const FeedbackForm = ({ onClose, showSaveBtnRew, ratingRew, reviewRew }) => {
   const handleDelete = () => {
     dispatch(deleteReview(currentUser._id))
       .then(() => {
-        Notify.success('You have successfully deleted your review');
+        Notify.success('Review deleted');
         onClose();
       })
       .catch(error => {

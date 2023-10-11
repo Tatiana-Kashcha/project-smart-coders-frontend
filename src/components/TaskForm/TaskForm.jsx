@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
+import { Notify } from 'notiflix';
 
 import { useDispatch } from 'react-redux';
 import * as s from './TaskForm.styled';
@@ -57,18 +58,25 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
     if (showAddBtn) {
       dispatch(
         addTask({
-          title: values.title,
+          title: values.title.trim(),
           start: values.start,
           end: values.end,
           priority: values.priority,
           date: `${currentDate}`,
           category: groupId,
         })
-      );
+      )
+        .then(() => {
+          Notify.success('Task created');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
 
     const changedTask = {
-      title: values.title,
+      title: values.title.trim(),
       start: values.start,
       end: values.end,
       priority: values.priority,
@@ -81,9 +89,15 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
           taskId: task._id,
           changedTask,
         })
-      );
+      )
+        .then(() => {
+          Notify.success('Task changed');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
-    onClose();
   };
 
   return (
@@ -94,7 +108,7 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
         end: !showAddBtn ? task.end : currentTime,
         priority: !showAddBtn ? task.priority : 'low',
         date: `${currentDate}`,
-        category: !showAddBtn ? task.category : { groupId },
+        category: !showAddBtn ? task.category : groupId,
       }}
       validationSchema={TaskSchema}
       onSubmit={handleSubmit}
