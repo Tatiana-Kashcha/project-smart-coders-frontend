@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
 export const DivTaskLeg = styled.div`
-  border: solid 1px #111111;
   border-radius: 8px;
   padding-left: 8px;
 `;
