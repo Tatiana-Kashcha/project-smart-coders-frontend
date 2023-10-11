@@ -4,7 +4,6 @@ import { globalTheme } from 'theme';
 export const DivTaskLeg = styled.div`
   border: solid 1px #111111;
   border-radius: 8px;
-  padding: 8px 4px;
 `;
 
 export const CalendarGridWrapper = styled.div`
@@ -43,6 +42,7 @@ export const CalendarGridWrapper = styled.div`
   }
   :active > ul {
     opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -123,25 +123,19 @@ export const Day = styled.span`
 `;
 
 export const DivSelectLow = styled.div`
-  background: ${props => {
-    switch (props.priority) {
-      case 'to-do':
-        return 'yellow';
-      case 'done':
-        return '#008000';
-
-      default:
-        return '#72c2f8';
-    }
-  }};
+  position: absolute;
+  top: 20%;
+  height: 20px;
+  right: 120%;
+  background-color: ${globalTheme.colors.lowTasksBg};
 `;
 
 export const SelectLow = styled.ul`
-  position: absolute;
   opacity: 0;
+  visibility: hidden;
   top: 100%;
   left: 50%;
-  transform: translate(-50%, 15px);
+  transform: translate(-50%, -80%);
   border-radius: 15%;
   background-color: ${globalTheme.colors.lowTasksBg};
   border: none;
@@ -171,4 +165,20 @@ export const OptionSelectLow = styled.li`
   width: 94px;
   height: 26px;
   border-radius: 8px;
+`;
+
+export const DivSelectMedium = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 120%;
+  height: 20px;
+  background-color: ${globalTheme.colors.lightYellow};
+`;
+
+export const DivSelectHigh = styled.div`
+  position: absolute;
+  top: 180%;
+  right: 120%;
+  height: 20px;
+  background-color: ${globalTheme.colors.lightRed};
 `;

@@ -13,6 +13,8 @@ import {
   SelectLow,
   OptionSelectLow,
   DivTaskLeg,
+  DivSelectMedium,
+  DivSelectHigh,
 } from './CalendarTable.styled';
 // import * as s from './CalendarTable.styled';
 
@@ -60,13 +62,13 @@ const CalendarTable = () => {
           });
 
           const doneTask = taskDay.filter(
-            ({ category }) => category === 'done'
+            ({ priority }) => priority === 'medium'
           );
           const todoTask = taskDay.filter(
-            ({ category }) => category === 'to-do'
+            ({ priority }) => priority === 'high'
           );
           const inprogressTask = taskDay.filter(
-            ({ category }) => category === 'in-progress'
+            ({ priority }) => priority === 'low'
           );
           return (
             <CellWrapper key={dayItem.format('DDMMYYYY')}>
@@ -88,10 +90,8 @@ const CalendarTable = () => {
                 {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
                   <>
                     {inprogressTask.length !== 0 && (
-                      <DivSelectLow priority={'in-progress'}>
-                        <DivTaskLeg>
-                          in-progress{inprogressTask.length}
-                        </DivTaskLeg>
+                      <DivSelectLow>
+                        <DivTaskLeg>low{inprogressTask.length}</DivTaskLeg>
                         <SelectLow>
                           {inprogressTask.map(({ title, priority }) => {
                             const id = nanoid();
@@ -105,8 +105,8 @@ const CalendarTable = () => {
                       </DivSelectLow>
                     )}
                     {doneTask.length !== 0 && (
-                      <DivSelectLow priority={'done'}>
-                        <DivTaskLeg>done{doneTask.length}</DivTaskLeg>
+                      <DivSelectMedium>
+                        <DivTaskLeg>medium{doneTask.length}</DivTaskLeg>
                         <SelectLow>
                           {doneTask.map(({ title, priority }) => {
                             const id = nanoid();
@@ -117,11 +117,11 @@ const CalendarTable = () => {
                             );
                           })}
                         </SelectLow>
-                      </DivSelectLow>
+                      </DivSelectMedium>
                     )}
                     {todoTask.length !== 0 && (
-                      <DivSelectLow priority={'to-do'}>
-                        <DivTaskLeg>to-do{todoTask.length}</DivTaskLeg>
+                      <DivSelectHigh>
+                        <DivTaskLeg>high{todoTask.length}</DivTaskLeg>
                         <SelectLow>
                           {todoTask.map(({ title, priority }) => {
                             const id = nanoid();
@@ -132,7 +132,7 @@ const CalendarTable = () => {
                             );
                           })}
                         </SelectLow>
-                      </DivSelectLow>
+                      </DivSelectHigh>
                     )}
                   </>
                 ) : null}
