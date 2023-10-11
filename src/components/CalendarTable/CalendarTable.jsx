@@ -79,7 +79,7 @@ const CalendarTable = () => {
                   <>
                     {inprogressTask.length !== 0 && (
                       <s.DivSelectLow>
-                        <s.DivTaskLeg>low{inprogressTask.length}</s.DivTaskLeg>
+                        <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
                         <s.SelectLow>
                           {inprogressTask.map(({ title, priority }) => {
                             const id = nanoid();
@@ -94,7 +94,7 @@ const CalendarTable = () => {
                     )}
                     {doneTask.length !== 0 && (
                       <s.DivSelectMedium>
-                        <s.DivTaskLeg>medium{doneTask.length}</s.DivTaskLeg>
+                        <s.DivTaskLeg>medium {doneTask.length}</s.DivTaskLeg>
                         <s.SelectLow>
                           {doneTask.map(({ title, priority }) => {
                             const id = nanoid();
@@ -109,7 +109,7 @@ const CalendarTable = () => {
                     )}
                     {todoTask.length !== 0 && (
                       <s.DivSelectHigh>
-                        <s.DivTaskLeg>high{todoTask.length}</s.DivTaskLeg>
+                        <s.DivTaskLeg>high {todoTask.length}</s.DivTaskLeg>
                         <s.SelectLow>
                           {todoTask.map(({ title, priority }) => {
                             const id = nanoid();

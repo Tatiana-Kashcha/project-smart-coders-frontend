@@ -4,6 +4,7 @@ import { globalTheme } from 'theme';
 export const DivTaskLeg = styled.div`
   border: solid 1px #111111;
   border-radius: 8px;
+  padding-left: 8px;
 `;
 
 export const CalendarGridWrapper = styled.div`
@@ -159,6 +160,7 @@ export const OptionSelectLow = styled.li`
         return globalTheme.colors.lowTasksBg;
     }
   }};
+  padding-left: 4px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
