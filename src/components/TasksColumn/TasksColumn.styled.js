@@ -34,9 +34,6 @@ export const TasksScroll = styled.ul`
   overflow-y: auto;
   scroll-behavior: smooth;
 
-  /* margin-right: -40px; */ //! show menu
-  /* padding-right: 40px; */ //! show menu
-
   &::-webkit-scrollbar {
     width: 8px;
   }
