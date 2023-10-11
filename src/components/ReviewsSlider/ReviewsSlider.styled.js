@@ -191,6 +191,8 @@ export const Elipse = styled.p`
 
 export const Avatar = styled.img`
   display: block;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   object-position: 50% 50%;
 
