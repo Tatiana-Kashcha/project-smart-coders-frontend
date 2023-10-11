@@ -40,6 +40,7 @@ export default function MainLayout() {
 
   const onRedirect = () => {
     setShowSideBar(false);
+    togglshownBurger();
   };
 
   return (

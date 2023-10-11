@@ -13,8 +13,8 @@ export const DivTasksCol = styled.div`
 
   @media screen and (max-width: calc(${globalTheme.breakpoints
       .desktop} - 0.5px)) {
-    /* overflow-y: hidden; */
-    /* overflow-x: scroll; */
-    /* scroll-behavior: smooth; */
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
   }
 `;

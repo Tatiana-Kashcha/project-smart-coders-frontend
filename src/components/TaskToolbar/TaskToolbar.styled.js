@@ -44,11 +44,12 @@ export const TrashBtn = styled(Trash)`
 export const ToolMenu = styled.div`
   position: absolute;
 
-  top: 26px;
-  right: -45px;
+  z-index: 999;
+  transform: translate(200px, 80px);
+
   width: 115px;
   height: 70px;
-  margin-top: 10px;
+
   padding: 14px;
 
   border: ${props => props.theme.colors.userInputBorder};
