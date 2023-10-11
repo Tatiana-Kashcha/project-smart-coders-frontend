@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
+export const DivTaskLeg = styled.div`
+  border: solid 1px #111111;
+  border-radius: 8px;
+  padding-left: 8px;
+`;
+
 export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -35,6 +41,10 @@ export const CalendarGridWrapper = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
   }
+  :active > ul {
+    opacity: 1;
+    visibility: visible;
+  }
 `;
 
 export const RowInCell = styled.div`
@@ -57,10 +67,7 @@ export const CellWrapper = styled.div`
 export const DayWrapper = styled.div`
   width: 24px;
   height: 26px;
-  display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex-direction: column;
   border-radius: solid 1px #111111;
   font-family: Inter;
   font-weight: 700;
@@ -117,22 +124,56 @@ export const Day = styled.span`
 `;
 
 export const DivSelectLow = styled.div`
+  color: ${globalTheme.colors.primary};
+  border-radius: 8px;
   position: absolute;
   top: 20%;
+  height: 20px;
   right: 120%;
+  background-color: ${globalTheme.colors.lowTasksBg};
 `;
 
-export const SelectLow = styled.select`
+export const SelectLow = styled.ul`
+  opacity: 0;
+  visibility: hidden;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -80%);
   border-radius: 15%;
   background-color: ${globalTheme.colors.lowTasksBg};
   border: none;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
+  transition: all 0.5s ease;
 `;
 
-export const OptionSelectLow = styled.option`
-  color: ${globalTheme.colors.primary};
+export const OptionSelectLow = styled.li`
+  color: ${props => {
+    switch (props.priority) {
+      case 'medium':
+        return globalTheme.colors.mainYellow;
+      case 'low':
+        return globalTheme.colors.primary;
+      case 'high':
+        return globalTheme.colors.mainRed;
+      default:
+        return globalTheme.colors.primary;
+    }
+  }};
+  background: ${props => {
+    switch (props.priority) {
+      case 'medium':
+        return globalTheme.colors.lightYellow;
+      case 'low':
+        return globalTheme.colors.lowTasksBg;
+      case 'high':
+        return globalTheme.colors.lightRed;
+      default:
+        return globalTheme.colors.lowTasksBg;
+    }
+  }};
+  padding-left: 4px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -142,96 +183,21 @@ export const OptionSelectLow = styled.option`
 `;
 
 export const DivSelectMedium = styled.div`
+  color: ${globalTheme.colors.mainYellow};
   position: absolute;
   top: 100%;
   right: 120%;
-`;
-
-export const SelectMedium = styled.select`
-  border-radius: 15%;
+  height: 20px;
   background-color: ${globalTheme.colors.lightYellow};
-  border: none;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.28;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-export const OptionSelectMedium = styled.option`
-  color: ${globalTheme.colors.mainYellow};
+  border-radius: 8px;
 `;
 
 export const DivSelectHigh = styled.div`
+  color: ${globalTheme.colors.mainRed};
   position: absolute;
   top: 180%;
   right: 120%;
-`;
-
-export const SelectHigh = styled.select`
-  border-radius: 15%;
+  height: 20px;
   background-color: ${globalTheme.colors.lightRed};
-  border: none;
-  font-size: 14px;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-export const OptionSelectHigh = styled.option`
-  color: ${globalTheme.colors.mainRed};
-`;
-
-export const HiddenTaskCount = styled.span`
-  color: green;
-  position: absolute;
-  left: 2px;
-  top: 15px;
-  font-style: italic;
-  font-size: 10px;
-  line-height: 1.4;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    left: 2px;
-    top: 20px;
-
-    font-size: 14px;
-    line-height: 1.29;
-  }
-
-  @media (min-width: 1440px) {
-    left: 4px;
-    top: 25px;
-  }
-`;
-export const CarrDayItem = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 27px;
-  height: 26px;
-  padding: 5px;
-  background: ${props =>
-    props.isToday
-      ? 'rgb(62, 133, 243)'
-      : props.isSelected
-      ? '#3e85f3'
-      : 'inherit'};
-  border-radius: 6px;
-  color: ${props => (props.isToday || props.isSelected ? '#fff' : 'inherit')};
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1, 12;
-  cursor: pointer;
-
-  @media (min-width: 768px) {
-    font-size: 16px;
-  }
+  border-radius: 8px;
 `;
