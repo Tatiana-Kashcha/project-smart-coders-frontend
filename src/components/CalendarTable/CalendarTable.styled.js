@@ -5,7 +5,6 @@ export const DivTaskLeg = styled.div`
   border: solid 1px #111111;
   border-radius: 8px;
   padding: 8px 4px;
-  background-color: tomato;
 `;
 
 export const CalendarGridWrapper = styled.div`
@@ -41,12 +40,6 @@ export const CalendarGridWrapper = styled.div`
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
-  }
-  :focus,
-  :hover ul {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(50%, -80%);
   }
 `;
 
@@ -127,14 +120,23 @@ export const Day = styled.span`
 `;
 
 export const DivSelectLow = styled.div`
-  position: absolute;
-  top: 20%;
-  right: 120%;
+  background: ${props => {
+    switch (props.priority) {
+      case 'to-do':
+        return 'yellow';
+      case 'done':
+        return '#008000';
+      case 'in-progress':
+        return '#FF0000';
+      default:
+        return '#72c2f8';
+    }
+  }};
 `;
 
 export const SelectLow = styled.ul`
   position: absolute;
-  opacity: 0;
+  opacity: 0.2;
   top: 100%;
   left: 50%;
   transform: translate(-50%, 15px);
@@ -144,7 +146,6 @@ export const SelectLow = styled.ul`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
-  visibility: hidden;
   transition: all 0.5s ease;
 `;
 

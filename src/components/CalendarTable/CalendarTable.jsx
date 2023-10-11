@@ -58,6 +58,16 @@ const CalendarTable = () => {
           const taskDay = task.filter(({ date }) => {
             return date === dayItem.format('YYYY-MM-DD');
           });
+
+          const doneTask = taskDay.filter(
+            ({ category }) => category === 'done'
+          );
+          const todoTask = taskDay.filter(
+            ({ category }) => category === 'to-do'
+          );
+          const inprogressTask = taskDay.filter(
+            ({ category }) => category === 'in-progress'
+          );
           return (
             <CellWrapper key={dayItem.format('DDMMYYYY')}>
               <DayWrapper>
@@ -76,19 +86,53 @@ const CalendarTable = () => {
                 </RowInCell>
 
                 {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
-                  <DivSelectLow>
-                    <DivTaskLeg>{taskDay.length}task</DivTaskLeg>
-                    <SelectLow>
-                      {taskDay.map(({ title, priority }) => {
-                        const id = nanoid();
-                        return (
-                          <OptionSelectLow key={id} priority={priority}>
-                            {title}
-                          </OptionSelectLow>
-                        );
-                      })}
-                    </SelectLow>
-                  </DivSelectLow>
+                  <>
+                    {inprogressTask.length !== 0 && (
+                      <DivSelectLow priority={'in-progress'}>
+                        <DivTaskLeg>{inprogressTask.length}</DivTaskLeg>
+                        <SelectLow>
+                          {inprogressTask.map(({ title, priority }) => {
+                            const id = nanoid();
+                            return (
+                              <OptionSelectLow key={id} priority={priority}>
+                                {title}
+                              </OptionSelectLow>
+                            );
+                          })}
+                        </SelectLow>
+                      </DivSelectLow>
+                    )}
+                    {doneTask.length !== 0 && (
+                      <DivSelectLow priority={'done'}>
+                        <DivTaskLeg>{doneTask.length}</DivTaskLeg>
+                        <SelectLow>
+                          {doneTask.map(({ title, priority }) => {
+                            const id = nanoid();
+                            return (
+                              <OptionSelectLow key={id} priority={priority}>
+                                {title}
+                              </OptionSelectLow>
+                            );
+                          })}
+                        </SelectLow>
+                      </DivSelectLow>
+                    )}
+                    {todoTask.length !== 0 && (
+                      <DivSelectLow priority={'to-do'}>
+                        <DivTaskLeg>{todoTask.length}</DivTaskLeg>
+                        <SelectLow>
+                          {todoTask.map(({ title, priority }) => {
+                            const id = nanoid();
+                            return (
+                              <OptionSelectLow key={id} priority={priority}>
+                                {title}
+                              </OptionSelectLow>
+                            );
+                          })}
+                        </SelectLow>
+                      </DivSelectLow>
+                    )}
+                  </>
                 ) : null}
               </DayWrapper>
             </CellWrapper>
@@ -100,3 +144,4 @@ const CalendarTable = () => {
 };
 
 export default CalendarTable;
+// to-do  done  in-progress
