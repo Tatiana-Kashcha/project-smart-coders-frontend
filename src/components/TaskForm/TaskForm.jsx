@@ -57,7 +57,7 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
     if (showAddBtn) {
       dispatch(
         addTask({
-          title: values.title,
+          title: values.title.trim(),
           start: values.start,
           end: values.end,
           priority: values.priority,
@@ -68,7 +68,7 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
     }
 
     const changedTask = {
-      title: values.title,
+      title: values.title.trim(),
       start: values.start,
       end: values.end,
       priority: values.priority,
@@ -94,7 +94,7 @@ export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
         end: !showAddBtn ? task.end : currentTime,
         priority: !showAddBtn ? task.priority : 'low',
         date: `${currentDate}`,
-        category: !showAddBtn ? task.category : { groupId },
+        category: !showAddBtn ? task.category : groupId,
       }}
       validationSchema={TaskSchema}
       onSubmit={handleSubmit}

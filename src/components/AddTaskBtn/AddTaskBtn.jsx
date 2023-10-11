@@ -19,7 +19,13 @@ export const AddTaskBtn = ({ groupId }) => {
         <s.PlusIcon />
         Add task
       </s.TaskBtn>
-      {isModalOpen && <TaskModal groupId={groupId} closeModal={closeModal} />}
+      {isModalOpen && (
+        <TaskModal
+          groupId={groupId}
+          closeModal={closeModal}
+          showAddBtnRew={true}
+        />
+      )}
     </div>
   );
 };
