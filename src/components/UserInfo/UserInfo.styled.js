@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalTheme } from 'theme';
 
 export const Name = styled.p`
   margin-right: 8px;
@@ -19,13 +20,13 @@ export const Elipse = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   width: 32px;
   height: 32px;
-  border-radius: 44px;
-  border: 1.8px solid #3e85f3;
-  background-color: #3e85f3;
+  border-radius: 50%;
+  border: 1.8px solid ${globalTheme.colors.primary};
+  background-color: ${globalTheme.colors.primary};
 
-  font-family: Inter;
   font-size: 14px;
   font-weight: 600;
   color: ${props => props.theme.colors.primaryText};
@@ -34,15 +35,12 @@ export const Elipse = styled.p`
     width: 44px;
     height: 44px;
 
-    font-family: Inter;
     font-size: 18px;
   }
 `;
 
 export const Avatar = styled.img`
   display: block;
-
   object-fit: cover;
   object-position: 50% 50%;
-  border-radius: 44px;
 `;

@@ -48,17 +48,22 @@ export const Elipse = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   border: 1.8px solid ${globalTheme.colors.primary};
+  background-color: ${globalTheme.colors.primary};
+
+  font-size: 14px;
+  font-weight: 600;
+  color: ${props => props.theme.colors.primaryText};
 `;
 
 export const Avatar = styled.img`
   display: block;
-  object-position: 50% 50%;
   object-fit: cover;
-  border-radius: 44px;
+  object-position: 50% 50%;
 `;
 
 export const Priority = styled.div`
