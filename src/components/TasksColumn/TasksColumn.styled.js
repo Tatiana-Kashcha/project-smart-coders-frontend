@@ -62,3 +62,8 @@ export const TasksScroll = styled.ul`
     width: 8px;
   }
 `;
+
+export const TasksScrollList = styled.li`
+  width: 100%;
+  max-width: 298px;
+`;
