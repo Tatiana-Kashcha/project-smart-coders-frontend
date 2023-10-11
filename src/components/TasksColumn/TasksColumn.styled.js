@@ -30,9 +30,30 @@ export const TasksCol = styled.div`
 `;
 
 export const TasksScroll = styled.ul`
+  position: relative; //!
   height: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
+
+  margin-right: -40px;
+  padding-right: 40px;
+
+  &::-webkit-scrollbar {
+    position: absolute; //!
+    width: 8px;
+    right: 10px; //!
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f2f2f2;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e7e5e5;
+    border-radius: 12px;
+    /* border: 3px solid #e7e5e5; */
+    width: 8px;
+  }
 `;
 
 export const TasksScrollItem = styled.li`
