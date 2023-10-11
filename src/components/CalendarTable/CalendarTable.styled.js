@@ -124,6 +124,7 @@ export const Day = styled.span`
 `;
 
 export const DivSelectLow = styled.div`
+  border-radius: 8px;
   position: absolute;
   top: 20%;
   height: 20px;
@@ -175,6 +176,7 @@ export const DivSelectMedium = styled.div`
   right: 120%;
   height: 20px;
   background-color: ${globalTheme.colors.lightYellow};
+  border-radius: 8px;
 `;
 
 export const DivSelectHigh = styled.div`
@@ -183,4 +185,5 @@ export const DivSelectHigh = styled.div`
   right: 120%;
   height: 20px;
   background-color: ${globalTheme.colors.lightRed};
+  border-radius: 8px;
 `;
