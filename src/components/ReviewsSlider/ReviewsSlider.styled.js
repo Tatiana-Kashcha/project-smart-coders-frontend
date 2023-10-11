@@ -176,7 +176,7 @@ export const Elipse = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  overflow: hidden;
   width: 50px;
   height: 50px;
 
@@ -184,20 +184,16 @@ export const Elipse = styled.p`
   font-weight: 600;
 
   color: ${globalTheme.colors.black};
-  border-radius: 50px;
-  border: 1px solid transparent;
+  border-radius: 50%;
   background-color: ${globalTheme.colors.primary};
 `;
 
 export const Avatar = styled.img`
   display: block;
-
   width: 50px;
   height: 50px;
   object-fit: cover;
   object-position: 50% 50%;
-
-  border-radius: 44px;
 `;
 
 export const CustomStarContainer = styled.div`

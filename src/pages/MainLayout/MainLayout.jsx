@@ -20,7 +20,6 @@ export default function MainLayout() {
   useEffect(() => {
     const handleResize = evt => {
       setShowSideBar(evt.matches);
-      console.log('handleResize', evt.matches);
     };
 
     mediaQuery.addEventListener('change', handleResize);
