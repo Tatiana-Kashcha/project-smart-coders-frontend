@@ -30,28 +30,24 @@ export const TasksCol = styled.div`
 `;
 
 export const TasksScroll = styled.ul`
-  position: relative; //!
   height: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
 
-  margin-right: -40px;
-  padding-right: 40px;
+  /* margin-right: -40px; */ //! show menu
+  /* padding-right: 40px; */ //! show menu
 
   &::-webkit-scrollbar {
-    position: absolute; //!
     width: 8px;
-    right: 10px; //!
   }
 
   &::-webkit-scrollbar-track {
-    background: #f2f2f2;
+    background: ${props => props.theme.colors.bgScrollColor};
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #e7e5e5;
+    background: ${props => props.theme.colors.scrollColor};
     border-radius: 12px;
-    /* border: 3px solid #e7e5e5; */
     width: 8px;
   }
 `;
