@@ -2,7 +2,7 @@ import styled from 'styled-components';
 // import { globalTheme } from 'theme';
 
 export const Card = styled.div`
-  position: relative; //!?
+  /* position: relative; //!? */
 
   /* width: 300px; */
   width: 100%;
