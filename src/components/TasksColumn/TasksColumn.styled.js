@@ -31,14 +31,12 @@ export const TasksCol = styled.div`
 
 export const TasksScroll = styled.ul`
   height: 100%;
-  /* overflow-y: hidden; */
-
   overflow-y: auto;
   scroll-behavior: smooth;
 `;
 
 export const TasksScrollItem = styled.li`
   &:last-child {
-    margin-bottom: 80px;
+    margin-bottom: 74px;
   }
 `;
