@@ -213,11 +213,12 @@ export const DivSelectMedium = styled.div`
   height: 22px;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
-  @media screen and (min-width: 768px) {
+
+  /* @media screen and (min-width: 768px) {
     top: 100%;
-    right: 120%;
-    height: 26px;
-  }
+    right: 50%;
+    height: 26px; */
+  /* } */
 `;
 
 export const DivSelectHigh = styled.div`
