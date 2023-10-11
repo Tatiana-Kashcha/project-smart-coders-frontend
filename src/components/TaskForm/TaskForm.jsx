@@ -1,135 +1,174 @@
-import { useEffect, useState } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import dayjs from 'dayjs';
+import { Notify } from 'notiflix';
+
+import { useDispatch } from 'react-redux';
 import * as s from './TaskForm.styled';
 
 import { addTask, patchTask } from '../../redux/tasks/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectTasks, selectError } from '../../redux/tasks/selectors';
+import { isAfter, isValid, parse } from 'date-fns';
+import { useDate } from 'hooks/useDate';
 
-const emptyTask = {
-  title: '',
-  start: '00:00',
-  end: '00:00',
-  priority: 'low',
-  category: 'in-progress',
-};
+export const TaskSchema = () =>
+  Yup.object().shape({
+    title: Yup.string()
+      .transform(value => value.trim())
+      .min(1, 'Must be at least 1 characters')
+      .max(250, 'Must be at most 250 characters')
+      .required('This review field is required'),
+    start: Yup.string()
+      .test('valid-time', 'Invalid time format', value =>
+        isValid(parse(value, 'HH:mm', new Date()))
+      )
+      .required('Start is required'),
+    end: Yup.string()
+      .nullable()
+      .test('valid-time', 'Invalid time format', value => {
+        if (!value) return true;
+        return isValid(parse(value, 'HH:mm', new Date()));
+      })
+      .when('start', (start, schema) =>
+        schema.test('end-time-greater', 'Less than start', end =>
+          start && end
+            ? isAfter(
+                parse(end, 'HH:mm', new Date()),
+                parse(start, 'HH:mm', new Date())
+              )
+            : true
+        )
+      ),
+    priority: Yup.string()
+      .required('Priority is required')
+      .oneOf(['low', 'medium', 'high'], 'Invalid priority'),
+  });
 
-export const TaskForm = ({ initialData, onClose }) => {
-  const [informationTask, setInformationTask] = useState(emptyTask);
-  const [operation, setOperation] = useState('create');
-  const [dateSave, setDataSave] = useState(null);
+export const TaskForm = ({ onClose, groupId, showAddBtnRew, task }) => {
+  const { choosedDate } = useDate();
+  const currentDate = dayjs(choosedDate).format('YYYY-MM-DD');
+
+  const now = new Date();
+  const currentHours = now.getHours().toString().padStart(2, '0');
+  const currentMinutes = now.getMinutes().toString().padStart(2, '0');
+  const currentTime = `${currentHours}:${currentMinutes}`;
 
   const dispatch = useDispatch();
-  const successful = useSelector(selectTasks);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    const { statusOperation, _id, ...information } = initialData;
-    if (_id) information.id = _id;
-    setInformationTask(information);
-    setOperation(statusOperation);
-  }, [initialData]);
-
-  useEffect(() => {
-    if (!successful || !dateSave) return;
-
-    onClose();
-  }, [dateSave, successful, onClose]);
-
-  useEffect(() => {
-    if (!error || !dateSave) return;
-    Notify.failure(`Data save error`);
-  }, [error, dateSave]);
-
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setInformationTask(prev => {
-      return { ...prev, [name]: value };
-    });
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-
-    if (informationTask.start > informationTask.end) {
-      Notify.failure('Start time cannot be later than end time');
-      return;
+  const showAddBtn = showAddBtnRew || false;
+  const handleSubmit = values => {
+    if (showAddBtn) {
+      dispatch(
+        addTask({
+          title: values.title.trim(),
+          start: values.start,
+          end: values.end,
+          priority: values.priority,
+          date: `${currentDate}`,
+          category: groupId,
+        })
+      )
+        .then(() => {
+          Notify.success('Task created');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
 
-    if (operation === 'edit') {
-      dispatch(patchTask(informationTask));
-    } else {
-      dispatch(addTask(informationTask));
+    const changedTask = {
+      title: values.title.trim(),
+      start: values.start,
+      end: values.end,
+      priority: values.priority,
+      date: `${currentDate}`,
+      category: groupId,
+    };
+    if (!showAddBtn) {
+      dispatch(
+        patchTask({
+          taskId: task._id,
+          changedTask,
+        })
+      )
+        .then(() => {
+          Notify.success('Task changed');
+          onClose();
+        })
+        .catch(error => {
+          Notify.failure(`${error.message}`);
+        });
     }
-    setDataSave(Date.now());
   };
 
   return (
-    <s.Form onSubmit={handleSubmit}>
-      <s.Label>
-        Title
-        <s.Input
-          type="text"
-          placeholder="Enter text"
-          name="title"
-          value={informationTask.title}
-          onChange={handleChange}
-          required
-        />
-      </s.Label>
-      <s.Wrapper>
-        <s.Label>
-          Start
-          <s.Input
-            id="time"
-            type="time"
-            name="start"
-            value={informationTask.start}
-            onChange={handleChange}
-            required
-          />
+    <Formik
+      initialValues={{
+        title: !showAddBtn ? task.title : '',
+        start: !showAddBtn ? task.start : currentTime,
+        end: !showAddBtn ? task.end : currentTime,
+        priority: !showAddBtn ? task.priority : 'low',
+        date: `${currentDate}`,
+        category: !showAddBtn ? task.category : groupId,
+      }}
+      validationSchema={TaskSchema}
+      onSubmit={handleSubmit}
+    >
+      <s.TaskForm>
+        <s.Label htmlFor="title">
+          Title
+          <s.InputField type="text" name="title" placeholder="Enter text" />
+          <s.Errors name="title" component="div" />
         </s.Label>
-        <s.Label>
-          End
-          <s.Input
-            type="time"
-            name="end"
-            value={informationTask.end}
-            onChange={handleChange}
-            required
-          />
-        </s.Label>
-      </s.Wrapper>
-      <s.RadioButtonGroup>
-        {['Low', 'Medium', 'High'].map(priority => (
-          <s.RadioButtonLabel key={priority}>
-            <s.RadioButtonInput
-              type="radio"
-              value={priority}
-              name="priority"
-              checked={informationTask.priority === priority}
-              onChange={handleChange}
-            />
-            {priority}
-          </s.RadioButtonLabel>
-        ))}
-      </s.RadioButtonGroup>
-      {operation === 'edit' ? (
-        <s.Button type="submit">
-          <s.IconEdit />
-          Edit
-        </s.Button>
-      ) : (
+
         <s.Wrapper>
-          <s.Button type="submit">
-            <s.IconPlus />
-            Add
-          </s.Button>
+          <s.Label htmlFor="start">
+            Start
+            <s.InputField type="time" name="start" />
+            <s.Errors name="start" component="div" />
+          </s.Label>
+          <s.Label htmlFor="end">
+            End
+            <s.InputField type="time" name="end" />
+            <s.Errors name="end" component="div" />
+          </s.Label>
+        </s.Wrapper>
+
+        <s.RadioButtonGroup>
+          <s.RadioLabel>
+            <s.RadioField type="radio" name="priority" value="low" />
+            <s.RadioSpan value="low" />
+            Low
+          </s.RadioLabel>
+          <s.RadioLabel>
+            <s.RadioField type="radio" name="priority" value="medium" />
+            <s.RadioSpan value="medium" />
+            Medium
+          </s.RadioLabel>
+          <s.RadioLabel>
+            <s.RadioField type="radio" name="priority" value="high" />
+            <s.RadioSpan value="high" />
+            High
+          </s.RadioLabel>
+        </s.RadioButtonGroup>
+
+        <s.Wrapper>
+          {showAddBtn ? (
+            <s.Button type="submit">
+              <s.IconPlus />
+              Add
+            </s.Button>
+          ) : null}
+          {!showAddBtn ? (
+            <s.Button type="submit">
+              <s.IconEdit />
+              Edit
+            </s.Button>
+          ) : null}
           <s.ButtonCancel type="button" onClick={onClose}>
             Cancel
           </s.ButtonCancel>
         </s.Wrapper>
-      )}
-    </s.Form>
+      </s.TaskForm>
+    </Formik>
   );
 };

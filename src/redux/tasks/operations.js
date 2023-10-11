@@ -56,7 +56,6 @@ export const deleteTask = createAsyncThunk(
         throw new Error('Failed to delete task due to server error');
       }
 
-      console.log('Task deleted successfully');
       return taskId;
     } catch (error) {
       console.error(`Sorry, task wasn't deleted: ${error.message}`);
@@ -75,7 +74,6 @@ export const patchTask = createAsyncThunk(
         throw new Error('Failed to update task due to server error');
       }
 
-      console.log('Task has been successfully corrected');
       return response.data;
     } catch (error) {
       console.error(`Sorry, something went wrong: ${error.message}`);
