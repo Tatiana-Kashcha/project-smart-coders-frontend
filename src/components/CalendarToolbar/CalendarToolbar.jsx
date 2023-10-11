@@ -37,7 +37,6 @@ export const CalendarToolbar = ({ periodType, handleChange }) => {
   }, [choosedDate, currentDayModify, currentMonthModify, navigate, periodType]);
 
   useEffect(() => {
-    console.log('useEffect');
     getAllTasks({ month: monthMod, year: yearMod });
   }, [getAllTasks, monthMod, yearMod]);
 
