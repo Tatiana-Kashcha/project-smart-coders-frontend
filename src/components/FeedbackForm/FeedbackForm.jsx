@@ -44,7 +44,7 @@ const FeedbackForm = ({ onClose, showSaveBtnRew, ratingRew, reviewRew }) => {
 
   const handleSubmit = (values, { resetForm }) => {
     if (showSaveBtn) {
-      dispatch(createReview({ rating, comment: values.review }))
+      dispatch(createReview({ rating, comment: values.review.trim() }))
         .then(() => {
           Notify.success('Review created');
           resetForm();
@@ -56,7 +56,7 @@ const FeedbackForm = ({ onClose, showSaveBtnRew, ratingRew, reviewRew }) => {
     }
 
     if (showEditBtn) {
-      dispatch(updateReview({ rating, comment: values.review }))
+      dispatch(updateReview({ rating, comment: values.review.trim() }))
         .then(() => {
           Notify.success('Review updated');
           resetForm();
