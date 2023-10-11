@@ -172,7 +172,7 @@ export const UserReview = styled(LinesEllipsis)`
   }
 `;
 
-export const Elipse = styled.p`
+export const Elipse = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
