@@ -4,19 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import moment from 'moment';
 import { nanoid } from 'nanoid';
-import {
-  CalendarGridWrapper,
-  CellWrapper,
-  DayWrapper,
-  RowInCell,
-  DivSelectLow,
-  SelectLow,
-  OptionSelectLow,
-  DivTaskLeg,
-  DivSelectMedium,
-  DivSelectHigh,
-} from './CalendarTable.styled';
-// import * as s from './CalendarTable.styled';
+import * as s from './CalendarTable.styled';
 
 moment.updateLocale('en', {
   week: {
@@ -55,7 +43,7 @@ const CalendarTable = () => {
 
   return (
     <div>
-      <CalendarGridWrapper>
+      <s.CalendarGridWrapper>
         {calendarDays.map(dayItem => {
           const taskDay = task.filter(({ date }) => {
             return date === dayItem.format('YYYY-MM-DD');
@@ -71,9 +59,9 @@ const CalendarTable = () => {
             ({ priority }) => priority === 'low'
           );
           return (
-            <CellWrapper key={dayItem.format('DDMMYYYY')}>
-              <DayWrapper>
-                <RowInCell>
+            <s.CellWrapper key={dayItem.format('DDMMYYYY')}>
+              <s.DayWrapper>
+                <s.RowInCell>
                   {dayItem.month() === selectedMonth ? (
                     <span
                       style={{
@@ -85,65 +73,64 @@ const CalendarTable = () => {
                       {dayItem.format('DD')}
                     </span>
                   ) : null}
-                </RowInCell>
+                </s.RowInCell>
 
                 {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
                   <>
                     {inprogressTask.length !== 0 && (
-                      <DivSelectLow>
-                        <DivTaskLeg>low{inprogressTask.length}</DivTaskLeg>
-                        <SelectLow>
+                      <s.DivSelectLow>
+                        <s.DivTaskLeg>low{inprogressTask.length}</s.DivTaskLeg>
+                        <s.SelectLow>
                           {inprogressTask.map(({ title, priority }) => {
                             const id = nanoid();
                             return (
-                              <OptionSelectLow key={id} priority={priority}>
+                              <s.OptionSelectLow key={id} priority={priority}>
                                 {title}
-                              </OptionSelectLow>
+                              </s.OptionSelectLow>
                             );
                           })}
-                        </SelectLow>
-                      </DivSelectLow>
+                        </s.SelectLow>
+                      </s.DivSelectLow>
                     )}
                     {doneTask.length !== 0 && (
-                      <DivSelectMedium>
-                        <DivTaskLeg>medium{doneTask.length}</DivTaskLeg>
-                        <SelectLow>
+                      <s.DivSelectMedium>
+                        <s.DivTaskLeg>medium{doneTask.length}</s.DivTaskLeg>
+                        <s.SelectLow>
                           {doneTask.map(({ title, priority }) => {
                             const id = nanoid();
                             return (
-                              <OptionSelectLow key={id} priority={priority}>
+                              <s.OptionSelectLow key={id} priority={priority}>
                                 {title}
-                              </OptionSelectLow>
+                              </s.OptionSelectLow>
                             );
                           })}
-                        </SelectLow>
-                      </DivSelectMedium>
+                        </s.SelectLow>
+                      </s.DivSelectMedium>
                     )}
                     {todoTask.length !== 0 && (
-                      <DivSelectHigh>
-                        <DivTaskLeg>high{todoTask.length}</DivTaskLeg>
-                        <SelectLow>
+                      <s.DivSelectHigh>
+                        <s.DivTaskLeg>high{todoTask.length}</s.DivTaskLeg>
+                        <s.SelectLow>
                           {todoTask.map(({ title, priority }) => {
                             const id = nanoid();
                             return (
-                              <OptionSelectLow key={id} priority={priority}>
+                              <s.OptionSelectLow key={id} priority={priority}>
                                 {title}
-                              </OptionSelectLow>
+                              </s.OptionSelectLow>
                             );
                           })}
-                        </SelectLow>
-                      </DivSelectHigh>
+                        </s.SelectLow>
+                      </s.DivSelectHigh>
                     )}
                   </>
                 ) : null}
-              </DayWrapper>
-            </CellWrapper>
+              </s.DayWrapper>
+            </s.CellWrapper>
           );
         })}
-      </CalendarGridWrapper>
+      </s.CalendarGridWrapper>
     </div>
   );
 };
 
 export default CalendarTable;
-// to-do  done  in-progress
