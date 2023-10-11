@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as EditTask } from '../../icons/pencil.svg';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
 import { globalTheme } from 'theme';
+import { Form, ErrorMessage, Field } from 'formik';
 
 export const IconEdit = styled(EditTask)`
   height: 100%;
@@ -12,7 +13,7 @@ export const IconPlus = styled(Plus)`
   color: ${globalTheme.colors.white};
 `;
 
-export const Form = styled.form`
+export const TaskForm = styled(Form)`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -51,7 +52,7 @@ export const Span = styled.span`
   color: ${globalTheme.colors.secondText};
 `;
 
-export const Input = styled.input`
+export const InputField = styled(Field)`
   height: 46px;
   margin-bottom: 8px;
   padding: 14px;
@@ -76,7 +77,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Errors = styled.span`
+export const Errors = styled(ErrorMessage)`
   min-height: 14px;
   margin-top: -6px;
   // margin-bottom: 2px;
@@ -182,59 +183,120 @@ export const RadioButtonGroup = styled.div`
   color: ${props => props.theme.colors.secondText};
 `;
 
-export const RadioButtonLabel = styled.label`
-  padding-left: 20px;
+// export const RadioButtonLabel = styled.label`
+//   padding-left: 20px;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 1.17;
+//   font-family: 'Inter';
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 12px;
+//   line-height: 1.17;
+//   color: ${globalTheme.colors.secondText};
+//   cursor: pointer;
+
+//   &:not(:last-child) {
+//     margin-right: 16px;
+//   }
+// `;
+
+// export const RadioButtonInput = styled(Field)`
+//   appearance: none;
+//   position: absolute;
+//   height: 0;
+//   width: 0;
+//   border: none;
+
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     top: 2px;
+//     left: -17px;
+
+//     border-radius: 50%;
+//     height: 10px;
+//     width: 10px;
+//     border: 1px solid var(--btn-text-color);
+
+//     ${({ value }) => {
+//       switch (value) {
+//         case 'low':
+//           return 'background-color: #72c2f8; color: rgba(114, 194, 248, 0.3)';
+//         case 'medium':
+//           return 'background-color: #f3b249; color: rgba(243, 178, 73, 0.3)';
+//         case 'high':
+//           return 'background-color: #ea3d65; color: rgba(234, 61, 101, 0.3)';
+//         default:
+//           return 'background-color: #72c2f8; color: rgba(114, 194, 248, 0.3)';
+//       }
+//     }}
+//   }
+
+//   &:checked::before {
+//     content: '';
+//     position: absolute;
+//     height: 10px;
+//     width: 10px;
+//     outline: 2px solid;
+//   }
+// `;
+export const RadioField = styled(Field)`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+`;
+
+export const RadioLabel = styled.label`
+  position: relative;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+
   color: ${globalTheme.colors.secondText};
+  font-size: 12px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 14px;
   cursor: pointer;
 
-  &:not(:last-child) {
-    margin-right: 16px;
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 28px;
   }
 `;
 
-export const RadioButtonInput = styled.input`
-  appearance: none;
+export const RadioSpan = styled.span`
   position: absolute;
-  height: 0;
-  width: 0;
-  border: none;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: ${props => {
+    switch (props.value) {
+      case 'low':
+        return '#72C2F8';
+      case 'medium':
+        return '#F3B249';
+      case 'high':
+        return '#EA3D65';
+      default:
+        return 'black';
+    }
+  }};
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: -17px;
-
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    border: 1px solid var(--btn-text-color);
-
-    ${({ value }) => {
-      switch (value) {
-        case 'Low':
-          return 'background-color: #72c2f8; color: rgba(114, 194, 248, 0.3)';
-        case 'Medium':
-          return 'background-color: #f3b249; color: rgba(243, 178, 73, 0.3)';
-        case 'High':
-          return 'background-color: #ea3d65; color: rgba(234, 61, 101, 0.3)';
-        default:
-          return 'background-color: #72c2f8; color: rgba(114, 194, 248, 0.3)';
-      }
-    }}
+  ${RadioLabel}:nth-child(1) ${RadioField}:checked + & {
+    outline: 1.2px solid #72c2f8;
+    outline-offset: 1px;
   }
 
-  &:checked::before {
-    content: '';
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    outline: 2px solid;
+  ${RadioLabel}:nth-child(2) ${RadioField}:checked + & {
+    outline: 1.2px solid #f3b249;
+    outline-offset: 1px;
+  }
+
+  ${RadioLabel}:nth-child(3) ${RadioField}:checked + & {
+    outline: 1.2px solid #ea3d65;
+    outline-offset: 1px;
   }
 `;
