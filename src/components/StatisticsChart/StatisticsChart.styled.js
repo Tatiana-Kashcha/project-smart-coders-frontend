@@ -17,6 +17,18 @@ export const StatWrapper = styled.div`
   }
 `;
 
+export const PagWrapper = styled.div`
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 250px;
+    padding-left: 32px;
+  }
+
+  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
+    width: 258px;
+    padding-left: 40px;
+  }
+`;
+
 export const Legend = styled.div`
   display: flex;
   gap: 14px;
@@ -31,7 +43,7 @@ export const Legend = styled.div`
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     position: absolute;
     right: 64px;
-    top: 140px; //TODO: CHANGE!!!
+    top: 121px;
     gap: 20px;
     font-size: 16px;
     line-height: calc(18 / 16);
@@ -39,7 +51,7 @@ export const Legend = styled.div`
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     right: 154px;
-    top: 142px; //TODO: CHANGE!!!
+    top: 123px;
   }
 `;
 
