@@ -124,6 +124,7 @@ export const Day = styled.span`
 `;
 
 export const DivSelectLow = styled.div`
+  color: ${globalTheme.colors.primary};
   border-radius: 8px;
   position: absolute;
   top: 20%;
@@ -148,7 +149,18 @@ export const SelectLow = styled.ul`
 `;
 
 export const OptionSelectLow = styled.li`
-  color: ${globalTheme.colors.primary};
+  color: ${props => {
+    switch (props.priority) {
+      case 'medium':
+        return globalTheme.colors.mainYellow;
+      case 'low':
+        return globalTheme.colors.primary;
+      case 'high':
+        return globalTheme.colors.mainRed;
+      default:
+        return globalTheme.colors.primary;
+    }
+  }};
   background: ${props => {
     switch (props.priority) {
       case 'medium':
@@ -171,6 +183,7 @@ export const OptionSelectLow = styled.li`
 `;
 
 export const DivSelectMedium = styled.div`
+  color: ${globalTheme.colors.mainYellow};
   position: absolute;
   top: 100%;
   right: 120%;
@@ -180,6 +193,7 @@ export const DivSelectMedium = styled.div`
 `;
 
 export const DivSelectHigh = styled.div`
+  color: ${globalTheme.colors.mainRed};
   position: absolute;
   top: 180%;
   right: 120%;
