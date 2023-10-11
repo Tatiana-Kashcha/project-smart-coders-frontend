@@ -20,6 +20,8 @@ export const SectionHeader = styled.section`
 `;
 
 export const Section = styled.section`
+  height: 100vh;
+
   background-color: ${props => props.theme.colors.bgrSection};
 
   @media screen and (max-width: calc(${globalTheme.breakpoints

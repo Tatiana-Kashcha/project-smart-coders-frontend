@@ -12,8 +12,7 @@ moment.updateLocale('en', {
 });
 
 const CalendarTableDay = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const { choosedDate } = useDate();
+  const { choosedDate, setChoosedDate } = useDate();
   const selectedMonth = moment(choosedDate).month();
 
   const [calendarDays, setCalendarDays] = useState([]);
@@ -21,7 +20,7 @@ const CalendarTableDay = () => {
     moment(choosedDate).startOf('week')
   );
   const handleDayClick = day => {
-    setSelectedDate(day);
+    setChoosedDate(day.toDate());
   };
 
   useEffect(() => {
@@ -33,8 +32,6 @@ const CalendarTableDay = () => {
     const day = startDay.clone();
     const endDay = moment(initialDate).endOf('week').endOf('day');
     const calendar = [];
-
-    // Здесь вы можете выполнить дополнительные действия при выборе даты
 
     while (!day.isAfter(endDay)) {
       calendar.push(day.clone());
@@ -53,7 +50,7 @@ const CalendarTableDay = () => {
             <s.DayWrapperDay>
               <s.RowInCellDay>
                 <s.StyledDayItem
-                  isSelected={dayItem.isSame(selectedDate, 'day')}
+                  isSelected={dayItem.isSame(choosedDate, 'day')}
                   onClick={() => handleDayClick(dayItem)}
                 >
                   {dayItem.format('D')}
