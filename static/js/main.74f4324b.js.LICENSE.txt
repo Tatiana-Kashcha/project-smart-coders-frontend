@@ -111,11 +111,3 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-//! add background for Calendar
-
-//! add background for Statistic
-
-//! add background for darkTheme
-
-//! add background for lightTheme
