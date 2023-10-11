@@ -41,6 +41,9 @@ export const CalendarGridWrapper = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
   }
+  :active > ul {
+    opacity: 1;
+  }
 `;
 
 export const RowInCell = styled.div`
@@ -126,8 +129,7 @@ export const DivSelectLow = styled.div`
         return 'yellow';
       case 'done':
         return '#008000';
-      case 'in-progress':
-        return '#FF0000';
+
       default:
         return '#72c2f8';
     }
@@ -136,7 +138,7 @@ export const DivSelectLow = styled.div`
 
 export const SelectLow = styled.ul`
   position: absolute;
-  opacity: 0.2;
+  opacity: 0;
   top: 100%;
   left: 50%;
   transform: translate(-50%, 15px);
