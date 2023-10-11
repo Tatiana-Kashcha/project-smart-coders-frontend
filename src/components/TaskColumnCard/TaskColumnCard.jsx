@@ -27,9 +27,7 @@ export const TaskColumnCard = props => {
   };
 
   return (
-    <StyleSheetManager
-      shouldForwardProp={prop => prop !== 'calendarorstatistic'}
-    >
+    <StyleSheetManager shouldForwardProp={prop => prop !== 'priority'}>
       <s.Card>
         <s.CardDescr>{description}</s.CardDescr>
         <s.CardEl>

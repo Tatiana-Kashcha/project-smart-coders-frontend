@@ -9,9 +9,7 @@ const MonthCalendarHead = () => {
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
-    <StyleSheetManager
-      shouldForwardProp={prop => prop !== 'calendarorstatistic'}
-    >
+    <StyleSheetManager shouldForwardProp={prop => prop !== 'item'}>
       <StyledHead>
         {daysOfWeek.map(day => (
           <StyledItem item={day.toUpperCase()} key={day}>

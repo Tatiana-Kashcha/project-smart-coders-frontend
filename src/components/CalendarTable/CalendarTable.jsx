@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDate } from 'hooks/useDate';
 import moment from 'moment';
 import * as s from './CalendarTable.styled';
+import { StyleSheetManager } from 'styled-components';
 
 moment.updateLocale('en', {
   week: {
@@ -37,7 +38,10 @@ const CalendarTable = () => {
   }, [initialDate]);
 
   return (
-    <div>
+    <StyleSheetManager
+      shouldForwardProp={prop => prop !== 'isSelected' && prop !== 'isToday'}
+    >
+      {' '}
       <s.CalendarGridWrapper>
         {calendarDays.map(dayItem => (
           <s.CellWrapper key={dayItem.format('DDMMYYYY')}>
@@ -86,7 +90,7 @@ const CalendarTable = () => {
           </s.CellWrapper>
         ))}
       </s.CalendarGridWrapper>
-    </div>
+    </StyleSheetManager>
   );
 };
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDate } from 'hooks/useDate';
 import moment from 'moment';
 import * as s from './CalendarTableDay.styled';
+import { StyleSheetManager } from 'styled-components';
 
 moment.updateLocale('en', {
   week: {
@@ -44,7 +45,8 @@ const CalendarTableDay = () => {
   }, [initialDate]);
 
   return (
-    <div>
+    <StyleSheetManager shouldForwardProp={prop => prop !== 'isSelected'}>
+      {' '}
       <s.CalendarGridWrapperDay>
         {calendarDays.map(dayItem => (
           <s.CellWrapperDay key={dayItem.format('DD')}>
@@ -61,7 +63,7 @@ const CalendarTableDay = () => {
           </s.CellWrapperDay>
         ))}
       </s.CalendarGridWrapperDay>
-    </div>
+    </StyleSheetManager>
   );
 };
 
