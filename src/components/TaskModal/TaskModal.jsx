@@ -1,14 +1,24 @@
 import Modal from '../Modal/Modal';
 import { TaskForm } from '../TaskForm/TaskForm';
 
-export const TaskModal = ({ status, closeModal, initialData = {} }) => {
+export const TaskModal = ({
+  closeModal,
+  action,
+  groupId,
+  taskToEdit,
+  showAddBtnRew,
+  task,
+}) => {
   return (
     <>
       <Modal onClose={closeModal}>
         <TaskForm
-          status={status}
           onClose={closeModal}
-          initialData={initialData}
+          action={action}
+          groupId={groupId}
+          taskToEdit={taskToEdit}
+          showAddBtnRew={showAddBtnRew}
+          task={task}
         />
       </Modal>
     </>
