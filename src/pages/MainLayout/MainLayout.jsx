@@ -29,6 +29,10 @@ export default function MainLayout() {
     };
   }, [mediaQuery, showSideBar]);
 
+  useEffect(() => {
+    setShowBurger(!showSideBar);
+  }, [showSideBar]);
+
   const onSideBar = () => {
     setShowSideBar(prevState => !prevState);
   };
@@ -39,7 +43,6 @@ export default function MainLayout() {
 
   const onRedirect = () => {
     setShowSideBar(false);
-    togglshownBurger();
   };
 
   return (

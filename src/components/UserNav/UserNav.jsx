@@ -7,7 +7,12 @@ const UserNav = ({ onRedirect }) => {
     <nav>
       <s.List>
         <li>
-          <s.StyledNavLink to="/account" onClick={onRedirect}>
+          <s.StyledNavLink
+            to="/account"
+            onClick={() => {
+              onRedirect();
+            }}
+          >
             <s.IconWrap>
               <s.IconUserCheck />
             </s.IconWrap>
@@ -15,7 +20,12 @@ const UserNav = ({ onRedirect }) => {
           </s.StyledNavLink>
         </li>
         <li>
-          <s.StyledNavLink to="/calendar" onClick={onRedirect}>
+          <s.StyledNavLink
+            to="/calendar"
+            onClick={() => {
+              onRedirect();
+            }}
+          >
             <s.IconWrap>
               <s.IconCalendarCheck />
             </s.IconWrap>
@@ -23,7 +33,12 @@ const UserNav = ({ onRedirect }) => {
           </s.StyledNavLink>
         </li>
         <li>
-          <s.StyledNavLink to="/statistics" onClick={onRedirect}>
+          <s.StyledNavLink
+            to="/statistics"
+            onClick={() => {
+              onRedirect();
+            }}
+          >
             <s.IconWrap>
               <s.IconStat />
             </s.IconWrap>
