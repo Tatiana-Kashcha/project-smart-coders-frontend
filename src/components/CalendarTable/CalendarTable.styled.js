@@ -48,6 +48,11 @@ export const CalendarGridWrapper = styled.div`
 
 export const RowInCell = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 `;
 
 export const CellWrapper = styled.div`
@@ -64,7 +69,7 @@ export const CellWrapper = styled.div`
 `;
 
 export const DayWrapper = styled.div`
-  width: 24px;
+  width: 27px;
   height: 26px;
   align-items: center;
   border-radius: solid 1px #111111;

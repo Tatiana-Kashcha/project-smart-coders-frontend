@@ -69,6 +69,8 @@ const CalendarTable = () => {
                   {dayItem.month() === selectedMonth ? (
                     <span
                       style={{
+                        width: '100%',
+                        height: '100%',
                         color: dayItem.isSame(moment(), 'day')
                           ? '#3e85f3'
                           : null,
