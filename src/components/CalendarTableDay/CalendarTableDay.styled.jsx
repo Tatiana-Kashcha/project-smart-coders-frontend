@@ -231,9 +231,6 @@ export const StyledDayItem = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 27px;
-  height: 26px;
-  padding: 5px;
   background: ${props => (props.isSelected ? 'rgb(62, 133, 243)' : 'inherit')};
   border-radius: ${props => (props.isSelected ? '6px' : '0')};
   color: ${props => (props.isSelected ? '#fff' : 'inherit')};

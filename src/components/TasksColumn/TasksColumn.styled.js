@@ -6,7 +6,7 @@ export const TasksCol = styled.div`
   display: flex;
   flex-direction: column;
 
-  height: 432px;
+  height: 434px;
   min-width: 100%;
   max-width: 335px;
   margin-top: 14px;
@@ -19,13 +19,14 @@ export const TasksCol = styled.div`
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     min-width: 344px;
 
-    height: 568px;
+    height: 664px;
     margin-top: 16px;
     padding: 18px 20px 28px;
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
     max-width: 344px;
+    height: 584px;
   }
 `;
 
