@@ -37,14 +37,14 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
         {inProgress.map(({ _id, title, priority }) => {
           const id = nanoid();
           return (
-            <li key={id}>
+            <s.TasksScrollList key={id}>
               <TaskColumnCard
                 taskId={_id}
                 groupTitle={groupTitle}
                 description={title}
                 priority={priority}
               />
-            </li>
+            </s.TasksScrollList>
           );
         })}
       </s.TasksScroll>

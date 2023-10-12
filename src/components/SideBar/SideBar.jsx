@@ -39,7 +39,6 @@ const SideBar = ({ togglshownBurger, onSideBar, onRedirect }) => {
               aria-label="Close"
               onClick={() => {
                 onSideBar();
-                togglshownBurger();
               }}
             >
               <s.IconWrap>

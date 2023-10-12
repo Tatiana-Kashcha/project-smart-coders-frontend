@@ -44,7 +44,7 @@ export const CardAvAndPri = styled.div`
   line-height: calc(12 / 10);
 `;
 
-export const Elipse = styled.p`
+export const Elipse = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +61,6 @@ export const Elipse = styled.p`
 `;
 
 export const Avatar = styled.img`
-  display: block;
   object-fit: cover;
   object-position: 50% 50%;
 `;

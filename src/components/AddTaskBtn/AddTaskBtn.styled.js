@@ -5,7 +5,10 @@ import { ReactComponent as Plus } from '../../icons/plus.svg';
 export const TaskBtn = styled.button`
   position: absolute;
   bottom: 8px;
-  padding: 14px 100px;
+  width: 90%;
+  max-width: 298px;
+
+  padding: 14px 0;
   cursor: pointer;
 
   color: ${props => props.theme.colors.primaryText};
@@ -22,7 +25,7 @@ export const TaskBtn = styled.button`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     bottom: 27px;
-    padding: 14px 104px;
+    max-width: 302px;
   }
 `;
 
