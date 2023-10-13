@@ -7,7 +7,6 @@ export const StyledHead = styled.ul`
 `;
 export const ContainerDay = styled.div`
   display: block;
-  width: 335px;
   padding: 14px 18px;
   justify-content: center;
   align-items: center;
