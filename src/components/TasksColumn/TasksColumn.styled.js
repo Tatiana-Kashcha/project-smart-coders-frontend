@@ -31,13 +31,40 @@ export const TasksCol = styled.div`
 `;
 
 export const TasksScroll = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin-top: 24px;
+  margin-right: -14px;
+  padding-right: 6px;
+  padding-bottom: 72px;
+
   height: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
+
+  @media (min-width: ${globalTheme.breakpoints.tablet}) {
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${props => props.theme.colors.bgScrollColor};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colors.scrollColor};
+    border-radius: 12px;
+    width: 8px;
+  }
 `;
 
-export const TasksScrollItem = styled.li`
-  &:last-child {
-    margin-bottom: 74px;
-  }
+export const TasksScrollList = styled.li`
+  width: 100%;
+  max-width: 298px;
 `;

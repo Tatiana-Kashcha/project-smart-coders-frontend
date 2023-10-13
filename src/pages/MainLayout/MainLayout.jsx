@@ -20,7 +20,6 @@ export default function MainLayout() {
   useEffect(() => {
     const handleResize = evt => {
       setShowSideBar(evt.matches);
-      console.log('handleResize', evt.matches);
     };
 
     mediaQuery.addEventListener('change', handleResize);
@@ -29,6 +28,10 @@ export default function MainLayout() {
       mediaQuery.removeEventListener('change', handleResize);
     };
   }, [mediaQuery, showSideBar]);
+
+  useEffect(() => {
+    setShowBurger(!showSideBar);
+  }, [showSideBar]);
 
   const onSideBar = () => {
     setShowSideBar(prevState => !prevState);
@@ -40,7 +43,7 @@ export default function MainLayout() {
 
   const onRedirect = () => {
     setShowSideBar(false);
-    togglshownBurger();
+    setShowBurger(true);
   };
 
   return (

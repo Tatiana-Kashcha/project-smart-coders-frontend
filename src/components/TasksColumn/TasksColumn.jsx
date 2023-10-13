@@ -9,6 +9,7 @@ import { nanoid } from 'nanoid';
 
 import { selectTasks } from 'redux/tasks/selectors';
 import { TaskColumnCard } from 'components/TaskColumnCard/TaskColumnCard';
+
 import { ColumnHeadBar } from 'components/ColumnHeadBar/ColumnHeadBar';
 import { AddTaskBtn } from 'components/AddTaskBtn/AddTaskBtn';
 import * as s from './TasksColumn.styled';
@@ -21,7 +22,7 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
     .trim()
     .toLowerCase()
     .split(' ')
-    .join('-'); //! add optimisation
+    .join('-');
 
   const inProgress = useMemo(() => {
     return tasks.filter(({ category, date }) => {
@@ -36,14 +37,14 @@ export const TasksColumn = ({ groupTitle, groupId }) => {
         {inProgress.map(({ _id, title, priority }) => {
           const id = nanoid();
           return (
-            <s.TasksScrollItem key={id}>
+            <s.TasksScrollList key={id}>
               <TaskColumnCard
                 taskId={_id}
                 groupTitle={groupTitle}
                 description={title}
                 priority={priority}
               />
-            </s.TasksScrollItem>
+            </s.TasksScrollList>
           );
         })}
       </s.TasksScroll>

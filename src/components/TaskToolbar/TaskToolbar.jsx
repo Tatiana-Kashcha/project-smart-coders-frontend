@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Notify } from 'notiflix';
 
 import { ReactComponent as ArrowCircle } from '../../icons/arrow-circle-broken-right.svg';
 import { TaskModal } from 'components/TaskModal/TaskModal';
@@ -60,8 +61,6 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
   };
 
   const handleMoveToCategory = evt => {
-    togglShowCategoryMenu();
-
     const newCategoryTitle = evt.target.textContent
       .trim()
       .toLowerCase()
@@ -79,7 +78,15 @@ export const TaskToolbar = ({ taskId, categoryTitle }) => {
       category: newCategoryTitle,
     };
 
-    dispatch(patchTask({ taskId, changedTask }));
+    dispatch(patchTask({ taskId, changedTask }))
+      .then(() => {
+        togglShowCategoryMenu();
+
+        Notify.success('Task changed');
+      })
+      .catch(error => {
+        Notify.failure(`${error.message}`);
+      });
   };
 
   return (

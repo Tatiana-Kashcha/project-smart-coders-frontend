@@ -4,8 +4,12 @@ import { ReactComponent as Plus } from '../../icons/plus.svg';
 
 export const TaskBtn = styled.button`
   position: absolute;
-  bottom: 10px;
-  padding: 14px 100px;
+  bottom: 8px;
+  width: 90%;
+  max-width: 298px;
+
+  padding: 14px 0;
+  cursor: pointer;
 
   color: ${props => props.theme.colors.primaryText};
   background-color: ${props => props.theme.colors.addTaskBgBtn};
@@ -20,13 +24,12 @@ export const TaskBtn = styled.button`
   align-items: center;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
-    bottom: 28px;
-    padding: 14px 104px;
+    bottom: 27px;
+    max-width: 302px;
   }
 `;
 
 export const PlusIcon = styled(Plus)`
-  fill: ${globalTheme.colors.closeButton};
   width: 24px;
   height: 24px;
   margin-right: 8px;

@@ -36,7 +36,7 @@ export const lightTheme = {
     buttonNotActive: '#e5edfa',
     userPlaceholder: 'rgba(17, 17, 17, 0.15)',
     buttonCalendar: '#606470',
-    scrollColor: '#e7e5e5',
+    scrollColor: '#E6E4E4',
     bgScrollColor: '#f2f2f2',
     sideBarLabel: 'rgba(52, 52, 52, 0.5)',
     sideBarContent: 'rgba(52, 52, 52, 0.5)',
@@ -44,9 +44,9 @@ export const lightTheme = {
     disabledBatton: '#3e85f3',
 
     bgrAvatar: '#F8F8F8',
-    bgrSection: '#f7f6f9', //! add background for lightTheme
-    bgrCalendar: '#FFF', //! add background for Calendar
-    borderStat: '#e3f3ff', //! add background for Statistic
+    bgrSection: '#f7f6f9',
+    bgrCalendar: '#FFF',
+    borderStat: '#e3f3ff',
     borderPeriodPaginator: '1px solid rgba(220, 227, 229, 0.50)',
     addTaskBgBtn: '#e3f3ff',
   },
@@ -89,17 +89,17 @@ export const darkTheme = {
     buttonNotActive: '#21222c',
     userPlaceholder: '#FFFFFF',
     buttonCalendar: '#d0d0d0',
-    scrollColor: '#171820',
-    bgScrollColor: '#2d3037',
+    scrollColor: '#2D3037',
+    bgScrollColor: '#21222C',
     sideBarLabel: 'rgba(250, 250, 250, 0.3)',
     sideBarContent: '#ffffff',
     sideBarActive: '#3e85f3',
     disabledBatton: '#3e85f3',
 
     bgrAvatar: '#171820',
-    bgrSection: '#171820', //! add background for darkTheme
-    bgrCalendar: '#21222C', //! add background for Calendar
-    borderStat: 'rgba(227, 243, 255, 0.15)', //! add background for Statistic
+    bgrSection: '#171820',
+    bgrCalendar: '#21222C',
+    borderStat: 'rgba(227, 243, 255, 0.15)',
     borderPeriodPaginator: '1px solid rgba(255, 255, 255, 0.15)',
     addTaskBgBtn: '#3E85F3',
   },
@@ -107,7 +107,7 @@ export const darkTheme = {
 
 export const globalTheme = {
   breakpoints: { mobile: '375px', tablet: '768px', desktop: '1440px' },
-  // ${globalTheme.colors.primary} варіант
+
   colors: {
     primary: '#3e85f3',
     secondary: '#2b78ef',
@@ -137,12 +137,14 @@ export const globalTheme = {
     lowTasksBg: '#CEEEFD',
     reviewsSliderBorder: 'rgba(17, 17, 17, 0.1)',
     reviewsSliderText: 'rgba(17, 17, 17, 0.7)',
+    mainBlue: '#72c2f8',
   },
 
   shadow: {
     boxShadow: '4px 2px 16px rgba(136, 165, 191, 0.48)',
     modalShadow: '0px 4px 57px rgba(17, 17, 17, 0.05)',
     modalHoverShadow: '4px 2px 16px 0px rgba(136, 165, 191, 0.48)',
+    toolMenuShadow: '0px 4px 16px 0px rgba(17, 17, 17, 0.1)',
   },
 
   cubic: {

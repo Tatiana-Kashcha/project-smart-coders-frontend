@@ -18,7 +18,6 @@ const CalendarTable = () => {
   const selectedMonth = moment(choosedDate).month();
   const task = useSelector(selectTasks);
 
-  // const [selectedDate] = useState(moment());
   const [calendarDays, setCalendarDays] = useState([]);
   const [initialDate, setInitialDate] = useState(
     moment(choosedDate).startOf('week')

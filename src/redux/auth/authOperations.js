@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Notify } from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = 'https://project-smart-coders-backend.onrender.com/';
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

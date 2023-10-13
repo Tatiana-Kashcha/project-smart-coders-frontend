@@ -34,7 +34,6 @@ export const CalendarGridWrapper = styled.div`
   transition-timing-function: linear;
   :focus,
   :hover {
-    transform: scale(1.05);
     z-index: 1;
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -89,7 +88,7 @@ export const DayWrapper = styled.div`
     line-height: 1.12;
     margin-right: 10px;
   }
-  animation: scaleAnimation 1s linear infinite alternate;
+  /* animation: scaleAnimation 1s linear infinite alternate; */
 `;
 export const CurrentDay = styled.span`
   border: 1px solid #111111;
@@ -146,10 +145,17 @@ export const SelectLow = styled.ul`
   border-radius: 15%;
   background-color: ${globalTheme.colors.lowTasksBg};
   border: none;
-  font-size: 14px;
-  font-weight: 700;
+
+  font-size: 10px;
+  line-height: 1.4;
+
   line-height: 1.28;
   transition: all 0.5s ease;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+    font-weight: 700;
+  }
 `;
 
 export const OptionSelectLow = styled.li`
@@ -181,9 +187,27 @@ export const OptionSelectLow = styled.li`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 94px;
-  height: 26px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+
+  @media screen and (min-width: 375px) {
+    width: 44px;
+    height: 22px;
+  }
+
+  @media screen and (min-width: 1444px) {
+    //   font-size: 4vw;
+    //   padding-left: 4vw;
+    //   padding-right: 4vw;
+    width: 94px;
+    height: 26px;
+  }
+  @media screen and (min-width: 768px) {
+    //   font-size: 4vw;
+    //   padding-left: 4vw;
+    //   padding-right: 4vw;
+    width: 92px;
+    height: 26px;
+  }
 `;
 
 export const DivSelectMedium = styled.div`
@@ -191,9 +215,15 @@ export const DivSelectMedium = styled.div`
   position: absolute;
   top: 100%;
   right: 120%;
-  height: 20px;
+  height: 22px;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
+
+  /* @media screen and (min-width: 768px) {
+    top: 100%;
+    right: 50%;
+    height: 26px; */
+  /* } */
 `;
 
 export const DivSelectHigh = styled.div`
@@ -205,3 +235,10 @@ export const DivSelectHigh = styled.div`
   background-color: ${globalTheme.colors.lightRed};
   border-radius: 8px;
 `;
+
+// @media screen and (max-width: 375px) {
+//   font-size: 4vw;
+//   padding-left: 4vw;
+//   padding-right: 4vw;
+// }
+// 768
