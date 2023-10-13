@@ -42,6 +42,9 @@ export const RowInCellDay = styled.div`
   .short-name {
     display: none;
   }
+
+  width: 100%;
+  height: 100%;
 `;
 
 export const CellWrapperDay = styled.div`
@@ -231,9 +234,10 @@ export const StyledDayItem = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 27px;
-  height: 26px;
-  padding: 5px;
+
+  width: 100%;
+  height: 100%;
+
   background: ${props => (props.isSelected ? 'rgb(62, 133, 243)' : 'inherit')};
   border-radius: ${props => (props.isSelected ? '6px' : '0')};
   color: ${props => (props.isSelected ? '#fff' : 'inherit')};
