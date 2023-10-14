@@ -10,7 +10,7 @@ import UserInfo from '../UserInfo/UserInfo';
 
 const Header = ({ shownBurger, togglshownBurger, onSideBar }) => {
   const handleClick = () => {
-    togglshownBurger();
+    // togglshownBurger(); //!?
     onSideBar();
   };
 

@@ -43,6 +43,7 @@ export default function MainLayout() {
 
   const onRedirect = () => {
     setShowSideBar(false);
+    // togglshownBurger(); //!
   };
 
   return (
@@ -75,3 +76,20 @@ export default function MainLayout() {
     </>
   );
 }
+
+// const [showSideBar, setShowSideBar] = useState(false);
+// const [shownBurger, setShowBurger] = useState(true);
+
+// useEffect(() => {
+//   const mediaQuery = mediaQueryRef.current;
+
+//   const handleResize = evt => {
+//     setShowSideBar(evt.matches);
+//   };
+
+//   mediaQuery.addEventListener('change', handleResize);
+
+//   return () => {
+//     mediaQuery.removeEventListener('change', handleResize);
+//   };
+// }, []);
