@@ -7,9 +7,7 @@ export const CalendarGridWrapper = styled.div`
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px;
   max-width: 767px;
-  /* max-height: 625px; */
   margin: 0 auto;
-  /* height: 470px; */
   border: ${props => props.theme.colors.userInputBorder};
   color: ${props => props.theme.colors.calendarText};
   border-radius: 8px;
@@ -17,12 +15,10 @@ export const CalendarGridWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
-    /* height: calc(100vh - 280px); */
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1087px;
-    /* height: calc(100vh - 270px); */
   }
 `;
 
@@ -42,8 +38,11 @@ export const CellWrapper = styled.div`
 `;
 
 export const DivTasks = styled.div`
-  width: 24px;
+  width: 27px;
   margin-top: 4px;
+
+  font-size: 1.5vw;
+  font-weight: 700;
 
   transition-duration: 100ms;
   transition-timing-function: linear;
@@ -61,8 +60,13 @@ export const DivTasks = styled.div`
     width: 150px;
   }
 
+  @media screen and (min-width: 375px) {
+    width: 38px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 90px;
+    font-size: 14px;
   }
   @media screen and (min-width: 1440px) {
     width: 123px;
@@ -72,9 +76,13 @@ export const DivTasks = styled.div`
 export const DivSelectLow = styled.div`
   color: ${globalTheme.colors.primary};
   border-radius: 8px;
-  height: 22px;
+  height: 4vw;
   background-color: ${globalTheme.colors.lowTasksBg};
   margin-bottom: 2px;
+
+  @media screen and (min-width: 768px) {
+    height: 22px;
+  }
 `;
 
 export const DivTaskLeg = styled.div`
@@ -135,29 +143,29 @@ export const OptionSelectLow = styled.li`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-
-  /* @media screen and (min-width: 1440px) {
-    //   font-size: 4vw;
-    //   padding-left: 4vw;
-    //   padding-right: 4vw;
-   
-  }
-    */
 `;
 
 export const DivSelectMedium = styled.div`
   color: ${globalTheme.colors.mainYellow};
-  height: 22px;
+  height: 4vw;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
   margin-bottom: 2px;
+
+  @media screen and (min-width: 768px) {
+    height: 22px;
+  }
 `;
 
 export const DivSelectHigh = styled.div`
   color: ${globalTheme.colors.mainRed};
-  height: 22px;
+  height: 4vw;
   background-color: ${globalTheme.colors.lightRed};
   border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    height: 22px;
+  }
 `;
 
 export const DayWrapper = styled.div`
@@ -193,39 +201,3 @@ export const RowInCell = styled.div`
     line-height: 1.12;
   }
 `;
-
-// export const Day = styled.span`
-//   width: 100%;
-//   height: 100%;
-//   border: 1px solid #111111;
-//   display: flex;
-//   color: ${props => props.theme.colors.white};
-
-//   align-items: center;
-//   justify-content: center;
-//   padding: 4px 8px;
-
-//   background: ${props => props.theme.colors.primaryText};
-//   border-radius: 50%;
-
-//   @media screen and (min-width: 768px) {
-//     width: 27px;
-//     height: 26px;
-
-//     font-size: 14px;
-//     line-height: 1.28;
-//   }
-// `;
-
-// export const CurrentDay = styled.span`
-//   border: 1px solid #111111;
-//   display: flex;
-//   display: inline-flex;
-//   padding: 4px 8px;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   gap: 10px;
-//   border-radius: 8px;
-//   background: #3e85f3;
-//   color: #fff;
-// `;
