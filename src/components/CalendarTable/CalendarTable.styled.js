@@ -24,6 +24,23 @@ export const CalendarGridWrapper = styled.div`
     max-width: 1087px;
     height: calc(100vh - 270px);
   }
+`;
+
+export const CellWrapper = styled.div`
+  margin-bottom: 0px;
+  padding: 8px 4px;
+  justify-content: flex-end;
+  background-color: ${props => props.theme.colors.bgrCalendar};
+  outline: ${props => props.theme.colors.userInputBorder};
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 14px;
+  }
+`;
+
+export const DivTasks = styled.div`
+  width: 24px;
 
   transition-duration: 100ms;
   transition-timing-function: linear;
@@ -38,30 +55,12 @@ export const CalendarGridWrapper = styled.div`
     opacity: 1;
     visibility: visible;
   }
-`;
-
-export const CellWrapper = styled.div`
-  display: flex;
-  margin-bottom: 0px;
-  padding: 8px 4px;
-  justify-content: flex-end;
-  background-color: ${props => props.theme.colors.bgrCalendar};
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1440px) {
-    padding: 14px;
-  }
-`;
-
-export const DivTasks = styled.div`
-  width: 15px;
-  margin-right: 5px;
 
   @media screen and (min-width: 768px) {
-    width: 66px;
+    width: 90px;
   }
   @media screen and (min-width: 1440px) {
-    width: 95px;
+    width: 123px;
   }
 `;
 
@@ -74,12 +73,9 @@ export const DivSelectLow = styled.div`
 
 export const DivTaskLeg = styled.div`
   border-radius: 8px;
-  padding-left: 3px;
+  padding-left: 4px;
 
   @media screen and (min-width: 768px) {
-    padding-left: 4px;
-  }
-  @media screen and (min-width: 1440px) {
     padding-left: 8px;
   }
 `;
@@ -143,13 +139,7 @@ export const OptionSelectLow = styled.li`
     width: 94px;
     height: 26px;
   }
-  @media screen and (min-width: 768px) {
-    //   font-size: 4vw;
-    //   padding-left: 4vw;
-    //   padding-right: 4vw;
-    width: 92px;
-    height: 26px;
-  }  */
+    */
 `;
 
 export const DivSelectMedium = styled.div`
@@ -167,32 +157,39 @@ export const DivSelectHigh = styled.div`
 `;
 
 export const DayWrapper = styled.div`
-  /* width: 27px; */
-  height: 26px;
+  display: flex;
   align-items: center;
-  border-radius: solid 1px #111111;
+  justify-content: flex-end;
+`;
+
+export const RowInCell = styled.div`
+  padding: 4px;
+  margin-bottom: 4px;
+
   font-family: Inter;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
-  border-radius: 50%;
 
   color: ${props => props.theme.colors.primaryText};
+  transition-duration: 100ms;
+  transition-timing-function: linear;
+
+  :focus,
+  :hover {
+    z-index: 1;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor: pointer;
+  }
+  :active > ul {
+    opacity: 1;
+    visibility: visible;
+  }
   @media screen and (min-width: 768px) {
-    /* width: 27px;
-    height: 26px; */
     font-size: 16px;
     line-height: 1.12;
   }
-`;
-
-export const RowInCell = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
 `;
 
 // export const Day = styled.span`

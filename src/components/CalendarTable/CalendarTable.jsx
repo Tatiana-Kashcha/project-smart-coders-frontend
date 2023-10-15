@@ -64,6 +64,25 @@ const CalendarTable = () => {
           );
           return (
             <s.CellWrapper key={dayItem.format('DDMMYYYY')}>
+              <s.DayWrapper>
+                <s.RowInCell>
+                  {dayItem.month() === selectedMonth ? (
+                    <span
+                      style={{
+                        color: dayItem.isSame(moment(), 'day')
+                          ? `${globalTheme.colors.white}`
+                          : null,
+                        backgroundColor: dayItem.isSame(moment(), 'day')
+                          ? `${globalTheme.colors.primary}`
+                          : null,
+                      }}
+                    >
+                      {dayItem.format('DD')}
+                    </span>
+                  ) : null}
+                </s.RowInCell>
+              </s.DayWrapper>
+
               {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
                 <s.DivTasks>
                   {inprogressTask.length !== 0 && (
@@ -113,24 +132,6 @@ const CalendarTable = () => {
                   )}
                 </s.DivTasks>
               ) : null}
-
-              <s.DayWrapper>
-                <s.RowInCell>
-                  {dayItem.month() === selectedMonth ? (
-                    <span
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        color: dayItem.isSame(moment(), 'day')
-                          ? `${globalTheme.colors.primary}`
-                          : null,
-                      }}
-                    >
-                      {dayItem.format('DD')}
-                    </span>
-                  ) : null}
-                </s.RowInCell>
-              </s.DayWrapper>
             </s.CellWrapper>
           );
         })}
