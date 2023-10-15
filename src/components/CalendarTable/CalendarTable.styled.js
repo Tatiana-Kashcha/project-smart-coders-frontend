@@ -77,18 +77,14 @@ export const DayWrapper = styled.div`
   font-size: 12px;
   line-height: 1.17;
   border-radius: 50%;
-  position: relative;
 
   color: ${props => props.theme.colors.primaryText};
   @media screen and (min-width: 768px) {
     width: 27px;
     height: 26px;
-
     font-size: 16px;
     line-height: 1.12;
-    margin-right: 10px;
   }
-  /* animation: scaleAnimation 1s linear infinite alternate; */
 `;
 export const CurrentDay = styled.span`
   border: 1px solid #111111;
@@ -129,10 +125,7 @@ export const Day = styled.span`
 export const DivSelectLow = styled.div`
   color: ${globalTheme.colors.primary};
   border-radius: 8px;
-  position: absolute;
-  top: 20%;
   height: 20px;
-  right: 120%;
   background-color: ${globalTheme.colors.lowTasksBg};
 `;
 
@@ -194,7 +187,7 @@ export const OptionSelectLow = styled.li`
     height: 22px;
   }
 
-  @media screen and (min-width: 1444px) {
+  @media screen and (min-width: 1440px) {
     //   font-size: 4vw;
     //   padding-left: 4vw;
     //   padding-right: 4vw;
@@ -212,9 +205,6 @@ export const OptionSelectLow = styled.li`
 
 export const DivSelectMedium = styled.div`
   color: ${globalTheme.colors.mainYellow};
-  position: absolute;
-  top: 100%;
-  right: 120%;
   height: 22px;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
@@ -228,9 +218,6 @@ export const DivSelectMedium = styled.div`
 
 export const DivSelectHigh = styled.div`
   color: ${globalTheme.colors.mainRed};
-  position: absolute;
-  top: 180%;
-  right: 120%;
   height: 20px;
   background-color: ${globalTheme.colors.lightRed};
   border-radius: 8px;

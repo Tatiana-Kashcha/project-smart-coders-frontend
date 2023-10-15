@@ -6,6 +6,7 @@ import moment from 'moment';
 import { nanoid } from 'nanoid';
 import * as s from './CalendarTable.styled';
 import { StyleSheetManager } from 'styled-components';
+import { globalTheme } from 'theme';
 
 moment.updateLocale('en', {
   week: {
@@ -71,7 +72,7 @@ const CalendarTable = () => {
                         width: '100%',
                         height: '100%',
                         color: dayItem.isSame(moment(), 'day')
-                          ? '#3e85f3'
+                          ? `${globalTheme.colors.primary}`
                           : null,
                       }}
                     >
@@ -81,7 +82,7 @@ const CalendarTable = () => {
                 </s.RowInCell>
 
                 {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
-                  <>
+                  <div>
                     {inprogressTask.length !== 0 && (
                       <s.DivSelectLow>
                         <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
@@ -127,7 +128,7 @@ const CalendarTable = () => {
                         </s.SelectLow>
                       </s.DivSelectHigh>
                     )}
-                  </>
+                  </div>
                 ) : null}
               </s.DayWrapper>
             </s.CellWrapper>
