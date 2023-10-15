@@ -48,8 +48,6 @@ export const DivTasks = styled.div`
   :focus,
   :hover {
     z-index: 1;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
   }
   :active > ul {
@@ -179,8 +177,9 @@ export const RowInCell = styled.div`
   :focus,
   :hover {
     z-index: 1;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 8px;
+    box-shadow: ${globalTheme.shadow.boxShadow};
+    border: ${props => props.theme.colors.userInputBorder};
     cursor: pointer;
   }
   :active > ul {

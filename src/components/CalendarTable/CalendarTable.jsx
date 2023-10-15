@@ -76,7 +76,7 @@ const CalendarTable = () => {
                           ? `${globalTheme.colors.primary}`
                           : null,
                         borderRadius: 8,
-                        padding: 3,
+                        padding: 4,
                       }}
                     >
                       {dayItem.format('DD')}
