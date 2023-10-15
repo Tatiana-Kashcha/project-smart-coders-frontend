@@ -75,6 +75,8 @@ const CalendarTable = () => {
                         backgroundColor: dayItem.isSame(moment(), 'day')
                           ? `${globalTheme.colors.primary}`
                           : null,
+                        borderRadius: 8,
+                        padding: 3,
                       }}
                     >
                       {dayItem.format('DD')}

@@ -41,6 +41,7 @@ export const CellWrapper = styled.div`
 
 export const DivTasks = styled.div`
   width: 24px;
+  margin-top: 4px;
 
   transition-duration: 100ms;
   transition-timing-function: linear;
@@ -164,7 +165,7 @@ export const DayWrapper = styled.div`
 
 export const RowInCell = styled.div`
   padding: 4px;
-  margin-bottom: 4px;
+  border-radius: 8px;
 
   font-family: Inter;
   font-weight: 700;
