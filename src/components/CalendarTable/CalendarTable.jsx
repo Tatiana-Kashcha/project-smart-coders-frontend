@@ -64,6 +64,56 @@ const CalendarTable = () => {
           );
           return (
             <s.CellWrapper key={dayItem.format('DDMMYYYY')}>
+              {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
+                <s.DivTasks>
+                  {inprogressTask.length !== 0 && (
+                    <s.DivSelectLow>
+                      <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
+                      <s.SelectLow>
+                        {inprogressTask.map(({ title, priority }) => {
+                          const id = nanoid();
+                          return (
+                            <s.OptionSelectLow key={id} priority={priority}>
+                              {title}
+                            </s.OptionSelectLow>
+                          );
+                        })}
+                      </s.SelectLow>
+                    </s.DivSelectLow>
+                  )}
+                  {doneTask.length !== 0 && (
+                    <s.DivSelectMedium>
+                      <s.DivTaskLeg>medium {doneTask.length}</s.DivTaskLeg>
+                      <s.SelectLow>
+                        {doneTask.map(({ title, priority }) => {
+                          const id = nanoid();
+                          return (
+                            <s.OptionSelectLow key={id} priority={priority}>
+                              {title}
+                            </s.OptionSelectLow>
+                          );
+                        })}
+                      </s.SelectLow>
+                    </s.DivSelectMedium>
+                  )}
+                  {todoTask.length !== 0 && (
+                    <s.DivSelectHigh>
+                      <s.DivTaskLeg>high {todoTask.length}</s.DivTaskLeg>
+                      <s.SelectLow>
+                        {todoTask.map(({ title, priority }) => {
+                          const id = nanoid();
+                          return (
+                            <s.OptionSelectLow key={id} priority={priority}>
+                              {title}
+                            </s.OptionSelectLow>
+                          );
+                        })}
+                      </s.SelectLow>
+                    </s.DivSelectHigh>
+                  )}
+                </s.DivTasks>
+              ) : null}
+
               <s.DayWrapper>
                 <s.RowInCell>
                   {dayItem.month() === selectedMonth ? (
@@ -80,56 +130,6 @@ const CalendarTable = () => {
                     </span>
                   ) : null}
                 </s.RowInCell>
-
-                {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
-                  <div>
-                    {inprogressTask.length !== 0 && (
-                      <s.DivSelectLow>
-                        <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
-                        <s.SelectLow>
-                          {inprogressTask.map(({ title, priority }) => {
-                            const id = nanoid();
-                            return (
-                              <s.OptionSelectLow key={id} priority={priority}>
-                                {title}
-                              </s.OptionSelectLow>
-                            );
-                          })}
-                        </s.SelectLow>
-                      </s.DivSelectLow>
-                    )}
-                    {doneTask.length !== 0 && (
-                      <s.DivSelectMedium>
-                        <s.DivTaskLeg>medium {doneTask.length}</s.DivTaskLeg>
-                        <s.SelectLow>
-                          {doneTask.map(({ title, priority }) => {
-                            const id = nanoid();
-                            return (
-                              <s.OptionSelectLow key={id} priority={priority}>
-                                {title}
-                              </s.OptionSelectLow>
-                            );
-                          })}
-                        </s.SelectLow>
-                      </s.DivSelectMedium>
-                    )}
-                    {todoTask.length !== 0 && (
-                      <s.DivSelectHigh>
-                        <s.DivTaskLeg>high {todoTask.length}</s.DivTaskLeg>
-                        <s.SelectLow>
-                          {todoTask.map(({ title, priority }) => {
-                            const id = nanoid();
-                            return (
-                              <s.OptionSelectLow key={id} priority={priority}>
-                                {title}
-                              </s.OptionSelectLow>
-                            );
-                          })}
-                        </s.SelectLow>
-                      </s.DivSelectHigh>
-                    )}
-                  </div>
-                ) : null}
               </s.DayWrapper>
             </s.CellWrapper>
           );

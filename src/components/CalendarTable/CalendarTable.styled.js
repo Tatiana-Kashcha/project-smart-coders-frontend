@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
-export const DivTaskLeg = styled.div`
-  border-radius: 8px;
-  padding-left: 8px;
-`;
-
 export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -45,15 +40,6 @@ export const CalendarGridWrapper = styled.div`
   }
 `;
 
-export const RowInCell = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
-`;
-
 export const CellWrapper = styled.div`
   display: flex;
   margin-bottom: 0px;
@@ -67,58 +53,15 @@ export const CellWrapper = styled.div`
   }
 `;
 
-export const DayWrapper = styled.div`
-  width: 27px;
-  height: 26px;
-  align-items: center;
-  border-radius: solid 1px #111111;
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.17;
-  border-radius: 50%;
+export const DivTasks = styled.div`
+  width: 15px;
+  margin-right: 5px;
 
-  color: ${props => props.theme.colors.primaryText};
   @media screen and (min-width: 768px) {
-    width: 27px;
-    height: 26px;
-    font-size: 16px;
-    line-height: 1.12;
+    width: 66px;
   }
-`;
-export const CurrentDay = styled.span`
-  border: 1px solid #111111;
-  display: flex;
-  display: inline-flex;
-  padding: 4px 8px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  border-radius: 8px;
-  background: #3e85f3;
-  color: #fff;
-`;
-
-export const Day = styled.span`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #111111;
-  display: flex;
-  color: ${props => props.theme.colors.white};
-
-  align-items: center;
-  justify-content: center;
-  padding: 4px 8px;
-
-  background: ${props => props.theme.colors.primaryText};
-  border-radius: 50%;
-
-  @media screen and (min-width: 768px) {
-    width: 27px;
-    height: 26px;
-
-    font-size: 14px;
-    line-height: 1.28;
+  @media screen and (min-width: 1440px) {
+    width: 95px;
   }
 `;
 
@@ -127,6 +70,18 @@ export const DivSelectLow = styled.div`
   border-radius: 8px;
   height: 20px;
   background-color: ${globalTheme.colors.lowTasksBg};
+`;
+
+export const DivTaskLeg = styled.div`
+  border-radius: 8px;
+  padding-left: 3px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 4px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-left: 8px;
+  }
 `;
 
 export const SelectLow = styled.ul`
@@ -180,14 +135,8 @@ export const OptionSelectLow = styled.li`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  /* border-radius: 8px; */
 
-  @media screen and (min-width: 375px) {
-    width: 44px;
-    height: 22px;
-  }
-
-  @media screen and (min-width: 1440px) {
+  /* @media screen and (min-width: 1440px) {
     //   font-size: 4vw;
     //   padding-left: 4vw;
     //   padding-right: 4vw;
@@ -200,7 +149,7 @@ export const OptionSelectLow = styled.li`
     //   padding-right: 4vw;
     width: 92px;
     height: 26px;
-  }
+  }  */
 `;
 
 export const DivSelectMedium = styled.div`
@@ -208,12 +157,6 @@ export const DivSelectMedium = styled.div`
   height: 22px;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
-
-  /* @media screen and (min-width: 768px) {
-    top: 100%;
-    right: 50%;
-    height: 26px; */
-  /* } */
 `;
 
 export const DivSelectHigh = styled.div`
@@ -223,9 +166,67 @@ export const DivSelectHigh = styled.div`
   border-radius: 8px;
 `;
 
-// @media screen and (max-width: 375px) {
-//   font-size: 4vw;
-//   padding-left: 4vw;
-//   padding-right: 4vw;
-// }
-// 768
+export const DayWrapper = styled.div`
+  /* width: 27px; */
+  height: 26px;
+  align-items: center;
+  border-radius: solid 1px #111111;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  border-radius: 50%;
+
+  color: ${props => props.theme.colors.primaryText};
+  @media screen and (min-width: 768px) {
+    /* width: 27px;
+    height: 26px; */
+    font-size: 16px;
+    line-height: 1.12;
+  }
+`;
+
+export const RowInCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+`;
+
+// export const Day = styled.span`
+//   width: 100%;
+//   height: 100%;
+//   border: 1px solid #111111;
+//   display: flex;
+//   color: ${props => props.theme.colors.white};
+
+//   align-items: center;
+//   justify-content: center;
+//   padding: 4px 8px;
+
+//   background: ${props => props.theme.colors.primaryText};
+//   border-radius: 50%;
+
+//   @media screen and (min-width: 768px) {
+//     width: 27px;
+//     height: 26px;
+
+//     font-size: 14px;
+//     line-height: 1.28;
+//   }
+// `;
+
+// export const CurrentDay = styled.span`
+//   border: 1px solid #111111;
+//   display: flex;
+//   display: inline-flex;
+//   padding: 4px 8px;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   gap: 10px;
+//   border-radius: 8px;
+//   background: #3e85f3;
+//   color: #fff;
+// `;
