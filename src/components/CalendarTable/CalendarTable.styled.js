@@ -7,9 +7,9 @@ export const CalendarGridWrapper = styled.div`
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px;
   max-width: 767px;
-  max-height: 625px;
+  /* max-height: 625px; */
   margin: 0 auto;
-  height: 470px;
+  /* height: 470px; */
   border: ${props => props.theme.colors.userInputBorder};
   color: ${props => props.theme.colors.calendarText};
   border-radius: 8px;
@@ -17,25 +17,27 @@ export const CalendarGridWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
-    height: calc(100vh - 280px);
+    /* height: calc(100vh - 280px); */
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1087px;
-    height: calc(100vh - 270px);
+    /* height: calc(100vh - 270px); */
   }
 `;
 
 export const CellWrapper = styled.div`
   margin-bottom: 0px;
-  padding: 8px 4px;
+  padding: 4px;
   justify-content: flex-end;
   background-color: ${props => props.theme.colors.bgrCalendar};
   outline: ${props => props.theme.colors.userInputBorder};
   @media screen and (min-width: 768px) {
+    padding: 10px 4px;
   }
+
   @media screen and (min-width: 1440px) {
-    padding: 14px;
+    padding: 4px 14px;
   }
 `;
 
@@ -72,7 +74,7 @@ export const DivSelectLow = styled.div`
   border-radius: 8px;
   height: 22px;
   background-color: ${globalTheme.colors.lowTasksBg};
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 `;
 
 export const DivTaskLeg = styled.div`
@@ -148,7 +150,7 @@ export const DivSelectMedium = styled.div`
   height: 22px;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 `;
 
 export const DivSelectHigh = styled.div`
