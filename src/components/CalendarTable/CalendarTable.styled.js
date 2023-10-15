@@ -53,6 +53,10 @@ export const DivTasks = styled.div`
   :active > ul {
     opacity: 1;
     visibility: visible;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    width: 150px;
   }
 
   @media screen and (min-width: 768px) {
@@ -66,8 +70,9 @@ export const DivTasks = styled.div`
 export const DivSelectLow = styled.div`
   color: ${globalTheme.colors.primary};
   border-radius: 8px;
-  height: 20px;
+  height: 22px;
   background-color: ${globalTheme.colors.lowTasksBg};
+  margin-bottom: 3px;
 `;
 
 export const DivTaskLeg = styled.div`
@@ -91,8 +96,6 @@ export const SelectLow = styled.ul`
 
   font-size: 10px;
   line-height: 1.4;
-
-  line-height: 1.28;
   transition: all 0.5s ease;
 
   @media screen and (min-width: 1440px) {
@@ -135,8 +138,7 @@ export const OptionSelectLow = styled.li`
     //   font-size: 4vw;
     //   padding-left: 4vw;
     //   padding-right: 4vw;
-    width: 94px;
-    height: 26px;
+   
   }
     */
 `;
@@ -146,11 +148,12 @@ export const DivSelectMedium = styled.div`
   height: 22px;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
+  margin-bottom: 3px;
 `;
 
 export const DivSelectHigh = styled.div`
   color: ${globalTheme.colors.mainRed};
-  height: 20px;
+  height: 22px;
   background-color: ${globalTheme.colors.lightRed};
   border-radius: 8px;
 `;
@@ -182,10 +185,7 @@ export const RowInCell = styled.div`
     border: ${props => props.theme.colors.userInputBorder};
     cursor: pointer;
   }
-  :active > ul {
-    opacity: 1;
-    visibility: visible;
-  }
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.12;
