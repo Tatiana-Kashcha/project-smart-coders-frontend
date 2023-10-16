@@ -3,14 +3,14 @@ import { globalTheme } from 'theme';
 import { Container } from 'stylesheet/Container.styled';
 
 export const SectionMod = styled.section`
-  margin-bottom: 64px;
+  padding-bottom: 64px;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
-    margin-bottom: 100px;
+    padding-bottom: 100px;
   }
 
   @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-    margin-bottom: 118px;
+    padding-bottom: 118px;
   }
 `;
 
