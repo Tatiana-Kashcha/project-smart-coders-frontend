@@ -100,7 +100,7 @@ export const UserReview = styled.p`
   height: 72px;
 
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   font-size: 14px;
   font-weight: 500;
