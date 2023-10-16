@@ -1,12 +1,6 @@
 import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import LinesEllipsis from 'react-lines-ellipsis';
-
 import { globalTheme } from 'theme';
 import { Container } from 'stylesheet/Container.styled';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 export const SectionMod = styled.section`
   margin-bottom: 64px;
@@ -23,8 +17,6 @@ export const SectionMod = styled.section`
 export const ContainerModify = styled(Container)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 580px;
@@ -37,6 +29,9 @@ export const ContainerModify = styled(Container)`
 `;
 
 export const Title = styled.h2`
+  display: flex;
+  justify-content: center;
+
   margin-bottom: 40px;
 
   font-size: 40px;
@@ -51,36 +46,13 @@ export const Title = styled.h2`
   }
 `;
 
-export const ReviewContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-
-  gap: 24px;
-  height: 72px;
-
-  border-radius: 8px;
-  border: 1px solid ${globalTheme.colors.reviewsSliderBorder};
-`;
-
-export const StyledSwiper = styled(Swiper)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 100%;
-`;
-
-export const SwiperSlides = styled(SwiperSlide)`
+export const Slides = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  box-sizing: border-box;
 
-  width: 100%;
+  width: 335px;
+  height: 194px;
   padding: 24px 20px 24px 24px;
   margin-bottom: 8px;
 
@@ -90,41 +62,10 @@ export const SwiperSlides = styled(SwiperSlide)`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding: 32px;
-    margin-bottom: 18px;
+    height: 187px;
   }
-
-  @media screen and (min-width: ${globalTheme.breakpoints.desktop}) {
-    margin-bottom: 32px;
-  }
-`;
-
-export const ArrowButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-`;
-
-export const ArrowBtnWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-
-  color: ${globalTheme.colors.black};
-`;
-
-export const ArrowButton = styled.button`
-  width: 50px;
-  height: 50px;
-
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
-    width: 61px;
-    height: 61px;
+    width: 580px;
   }
 `;
 
@@ -153,12 +94,12 @@ export const UserHeadInfo = styled.div`
   gap: 13px;
 `;
 
-export const UserReview = styled(LinesEllipsis)`
+export const UserReview = styled.p`
   width: 100%;
-  height: 54px;
+  height: 72px;
 
-  border-radius: 8px;
-  border: transparent;
+  overflow: hidden;
+  overflow-y: scroll;
 
   font-size: 14px;
   font-weight: 500;
@@ -169,6 +110,7 @@ export const UserReview = styled(LinesEllipsis)`
 
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     padding-left: 68px;
+    height: 54px;
   }
 `;
 
@@ -200,4 +142,34 @@ export const CustomStarContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+`;
+
+export const ArrowButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const ArrowBtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  color: ${globalTheme.colors.black};
+`;
+
+export const ArrowButton = styled.button`
+  width: 50px;
+  height: 50px;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
+    width: 61px;
+    height: 61px;
+  }
 `;
