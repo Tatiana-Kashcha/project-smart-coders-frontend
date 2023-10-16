@@ -49,7 +49,6 @@ export const ReviewsSlider = () => {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: '-10px',
-
     responsive: [
       {
         breakpoint: 1440,

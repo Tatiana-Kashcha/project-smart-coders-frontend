@@ -64,6 +64,7 @@ export const Slides = styled.div`
     padding: 32px;
     height: 187px;
   }
+
   @media screen and (min-width: ${globalTheme.breakpoints.tablet}) {
     width: 580px;
   }
