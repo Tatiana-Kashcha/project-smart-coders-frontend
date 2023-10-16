@@ -25,15 +25,18 @@ export const CalendarGridWrapper = styled.div`
 export const CellWrapper = styled.div`
   margin-bottom: 0px;
   padding: 4px;
+  height: 83px;
   justify-content: flex-end;
   background-color: ${props => props.theme.colors.bgrCalendar};
   outline: ${props => props.theme.colors.userInputBorder};
   @media screen and (min-width: 768px) {
     padding: 10px 4px;
+    height: 120px;
   }
 
   @media screen and (min-width: 1440px) {
     padding: 4px 14px;
+    height: 108px;
   }
 `;
 
