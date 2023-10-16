@@ -6,6 +6,7 @@ import moment from 'moment';
 import { nanoid } from 'nanoid';
 import * as s from './CalendarTable.styled';
 import { StyleSheetManager } from 'styled-components';
+import { globalTheme } from 'theme';
 
 moment.updateLocale('en', {
   week: {
@@ -68,68 +69,71 @@ const CalendarTable = () => {
                   {dayItem.month() === selectedMonth ? (
                     <span
                       style={{
-                        width: '100%',
-                        height: '100%',
                         color: dayItem.isSame(moment(), 'day')
-                          ? '#3e85f3'
+                          ? `${globalTheme.colors.white}`
                           : null,
+                        backgroundColor: dayItem.isSame(moment(), 'day')
+                          ? `${globalTheme.colors.primary}`
+                          : null,
+                        borderRadius: 8,
+                        padding: 4,
                       }}
                     >
                       {dayItem.format('DD')}
                     </span>
                   ) : null}
                 </s.RowInCell>
-
-                {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
-                  <>
-                    {inprogressTask.length !== 0 && (
-                      <s.DivSelectLow>
-                        <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
-                        <s.SelectLow>
-                          {inprogressTask.map(({ title, priority }) => {
-                            const id = nanoid();
-                            return (
-                              <s.OptionSelectLow key={id} priority={priority}>
-                                {title}
-                              </s.OptionSelectLow>
-                            );
-                          })}
-                        </s.SelectLow>
-                      </s.DivSelectLow>
-                    )}
-                    {doneTask.length !== 0 && (
-                      <s.DivSelectMedium>
-                        <s.DivTaskLeg>medium {doneTask.length}</s.DivTaskLeg>
-                        <s.SelectLow>
-                          {doneTask.map(({ title, priority }) => {
-                            const id = nanoid();
-                            return (
-                              <s.OptionSelectLow key={id} priority={priority}>
-                                {title}
-                              </s.OptionSelectLow>
-                            );
-                          })}
-                        </s.SelectLow>
-                      </s.DivSelectMedium>
-                    )}
-                    {todoTask.length !== 0 && (
-                      <s.DivSelectHigh>
-                        <s.DivTaskLeg>high {todoTask.length}</s.DivTaskLeg>
-                        <s.SelectLow>
-                          {todoTask.map(({ title, priority }) => {
-                            const id = nanoid();
-                            return (
-                              <s.OptionSelectLow key={id} priority={priority}>
-                                {title}
-                              </s.OptionSelectLow>
-                            );
-                          })}
-                        </s.SelectLow>
-                      </s.DivSelectHigh>
-                    )}
-                  </>
-                ) : null}
               </s.DayWrapper>
+
+              {taskDay.length !== 0 && dayItem.month() === selectedMonth ? (
+                <s.DivTasks>
+                  {inprogressTask.length !== 0 && (
+                    <s.DivSelectLow>
+                      <s.DivTaskLeg>low {inprogressTask.length}</s.DivTaskLeg>
+                      <s.SelectLow>
+                        {inprogressTask.map(({ title, priority }) => {
+                          const id = nanoid();
+                          return (
+                            <s.OptionSelectLow key={id} priority={priority}>
+                              {title}
+                            </s.OptionSelectLow>
+                          );
+                        })}
+                      </s.SelectLow>
+                    </s.DivSelectLow>
+                  )}
+                  {doneTask.length !== 0 && (
+                    <s.DivSelectMedium>
+                      <s.DivTaskLeg>medium {doneTask.length}</s.DivTaskLeg>
+                      <s.SelectLow>
+                        {doneTask.map(({ title, priority }) => {
+                          const id = nanoid();
+                          return (
+                            <s.OptionSelectLow key={id} priority={priority}>
+                              {title}
+                            </s.OptionSelectLow>
+                          );
+                        })}
+                      </s.SelectLow>
+                    </s.DivSelectMedium>
+                  )}
+                  {todoTask.length !== 0 && (
+                    <s.DivSelectHigh>
+                      <s.DivTaskLeg>high {todoTask.length}</s.DivTaskLeg>
+                      <s.SelectLow>
+                        {todoTask.map(({ title, priority }) => {
+                          const id = nanoid();
+                          return (
+                            <s.OptionSelectLow key={id} priority={priority}>
+                              {title}
+                            </s.OptionSelectLow>
+                          );
+                        })}
+                      </s.SelectLow>
+                    </s.DivSelectHigh>
+                  )}
+                </s.DivTasks>
+              ) : null}
             </s.CellWrapper>
           );
         })}
