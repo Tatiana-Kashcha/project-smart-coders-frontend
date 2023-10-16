@@ -81,7 +81,7 @@ export const getChartOptions = props => ({
       font: {
         family: 'Inter',
         size: 12,
-        weight: 500,
+        weight: 400,
         lineHeight: 1.5,
       },
       formatter: function (value, data) {
@@ -96,8 +96,9 @@ export const getChartOptions = props => ({
         return percentage;
       },
       anchor: 'end',
-      offset: -20,
+      offset: -35,
       align: 'start',
+      rotation: 270,
     },
     legend: {
       display: false,
@@ -126,16 +127,16 @@ export const data = {
       // data: [40, 58, 50],
       borderRadius: 5,
       borderSkipped: 'end',
-      barPercentage: 0.7,
-      categoryPercentage: 0.25,
+      barPercentage: 0.6,
+      categoryPercentage: 0.28,
     },
     {
       label: 'tasks by month',
       // data: [90, 63, 87],
       borderRadius: 5,
       borderSkipped: 'end',
-      barPercentage: 0.7,
-      categoryPercentage: 0.25,
+      barPercentage: 0.6,
+      categoryPercentage: 0.28,
     },
   ],
 };

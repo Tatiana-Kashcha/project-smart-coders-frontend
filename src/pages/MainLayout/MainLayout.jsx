@@ -43,6 +43,7 @@ export default function MainLayout() {
 
   const onRedirect = () => {
     setShowSideBar(false);
+    setShowBurger(true);
   };
 
   return (

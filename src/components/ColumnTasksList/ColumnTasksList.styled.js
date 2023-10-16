@@ -30,6 +30,7 @@ export const DivTasksCol = styled.div`
     &::-webkit-scrollbar-thumb {
       background: ${props => props.theme.colors.scrollColor};
       border-radius: 12px;
+      border-color: red;
       height: 12px;
     }
   }
