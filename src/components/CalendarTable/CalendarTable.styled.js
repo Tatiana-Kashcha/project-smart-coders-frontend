@@ -1,20 +1,13 @@
 import styled from 'styled-components';
 import { globalTheme } from 'theme';
 
-export const DivTaskLeg = styled.div`
-  border-radius: 8px;
-  padding-left: 8px;
-`;
-
 export const CalendarGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px;
   max-width: 767px;
-  max-height: 625px;
   margin: 0 auto;
-  height: 470px;
   border: ${props => props.theme.colors.userInputBorder};
   color: ${props => props.theme.colors.calendarText};
   border-radius: 8px;
@@ -22,113 +15,88 @@ export const CalendarGridWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
-    height: calc(100vh - 280px);
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1087px;
-    height: calc(100vh - 270px);
   }
+`;
+
+export const CellWrapper = styled.div`
+  margin-bottom: 0px;
+  padding: 4px;
+  height: 83px;
+  justify-content: flex-end;
+  background-color: ${props => props.theme.colors.bgrCalendar};
+  outline: ${props => props.theme.colors.userInputBorder};
+  @media screen and (min-width: 768px) {
+    padding: 10px 4px;
+    height: 120px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 4px 14px;
+    height: 108px;
+  }
+`;
+
+export const DivTasks = styled.div`
+  width: 27px;
+  margin-top: 4px;
+
+  font-size: 1.5vw;
+  font-weight: 700;
 
   transition-duration: 100ms;
   transition-timing-function: linear;
   :focus,
   :hover {
     z-index: 1;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     cursor: pointer;
   }
   :active > ul {
     opacity: 1;
     visibility: visible;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    width: 150px;
   }
-`;
 
-export const RowInCell = styled.div`
-  display: flex;
-`;
+  @media screen and (min-width: 375px) {
+    width: 38px;
+  }
 
-export const CellWrapper = styled.div`
-  display: flex;
-  margin-bottom: 0px;
-  padding: 8px 4px;
-  justify-content: flex-end;
-  background-color: ${props => props.theme.colors.bgrCalendar};
   @media screen and (min-width: 768px) {
+    width: 90px;
+    font-size: 14px;
   }
   @media screen and (min-width: 1440px) {
-    padding: 14px;
-  }
-`;
-
-export const DayWrapper = styled.div`
-  width: 24px;
-  height: 26px;
-  align-items: center;
-  border-radius: solid 1px #111111;
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.17;
-  border-radius: 50%;
-  position: relative;
-
-  color: ${props => props.theme.colors.primaryText};
-  @media screen and (min-width: 768px) {
-    width: 27px;
-    height: 26px;
-
-    font-size: 16px;
-    line-height: 1.12;
-    margin-right: 10px;
-  }
-  /* animation: scaleAnimation 1s linear infinite alternate; */
-`;
-export const CurrentDay = styled.span`
-  border: 1px solid #111111;
-  display: flex;
-  display: inline-flex;
-  padding: 4px 8px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  border-radius: 8px;
-  background: #3e85f3;
-  color: #fff;
-`;
-
-export const Day = styled.span`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #111111;
-  display: flex;
-  color: ${props => props.theme.colors.white};
-
-  align-items: center;
-  justify-content: center;
-  padding: 4px 8px;
-
-  background: ${props => props.theme.colors.primaryText};
-  border-radius: 50%;
-
-  @media screen and (min-width: 768px) {
-    width: 27px;
-    height: 26px;
-
-    font-size: 14px;
-    line-height: 1.28;
+    width: 123px;
   }
 `;
 
 export const DivSelectLow = styled.div`
   color: ${globalTheme.colors.primary};
   border-radius: 8px;
-  position: absolute;
-  top: 20%;
-  height: 20px;
-  right: 120%;
+  height: 4vw;
   background-color: ${globalTheme.colors.lowTasksBg};
+  margin-bottom: 2px;
+
+  @media screen and (min-width: 768px) {
+    height: 22px;
+  }
+`;
+
+export const DivTaskLeg = styled.div`
+  border-radius: 8px;
+  padding-left: 4px;
+  padding-top: 3px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 8px;
+    padding-top: 0px;
+  }
 `;
 
 export const SelectLow = styled.ul`
@@ -143,8 +111,6 @@ export const SelectLow = styled.ul`
 
   font-size: 10px;
   line-height: 1.4;
-
-  line-height: 1.28;
   transition: all 0.5s ease;
 
   @media screen and (min-width: 1440px) {
@@ -182,58 +148,61 @@ export const OptionSelectLow = styled.li`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  /* border-radius: 8px; */
-
-  @media screen and (min-width: 375px) {
-    width: 44px;
-    height: 22px;
-  }
-
-  @media screen and (min-width: 1444px) {
-    //   font-size: 4vw;
-    //   padding-left: 4vw;
-    //   padding-right: 4vw;
-    width: 94px;
-    height: 26px;
-  }
-  @media screen and (min-width: 768px) {
-    //   font-size: 4vw;
-    //   padding-left: 4vw;
-    //   padding-right: 4vw;
-    width: 92px;
-    height: 26px;
-  }
 `;
 
 export const DivSelectMedium = styled.div`
   color: ${globalTheme.colors.mainYellow};
-  position: absolute;
-  top: 100%;
-  right: 120%;
-  height: 22px;
+  height: 4vw;
   background-color: ${globalTheme.colors.lightYellow};
   border-radius: 8px;
+  margin-bottom: 2px;
 
-  /* @media screen and (min-width: 768px) {
-    top: 100%;
-    right: 50%;
-    height: 26px; */
-  /* } */
+  @media screen and (min-width: 768px) {
+    height: 22px;
+  }
 `;
 
 export const DivSelectHigh = styled.div`
   color: ${globalTheme.colors.mainRed};
-  position: absolute;
-  top: 180%;
-  right: 120%;
-  height: 20px;
+  height: 4vw;
   background-color: ${globalTheme.colors.lightRed};
   border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    height: 22px;
+  }
 `;
 
-// @media screen and (max-width: 375px) {
-//   font-size: 4vw;
-//   padding-left: 4vw;
-//   padding-right: 4vw;
-// }
-// 768
+export const DayWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const RowInCell = styled.div`
+  padding: 4px;
+  border-radius: 8px;
+
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+
+  color: ${props => props.theme.colors.primaryText};
+  transition-duration: 100ms;
+  transition-timing-function: linear;
+
+  :focus,
+  :hover {
+    z-index: 1;
+    border-radius: 8px;
+    box-shadow: ${globalTheme.shadow.boxShadow};
+    border: ${props => props.theme.colors.userInputBorder};
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.12;
+  }
+`;

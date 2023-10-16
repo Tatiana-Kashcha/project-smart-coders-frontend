@@ -7,8 +7,6 @@ export const StyledHead = styled.ul`
 `;
 export const ContainerDay = styled.div`
   display: block;
-  width: 335px;
-  height: 74px;
   padding: 14px 18px;
   justify-content: center;
   align-items: center;
@@ -23,7 +21,6 @@ export const ContainerDay = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 68px;
     padding: 10px 32px;
     margin-bottom: 16px;
   }

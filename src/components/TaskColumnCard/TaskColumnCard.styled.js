@@ -63,6 +63,7 @@ export const Elipse = styled.div`
 export const Avatar = styled.img`
   object-fit: cover;
   object-position: 50% 50%;
+  height: 100%;
 `;
 
 export const Priority = styled.div`
