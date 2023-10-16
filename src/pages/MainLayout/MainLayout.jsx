@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Container } from 'stylesheet/Container.styled';
@@ -10,16 +10,22 @@ import { globalTheme } from 'theme';
 import * as s from './MainLayoutStyled.styled';
 
 export default function MainLayout() {
-  const mediaQuery = window.matchMedia(
-    `(min-width: ${globalTheme.breakpoints.desktop})`
+  const mediaQueryRef = useRef(
+    window.matchMedia(
+      `(max-width: calc(${globalTheme.breakpoints.desktop} - 0.5px))`
+    )
   );
 
-  const [showSideBar, setShowSideBar] = useState(mediaQuery.matches);
-  const [shownBurger, setShowBurger] = useState(true);
+  const mediaQuery = mediaQueryRef.current;
+
+  const [isSmallScreen, setIsSmallScreen] = useState(mediaQuery.matches);
+  const [showSideBar, setShowSideBar] = useState(!mediaQuery.matches);
+  const [showBurger, setShowBurger] = useState(mediaQuery.matches);
 
   useEffect(() => {
     const handleResize = evt => {
-      setShowSideBar(evt.matches);
+      setIsSmallScreen(evt.matches);
+      setShowSideBar(!evt.matches);
     };
 
     mediaQuery.addEventListener('change', handleResize);
@@ -27,7 +33,7 @@ export default function MainLayout() {
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
     };
-  }, [mediaQuery, showSideBar]);
+  }, [mediaQuery]);
 
   useEffect(() => {
     setShowBurger(!showSideBar);
@@ -37,20 +43,20 @@ export default function MainLayout() {
     setShowSideBar(prevState => !prevState);
   };
 
-  const togglshownBurger = () => {
-    setShowBurger(prevState => !prevState);
-  };
+  const togglshowBurger = () => {};
 
   const onRedirect = () => {
-    setShowSideBar(false);
-    setShowBurger(true);
+    if (mediaQuery.matches) {
+      setShowSideBar(false);
+    }
   };
 
   return (
     <>
-      {(mediaQuery.matches || showSideBar) && (
+      {(!mediaQuery.matches || showSideBar) && (
         <SideBar
-          togglshownBurger={togglshownBurger}
+          isSmallScreen={isSmallScreen}
+          togglshowBurger={togglshowBurger}
           onSideBar={onSideBar}
           onRedirect={onRedirect}
         />
@@ -59,8 +65,8 @@ export default function MainLayout() {
         <Container>
           <s.DivStyled>
             <Header
-              shownBurger={shownBurger}
-              togglshownBurger={togglshownBurger}
+              showBurger={showBurger}
+              togglshowBurger={togglshowBurger}
               onSideBar={onSideBar}
             />
           </s.DivStyled>

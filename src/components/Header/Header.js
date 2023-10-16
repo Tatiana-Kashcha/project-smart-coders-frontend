@@ -8,12 +8,7 @@ import ThemeToggle from 'components/ThemeToggler/ThemeToggle';
 
 import UserInfo from '../UserInfo/UserInfo';
 
-const Header = ({ shownBurger, togglshownBurger, onSideBar }) => {
-  const handleClick = () => {
-    togglshownBurger();
-    onSideBar();
-  };
-
+const Header = ({ showBurger, onSideBar }) => {
   const location = useLocation();
 
   const strongLocation = location.pathname.slice(1);
@@ -30,8 +25,13 @@ const Header = ({ shownBurger, togglshownBurger, onSideBar }) => {
           <s.Title>{title}</s.Title>
         )}
 
-        {shownBurger && (
-          <s.BurgerBtn type="button" onClick={handleClick}>
+        {showBurger && (
+          <s.BurgerBtn
+            type="button"
+            onClick={() => {
+              onSideBar();
+            }}
+          >
             <BurgerMenuIcon />
           </s.BurgerBtn>
         )}
