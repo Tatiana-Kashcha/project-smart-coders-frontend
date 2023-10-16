@@ -88,9 +88,11 @@ export const DivSelectLow = styled.div`
 export const DivTaskLeg = styled.div`
   border-radius: 8px;
   padding-left: 4px;
+  padding-top: 3px;
 
   @media screen and (min-width: 768px) {
     padding-left: 8px;
+    padding-top: 0px;
   }
 `;
 
