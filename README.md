@@ -1,113 +1,27 @@
-# React homework template
+# _GooseTrack_
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+## Used technologies: [HTML, CSS, React, Redux, Styled Components, JS, Webpack, Axios API].
 
-## Создание репозитория по шаблону
+### _This is a team diploma project. This is a task scheduler app. He helps it is better to organize your time and plan work tasks. Adaptive layout for different devices is implemented, there is a switch between dark and light themes. The next download takes place with the theme already selected._
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+## The application consists of 4 pages:
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+### 1- `"Home"`, the page displays general description of the application and transition to user registration or login:
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+![image](https://github.com/Tatiana-Kashcha/project-smart-coders-frontend/assets/116923287/fe8733af-7202-49d9-80a3-8cc096397ede)
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+### 2- `"Calendar"`, the page displays all tasks for the current month:
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+![image](https://github.com/Tatiana-Kashcha/project-smart-coders-frontend/assets/116923287/25e44fbd-1a0f-4d7a-ae6e-92dc911a66a2)
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+### 2.1- `"Calendar-day"`, on the page you can add the necessary tasks by category for the selected date. You can change task categories and their priority:
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
+![image](https://github.com/Tatiana-Kashcha/project-smart-coders-frontend/assets/116923287/0fa1d15e-de57-4efd-9e60-ae41d199b689)
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+### 3- `"My account"`, the page displays the user's personal data, which can be changed:
 
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
+![image](https://github.com/Tatiana-Kashcha/project-smart-coders-frontend/assets/116923287/0f952499-7edb-492d-b6ca-fe4dc433e3ee)
 
-## Подготовка к работе
+### 4- `"Statistics"`, the page displays task statistics for the month and for the day:
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
-
-## Деплой
-
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
-
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
-
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
-
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Живая страница
-
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
-
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-
-## Как это работает
-
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+![image](https://github.com/Tatiana-Kashcha/project-smart-coders-frontend/assets/116923287/f4241667-c894-498e-981a-49e3d95348bb)
