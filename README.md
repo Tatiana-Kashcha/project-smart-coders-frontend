@@ -2,7 +2,7 @@
 
 ## Used technologies: [HTML, CSS, React, Redux, Styled Components, JS, Webpack, Axios API].
 
-### _This is a team diploma project. This is a task scheduler app. He helps it is better to organize your time and plan work tasks. Adaptive layout for different devices is implemented, there is a switch between dark and light themes. The next download takes place with the theme already selected._
+### _This is a team diploma project. Task scheduler with user registration and interaction with the backend part of the project. He helps it is better to organize your time and plan work tasks. Adaptive layout for different devices is implemented, there is a switch between dark and light themes. The next download takes place with the theme already selected._
 
 ## The application consists of 4 pages:
 
@@ -25,3 +25,7 @@
 ### 4- `"Statistics"`, the page displays task statistics for the month and for the day:
 
 ![image](https://github.com/Tatiana-Kashcha/project-smart-coders-frontend/assets/116923287/f4241667-c894-498e-981a-49e3d95348bb)
+
+## Backend Repository
+
+### _Check out the backend code at: [GooseTrack Backend Repository](https://github.com/Tatiana-Kashcha/project-smart-coders-backend)_
