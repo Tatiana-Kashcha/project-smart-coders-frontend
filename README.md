@@ -1,5 +1,7 @@
 # _GooseTrack_
 
+## Used technologies: [HTML, CSS, React, Redux, Styled Components, JS, Webpack, Axios API].
+
 ### _This is a team diploma project. This is a task scheduler app. He helps it is better to organize your time and plan work tasks. Adaptive layout for different devices is implemented, there is a switch between dark and light themes. The next download takes place with the theme already selected._
 
 ## The application consists of 4 pages:
